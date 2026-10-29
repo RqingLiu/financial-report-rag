@@ -1,6 +1,6 @@
 # 005 — Correctness contracts, reproducible delivery and unseen issuers
 
-Status: implementation in progress. User authorized correctness fixes, GitHub publication and Alphabet/Amazon three-year ingestion; new evaluation questions will be supplied later.
+Status: implemented and validated; public GitHub delivery complete. New-company evaluation questions and independent numeric/semantic quality acceptance remain pending, as requested.
 
 FR1 Bind selected companies to actual catalog aliases or explicitly confirmed report/company metadata. Reject extra companies, mismatched source mentions, omitted selected-company tasks and lost exclusions. Validate bounded typed confirmed_context while retaining its JSON dictionary wire format.
 FR2 Preserve explicit per-company report-FY constraints, including different years across companies, exclusion and common-year comparison. Keep report FY distinct from fact periods; ambiguous natural language remains a clarification/evaluation boundary, not a claim of complete semantic parsing. Increment planner/cache contract version.

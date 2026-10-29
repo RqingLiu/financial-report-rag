@@ -119,5 +119,18 @@
     "stop_usd": "1.6",
     "authorization_usd": "5.00",
     "halted": false
+  },
+  "github_delivery": {
+    "url": "https://github.com/RqingLiu/financial-report-rag",
+    "visibility": "public",
+    "default_branch": "codex/correctness-release",
+    "initial_code_commit": "e8f426f1dd780c8504955d24012203bca6ca68c8",
+    "linux_ci": {
+      "url": "https://github.com/RqingLiu/financial-report-rag/actions/runs/40829556506",
+      "conclusion": "success",
+      "passed": 76,
+      "skipped_local_corpus_or_db": 11
+    },
+    "publication_scan": "actual Git index; credential/private-path/size checks passed"
   }
 }
