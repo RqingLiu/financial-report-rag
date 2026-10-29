@@ -153,11 +153,22 @@ def select_context(data, plan, ranked, store, catalog, config, llm, ce, trace):
             priority_scores=priorities,
             max_items=config.max_context_items,
         )
-        stage["outputs"] = metadata
+        stage["outputs"] = {**metadata, "evidence": evidence}
     return selected, texts, evidence, metadata
 
 
-def execute(request, config, store, llm, embedder, ce=None, *, query_id=None, do_generate=True):
+def execute(
+    request,
+    config,
+    store,
+    llm,
+    embedder,
+    ce=None,
+    *,
+    query_id=None,
+    do_generate=True,
+    on_event=None,
+):
     qid = query_id or uuid4().hex
     inputs = {
         "original_question": request.question,
@@ -165,7 +176,7 @@ def execute(request, config, store, llm, embedder, ce=None, *, query_id=None, do
         "confirmed_context": request.confirmed_context,
         "as_of": str(request.as_of),
     }
-    trace = Trace(qid, inputs)
+    trace = Trace(qid, inputs, on_event=on_event)
     data = trace.data
     data.update(
         pipeline="serving-v1",
@@ -185,14 +196,14 @@ def execute(request, config, store, llm, embedder, ce=None, *, query_id=None, do
             plan, event = plan_request(
                 request, catalog, config.pipeline, model, ROOT / "data/cache/plans"
             )
-            stage["outputs"] = event
+            stage["outputs"] = {**event, "validated_plan": plan.model_dump(mode="json")}
         data["original_plan"] = plan.model_dump(mode="json")
         if plan.action == "retrieve" and config.regroup:
             with trace.stage("evidence_regroup", {}) as stage:
                 plan, event = regroup(
                     plan, catalog, config.pipeline, model, ROOT / "data/cache/regroup"
                 )
-                stage["outputs"] = event
+                stage["outputs"] = {**event, "validated_plan": plan.model_dump(mode="json")}
         data["plan"] = plan.model_dump(mode="json")
         if plan.action != "retrieve":
             data.update(status=plan.action, runtime_evidence=[])
@@ -220,6 +231,7 @@ def execute(request, config, store, llm, embedder, ce=None, *, query_id=None, do
                 "raw_candidates": raw,
                 "retained": len(ranked),
                 "provenance": provenance,
+                "ranked_hits": [h.model_dump() for h in ranked],
             }
         selected, _texts, evidence, meta = select_context(
             data, plan, ranked, retriever.store, catalog, config, model, ce, trace
@@ -245,9 +257,19 @@ def execute(request, config, store, llm, embedder, ce=None, *, query_id=None, do
     return data
 
 
-def query(request, config, *, do_generate=True):
+def query(request, config, *, do_generate=True, query_id=None, on_event=None):
     with resources(config) as (store, llm, embedder, ce):
-        data = execute(request, config, store, llm, embedder, ce, do_generate=do_generate)
+        data = execute(
+            request,
+            config,
+            store,
+            llm,
+            embedder,
+            ce,
+            do_generate=do_generate,
+            query_id=query_id,
+            on_event=on_event,
+        )
     path = ROOT / "logs/serving" / f"{data['query_id']}.json"
     atomic_json(path, data)
     return data

@@ -28,6 +28,7 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 "finrag.vendor" = ["LICENSE.pageindex", "pageindex_provenance.json"]
+"finrag.serving" = ["static/*.html", "static/*.css", "static/*.js"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

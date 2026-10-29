@@ -4,7 +4,7 @@
 
 - 在 financial-report-rag 目录工作；上层学习目录的 Git 根与本项目 Spec Kit 根不同。
 - 先读 [README](README.md)、[当前架构](docs/architecture.md)和[章程](.specify/memory/constitution.md)。
-- 当前增量是[正确性/交付与新公司](specs/005-correctness-release/spec.md)；当前日常入口`python -m finrag.serving.cli`。历史规格001–004与旧CLI保留，用于回归和实验复现；`finrag.pipeline`是上一版入口，不是当前默认。
+- 当前增量是[本地查询与Trace界面](specs/006-trace-explorer/spec.md)；当前日常入口`python -m finrag.serving.cli`。历史规格001–005与旧CLI保留，用于回归和实验复现；`finrag.pipeline`是上一版入口，不是当前默认。
   [开发/代码地图](docs/development.md)、[评测边界](docs/evaluation.md)、[数据入库](docs/data-and-ingestion.md)是公开说明；完整本地历史README/trace不提交Git。安装工具或编写规格不等于授权执行整个 implement 工作流。
 - 新功能读对应 spec，再更新 plan/tasks；执行代码使用 `.venv/bin/python`。
 - 需要 Spec Kit 工作流时读取 `.agents/skills/speckit-<step>/SKILL.md`。

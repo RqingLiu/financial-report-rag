@@ -13,7 +13,7 @@ flowchart TB
         Embed --> Publish["Atomic document publication: sources, chunks, vectors, BM25 postings/statistics"]
     end
     Publish --> PG[("PostgreSQL + pgvector")]
-    User["CLI / localhost API: question, background, confirmed scope, as_of"] --> Planner["DeepSeek QueryPlan: needs, tasks, company/report FY, retrieval queries"]
+    User["CLI / local browser / API: question, background, confirmed scope, as_of"] --> Planner["DeepSeek QueryPlan: needs, tasks, company/report FY, retrieval queries"]
     PG --> Catalog["Published catalog + registered aliases"]
     Catalog --> Planner
     Planner --> Guard["planning_scope.py + validate_plan: alias binding, per-company FY, typed confirmation"]
@@ -30,6 +30,7 @@ flowchart TB
     Context --> Generate["DeepSeek need-aligned answer; citation ID and output structure checks"]
     Generate --> Response
     Response --> Trace["Local stage trace, source spans, model usage and cost ledger"]
+    Trace -.-> Explorer["Same FastAPI service: actual stage SSE + safe history projection; interactive trace UI"]
     Trace -.-> Eval["Offline evaluation loads gold only after evidence selection"]
 ```
 
@@ -49,6 +50,7 @@ flowchart TB
 | Context | Original spans, overlap dedup and bounded table expansion; 8K/24K proxy-token caps | `rerank_context.py`, `context.py` |
 | Answer | Supported/partial/missing per need; structural validation only | `answering.py` |
 | API | Localhost FastAPI, ≤2 in-flight requests, admission before worker dispatch | `serving/api.py` |
+| Query UI | Static HTML/CSS/JS, actual stage SSE, read-only history; shared pipeline/budget | `serving/static/`, `serving/explorer.py` ([details](trace-explorer.md)) |
 | Cost/trace | Persistent reservations; unknown billing stays reserved; no blind paid retry | `generation.py`, `tracing.py` |
 
 `cl100k_base` counts are a budget proxy, not the providers' billing tokenizer. Default retrieval is dense multi-query plus LLM reranking; the historical `fr-rag query` command uses a different rule-based hybrid path.

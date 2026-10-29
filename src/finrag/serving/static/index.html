@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FinRAG · Trace Explorer</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="FinRAG 首页"
+        ><span class="brand-mark">F</span> FinRAG
+        <span class="local">LOCAL</span></a
+      >
+      <div class="side-heading">RESEARCH WORKSPACE</div>
+      <h1>从问题到证据，<br />看清每一步。</h1>
+      <p class="muted intro">
+        查询财报，同时观察真实的规划、检索与上下文选择过程。
+      </p>
+      <form id="query-form">
+        <label for="question">研究问题</label>
+        <textarea
+          id="question"
+          required
+          minlength="2"
+          maxlength="12000"
+          rows="6"
+          placeholder="例如：比较 Google FY2024 与 Amazon FY2025 年报披露的云业务收入，并说明披露口径。"
+        ></textarea>
+        <label for="as-of"
+          >资料公开截止日 <span class="muted">as of</span></label
+        >
+        <input id="as-of" type="date" required />
+        <details class="background">
+          <summary>阅读背景与范围提示 <span>可选</span></summary>
+          <label class="sr-only" for="background">阅读背景</label
+          ><textarea
+            id="background"
+            maxlength="12000"
+            rows="3"
+            placeholder="报告财年、关注章节，或其他已确认的范围。"
+          ></textarea>
+        </details>
+        <label for="mode">执行范围</label>
+        <select id="mode">
+          <option value="answer">检索 + 生成引用答案</option>
+          <option value="retrieve">仅检索与上下文构建</option>
+        </select>
+        <p class="cost-note">
+          新查询会调用已配置的 API。仅检索模式仍包含 Planner
+          和精排调用；沿用服务端预算上限。
+        </p>
+        <button class="primary" id="submit" type="submit">
+          <span>运行查询</span><span>↗</span>
+        </button>
+      </form>
+      <div class="history-heading">
+        <h2>历史运行</h2>
+        <button
+          id="refresh"
+          class="icon-button"
+          title="刷新历史记录"
+          aria-label="刷新历史记录"
+        >
+          ↻
+        </button>
+      </div>
+      <p class="muted small">查看已保存 trace，不调用模型。</p>
+      <select id="history" aria-label="选择历史 trace">
+        <option value="">选择一条记录…</option>
+      </select>
+      <button id="load" class="secondary">打开历史 trace</button>
+      <div class="connection">
+        <span id="health-dot" class="dot"></span
+        ><span id="health">正在检查数据库…</span>
+      </div>
+      <a class="api-link" href="/docs" target="_blank" rel="noopener"
+        >API 文档 ↗</a
+      >
+    </aside>
+    <main>
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">OBSERVABILITY / QUERY WORKBENCH</span>
+          <h2>Trace Explorer <span class="version">v1</span></h2>
+        </div>
+        <span class="session-badge" id="session-badge">准备就绪</span>
+      </header>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <section class="run-heading">
+        <div>
+          <div class="eyebrow" id="run-label">PIPELINE AT A GLANCE</div>
+          <h3 id="run-title">一次查询，八个可观察的阶段</h3>
+          <p id="run-meta" class="muted">
+            点击流程节点查看组件职责；运行后可检查实际输入、输出和耗时。
+          </p>
+        </div>
+        <span class="status-pill" id="run-status">IDLE</span>
+      </section>
+      <section id="pipeline" class="pipeline" aria-label="查询流程"></section>
+      <section id="stats" class="stats" aria-label="运行统计"></section>
+      <nav id="tabs" class="tabs" aria-label="Trace 内容"></nav>
+      <section id="content" class="content" aria-live="polite"></section>
+      <footer>
+        展示可观察的程序步骤与证据，不代表模型内部思考。精排分数是相关性判断，引用通过格式校验也不等于事实正确。
+      </footer>
+    </main>
+    <dialog id="evidence-dialog">
+      <div class="dialog-top">
+        <h2 id="evidence-title">证据</h2>
+        <button id="close-evidence" class="icon-button" aria-label="关闭证据">
+          ×
+        </button>
+      </div>
+      <div id="evidence-body"></div>
+    </dialog>
+  </body>
+</html>

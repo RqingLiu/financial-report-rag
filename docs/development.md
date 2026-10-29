@@ -11,6 +11,7 @@
 | Rerank/context/answer | `reranking.py`, `rerank_context.py`, `context.py`, `answering.py` |
 | Providers/cost/trace | `embedding.py`, `generation.py`, `serving/providers.py`, `tracing.py` |
 | Current entry/API | `serving/cli.py`, `serving/runtime.py`, `serving/api.py` |
+| Browser / public trace projection | `serving/static/`, `serving/explorer.py` ([usage](trace-explorer.md)) |
 | New issuer preparation | `generalization.py`, `configs/generalization_companies.json` |
 | Experiments/gold | `experiments/`, historical `*_experiment.py`, `evaluation.py`, `dataset.py` |
 
@@ -36,6 +37,23 @@ The frozen golden builder is left unchanged for hash reproducibility; it has leg
 `specs/` contains requirements, plan and completion tasks for each increment; `.specify/` contains the constitution/templates. These are engineering artifacts, not runtime agent skills. Update the relevant spec before changing scope or behavior, add outcome/boundary regressions, then sync architecture and validation. Shared Spec Kit skills under `.agents/skills/` are optional development tooling.
 
 Preserve original gold/config/release markers. A new question variant of an already tuned intent is development data. A new unseen intent can be held out. Do not load references/answer labels in query planning or retrieval. Changes to source/chunk output need an explicit version/migration assessment; the current table bug fix was checked byte-for-byte against the original corpus.
+
+## GitHub workflow
+
+This project has its own repository, independent of the parent learning directory. A repository holds the project's files and shared commit history; branches point to different lines of development inside that same repository. A separate repository per project is a common choice, not a Git requirement (a monorepo can contain several projects).
+
+`main` is the default delivered baseline. New increments use `codex/<feature>` branches, versioned specs, a pull request against main and CI before merging. The original `codex/correctness-release` branch is retained as release history; main was established at the same delivered commit, without rewriting history. Local checking out a branch changes the files in this checkout; a push publishes commits, and a PR proposes their merge—it does not itself merge them.
+
+```bash
+git switch main
+git pull --ff-only
+git switch -c codex/your-feature
+# edit, verify, review staged contents and commit
+git push -u origin codex/your-feature
+gh pr create --base main
+```
+
+Avoid committing on main for routine feature work. Merge after reviewing the diff and CI; use ordinary commits or a revert to preserve understandable history. Public GitHub source does not expose the ignored database, local credentials or full traces.
 
 ## Publication and local artifacts
 

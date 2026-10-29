@@ -12,6 +12,7 @@ An evidence-grounded SEC annual-report research workflow with source provenance,
 - Retrieves with pgvector, reranks a coarse Top80 and builds a source-preserving context under explicit budgets.
 - Generates need-aligned cited answers, partial answers and missing-evidence explanations.
 - Records local traces, provider usage, billing reservations and reproducible evaluation artifacts.
+- Provides a local query workbench with live stage events, searchable candidate rankings and evidence-linked answers.
 
 Current default: **Voyage4-lite / 1024-dimensional embeddings → HNSW dense multi-query → RRF/interleave → LLM rerank → DeepSeek generation**. BM25 replacement, evidence-objective regroup and a dedicated Voyage CrossEncoder are optional comparison profiles. No LangGraph or autonomous multi-agent loop is required by this implementation.
 
@@ -24,7 +25,8 @@ Current default: **Voyage4-lite / 1024-dimensional embeddings → HNSW dense mul
 | [Evaluation](docs/evaluation.md) | Golden dataset, stage metrics, controlled results and limitations |
 | [Development](docs/development.md) | Code map, tests, Spec Kit and publication hygiene |
 | [History](docs/history.md) | Incremental decisions, failures and cleanup |
-| [Current spec](specs/005-correctness-release/spec.md) | Correctness/release requirements and acceptance |
+| [Query / trace UI](docs/trace-explorer.md) | Browser workflow, live events, history, API and privacy boundaries |
+| [Current spec](specs/006-trace-explorer/spec.md) | Query and trace explorer requirements and acceptance |
 
 ## Quick start
 
@@ -48,7 +50,9 @@ fr-rag-serve query "Compare NVIDIA and AMD FY2025 data-center revenue growth and
 fr-rag-serve serve --port 8000
 ```
 
-The localhost API exposes `/query`, `/health` and `/docs`. `as_of` is required. The existing `fr-rag query` is a historical evidence-only CLI; use **`fr-rag-serve`** for current reranking and generation.
+Open **http://127.0.0.1:8000/** for the query/trace interface: Planner → embedding → scoped searches → fusion → rerank → context → cited answer. Inspect each search and candidate decision, or open a historical run without API calls. New queries (including retrieval-only planning/reranking) can incur charges. See [UI details](docs/trace-explorer.md).
+
+The localhost API also exposes `/query`, `/query/stream`, `/traces`, `/health` and `/docs`. `as_of` is required. The existing `fr-rag query` is a historical evidence-only CLI; use **`fr-rag-serve`** for current reranking and generation.
 
 ## Corpus and evaluation
 
