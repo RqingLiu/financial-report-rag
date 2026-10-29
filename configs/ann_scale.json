@@ -1,0 +1,24 @@
+{
+  "sizes": [10000, 30000, 100000],
+  "seed": 20261028,
+  "noise_std": 0.008,
+  "query_count": 24,
+  "repeats": 2,
+  "k": 20,
+  "selectivities": [100, 10, 1],
+  "maintenance_mb": 256,
+  "work_mb": 8,
+  "build_timeout_ms": 900000,
+  "query_timeout_ms": 30000,
+  "source_traces": "reports/planner/20261027T034153Z_198f65/traces",
+  "profiles": [
+    {"method": "hnsw", "ef_search": 40, "max_scan": 20000},
+    {"method": "hnsw", "ef_search": 100, "max_scan": 20000},
+    {"method": "hnsw", "ef_search": 200, "max_scan": 20000},
+    {"method": "hnsw", "ef_search": 100, "max_scan": 2000},
+    {"method": "ivfflat", "probes": 1, "max_probes": 10000},
+    {"method": "ivfflat", "probes": 4, "max_probes": 10000},
+    {"method": "ivfflat", "probes": 10, "max_probes": 10000},
+    {"method": "ivfflat", "probes": 30, "max_probes": 10000}
+  ]
+}

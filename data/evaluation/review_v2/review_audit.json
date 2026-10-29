@@ -1,0 +1,146 @@
+{
+  "reviewer": "Codex AI source review",
+  "human_confirmed": false,
+  "ready_for_scoring": false,
+  "scope": "20 draft answers and all focus items; original answers retained; corpus cutoff 2026-10-11 except U14 2024-02-21",
+  "decisions": {
+    "通过": 11,
+    "需修改": 8,
+    "暂不能定标": 1
+  },
+  "checked_source_hashes": {
+    "NVDA_FY2026": "63458b8a89dcf7317d9adab6bb8a2edfe1d5b3d51c7de62a977389941584cebd",
+    "NVDA_FY2025": "4c8a513740a211865018e27462f570c4b858d1de644ff0ea3dcc14ea3066e970",
+    "NVDA_FY2024": "ef68081f90c4d2ae0920d3d359360b8893ffd422439cfa6bb2a9cf1b6f7ccb92",
+    "MU_FY2026": "02614fff54223e2c5aad03618a0ac1a9e1c445151a166fd738875fd123f6b89d",
+    "MU_FY2025": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+    "MU_FY2024": "709975ad6c638f2cdb33c4e69b1966d1fb611f4f440239d1d3638c60f238d00c",
+    "AMD_FY2025": "b2a1cd60c4944e7f9b9ac542d9ea725b14c3b7e899f36221a0bc424236944be1",
+    "AMD_FY2024": "00fdd8c0a0aed30b7430ba524ce3c0e7bcb54f06f112a6753578b8247a805901",
+    "AMD_FY2023": "3f857981468517010a6de7e4279c71f479ccad9a7e04a6c7de1a28b457cbe903",
+    "AMD_FY2025_A_0000002488-26-000021": "b111d9d3a6e61367a3af0db6a92ded0819c557387681aa04a5b15b4967282d8d"
+  },
+  "original_evidence_blocks_dom_checked": 153,
+  "additional_evidence_blocks_dom_checked": [
+    "MU24.568",
+    "NVDA26.1064",
+    "NVDA25.148",
+    "NVDA26.154",
+    "NVDA26.155",
+    "AMD25.522",
+    "NVDA24.63",
+    "NVDA25.87",
+    "NVDA25.108",
+    "AMD25.46",
+    "AMD25.70",
+    "AMD25.50",
+    "AMD23.954",
+    "AMD24.921"
+  ],
+  "u14_check": "All original U14 references NVDA_FY2024; confirmed_context checked; no later filings used for U14",
+  "search_scope": [
+    "MU three 10-Ks: product costs/margins, market share, HBM revenue, NRV, fiscal weeks, quarterly clues",
+    "NVDA three 10-Ks: quarterly Data Center, prepaid supply/capacity, concentrations, exports, geographic change, platform software",
+    "AMD three 10-Ks plus FY2025 10-K/A: product contribution, supplier prepayments/commitments, segments, software and system status"
+  ],
+  "absence_limit": "Targeted full-text searches and relevant table/context inspection; not proof that all conceivable disclosures or external sources were exhausted",
+  "online_primary_spot_checks": [
+    "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm",
+    "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+    "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm"
+  ],
+  "arithmetic": {
+    "MU_FY2026_DRAM_yoy_pct_exact": "252.2954720414304709916719155",
+    "MU_FY2026_DRAM_yoy_pct_2dp": "252.30",
+    "NVDA_FY2025_AR_revenue_pct_exact": "17.67473581768163252795083412",
+    "NVDA_FY2025_AR_revenue_pct_2dp": "17.67",
+    "MU_DIO": [
+      161.13,
+      139.34,
+      135.25
+    ],
+    "NVDA_DSO": [
+      41.3,
+      46.11,
+      51.86
+    ],
+    "MU_NRV_gross_profit_delta": 1974,
+    "MU_NRV_margin_delta_pp": 10.281899716609605,
+    "AMD_FY2025_total_FCF": 6697,
+    "AMD_FY2025_continuing_FCF": 5519,
+    "AMD_FY2023_segment_bridge": 401,
+    "independently_recomputed_ratio_rows_descending": {
+      "MU": {
+        "gross_margin": [
+          "80.72",
+          "39.79",
+          "22.35"
+        ],
+        "operating_margin": [
+          "74.59",
+          "26.14",
+          "5.19"
+        ],
+        "rd_ratio": [
+          "4.24",
+          "10.16",
+          "13.66"
+        ]
+      },
+      "NVDA": {
+        "gross_margin": [
+          "71.07",
+          "74.99",
+          "72.72"
+        ],
+        "operating_margin": [
+          "60.38",
+          "62.42",
+          "54.12"
+        ],
+        "rd_ratio": [
+          "8.57",
+          "9.90",
+          "14.24"
+        ]
+      },
+      "AMD": {
+        "gross_margin": [
+          "49.52",
+          "49.35",
+          "46.12"
+        ],
+        "operating_margin": [
+          "10.66",
+          "7.37",
+          "1.77"
+        ],
+        "rd_ratio": [
+          "23.36",
+          "25.04",
+          "25.89"
+        ]
+      }
+    }
+  },
+  "files_before_sha256": {
+    "review.md": "2d4f6c8c03c7f97973255468eaaa323094f9c87d58967f3e501bd421eed82bc3",
+    "human_review.jsonl": "470b18dc7e228097a98e8e01ea1ec0e6a770a6b49e6e66a2d657588675de2e46",
+    "manifest.json": "0553733719ed38d1103d22f6348214eb75f2a0e3673291fcca4257980db997e6"
+  },
+  "files_after_sha256": {
+    "review.md": "f236429b3165eeaa03c843a59ee93362e8dd0ce7aa01aea9e15dffd087bb8d1e",
+    "human_review.jsonl": "ec7e21d7a062c98df1f5705ea39493ee6212cb57945e17dd4c20d85e6613a4af"
+  },
+  "manifest_note": "Original generation manifest unchanged; use files_after_sha256 for annotated versions",
+  "source_files_and_original_answers_modified": false,
+  "paid_api_or_db_evaluation_called": false,
+  "verification": {
+    "all_20_conclusions_present": true,
+    "jsonl_matches_markdown": true,
+    "all_citation_anchors_resolve": true,
+    "original_answer_bodies_preserved": true,
+    "original_focus_items_preserved": true,
+    "u14_still_only_nvda_fy2024": true
+  }
+}

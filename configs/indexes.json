@@ -1,0 +1,38 @@
+[
+  {
+    "name": "recursive_384_plain",
+    "chunk_size": 384,
+    "overlap": 48,
+    "strategy": "recursive",
+    "contextual": false
+  },
+  {
+    "name": "recursive_768_context",
+    "chunk_size": 768,
+    "overlap": 96,
+    "strategy": "recursive",
+    "contextual": true
+  },
+  {
+    "name": "structure_512_context",
+    "chunk_size": 512,
+    "overlap": 64,
+    "strategy": "structure",
+    "contextual": true
+  },
+  {
+    "name": "structure_900_context",
+    "chunk_size": 900,
+    "overlap": 96,
+    "strategy": "structure",
+    "contextual": true
+  },
+  {
+    "name": "structure_512_table_context",
+    "chunk_size": 512,
+    "overlap": 64,
+    "strategy": "structure",
+    "contextual": true,
+    "table_context": true
+  }
+]

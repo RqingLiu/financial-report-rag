@@ -1,0 +1,99 @@
+{
+  "version": "user-research-golden-v2.0",
+  "schema_version": "question-compatible-plus-rubrics-v1",
+  "status": "released_development_golden",
+  "created_date": "2026-10-26",
+  "summary": {
+    "questions": 20,
+    "mandatory_evidence_groups": 225,
+    "alternative_groups": 5,
+    "evidence_blocks": 171,
+    "numeric_checks": 123
+  },
+  "splits": {
+    "dev": 20,
+    "test": 0
+  },
+  "families": {
+    "mu_product_economics": 2,
+    "mu_inventory_cash_cycle": 2,
+    "nvda_data_center_growth": 1,
+    "nvda_cash_conversion": 1,
+    "mu_hbm_progress": 1,
+    "supply_commitments": 2,
+    "nvda_customer_concentration": 1,
+    "nvda_export_controls": 1,
+    "amd_segments": 2,
+    "amd_data_center_products": 1,
+    "nvda_asof_20240221": 1,
+    "cross_company_cash": 1,
+    "cross_company_product_scope": 1,
+    "cross_company_data_center": 1,
+    "cross_company_software": 1,
+    "cross_company_profitability": 1
+  },
+  "approval": "User accepted specified review corrections and authorized dataset publication; final rubric/qrels are agent-authored, not separately line-by-line human signed.",
+  "source_hashes": {
+    "AMD_FY2023": "3f857981468517010a6de7e4279c71f479ccad9a7e04a6c7de1a28b457cbe903",
+    "AMD_FY2024": "00fdd8c0a0aed30b7430ba524ce3c0e7bcb54f06f112a6753578b8247a805901",
+    "AMD_FY2025": "b2a1cd60c4944e7f9b9ac542d9ea725b14c3b7e899f36221a0bc424236944be1",
+    "MU_FY2024": "709975ad6c638f2cdb33c4e69b1966d1fb611f4f440239d1d3638c60f238d00c",
+    "MU_FY2025": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+    "MU_FY2026": "02614fff54223e2c5aad03618a0ac1a9e1c445151a166fd738875fd123f6b89d",
+    "NVDA_FY2024": "ef68081f90c4d2ae0920d3d359360b8893ffd422439cfa6bb2a9cf1b6f7ccb92",
+    "NVDA_FY2025": "4c8a513740a211865018e27462f570c4b858d1de644ff0ea3dcc14ea3066e970",
+    "NVDA_FY2026": "63458b8a89dcf7317d9adab6bb8a2edfe1d5b3d51c7de62a977389941584cebd"
+  },
+  "inputs_sha256": {
+    "data/evaluation/golden_v2/SPEC.md": "66f9f3848bf254c10d837b46ed15897040ca2db37d34e1bb68147da28b58058d",
+    "data/evaluation/golden_v2/README.md": "b7c8ab7c6b99a241d53aa52d6105a8e80bd9b3d817154ff26f3aa40ab0845064",
+    "data/evaluation/golden_v2/answer_specs.json": "560f42384c1cbc8418ca3a0f48dc7e1b6c69610acd286d8b59df9696345ea040",
+    "data/evaluation/golden_v2/label_specs.json": "6d6c95c3b82f56155c09cfd40e2e3d1b60d45a410691cc97a0be6789413b1100",
+    "data/evaluation/golden_v2/numeric_specs.json": "d2c20b08235ab1e86e7ddfb3b57ab2735dd20db54fab7c209bfe114af8ba55cd",
+    "data/evaluation/golden_v2/user_feedback.json": "956d1dc687400279429a269a9b47855b4ee004dd1ab5504b7593201098709be5",
+    "scripts/build_golden_v2.py": "1a8d49cbecc7393ba65263585c120612eac7f60f464ec984f1382066f030c84d",
+    "data/sources.jsonl": "994936151ed582c41f07c1f24557d4a6fd77e2d0af3568d04857f51bbf9bf806",
+    "data/evaluation/user_seeds_v2.jsonl": "a3190d8570be81d4786d05c0b62baa163b76163305f0fffd36f1216ce960429e",
+    "data/evaluation/review_v2/review.md": "f236429b3165eeaa03c843a59ee93362e8dd0ce7aa01aea9e15dffd087bb8d1e",
+    "data/evaluation/review_v2/human_review.jsonl": "ec7e21d7a062c98df1f5705ea39493ee6212cb57945e17dd4c20d85e6613a4af"
+  },
+  "outputs_sha256": {
+    "golden.jsonl": "04d39406720979da6c7ec092d073d6e24d9c9b8747d6c10e36162c3eb0220f3a",
+    "rubrics.jsonl": "a95a64e5b22b90d31fd2f9c5347f9ec7b2db2752ba181d581c161cc1f6b99d2d",
+    "evaluation_dataset.jsonl": "0c00efcec4ed395954fabfb3db1b208499f1e726ce61826c614ef6c6b006b68d",
+    "retrieval_queries.jsonl": "2d9d7a4b4c6e6b10f7b234687cb8fd6f8689bdde8960fa8e1187c000bb124f1c",
+    "numeric_checks.jsonl": "64562c899aec9338cb1512ee656692d18824d9ad4ff70b0a3cb4bde3129ebf50",
+    "evidence_catalog.jsonl": "1be56865fffc89d92e403c0621732962805cb5ca1d834d57e5d0ca577b0edb8f",
+    "reference_answers.md": "44c89dd95a2fdfc9b46ccdee260a4aa866bad9f7d93ec7157959573559d25961"
+  },
+  "protected_v1_sha256": {
+    "data/evaluation/golden_v1.jsonl": "a583c3b96f74b96613708ef5e6df513df604ff859dfb0685378f66f04078404b",
+    "data/evaluation/freeze_v1.json": "5ad1edce800750274ad8c8a3c9909be1fed16321ca7300e340fe6a5ae4c728b3",
+    "data/evaluation/ragas_reference.jsonl": "6ad4b555e44f084c8579e854427ff1d881e4e69419cfd4c16802be10af5b10ff",
+    "configs/best.json": "f93f61aa972bef12712f27ed88e875ef3eac3f5a640a0d445626cdb244f0ec3c",
+    "reports/test_release.json": "57d910b4c019b336572f3aacb44bc186cc143b22c55887bf204515a3bf954b16"
+  },
+  "validation": {
+    "raw_source_hash": true,
+    "raw_DOM": true,
+    "canonical_and_subquote_spans": true,
+    "as_of_all_references_and_numeric_sources": true,
+    "u14_only_nvda_fy2024": true,
+    "decimal_arithmetic_and_rounding": true,
+    "question_schema": true,
+    "ragas_sample_schema": true
+  },
+  "runtime_loader": "Existing fr-rag golden/dev/test still use v1; explicitly load this file for v2.",
+  "evaluation_not_run": true,
+  "paid_api_called": false,
+  "database_called": false,
+  "limitations": [
+    "Development material, not an independent holdout or benchmark score.",
+    "Required groups are curated sufficient evidence; alternative list is not exhaustive.",
+    "Absence of disclosure is a scoped review conclusion, not proven by one negative snippet.",
+    "Do not infer answer accuracy from evidence recall. Numeric checks do not automatically parse generated prose.",
+    "RAGAS export keeps the first alternative; use golden.jsonl with the span scorer to honor all alternatives.",
+    "U16 is a partial answer; no unsupported market-share values required.",
+    "Quarterly series absent from annual reports is a scope limit, not a retrieval error."
+  ]
+}

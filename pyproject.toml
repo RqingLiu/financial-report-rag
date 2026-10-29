@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "financial-report-rag"
+version = "0.1.0"
+description = "Source-grounded SEC filing ingestion and retrieval evaluation"
+requires-python = ">=3.11"
+dependencies = [
+  "lxml>=5,<7", "httpx>=0.28,<1",
+  "pydantic>=2.10,<3", "pydantic-settings>=2.7,<3", "psycopg[binary]>=3.2,<4",
+  "numpy>=1.26,<3", "tiktoken>=0.9,<1", "langchain-text-splitters>=0.3.8,<1",
+  "ragas==0.4.3", "langchain-openai>=0.3.28,<1", "langchain-community>=0.3.27,<0.4",
+  "tenacity>=9,<10",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.12,<1"]
+serve = ["fastapi>=0.115,<1", "uvicorn>=0.34,<1"]
+
+[project.scripts]
+fr-rag = "finrag.cli:main"
+fr-rag-serve = "finrag.serving.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"finrag.vendor" = ["LICENSE.pageindex", "pageindex_provenance.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["corpus: requires downloaded/parsed local SEC corpus (not committed)"]
+
+[tool.ruff]
+line-length = 100

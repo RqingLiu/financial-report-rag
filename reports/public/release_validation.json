@@ -1,0 +1,123 @@
+{
+  "checked_local_date": "2026-10-28",
+  "tests": {
+    "local_with_database": {
+      "passed": 87,
+      "warnings": 2
+    },
+    "clean_staged_tree": {
+      "passed": 76,
+      "skipped_local_corpus_or_db": 11,
+      "warnings": 2
+    },
+    "warnings": "Existing RAGAS IDBasedContextRecall deprecation"
+  },
+  "original_selected_chunk_payloads_reproduced": 2759,
+  "original_serving_vectors_unchanged": {
+    "n": 2759,
+    "fingerprint": "6ebf8ee9db036d5fdc0353ec131c3e20"
+  },
+  "frozen_chunks": 11401,
+  "serving_documents": 16,
+  "serving_chunks": 4961,
+  "new_documents": [
+    {
+      "id": "GOOGL_FY2025",
+      "chunks": 447
+    },
+    {
+      "id": "GOOGL_FY2024",
+      "chunks": 449
+    },
+    {
+      "id": "GOOGL_FY2023",
+      "chunks": 452
+    },
+    {
+      "id": "AMZN_FY2025",
+      "chunks": 288
+    },
+    {
+      "id": "AMZN_FY2024",
+      "chunks": 283
+    },
+    {
+      "id": "AMZN_FY2023",
+      "chunks": 283
+    }
+  ],
+  "new_embedding_requests": 71,
+  "new_document_embedding_tokens": 660147,
+  "new_document_embedding_list_cost_usd": "0.01320294",
+  "live_retrieval_smoke": {
+    "status": "retrieved",
+    "companies_report_years": {
+      "GOOGL": [
+        2024
+      ],
+      "AMZN": [
+        2025
+      ]
+    },
+    "context_items": 18,
+    "answer_generated": false,
+    "scope_and_source_stages": "passed",
+    "purpose": "plumbing validation, not held-out evaluation"
+  },
+  "new_scoped_ann_checks": [
+    {
+      "group": [
+        "GOOGL",
+        2024
+      ],
+      "k": 20,
+      "returned": 20,
+      "actual_hnsw_index": true,
+      "overlap_with_exact": 1.0
+    },
+    {
+      "group": [
+        "GOOGL",
+        2024
+      ],
+      "k": 20,
+      "returned": 20,
+      "actual_hnsw_index": true,
+      "overlap_with_exact": 1.0
+    },
+    {
+      "group": [
+        "AMZN",
+        2025
+      ],
+      "k": 20,
+      "returned": 20,
+      "actual_hnsw_index": true,
+      "overlap_with_exact": 1.0
+    },
+    {
+      "group": [
+        "AMZN",
+        2025
+      ],
+      "k": 20,
+      "returned": 20,
+      "actual_hnsw_index": true,
+      "overlap_with_exact": 1.0
+    }
+  ],
+  "failed_smoke_before_schema_feedback_fix": {
+    "status": "explicit_error",
+    "reason": "missing required planner period_interpretation repeated after generic repair; strict rejection preserved",
+    "paid_responses_retained_locally": true
+  },
+  "generation_quality_for_new_issuers": "not evaluated; user questions pending",
+  "provider_price_source": "https://docs.voyageai.com/docs/pricing",
+  "paid_budget_summary": {
+    "known_peak_list_cost_usd": "1.31560524",
+    "unresolved_reserved_usd": "0.0093642",
+    "stop_usd": "1.6",
+    "authorization_usd": "5.00",
+    "halted": false
+  }
+}

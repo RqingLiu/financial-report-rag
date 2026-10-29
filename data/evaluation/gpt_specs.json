@@ -1,0 +1,2132 @@
+[
+  {
+    "id": "D01",
+    "question": "依据 NVDA FY2026 的本年年报，公司当年的合并收入是多少？请注明币种和单位。",
+    "question_en": "According to the NVDA FY2026 annual report, what was consolidated annual revenue, including currency and units?",
+    "language": "zh",
+    "split": "dev",
+    "category": "table",
+    "family": "consolidated_revenue",
+    "reference": "NVDA FY2026 合并收入为 215,938 百万美元，即 215.938 十亿美元。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 706,
+          "quote": "Revenue | $ | 215,938"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 706,
+          "quote": " | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 705
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D02",
+    "question": "依据 NVDA FY2025 的本年年报，公司当年的合并收入是多少？请注明币种和单位。",
+    "question_en": "According to the NVDA FY2025 annual report, what was consolidated annual revenue, including currency and units?",
+    "language": "zh",
+    "split": "dev",
+    "category": "table",
+    "family": "consolidated_revenue",
+    "reference": "NVDA FY2025 合并收入为 130,497 百万美元，即 130.497 十亿美元。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 723,
+          "quote": "Revenue | $ | 130,497"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 723,
+          "quote": " | Jan 26, 2025 |  | Jan 28, 2024 |  | Jan 29, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 722
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D03",
+    "question": "依据 NVDA FY2024 的本年年报，公司当年的合并收入是多少？请注明币种和单位。",
+    "question_en": "According to the NVDA FY2024 annual report, what was consolidated annual revenue, including currency and units?",
+    "language": "zh",
+    "split": "dev",
+    "category": "table",
+    "family": "consolidated_revenue",
+    "reference": "NVDA FY2024 合并收入为 60,922 百万美元，即 60.922 十亿美元。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 699,
+          "quote": "Revenue | $ | 60,922"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 699,
+          "quote": " | Jan 28, 2024 |  | Jan 29, 2023 |  | Jan 30, 2022"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 698
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D04",
+    "question": "依据 MU FY2026 的本年年报，公司当年的合并收入是多少？请注明币种和单位。",
+    "question_en": "According to the MU FY2026 annual report, what was consolidated annual revenue, including currency and units?",
+    "language": "zh",
+    "split": "dev",
+    "category": "table",
+    "family": "consolidated_revenue",
+    "reference": "MU FY2026 合并收入为 133,188 百万美元，即 133.188 十亿美元。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 759,
+          "quote": "Revenue | $ | 133,188"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 759,
+          "quote": "For the year ended | September 3, 2026 | August 28, 2025 | August 29, 2024"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 758
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D05",
+    "question": "依据 MU FY2025 的本年年报，公司当年的合并收入是多少？请注明币种和单位。",
+    "question_en": "According to the MU FY2025 annual report, what was consolidated annual revenue, including currency and units?",
+    "language": "zh",
+    "split": "dev",
+    "category": "table",
+    "family": "consolidated_revenue",
+    "reference": "MU FY2025 合并收入为 37,378 百万美元，即 37.378 十亿美元。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 740,
+          "quote": "Revenue | $ | 37,378"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 740,
+          "quote": "For the year ended | August 28, 2025 | August 29, 2024 | August 31, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 739
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D06",
+    "question": "依据 MU FY2024 的本年年报，公司当年的合并收入是多少？请注明币种和单位。",
+    "question_en": "According to the MU FY2024 annual report, what was consolidated annual revenue, including currency and units?",
+    "language": "zh",
+    "split": "dev",
+    "category": "table",
+    "family": "consolidated_revenue",
+    "reference": "MU FY2024 合并收入为 25,111 百万美元，即 25.111 十亿美元。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 699,
+          "quote": "Revenue | $ | 25,111"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 699,
+          "quote": "For the year ended | August 29, 2024 | August 31, 2023 | September 1, 2022"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 698
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D07",
+    "question": "依据 AMD FY2025 的本年年报，公司当年的合并收入是多少？请注明币种和单位。",
+    "question_en": "According to the AMD FY2025 annual report, what was consolidated annual revenue, including currency and units?",
+    "language": "zh",
+    "split": "dev",
+    "category": "table",
+    "family": "consolidated_revenue",
+    "reference": "AMD FY2025 合并收入为 34,639 百万美元，即 34.639 十亿美元。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": "Net revenue | $ | 34,639"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": " | December 27, 2025 |  | December 28, 2024 |  | December 30, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": " | (In millions, except per share amounts)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D08",
+    "question": "依据 AMD FY2024 的本年年报，公司当年的合并收入是多少？请注明币种和单位。",
+    "question_en": "According to the AMD FY2024 annual report, what was consolidated annual revenue, including currency and units?",
+    "language": "zh",
+    "split": "dev",
+    "category": "table",
+    "family": "consolidated_revenue",
+    "reference": "AMD FY2024 合并收入为 25,785 百万美元，即 25.785 十亿美元。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 599,
+          "quote": "Net revenue | $ | 25,785"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 599,
+          "quote": " | December 28, 2024 |  | December 30, 2023 |  | December 31, 2022"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 599,
+          "quote": " | (In millions, except per share amounts)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D09",
+    "question": "依据 AMD FY2023 的本年年报，公司当年的合并收入是多少？请注明币种和单位。",
+    "question_en": "According to the AMD FY2023 annual report, what was consolidated annual revenue, including currency and units?",
+    "language": "zh",
+    "split": "dev",
+    "category": "table",
+    "family": "consolidated_revenue",
+    "reference": "AMD FY2023 合并收入为 22,680 百万美元，即 22.680 十亿美元。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2023",
+          "ordinal": 607,
+          "quote": "Net revenue | $ | 22,680"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2023",
+          "ordinal": 607,
+          "quote": " | December 30, 2023 |  | December 31, 2022 |  | December 25, 2021"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2023",
+          "ordinal": 607,
+          "quote": " | (In millions, except per share amounts)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2023"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D10",
+    "question": "分别依据 NVDA FY2024、MU FY2024、AMD FY2024 的年报，比较三家合并收入规模并说明期间可比性限制。",
+    "question_en": "Compare consolidated annual revenue in the NVDA FY2024、MU FY2024、AMD FY2024 annual reports and explain the fiscal-period comparability limitation.",
+    "language": "zh",
+    "split": "dev",
+    "category": "cross_company",
+    "family": "consolidated_revenue",
+    "reference": "NVDA FY2024：60,922 百万美元；MU FY2024：25,111 百万美元；AMD FY2024：25,785 百万美元。收入规模按各自财年比较，期间不同，不等于同一日历年市场份额。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 699,
+          "quote": "Revenue | $ | 60,922"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 699,
+          "quote": " | Jan 28, 2024 |  | Jan 29, 2023 |  | Jan 30, 2022"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 699,
+          "quote": "Revenue | $ | 25,111"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 699,
+          "quote": "For the year ended | August 29, 2024 | August 31, 2023 | September 1, 2022"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 599,
+          "quote": "Net revenue | $ | 25,785"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 599,
+          "quote": " | December 28, 2024 |  | December 30, 2023 |  | December 31, 2022"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 698
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 698
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 599,
+          "quote": " | (In millions, except per share amounts)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2024",
+      "MU_FY2024",
+      "NVDA_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D11",
+    "question": "分别依据 NVDA FY2025、MU FY2025、AMD FY2025 的年报，比较三家合并收入规模并说明期间可比性限制。",
+    "question_en": "Compare consolidated annual revenue in the NVDA FY2025、MU FY2025、AMD FY2025 annual reports and explain the fiscal-period comparability limitation.",
+    "language": "zh",
+    "split": "dev",
+    "category": "cross_company",
+    "family": "consolidated_revenue",
+    "reference": "NVDA FY2025：130,497 百万美元；MU FY2025：37,378 百万美元；AMD FY2025：34,639 百万美元。收入规模按各自财年比较，期间不同，不等于同一日历年市场份额。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 723,
+          "quote": "Revenue | $ | 130,497"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 723,
+          "quote": " | Jan 26, 2025 |  | Jan 28, 2024 |  | Jan 29, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 740,
+          "quote": "Revenue | $ | 37,378"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 740,
+          "quote": "For the year ended | August 28, 2025 | August 29, 2024 | August 31, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": "Net revenue | $ | 34,639"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": " | December 27, 2025 |  | December 28, 2024 |  | December 30, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 722
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 739
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": " | (In millions, except per share amounts)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2025",
+      "MU_FY2025",
+      "NVDA_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D12",
+    "question": "分别依据 NVDA FY2026、MU FY2026、AMD FY2025 的年报，比较三家合并收入规模并说明期间可比性限制。",
+    "question_en": "Compare consolidated annual revenue in the NVDA FY2026、MU FY2026、AMD FY2025 annual reports and explain the fiscal-period comparability limitation.",
+    "language": "zh",
+    "split": "dev",
+    "category": "cross_company",
+    "family": "consolidated_revenue",
+    "reference": "NVDA FY2026：215,938 百万美元；MU FY2026：133,188 百万美元；AMD FY2025：34,639 百万美元。收入规模按各自财年比较，期间不同，不等于同一日历年市场份额。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 706,
+          "quote": "Revenue | $ | 215,938"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 706,
+          "quote": " | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 759,
+          "quote": "Revenue | $ | 133,188"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 759,
+          "quote": "For the year ended | September 3, 2026 | August 28, 2025 | August 29, 2024"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": "Net revenue | $ | 34,639"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": " | December 27, 2025 |  | December 28, 2024 |  | December 30, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 705
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 758
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": " | (In millions, except per share amounts)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2025",
+      "MU_FY2026",
+      "NVDA_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D13",
+    "question": "NVIDIA FY2026 采用什么制造模式，哪些环节由供应商承担？",
+    "question_en": "What manufacturing model does NVIDIA FY2026 use and which production stages are performed by suppliers?",
+    "language": "zh",
+    "split": "dev",
+    "category": "text",
+    "family": "manufacturing_model",
+    "reference": "采用 fabless 和委托制造模式，供应商参与晶圆制造、组装、测试与封装；NVIDIA 因而可将资源集中在设计、质量保证、营销和客户支持。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 122
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D14",
+    "question": "Micron FY2025 的 HBM 是什么架构，为什么适合 AI 和高性能计算？",
+    "question_en": "In Micron MU FY2025, what is HBM and why is its architecture suitable for AI and high-performance computing?",
+    "language": "zh",
+    "split": "dev",
+    "category": "text",
+    "family": "hbm_architecture",
+    "reference": "HBM 是采用 TSV 连接的 3D 堆叠 DRAM 架构，提供更高带宽且功耗较低，适合高吞吐和能效要求高的 AI/HPC。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 54
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D15",
+    "question": "AMD FY2023 的 ATMP 合资伙伴是谁，还有哪些供应商提供组装测试封装？",
+    "question_en": "Who are the ATMP joint venture partner and other assembly test mark and packaging suppliers in AMD FY2023?",
+    "language": "zh",
+    "split": "dev",
+    "category": "text",
+    "family": "atmp_partners",
+    "reference": "AMD 与通富微电有两家 ATMP 合资企业；SPIL 和 KYEC 也提供 ATMP 服务，相关伙伴位于亚太地区。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2023",
+          "ordinal": 166
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2023"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D16",
+    "question": "MU FY2024 的制造运营依赖哪些公共资源，中断会造成什么风险？",
+    "question_en": "Which utilities do MU FY2024 manufacturing operations depend on and what is the risk of outages?",
+    "language": "zh",
+    "split": "dev",
+    "category": "text",
+    "family": "utilities",
+    "reference": "依赖可靠、不中断的电力和水；短缺、产能限制、长时间中断或成本异常增加，均可能对经营和财务状况产生重大不利影响。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 127
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D17",
+    "question": "AMD FY2025 中，GF 负责哪些制程节点的 HPC 晶圆，TSMC 负责哪些产品？",
+    "question_en": "In AMD FY2025, which HPC wafer process nodes use GLOBALFOUNDRIES and which products use TSMC?",
+    "language": "zh",
+    "split": "dev",
+    "category": "text",
+    "family": "foundry_nodes",
+    "reference": "GF 为 HPC 产品供应 12nm 和 14nm 晶圆；TSMC 用于 HPC、FPGA 和 adaptive SoC 的晶圆生产，也与 UMC、Samsung 一起生产可编程逻辑器件 IC。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 151
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D18",
+    "question": "分别查阅 NVDA FY2024 和 FY2025 的年报，经营现金流从多少变为多少，增幅是多少？",
+    "question_en": "Using both NVDA FY2024 and NVDA FY2025 annual reports, how did net cash provided by operating activities change and what was the percentage increase?",
+    "language": "zh",
+    "split": "dev",
+    "category": "cross_year",
+    "family": "cash_flow_growth_NVDA",
+    "reference": "经营现金流由 28,090 增至 64,089 百万美元，增加 35,999 百万美元，增幅约 128.16%。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 722,
+          "quote": "Net cash provided by operating activities | 28,090"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 722,
+          "quote": " | Jan 28, 2024 |  | Jan 29, 2023 |  | Jan 30, 2022"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 746,
+          "quote": "Net cash provided by operating activities | 64,089"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 746,
+          "quote": " | Jan 26, 2025 |  | Jan 28, 2024 |  | Jan 29, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 721
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 745
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2024",
+      "NVDA_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {
+      "formula": "(new/old-1)*100",
+      "old": 28090,
+      "new": 64089,
+      "result_percent": 128.1559273762905,
+      "tolerance": 0.02
+    }
+  },
+  {
+    "id": "D19",
+    "question": "分别查阅 MU FY2024 和 FY2025 的年报，经营现金流从多少变为多少，增幅是多少？",
+    "question_en": "Using both MU FY2024 and MU FY2025 annual reports, how did net cash provided by operating activities change and what was the percentage increase?",
+    "language": "zh",
+    "split": "dev",
+    "category": "cross_year",
+    "family": "cash_flow_growth_MU",
+    "reference": "经营现金流由 8,507 增至 17,525 百万美元，增加 9,018 百万美元，增幅约 106.01%。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 727,
+          "quote": "Net cash provided by operating activities | 8,507"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 727,
+          "quote": "For the year ended | August 29, 2024 | August 31, 2023 | September 1, 2022"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 768,
+          "quote": "Net cash provided by operating activities | 17,525"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 768,
+          "quote": "For the year ended | August 28, 2025 | August 29, 2024 | August 31, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 726
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 767
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2024",
+      "MU_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {
+      "formula": "(new/old-1)*100",
+      "old": 8507,
+      "new": 17525,
+      "result_percent": 106.00681791465854,
+      "tolerance": 0.02
+    }
+  },
+  {
+    "id": "D20",
+    "question": "分别查阅 AMD FY2023 和 FY2024 的年报，经营现金流从多少变为多少，增幅是多少？",
+    "question_en": "Using both AMD FY2023 and AMD FY2024 annual reports, how did net cash provided by operating activities change and what was the percentage increase?",
+    "language": "zh",
+    "split": "dev",
+    "category": "cross_year",
+    "family": "cash_flow_growth_AMD",
+    "reference": "经营现金流由 1,667 增至 3,041 百万美元，增加 1,374 百万美元，增幅约 82.42%。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2023",
+          "ordinal": 627,
+          "quote": "Net cash provided by operating activities | 1,667"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2023",
+          "ordinal": 627,
+          "quote": " | December 30, 2023 |  | December 31, 2022 |  | December 25, 2021"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 619,
+          "quote": "Net cash provided by operating activities | 3,041"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 619,
+          "quote": " | December 28, 2024 |  | December 30, 2023 |  | December 31, 2022"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2023",
+          "ordinal": 627,
+          "quote": " | (In millions)"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 619,
+          "quote": " | (In millions)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2023",
+      "AMD_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {
+      "formula": "(new/old-1)*100",
+      "old": 1667,
+      "new": 3041,
+      "result_percent": 82.42351529694061,
+      "tolerance": 0.02
+    }
+  },
+  {
+    "id": "D21",
+    "question": "对比 NVIDIA FY2024 和 FY2026 的制造供应链地理分布披露，发生了什么变化？",
+    "question_en": "Compare NVIDIA NVDA FY2024 and NVDA FY2026 manufacturing supply-chain geographic concentration disclosures. What expansion is described?",
+    "language": "zh",
+    "split": "dev",
+    "category": "cross_year",
+    "family": "manufacturing_geography",
+    "reference": "FY2024 披露供应链集中在亚太；FY2026 仍主要集中于亚洲，但描述正在向美国和拉丁美洲扩展。这是披露方向变化，不证明已完成地理分散。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 117
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 123
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2024",
+      "NVDA_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D22",
+    "question": "NVIDIA FY2024 如何确定产品保修费用，通常保修多久？",
+    "question_en": "In NVIDIA NVDA FY2024, how are product warranty costs recognized and what is the typical warranty period?",
+    "language": "zh",
+    "split": "dev",
+    "category": "footnote",
+    "family": "warranty_policy",
+    "reference": "有限保修通常为 1–3 年；估计保修成本在确认收入时计入成本，已知保修及赔偿事项在损失很可能发生且可合理估计时计提。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 759
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D23",
+    "question": "AMD FY2023 收购形成的 IPR&D 何时开始摊销，金额和年限是什么？",
+    "question_en": "When did the acquired IPR&D intangible assets in AMD FY2023 begin amortization, and what were their value and useful life?",
+    "language": "zh",
+    "split": "dev",
+    "category": "footnote",
+    "family": "iprd_amortization",
+    "reference": "相关 IPR&D 公允价值为 970 百万美元，初始作为未达技术可行性的无限寿命资产不摊销；2023 年第四季度达到技术可行性，转为开发技术，按 15 年估计寿命摊销。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2023",
+          "ordinal": 777
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2023"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D24",
+    "question": "MU FY2026 的客户集中度附注如何描述 FY2026、FY2025 和 FY2024 的 10% 客户？",
+    "question_en": "According to MU FY2026 customer concentration disclosure, what customers reached 10 percent of total revenue in FY2026, FY2025 and FY2024?",
+    "language": "zh",
+    "split": "dev",
+    "category": "footnote",
+    "family": "mu_customer_concentration",
+    "reference": "FY2026 没有客户达到总收入 10%；FY2025 一家客户占 17%，主要计入 CMBU；FY2024 一家客户占 10%，主要计入 MCBU、AEBU 和 CMBU。客户身份未披露。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 1050
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D25",
+    "question": "AMD FY2025 对 ZT Systems 做了什么收购和出售，保留了什么能力？",
+    "question_en": "What ZT Systems acquisition and divestiture did AMD FY2025 complete, and which capabilities did it retain?",
+    "language": "zh",
+    "split": "dev",
+    "category": "footnote",
+    "family": "zt_transaction",
+    "reference": "2025 年 3 月收购 ZT Systems，保留设计业务相关知识产权和员工；10 月将数据中心基础设施制造业务出售给 Sanmina，保留设计能力以支持 AI 基础设施部署。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 50
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T01",
+    "question": "根据 NVDA FY2026 的本年年报，财年末存货总额是多少？请勿使用前一年比较列。",
+    "question_en": "According to the NVDA FY2026 annual report, what were total inventories at that fiscal year-end, rather than the prior-year comparative column?",
+    "language": "zh",
+    "split": "test",
+    "category": "table",
+    "family": "inventory_balances",
+    "reference": "NVDA FY2026 财年末存货为 21,403 百万美元。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 912,
+          "quote": "Total inventories (1) | $ | 21,403 |  |  | $ | 10,080 |"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 912,
+          "quote": "| Jan 25, 2026 |  | Jan 26, 2025"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 912,
+          "quote": "Inventories: | (In millions)"
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T02",
+    "question": "根据 NVDA FY2025 的本年年报，财年末存货总额是多少？请勿使用前一年比较列。",
+    "question_en": "According to the NVDA FY2025 annual report, what were total inventories at that fiscal year-end, rather than the prior-year comparative column?",
+    "language": "zh",
+    "split": "test",
+    "category": "table",
+    "family": "inventory_balances",
+    "reference": "NVDA FY2025 财年末存货为 10,080 百万美元。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 946,
+          "quote": "Total inventories (1) | $ | 10,080 |  |  | $ | 5,282 |"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 946,
+          "quote": "| Jan 26, 2025 |  | Jan 28, 2024"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 946,
+          "quote": "Inventories: | (In millions)"
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T03",
+    "question": "根据 NVDA FY2024 的本年年报，财年末存货总额是多少？请勿使用前一年比较列。",
+    "question_en": "According to the NVDA FY2024 annual report, what were total inventories at that fiscal year-end, rather than the prior-year comparative column?",
+    "language": "zh",
+    "split": "test",
+    "category": "table",
+    "family": "inventory_balances",
+    "reference": "NVDA FY2024 财年末存货为 5,282 百万美元。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 935,
+          "quote": "Total inventories | $ | 5,282 |  |  | $ | 5,159 |"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 935,
+          "quote": "| Jan 28, 2024 |  | Jan 29, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 935,
+          "quote": " | (In millions)"
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T04",
+    "question": "根据 MU FY2026 的本年年报，财年末存货总额是多少？请勿使用前一年比较列。",
+    "question_en": "According to the MU FY2026 annual report, what were total inventories at that fiscal year-end, rather than the prior-year comparative column?",
+    "language": "zh",
+    "split": "test",
+    "category": "table",
+    "family": "inventory_balances",
+    "reference": "MU FY2026 财年末存货为 10,372 百万美元。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 854,
+          "quote": " | $ | 10,372 |  | $ | 8,355 |"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 854,
+          "quote": "As of | September 3, 2026 | August 28, 2025"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 786
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T05",
+    "question": "根据 MU FY2025 的本年年报，财年末存货总额是多少？请勿使用前一年比较列。",
+    "question_en": "According to the MU FY2025 annual report, what were total inventories at that fiscal year-end, rather than the prior-year comparative column?",
+    "language": "zh",
+    "split": "test",
+    "category": "table",
+    "family": "inventory_balances",
+    "reference": "MU FY2025 财年末存货为 8,355 百万美元。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 844,
+          "quote": " | $ | 8,355 |  | $ | 8,875 |"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 844,
+          "quote": "As of | August 28, 2025 | August 29, 2024"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 774
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T06",
+    "question": "根据 MU FY2024 的本年年报，财年末存货总额是多少？请勿使用前一年比较列。",
+    "question_en": "According to the MU FY2024 annual report, what were total inventories at that fiscal year-end, rather than the prior-year comparative column?",
+    "language": "zh",
+    "split": "test",
+    "category": "table",
+    "family": "inventory_balances",
+    "reference": "MU FY2024 财年末存货为 8,875 百万美元。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 800,
+          "quote": " | $ | 8,875 |  | $ | 8,387 |"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 800,
+          "quote": "As of | August 29, 2024 | August 31, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 733
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T07",
+    "question": "根据 AMD FY2025 的本年年报，财年末存货总额是多少？请勿使用前一年比较列。",
+    "question_en": "According to the AMD FY2025 annual report, what were total inventories at that fiscal year-end, rather than the prior-year comparative column?",
+    "language": "zh",
+    "split": "test",
+    "category": "table",
+    "family": "inventory_balances",
+    "reference": "AMD FY2025 财年末存货为 7,920 百万美元。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 701,
+          "quote": "Total inventories | $ | 7,920 |  |  | $ | 5,734 |"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 701,
+          "quote": "Inventories | December 27, 2025 |  | December 28, 2024"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 701,
+          "quote": " | (In millions)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T08",
+    "question": "根据 AMD FY2024 的本年年报，财年末存货总额是多少？请勿使用前一年比较列。",
+    "question_en": "According to the AMD FY2024 annual report, what were total inventories at that fiscal year-end, rather than the prior-year comparative column?",
+    "language": "zh",
+    "split": "test",
+    "category": "table",
+    "family": "inventory_balances",
+    "reference": "AMD FY2024 财年末存货为 5,734 百万美元。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 701,
+          "quote": "Total inventories | $ | 5,734 |  |  | $ | 4,351 |"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 701,
+          "quote": "Inventories | December 28, 2024 |  | December 30, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 701,
+          "quote": " | (In millions)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T09",
+    "question": "根据 AMD FY2023 的本年年报，财年末存货总额是多少？请勿使用前一年比较列。",
+    "question_en": "According to the AMD FY2023 annual report, what were total inventories at that fiscal year-end, rather than the prior-year comparative column?",
+    "language": "zh",
+    "split": "test",
+    "category": "table",
+    "family": "inventory_balances",
+    "reference": "AMD FY2023 财年末存货为 4,351 百万美元。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2023",
+          "ordinal": 709,
+          "quote": "Total inventories | $ | 4,351 |  |  | $ | 3,771 |"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2023",
+          "ordinal": 709,
+          "quote": "Inventories | December 30, 2023 |  | December 31, 2022"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2023",
+          "ordinal": 709,
+          "quote": " | (In millions)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2023"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T10",
+    "question": "比较 NVDA FY2024、MU FY2024、AMD FY2024 各年报的期末存货总额，哪个最大？说明这是各自财年末。",
+    "question_en": "Compare fiscal year-end total inventories in the NVDA FY2024、MU FY2024、AMD FY2024 annual reports. Which is largest? Preserve each fiscal year-end.",
+    "language": "zh",
+    "split": "test",
+    "category": "cross_company",
+    "family": "inventory_balances",
+    "reference": "NVDA FY2024：5,282 百万美元；MU FY2024：8,875 百万美元；AMD FY2024：5,734 百万美元。MU 最大；各自财年末时点不同。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 935,
+          "quote": "Total inventories | $ | 5,282 |  |  | $ | 5,159 |"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 935,
+          "quote": "| Jan 28, 2024 |  | Jan 29, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 800,
+          "quote": " | $ | 8,875 |  | $ | 8,387 |"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 800,
+          "quote": "As of | August 29, 2024 | August 31, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 701,
+          "quote": "Total inventories | $ | 5,734 |  |  | $ | 4,351 |"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 701,
+          "quote": "Inventories | December 28, 2024 |  | December 30, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 935,
+          "quote": " | (In millions)"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 733
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 701,
+          "quote": " | (In millions)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2024",
+      "MU_FY2024",
+      "NVDA_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T11",
+    "question": "比较 NVDA FY2025、MU FY2025、AMD FY2025 各年报的期末存货总额，哪个最大？说明这是各自财年末。",
+    "question_en": "Compare fiscal year-end total inventories in the NVDA FY2025、MU FY2025、AMD FY2025 annual reports. Which is largest? Preserve each fiscal year-end.",
+    "language": "zh",
+    "split": "test",
+    "category": "cross_company",
+    "family": "inventory_balances",
+    "reference": "NVDA FY2025：10,080 百万美元；MU FY2025：8,355 百万美元；AMD FY2025：7,920 百万美元。NVDA 最大；各自财年末时点不同。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 946,
+          "quote": "Total inventories (1) | $ | 10,080 |  |  | $ | 5,282 |"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 946,
+          "quote": "| Jan 26, 2025 |  | Jan 28, 2024"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 844,
+          "quote": " | $ | 8,355 |  | $ | 8,875 |"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 844,
+          "quote": "As of | August 28, 2025 | August 29, 2024"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 701,
+          "quote": "Total inventories | $ | 7,920 |  |  | $ | 5,734 |"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 701,
+          "quote": "Inventories | December 27, 2025 |  | December 28, 2024"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 946,
+          "quote": "Inventories: | (In millions)"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 774
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 701,
+          "quote": " | (In millions)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2025",
+      "MU_FY2025",
+      "NVDA_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T12",
+    "question": "比较 NVDA FY2026、MU FY2026、AMD FY2025 各年报的期末存货总额，哪个最大？说明这是各自财年末。",
+    "question_en": "Compare fiscal year-end total inventories in the NVDA FY2026、MU FY2026、AMD FY2025 annual reports. Which is largest? Preserve each fiscal year-end.",
+    "language": "zh",
+    "split": "test",
+    "category": "cross_company",
+    "family": "inventory_balances",
+    "reference": "NVDA FY2026：21,403 百万美元；MU FY2026：10,372 百万美元；AMD FY2025：7,920 百万美元。NVDA 最大；各自财年末时点不同。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 912,
+          "quote": "Total inventories (1) | $ | 21,403 |  |  | $ | 10,080 |"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 912,
+          "quote": "| Jan 25, 2026 |  | Jan 26, 2025"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 854,
+          "quote": " | $ | 10,372 |  | $ | 8,355 |"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 854,
+          "quote": "As of | September 3, 2026 | August 28, 2025"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 701,
+          "quote": "Total inventories | $ | 7,920 |  |  | $ | 5,734 |"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 701,
+          "quote": "Inventories | December 27, 2025 |  | December 28, 2024"
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 912,
+          "quote": "Inventories: | (In millions)"
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 786
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 701,
+          "quote": " | (In millions)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2025",
+      "MU_FY2026",
+      "NVDA_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T13",
+    "question": "NVIDIA FY2025 为什么提前下不可取消订单可能放大需求预测错误的损失？",
+    "question_en": "Why can advance non-cancellable orders amplify demand forecasting errors in NVIDIA NVDA FY2025?",
+    "language": "zh",
+    "split": "test",
+    "category": "text",
+    "family": "noncancellable_demand_risk",
+    "reference": "若高估需求或客户取消/推迟订单，可能无法消化库存或减少承诺，导致降价、存货减记、取消罚金和减值；提前下不可取消且不可退货的订单、采购承诺与预付款增加会放大这些影响，损害毛利。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 257
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T14",
+    "question": "MU FY2026 为什么行业扩产可能损害售价和经营结果？",
+    "question_en": "Why can industry fabrication capacity expansion damage average selling prices and operating results in MU FY2026?",
+    "language": "zh",
+    "split": "test",
+    "category": "text",
+    "family": "memory_oversupply",
+    "reference": "公司与竞争者扩建/提高晶圆厂产出会增加供给；若需求不能增加或保持稳定，平均售价可能显著下降；快速技术变化和产品生命周期缩短也可能加速价格下降。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 104
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T15",
+    "question": "AMD FY2024 披露 Intel 的哪些竞争行为可能压低 AMD 的销量、售价和利润率？",
+    "question_en": "Which Intel competitive practices can reduce AMD unit sales, selling prices and margins according to AMD FY2024?",
+    "language": "zh",
+    "split": "test",
+    "category": "text",
+    "family": "intel_competition",
+    "reference": "包括激进定价、面向客户和渠道伙伴的激励、返利及分配策略、捆绑营销与排他性支付；Intel 的平台影响力和标准制定能力也可能延迟 AMD 获取技术标准。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 261
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T16",
+    "question": "NVIDIA FY2026 年末是否仍可以正常竞争中国数据中心计算市场，年报如何描述？",
+    "question_en": "At fiscal year-end in NVIDIA NVDA FY2026, could it compete normally in the China data center compute market according to its disclosure?",
+    "language": "zh",
+    "split": "test",
+    "category": "text",
+    "family": "china_market_access",
+    "reference": "不能据此说可正常竞争。年报称在当时出口管制和地缘政治环境下，无法交付同时获得中美政府批准的竞争性产品，财年末实际上被排除在该市场之外；这不是“中国所有产品收入均为零”的断言。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 152
+        },
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 390
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T17",
+    "question": "MU FY2024 存货采用什么计价方法，未来售价下降 5% 的敏感性是多少？",
+    "question_en": "What inventory costing method and 5 percent future selling-price sensitivity does MU FY2024 disclose?",
+    "language": "zh",
+    "split": "test",
+    "category": "text",
+    "family": "inventory_nrv_sensitivity",
+    "reference": "以 FIFO 确定成本，按成本与可变现净值孰低计量；未来平均售价下降 5%，会使 2024-08-29 的产成品和在制品估计可变现净值变化约 700 百万美元。这不是已经发生的损失。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 670
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T18",
+    "question": "NVIDIA FY2026 相较 FY2025 毛利率如何变化，管理层给出哪两个主要原因？",
+    "question_en": "According to NVIDIA NVDA FY2026, how did gross margin change from FY2025 and what two main explanations were provided?",
+    "language": "zh",
+    "split": "test",
+    "category": "cross_year",
+    "family": "nvda_gross_margin_h20",
+    "reference": "毛利率由 75.0% 降至 71.1%，下降 3.9 个百分点；原因包括从 Hopper HGX 转向 Blackwell 完整数据中心方案的业务模式变化，以及 H20 超额库存与采购义务相关 45 亿美元费用。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2026",
+          "ordinal": 558
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {
+      "formula": "71.1-75.0",
+      "result_percentage_points": -3.9,
+      "tolerance": 0.01
+    }
+  },
+  {
+    "id": "T19",
+    "question": "分别查 MU FY2024 和 FY2025 年报，毛利率如何恢复，FY2024 如何受此前存货减记影响？",
+    "question_en": "Using both MU FY2024 and MU FY2025 annual reports, explain gross-margin recovery and how FY2024 benefited from previously written-down inventories.",
+    "language": "zh",
+    "split": "test",
+    "category": "cross_year",
+    "family": "mu_gross_margin_recovery",
+    "reference": "FY2024 毛利率从 FY2023 的 -9% 恢复至 22%，FY2025 进一步到 40%；售价、制造成本及产品组合影响恢复，FY2025 的 DRAM 改善还涉及 HBM 等高毛利组合。FY2024 销售以前已减记存货带来较低成本，FY2025 报告量化该收益为 987 百万美元。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2024",
+          "ordinal": 582
+        }
+      ],
+      [
+        {
+          "document_id": "MU_FY2025",
+          "ordinal": 608
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2024",
+      "MU_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T20",
+    "question": "依据 AMD FY2025 年报的比较列，FY2023 至 FY2025 的研发费用分别是多少？",
+    "question_en": "Using the comparative columns of the AMD FY2025 annual report, what were research and development expenses in FY2023, FY2024 and FY2025?",
+    "language": "zh",
+    "split": "test",
+    "category": "cross_year",
+    "family": "rd_comparative_columns",
+    "reference": "FY2023、FY2024、FY2025 的研发费用分别为 5,872、6,456、8,091 百万美元，不能将列的倒序读反。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": "Research and development | 8,091 |  |  | 6,456 |  |  | 5,872 | "
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": " | December 27, 2025 |  | December 28, 2024 |  | December 30, 2023"
+        }
+      ],
+      [
+        {
+          "document_id": "AMD_FY2025",
+          "ordinal": 602,
+          "quote": " | (In millions, except per share amounts)"
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T21",
+    "question": "分别依据 NVIDIA FY2024 和 FY2025 年报，直接客户达到 10% 收入门槛的情况如何变化？",
+    "question_en": "Using NVIDIA NVDA FY2024 and NVDA FY2025 annual reports, how did direct customers reaching 10 percent of revenue change?",
+    "language": "zh",
+    "split": "test",
+    "category": "cross_year",
+    "family": "nvda_direct_customer_concentration",
+    "reference": "FY2024 一家客户占 13%；FY2025 表中直接客户 A、B、C 分别占 12%、11%、11%。这是直接客户口径，不能将间接客户估计额重复相加。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2024",
+          "ordinal": 1079
+        }
+      ],
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 1094
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2024",
+      "NVDA_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T22",
+    "question": "MU FY2026 的剩余履约义务和客户存款分别有多少，能否直接当成本年收入？",
+    "question_en": "In MU FY2026, how large are remaining performance obligations and customer deposits, and can these be treated as current-year revenue?",
+    "language": "zh",
+    "split": "test",
+    "category": "footnote",
+    "family": "remaining_performance_obligations",
+    "reference": "剩余履约义务约 1340 亿美元，其中约 130 亿美元确认为合同负债，主要为客户存款。约四分之一预计未来 12 个月确认为收入，其余预计在未来五年内确认；不能全部当作 FY2026 收入。几乎全部存款安排于 2029–2031 年偿还。",
+    "sources": [
+      [
+        {
+          "document_id": "MU_FY2026",
+          "ordinal": 989
+        }
+      ]
+    ],
+    "documents": [
+      "MU_FY2026"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T23",
+    "question": "AMD FY2024 如何计提过时存货及不可取消采购订单，需求进一步减弱时会怎样？",
+    "question_en": "How does AMD FY2024 reserve obsolete inventories and non-cancellable inventory purchase orders, and what happens if demand weakens further?",
+    "language": "zh",
+    "split": "test",
+    "category": "footnote",
+    "family": "amd_inventory_reserves",
+    "reference": "按标准成本调整至实际成本或估计可变现净值孰低；对被认定过时的存货和不可取消采购订单全额计提。定期将库存与不可取消订单同预计使用量比较，需求或市场恶化可能要求额外调整。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2024",
+          "ordinal": 649
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2024"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T24",
+    "question": "NVIDIA FY2025 按开票地统计的新加坡收入是否等于货物运往新加坡的收入？",
+    "question_en": "Does Singapore revenue by customer billing location equal revenue from products shipped to Singapore in NVIDIA NVDA FY2025?",
+    "language": "zh",
+    "split": "test",
+    "category": "footnote",
+    "family": "billing_vs_shipping",
+    "reference": "不等于。新加坡按客户开票地占 FY2025 总收入 18%，客户用新加坡集中开票，而产品几乎都运往其他地点；运往新加坡的货物低于总收入 2%。",
+    "sources": [
+      [
+        {
+          "document_id": "NVDA_FY2025",
+          "ordinal": 1086
+        }
+      ]
+    ],
+    "documents": [
+      "NVDA_FY2025"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T25",
+    "question": "AMD FY2025 的 10-K/A 纠正了 Client 业务什么错误，正确的出货量和 ASP 增幅是多少？",
+    "question_en": "What Client revenue disclosure error did the AMD FY2025 10-K/A correct, and what are the correct unit shipment and ASP growth rates?",
+    "language": "zh",
+    "split": "test",
+    "category": "amendment",
+    "family": "amd_amendment",
+    "reference": "原稿误将 Client 处理器出货量和 ASP 的同比变化数字对调；正确为出货量增加 15%、ASP 增加 31%，Client 收入约 106 亿美元，同比增长 51%。应使用修订披露且保留原稿关联。",
+    "sources": [
+      [
+        {
+          "document_id": "AMD_FY2025_A_0000002488-26-000021",
+          "ordinal": 36
+        },
+        {
+          "document_id": "AMD_FY2025_A_0000002488-26-000021",
+          "ordinal": 85
+        }
+      ]
+    ],
+    "documents": [
+      "AMD_FY2025",
+      "AMD_FY2025_A_0000002488-26-000021"
+    ],
+    "outcome": "answer",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D26",
+    "question": "NVDA FY2026 年报能否给出明天的精确收盘价？",
+    "question_en": "Can the NVDA FY2026 annual report provide the exact closing share price tomorrow?",
+    "language": "zh",
+    "split": "dev",
+    "category": "boundary",
+    "family": "future_price",
+    "reference": "年报不能证明未来精确股价。",
+    "sources": [],
+    "documents": [],
+    "outcome": "insufficient_evidence",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D27",
+    "question": "MU FY2026 的某名未披露客户联系人私人电话号码是什么？",
+    "question_en": "What is the private phone number of an undisclosed MU FY2026 customer contact?",
+    "language": "zh",
+    "split": "dev",
+    "category": "boundary",
+    "family": "private_contact",
+    "reference": "语料未提供该私人信息。",
+    "sources": [],
+    "documents": [],
+    "outcome": "insufficient_evidence",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D28",
+    "question": "请比较这家公司最近几年的表现。",
+    "question_en": "Compare this company over recent years.",
+    "language": "zh",
+    "split": "dev",
+    "category": "boundary",
+    "family": "ambiguous_company",
+    "reference": "需要明确公司、期间和比较指标。",
+    "sources": [],
+    "documents": [],
+    "outcome": "clarify",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D29",
+    "question": "请根据 NVIDIA FY2035 年报提供收入。",
+    "question_en": "What is NVIDIA NVDA FY2035 annual revenue from its annual report?",
+    "language": "zh",
+    "split": "dev",
+    "category": "boundary",
+    "family": "future_filing",
+    "reference": "语料不覆盖 FY2035，不能编造。",
+    "sources": [],
+    "documents": [],
+    "outcome": "insufficient_evidence",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "D30",
+    "question": "TSM FY2025 与 AMD FY2025 的年报谁的收入更高？",
+    "question_en": "Compare TSM FY2025 and AMD FY2025 annual revenue.",
+    "language": "zh",
+    "split": "dev",
+    "category": "boundary",
+    "family": "unsupported_company",
+    "reference": "当前语料不含 TSM 年报，无法完成双方有证据的比较。",
+    "sources": [],
+    "documents": [],
+    "outcome": "insufficient_evidence",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T26",
+    "question": "AMD FY2025 年报能证明未来三年绝不会亏损吗？",
+    "question_en": "Does the AMD FY2025 annual report prove it cannot make a loss over the next three years?",
+    "language": "zh",
+    "split": "test",
+    "category": "boundary",
+    "family": "future_profit_guarantee",
+    "reference": "年报与前瞻陈述不能证明未来盈利保证。",
+    "sources": [],
+    "documents": [],
+    "outcome": "insufficient_evidence",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T27",
+    "question": "MU FY2026 年报中尚未公布的 FY2027 全年审计利润是多少？",
+    "question_en": "What is the unpublished audited full-year FY2027 profit in the MU FY2026 annual report?",
+    "language": "zh",
+    "split": "test",
+    "category": "boundary",
+    "family": "unpublished_future_audit",
+    "reference": "未公布未来审计数据不在语料中。",
+    "sources": [],
+    "documents": [],
+    "outcome": "insufficient_evidence",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T28",
+    "question": "库存是不是太高了？",
+    "question_en": "Is inventory too high?",
+    "language": "zh",
+    "split": "test",
+    "category": "boundary",
+    "family": "ambiguous_inventory",
+    "reference": "需要明确公司、财年、比较基准和指标。",
+    "sources": [],
+    "documents": [],
+    "outcome": "clarify",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T29",
+    "question": "只凭 NVDA FY2026 年报告诉我今天盘中即时股价。",
+    "question_en": "What is the live intraday share price today using only the NVDA FY2026 annual report?",
+    "language": "zh",
+    "split": "test",
+    "category": "boundary",
+    "family": "live_market_price",
+    "reference": "年报不是实时行情来源。",
+    "sources": [],
+    "documents": [],
+    "outcome": "insufficient_evidence",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  },
+  {
+    "id": "T30",
+    "question": "AMD FY2025 年报里的完整未公开客户订单名单是什么？",
+    "question_en": "What is the complete undisclosed customer order book in the AMD FY2025 annual report?",
+    "language": "zh",
+    "split": "test",
+    "category": "boundary",
+    "family": "undisclosed_order_book",
+    "reference": "不能从公开年报推导完整未公开订单名单。",
+    "sources": [],
+    "documents": [],
+    "outcome": "insufficient_evidence",
+    "as_of": "2026-10-11",
+    "derivation": {}
+  }
+]

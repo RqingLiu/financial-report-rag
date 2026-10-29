@@ -1,0 +1,2381 @@
+[
+  {
+    "id": "U01",
+    "family": "mu_product_economics",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "DRAM/NAND三年收入、占比和同比；FY2024同比用FY2023基数",
+      "其他产品主要NOR，HBM属于DRAM",
+      "CMBU/CDBU等为客户市场维度，FY2025第四季度重组并追溯重述",
+      "合并毛利率不能代替产品毛利率"
+    ],
+    "expected_limits": [
+      "所查年报没有可用的独立产品成本与可比市场份额数值"
+    ],
+    "material_errors": [
+      "HBM与DRAM重复加总",
+      "收入占比冒充市场份额",
+      "旧新分部直接一一对应"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "产品收入与FY2025/26增速：DRAM",
+        "alternatives": [
+          {
+            "alias": "MU26.986",
+            "row": "DRAM"
+          }
+        ]
+      },
+      {
+        "criterion": "产品收入与FY2025/26增速：NAND",
+        "alternatives": [
+          {
+            "alias": "MU26.986",
+            "row": "NAND"
+          }
+        ]
+      },
+      {
+        "criterion": "产品收入与FY2025/26增速：Other (primarily NOR)",
+        "alternatives": [
+          {
+            "alias": "MU26.986",
+            "row": "Other (primarily NOR)"
+          }
+        ]
+      },
+      {
+        "criterion": "FY2024同比基数：DRAM",
+        "alternatives": [
+          {
+            "alias": "MU24.958",
+            "row": "DRAM"
+          }
+        ]
+      },
+      {
+        "criterion": "FY2024同比基数：NAND",
+        "alternatives": [
+          {
+            "alias": "MU24.958",
+            "row": "NAND"
+          }
+        ]
+      },
+      {
+        "criterion": "合并收入/毛利分母：Revenue",
+        "alternatives": [
+          {
+            "alias": "MU26.759",
+            "row": "Revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "合并收入/毛利分母：Gross margin",
+        "alternatives": [
+          {
+            "alias": "MU26.759",
+            "row": "Gross margin"
+          }
+        ]
+      },
+      {
+        "criterion": "新版分部定义与重述",
+        "alternatives": [
+          {
+            "alias": "MU25.42"
+          }
+        ]
+      },
+      {
+        "criterion": "新版分部定义与重述",
+        "alternatives": [
+          {
+            "alias": "MU25.43"
+          }
+        ]
+      },
+      {
+        "criterion": "新版分部定义与重述",
+        "alternatives": [
+          {
+            "alias": "MU25.44"
+          }
+        ]
+      },
+      {
+        "criterion": "新版分部定义与重述",
+        "alternatives": [
+          {
+            "alias": "MU25.45"
+          }
+        ]
+      },
+      {
+        "criterion": "新版分部定义与重述",
+        "alternatives": [
+          {
+            "alias": "MU25.46"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U02",
+    "family": "mu_inventory_cash_cycle",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "库存8,875/8,355/10,372，DIO161.13/139.34/135.25",
+      "FY2024期初8,387，三年天数364/364/371，平均库存/COGS口径",
+      "毛利率22.35/39.79/80.72%，OCF8,507/17,525/89,675，毛CapEx8,386/15,857/30,712",
+      "FY2025库存与DIO同步下降；FY2026库存上升而DIO下降；CapEx增加不是自动改善"
+    ],
+    "expected_limits": [
+      "年报无完整季度序列正常，不能确定五项指标共同拐点；现有季度成本线索可补但不列为必须命中的检索项"
+    ],
+    "material_errors": [
+      "从年度数据反推具体季度",
+      "将单季度DIO或固定365天悄悄混入公式",
+      "CapEx越高等于经营越好"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "期初及期末库存：Inventories",
+        "alternatives": [
+          {
+            "alias": "MU24.713",
+            "row": "Inventories"
+          }
+        ]
+      },
+      {
+        "criterion": "后两年库存：Inventories",
+        "alternatives": [
+          {
+            "alias": "MU26.766",
+            "row": "Inventories"
+          }
+        ]
+      },
+      {
+        "criterion": "年度流量：Revenue",
+        "alternatives": [
+          {
+            "alias": "MU26.759",
+            "row": "Revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "年度流量：Cost of goods sold",
+        "alternatives": [
+          {
+            "alias": "MU26.759",
+            "row": "Cost of goods sold"
+          }
+        ]
+      },
+      {
+        "criterion": "年度流量：Gross margin",
+        "alternatives": [
+          {
+            "alias": "MU26.759",
+            "row": "Gross margin"
+          }
+        ]
+      },
+      {
+        "criterion": "现金流：Net cash provided by operating activities",
+        "alternatives": [
+          {
+            "alias": "MU26.780",
+            "row": "Net cash provided by operating activities"
+          }
+        ]
+      },
+      {
+        "criterion": "现金流：Expenditures for property, plant, and equipment",
+        "alternatives": [
+          {
+            "alias": "MU26.780",
+            "row": "Expenditures for property, plant, and equipment"
+          }
+        ]
+      },
+      {
+        "criterion": "52/53周",
+        "alternatives": [
+          {
+            "alias": "MU26.614"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U03",
+    "family": "nvda_data_center_growth",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "数据中心47,525/115,186/193,737；份额78.01/88.27/89.72%；同比216.73/142.37/68.19%",
+      "FY2024计算244%、网络133%，AI推理约40%为公司估计",
+      "FY2025 Hopper与Blackwell第四季度交付，计算162%网络51%；FY2026计算59%网络142%及Blackwell占多数"
+    ],
+    "expected_limits": [
+      "不能从年度序列得出连续季度环比，年报缺季度序列不扣检索分",
+      "不能分解每种客户/应用/架构的独立贡献"
+    ],
+    "material_errors": [
+      "Data Center与Compute & Networking混用",
+      "把40%写成独立行业统计"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "三年终端市场收入：Data Center",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1076",
+            "row": "Data Center"
+          }
+        ]
+      },
+      {
+        "criterion": "三年终端市场收入：Compute",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1076",
+            "row": "Compute"
+          }
+        ]
+      },
+      {
+        "criterion": "三年终端市场收入：Networking",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1076",
+            "row": "Networking"
+          }
+        ]
+      },
+      {
+        "criterion": "三年终端市场收入：Total revenue",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1076",
+            "row": "Total revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "FY2024同比基数：Data Center",
+        "alternatives": [
+          {
+            "alias": "NVDA24.1081",
+            "row": "Data Center"
+          }
+        ]
+      },
+      {
+        "criterion": "已披露的增长驱动与数量",
+        "alternatives": [
+          {
+            "alias": "NVDA24.494"
+          }
+        ]
+      },
+      {
+        "criterion": "已披露的增长驱动与数量",
+        "alternatives": [
+          {
+            "alias": "NVDA24.501"
+          }
+        ]
+      },
+      {
+        "criterion": "已披露的增长驱动与数量",
+        "alternatives": [
+          {
+            "alias": "NVDA25.524"
+          }
+        ]
+      },
+      {
+        "criterion": "已披露的增长驱动与数量",
+        "alternatives": [
+          {
+            "alias": "NVDA25.563"
+          }
+        ]
+      },
+      {
+        "criterion": "已披露的增长驱动与数量",
+        "alternatives": [
+          {
+            "alias": "NVDA26.489"
+          }
+        ]
+      },
+      {
+        "criterion": "已披露的增长驱动与数量",
+        "alternatives": [
+          {
+            "alias": "NVDA26.545"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U04",
+    "family": "nvda_cash_conversion",
+    "split": "dev",
+    "answerability": "answerable_with_limits",
+    "mandatory_facts": [
+      "三年收入、应收、OCF与比率；FY2025应收/收入17.67%",
+      "DSO用平均净应收，FY2024期初3,827；结果41.30/46.11/51.86",
+      "FY2024提前收款557影响时点基数",
+      "OCF增长与DSO代理上升并存；信号不等于信用恶化"
+    ],
+    "expected_limits": [
+      "缺可比账龄、付款条件、期后回款和季度节奏，不能做信用质量定论"
+    ],
+    "material_errors": [
+      "只用期末余额冒充指定平均DSO",
+      "把应收变动等同坏账",
+      "编造管理层延长账期解释"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "收入：Revenue",
+        "alternatives": [
+          {
+            "alias": "NVDA26.706",
+            "row": "Revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "经营现金流：Net cash provided by operating activities",
+        "alternatives": [
+          {
+            "alias": "NVDA26.729",
+            "row": "Net cash provided by operating activities"
+          }
+        ]
+      },
+      {
+        "criterion": "应收期初期末：Accounts receivable, net",
+        "alternatives": [
+          {
+            "alias": "NVDA24.711",
+            "row": "Accounts receivable, net"
+          }
+        ]
+      },
+      {
+        "criterion": "应收期初期末：Accounts receivable, net",
+        "alternatives": [
+          {
+            "alias": "NVDA25.735",
+            "row": "Accounts receivable, net"
+          }
+        ]
+      },
+      {
+        "criterion": "应收期初期末：Accounts receivable, net",
+        "alternatives": [
+          {
+            "alias": "NVDA26.718",
+            "row": "Accounts receivable, net"
+          }
+        ]
+      },
+      {
+        "criterion": "提前收款",
+        "alternatives": [
+          {
+            "alias": "NVDA24.579"
+          }
+        ]
+      },
+      {
+        "criterion": "管理层OCF解释",
+        "alternatives": [
+          {
+            "alias": "NVDA26.582"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U05",
+    "family": "mu_product_economics",
+    "split": "dev",
+    "answerability": "answerable_with_limits",
+    "mandatory_facts": [
+      "逐年区分DRAM与NAND的ASP和bit shipments方向与大致幅度",
+      "FY2026价格为主要驱动，FY2025 NAND主要位元增长",
+      "bit不是芯片件数；(1+p)(1+q)-1含交互项；组合可能已在ASP中"
+    ],
+    "expected_limits": [
+      "没有唯一精确美元/百分点贡献分摊；未披露ASP变化不等于零"
+    ],
+    "material_errors": [
+      "擅自把low/mid/high固定为精确数字",
+      "ASP与组合重复加总",
+      "将bit shipments当件数"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "价格、位元与组合披露",
+        "alternatives": [
+          {
+            "alias": "MU24.577"
+          }
+        ]
+      },
+      {
+        "criterion": "价格、位元与组合披露",
+        "alternatives": [
+          {
+            "alias": "MU24.578"
+          }
+        ]
+      },
+      {
+        "criterion": "价格、位元与组合披露",
+        "alternatives": [
+          {
+            "alias": "MU25.603"
+          }
+        ]
+      },
+      {
+        "criterion": "价格、位元与组合披露",
+        "alternatives": [
+          {
+            "alias": "MU25.604"
+          }
+        ]
+      },
+      {
+        "criterion": "价格、位元与组合披露",
+        "alternatives": [
+          {
+            "alias": "MU26.631"
+          }
+        ]
+      },
+      {
+        "criterion": "价格、位元与组合披露",
+        "alternatives": [
+          {
+            "alias": "MU26.632"
+          }
+        ]
+      },
+      {
+        "criterion": "价格、位元与组合披露",
+        "alternatives": [
+          {
+            "alias": "MU25.608"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U06",
+    "family": "mu_inventory_cash_cycle",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "FY2023减记−1,831、低成本销售+844、净−987；FY2024+987；FY2025零",
+      "FY2024移除指定效应后毛利4,626/18.42%；FY2023−429/−2.76%",
+      "毛利额提升7,029含NRV变化1,974及剩余5,055；率桥接31.46pp中10.28pp为指定NRV变化",
+      "844+987=1,831支持该批效应耗尽；FY2025毛利增长9,260，指定调整增长10,247",
+      "低成本销售不是库存减记转回，剩余不是纯需求"
+    ],
+    "expected_limits": [
+      "FY2026所有库存会计效应不能因指定批次耗尽而填零",
+      "这些为分析调整，不是正式non-GAAP"
+    ],
+    "material_errors": [
+      "额与率混算",
+      "把1,974除单一年收入当跨年百分点贡献",
+      "把低成本销售叫向上重估"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "NRV计提与销售机制",
+        "alternatives": [
+          {
+            "alias": "MU25.612"
+          },
+          {
+            "alias": "MU24.586"
+          }
+        ]
+      },
+      {
+        "criterion": "三年NRV桥接",
+        "alternatives": [
+          {
+            "alias": "MU25.613"
+          }
+        ]
+      },
+      {
+        "criterion": "FY2023/24收入毛利：Revenue",
+        "alternatives": [
+          {
+            "alias": "MU24.699",
+            "row": "Revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "FY2023/24收入毛利：Gross margin",
+        "alternatives": [
+          {
+            "alias": "MU24.699",
+            "row": "Gross margin"
+          }
+        ]
+      },
+      {
+        "criterion": "FY2025收入毛利：Revenue",
+        "alternatives": [
+          {
+            "alias": "MU25.740",
+            "row": "Revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "FY2025收入毛利：Gross margin",
+        "alternatives": [
+          {
+            "alias": "MU25.740",
+            "row": "Gross margin"
+          }
+        ]
+      },
+      {
+        "criterion": "其他驱动",
+        "alternatives": [
+          {
+            "alias": "MU25.608"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U07",
+    "family": "mu_hbm_progress",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "FY2024 HBM3E量产与12-high认证用交付不同",
+      "FY2025第四季度12-high占多数与HBM4送样；FY2026 HBM4量产/16-high送样，3E12-high仍占多数",
+      "HBM4E日历2027放量及新加坡2027能力为预期",
+      "CMBU收入13,524利润6,129非独立HBM；总CapEx三年扩大"
+    ],
+    "expected_limits": [
+      "缺HBM独立三年收入利润序列",
+      "CapEx不是未来回报保证"
+    ],
+    "material_errors": [
+      "送样当客户认证完成",
+      "CMBU当HBM收入利润",
+      "全部CapEx归HBM"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "产品阶段与盈利边界",
+        "alternatives": [
+          {
+            "alias": "MU24.71"
+          }
+        ]
+      },
+      {
+        "criterion": "产品阶段与盈利边界",
+        "alternatives": [
+          {
+            "alias": "MU25.73"
+          }
+        ]
+      },
+      {
+        "criterion": "产品阶段与盈利边界",
+        "alternatives": [
+          {
+            "alias": "MU26.67"
+          }
+        ]
+      },
+      {
+        "criterion": "产品阶段与盈利边界",
+        "alternatives": [
+          {
+            "alias": "MU25.70"
+          }
+        ]
+      },
+      {
+        "criterion": "产品阶段与盈利边界",
+        "alternatives": [
+          {
+            "alias": "MU25.608"
+          }
+        ]
+      },
+      {
+        "criterion": "产品阶段与盈利边界",
+        "alternatives": [
+          {
+            "alias": "MU26.701"
+          }
+        ]
+      },
+      {
+        "criterion": "CMBU财务：Revenue",
+        "alternatives": [
+          {
+            "alias": "MU25.1069",
+            "row": "Revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "CMBU财务：Operating income (loss)",
+        "alternatives": [
+          {
+            "alias": "MU25.1069",
+            "row": "Operating income (loss)"
+          }
+        ]
+      },
+      {
+        "criterion": "资本支出：Expenditures for property, plant, and equipment",
+        "alternatives": [
+          {
+            "alias": "MU26.780",
+            "row": "Expenditures for property, plant, and equipment"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U08",
+    "family": "supply_commitments",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "库存5,282/10,080/21,403，未来供给义务16.1/30.8/95.2十亿美元",
+      "长短期预付合计约4.96/5.05十亿美元，FY2026独立可比余额缺项",
+      "预付、不可取消订单与产能安排保障供给，也增加预测/换代风险",
+      "需求下降可能带来库存、过剩义务、取消费和预付资产损失"
+    ],
+    "expected_limits": [
+      "未来承诺不等于即时负债或亏损",
+      "FY2026缺独立拆分不填零，也不用混合资产总额替代"
+    ],
+    "material_errors": [
+      "库存+预付+承诺直接加总风险",
+      "H20费用重复包含在总准备中后再相加"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "库存：Inventories",
+        "alternatives": [
+          {
+            "alias": "NVDA24.711",
+            "row": "Inventories"
+          }
+        ]
+      },
+      {
+        "criterion": "库存：Inventories",
+        "alternatives": [
+          {
+            "alias": "NVDA25.735",
+            "row": "Inventories"
+          }
+        ]
+      },
+      {
+        "criterion": "库存：Inventories",
+        "alternatives": [
+          {
+            "alias": "NVDA26.718",
+            "row": "Inventories"
+          }
+        ]
+      },
+      {
+        "criterion": "长期预付款：Prepaid supply and capacity agreements (1)",
+        "alternatives": [
+          {
+            "alias": "NVDA24.948",
+            "row": "Prepaid supply and capacity agreements (1)"
+          }
+        ]
+      },
+      {
+        "criterion": "长期预付款：Prepaid supply and capacity agreements (1)",
+        "alternatives": [
+          {
+            "alias": "NVDA25.959",
+            "row": "Prepaid supply and capacity agreements (1)"
+          }
+        ]
+      },
+      {
+        "criterion": "短期预付/未来义务/已发生损失",
+        "alternatives": [
+          {
+            "alias": "NVDA24.949"
+          }
+        ]
+      },
+      {
+        "criterion": "短期预付/未来义务/已发生损失",
+        "alternatives": [
+          {
+            "alias": "NVDA25.960"
+          }
+        ]
+      },
+      {
+        "criterion": "短期预付/未来义务/已发生损失",
+        "alternatives": [
+          {
+            "alias": "NVDA24.994"
+          }
+        ]
+      },
+      {
+        "criterion": "短期预付/未来义务/已发生损失",
+        "alternatives": [
+          {
+            "alias": "NVDA25.1000"
+          }
+        ]
+      },
+      {
+        "criterion": "短期预付/未来义务/已发生损失",
+        "alternatives": [
+          {
+            "alias": "NVDA26.695"
+          }
+        ]
+      },
+      {
+        "criterion": "短期预付/未来义务/已发生损失",
+        "alternatives": [
+          {
+            "alias": "NVDA26.259"
+          }
+        ]
+      },
+      {
+        "criterion": "短期预付/未来义务/已发生损失",
+        "alternatives": [
+          {
+            "alias": "NVDA26.148"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U09",
+    "family": "nvda_customer_concentration",
+    "split": "dev",
+    "answerability": "answerable_with_limits",
+    "mandatory_facts": [
+      "直接客户收入门槛披露13%；12/11/11%；22/14%",
+      "应收24/11%；17/16%；25/18/13%，前二35/33/43%不是单调",
+      "最大直接客户13/12/22%非单调，门槛合计13/34/36%非完整HHI",
+      "直接与间接按采购路径，不等于最终用户；两类均可含云厂商/AI公司",
+      "间接客户FY2024估计19%、FY2025至少10%、FY2026部分各至少10%并有云服务间接贡献"
+    ],
+    "expected_limits": [
+      "客户匿名不可猜身份，代号跨报不保证固定",
+      "直接间接收入不可相加"
+    ],
+    "material_errors": [
+      "收入集中度与应收集中度混用",
+      "只有间接客户才可能是云厂商",
+      "门槛合计当完整分布"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "客户集中度与定义",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1068"
+          }
+        ]
+      },
+      {
+        "criterion": "客户集中度与定义",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1069"
+          }
+        ]
+      },
+      {
+        "criterion": "客户集中度与定义",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1070"
+          }
+        ]
+      },
+      {
+        "criterion": "客户集中度与定义",
+        "alternatives": [
+          {
+            "alias": "NVDA24.933"
+          }
+        ]
+      },
+      {
+        "criterion": "客户集中度与定义",
+        "alternatives": [
+          {
+            "alias": "NVDA25.944"
+          }
+        ]
+      },
+      {
+        "criterion": "客户集中度与定义",
+        "alternatives": [
+          {
+            "alias": "NVDA26.910"
+          }
+        ]
+      },
+      {
+        "criterion": "客户集中度与定义",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1067"
+          }
+        ]
+      },
+      {
+        "criterion": "客户集中度与定义",
+        "alternatives": [
+          {
+            "alias": "NVDA24.549"
+          }
+        ]
+      },
+      {
+        "criterion": "客户集中度与定义",
+        "alternatives": [
+          {
+            "alias": "NVDA25.574"
+          }
+        ]
+      },
+      {
+        "criterion": "客户集中度与定义",
+        "alternatives": [
+          {
+            "alias": "NVDA26.554"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U10",
+    "family": "nvda_export_controls",
+    "split": "dev",
+    "answerability": "answerable_with_limits",
+    "mandatory_facts": [
+      "FY2024扩大限制，中国数据中心占比19→14%，第四季度中个位数",
+      "FY2025中国数据中心收入绝对增长但占比仍低于限制前",
+      "FY2025 AI Diffusion拟全球许可、FY2026报告记载宣布撤销及替代不确定",
+      "H20首季费用4,500、特定许可收入60；H200许可为期后且截至报告无收入",
+      "FY2026第三季度地理口径变为客户总部并重述，非最终需求"
+    ],
+    "expected_limits": [
+      "地区收入不能当全面禁售利润损失",
+      "法律描述限报告当时，不是实时状态"
+    ],
+    "material_errors": [
+      "费用/收入单位混淆",
+      "60等同全部H20全年销售",
+      "把H200期后状态算当年收入",
+      "忽略全球许可范围变化"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "实际/潜在影响与口径",
+        "alternatives": [
+          {
+            "alias": "NVDA24.481"
+          }
+        ]
+      },
+      {
+        "criterion": "实际/潜在影响与口径",
+        "alternatives": [
+          {
+            "alias": "NVDA24.482"
+          }
+        ]
+      },
+      {
+        "criterion": "实际/潜在影响与口径",
+        "alternatives": [
+          {
+            "alias": "NVDA25.510"
+          }
+        ]
+      },
+      {
+        "criterion": "实际/潜在影响与口径",
+        "alternatives": [
+          {
+            "alias": "NVDA26.148"
+          }
+        ]
+      },
+      {
+        "criterion": "实际/潜在影响与口径",
+        "alternatives": [
+          {
+            "alias": "NVDA26.149"
+          }
+        ]
+      },
+      {
+        "criterion": "实际/潜在影响与口径",
+        "alternatives": [
+          {
+            "alias": "NVDA26.150"
+          }
+        ]
+      },
+      {
+        "criterion": "实际/潜在影响与口径",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1062"
+          }
+        ]
+      },
+      {
+        "criterion": "实际/潜在影响与口径",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1064"
+          }
+        ]
+      },
+      {
+        "criterion": "全球规则风险",
+        "alternatives": [
+          {
+            "alias": "NVDA25.148"
+          },
+          {
+            "alias": "NVDA25.397"
+          }
+        ]
+      },
+      {
+        "criterion": "全球规则覆盖",
+        "alternatives": [
+          {
+            "alias": "NVDA26.154"
+          },
+          {
+            "alias": "NVDA26.392"
+          }
+        ]
+      },
+      {
+        "criterion": "宣布撤销与不确定",
+        "alternatives": [
+          {
+            "alias": "NVDA26.155"
+          },
+          {
+            "alias": "NVDA26.393"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U11",
+    "family": "amd_segments",
+    "split": "dev",
+    "answerability": "answerable_with_limits",
+    "mandatory_facts": [
+      "四业务三年收入及增量勾稽：3,105与8,854",
+      "合并经营利润增量1,499与1,794含All Other负担变化",
+      "FY2025合并Client/Gaming并重述，收入可分利润不能分",
+      "FY2025利润增量主要Client/Gaming；数据中心+121受成本/MI308及费用抵消"
+    ],
+    "expected_limits": [
+      "不能反推FY2025独立Client和Gaming利润"
+    ],
+    "material_errors": [
+      "省略All Other造成增量不等",
+      "将业务收入增幅当利润增幅"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "分部收入：Data Center",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Data Center"
+          }
+        ]
+      },
+      {
+        "criterion": "分部收入：Client |",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Client |"
+          }
+        ]
+      },
+      {
+        "criterion": "分部收入：Gaming |",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Gaming |"
+          }
+        ]
+      },
+      {
+        "criterion": "分部收入：Total Client and Gaming",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Total Client and Gaming"
+          }
+        ]
+      },
+      {
+        "criterion": "分部收入：Embedded",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Embedded"
+          }
+        ]
+      },
+      {
+        "criterion": "分部收入：Total net revenue",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Total net revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "三年利润桥接：Data Center | $ | 3,603",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Data Center | $ | 3,603"
+          }
+        ]
+      },
+      {
+        "criterion": "三年利润桥接：Client and Gaming | 2,855",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Client and Gaming | 2,855"
+          }
+        ]
+      },
+      {
+        "criterion": "三年利润桥接：Embedded | 1,243",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Embedded | 1,243"
+          }
+        ]
+      },
+      {
+        "criterion": "三年利润桥接：All Other | (",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "All Other | ("
+          }
+        ]
+      },
+      {
+        "criterion": "三年利润桥接：Total operating income",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Total operating income"
+          }
+        ]
+      },
+      {
+        "criterion": "旧利润拆分：Client | 897",
+        "alternatives": [
+          {
+            "alias": "AMD24.722",
+            "row": "Client | 897"
+          }
+        ]
+      },
+      {
+        "criterion": "旧利润拆分：Gaming | 290",
+        "alternatives": [
+          {
+            "alias": "AMD24.722",
+            "row": "Gaming | 290"
+          }
+        ]
+      },
+      {
+        "criterion": "重述",
+        "alternatives": [
+          {
+            "alias": "AMD25.55"
+          }
+        ]
+      },
+      {
+        "criterion": "FY2025利润驱动",
+        "alternatives": [
+          {
+            "alias": "AMD25.522"
+          }
+        ]
+      },
+      {
+        "criterion": "FY2024驱动",
+        "alternatives": [
+          {
+            "alias": "AMD24.478"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U12",
+    "family": "amd_segments",
+    "split": "dev",
+    "answerability": "answerable_with_limits",
+    "mandatory_facts": [
+      "FY2023四业务利润4,820，减All Other4,419=401",
+      "All Other=2,811+1,384+258−34，非报告分部",
+      "SBC与收购摊销非现金但有经济意义，不等于可忽略",
+      "经营利润到净利润及现金另有税、利息等调节"
+    ],
+    "expected_limits": [
+      "会计摊销不必逐美元等于经济耗用",
+      "调整口径不能替代GAAP"
+    ],
+    "material_errors": [
+      "许可收益符号取反",
+      "未分配费用当不存在",
+      "分部利润当股东现金"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "业务利润及合并：Data Center | $ | 1,267",
+        "alternatives": [
+          {
+            "alias": "AMD23.727",
+            "row": "Data Center | $ | 1,267"
+          }
+        ]
+      },
+      {
+        "criterion": "业务利润及合并：Client | (",
+        "alternatives": [
+          {
+            "alias": "AMD23.727",
+            "row": "Client | ("
+          }
+        ]
+      },
+      {
+        "criterion": "业务利润及合并：Gaming | 971",
+        "alternatives": [
+          {
+            "alias": "AMD23.727",
+            "row": "Gaming | 971"
+          }
+        ]
+      },
+      {
+        "criterion": "业务利润及合并：Embedded | 2,628",
+        "alternatives": [
+          {
+            "alias": "AMD23.727",
+            "row": "Embedded | 2,628"
+          }
+        ]
+      },
+      {
+        "criterion": "业务利润及合并：All Other | (",
+        "alternatives": [
+          {
+            "alias": "AMD23.727",
+            "row": "All Other | ("
+          }
+        ]
+      },
+      {
+        "criterion": "业务利润及合并：Total operating income",
+        "alternatives": [
+          {
+            "alias": "AMD23.727",
+            "row": "Total operating income"
+          }
+        ]
+      },
+      {
+        "criterion": "All Other构成",
+        "alternatives": [
+          {
+            "alias": "AMD23.729"
+          }
+        ]
+      },
+      {
+        "criterion": "未分配项目定义",
+        "alternatives": [
+          {
+            "alias": "AMD23.725"
+          }
+        ]
+      },
+      {
+        "criterion": "经营利润至净利润：Operating income",
+        "alternatives": [
+          {
+            "alias": "AMD23.607",
+            "row": "Operating income"
+          }
+        ]
+      },
+      {
+        "criterion": "经营利润至净利润：Interest expense",
+        "alternatives": [
+          {
+            "alias": "AMD23.607",
+            "row": "Interest expense"
+          }
+        ]
+      },
+      {
+        "criterion": "经营利润至净利润：Net income",
+        "alternatives": [
+          {
+            "alias": "AMD23.607",
+            "row": "Net income"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U13",
+    "family": "amd_data_center_products",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "数据中心6,496/12,579/16,635，约7/94/32%为管理层整数披露",
+      "三年都定性提及EPYC和Instinct，不能将总额归单一产品",
+      "MI308费用440不是Instinct收入",
+      "各产品独立三年桥接和AI GPU市场分母不足"
+    ],
+    "expected_limits": [
+      "没有独立产品贡献序列应说明，而非编数",
+      "不能把其他业绩材料数字冒充10-K内披露"
+    ],
+    "material_errors": [
+      "把数据中心等同AI GPU",
+      "用费用反推营收毛利",
+      "6GW协议当已实现销售"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "已披露的分部/产品范围",
+        "alternatives": [
+          {
+            "alias": "AMD23.528"
+          }
+        ]
+      },
+      {
+        "criterion": "已披露的分部/产品范围",
+        "alternatives": [
+          {
+            "alias": "AMD24.517"
+          }
+        ]
+      },
+      {
+        "criterion": "已披露的分部/产品范围",
+        "alternatives": [
+          {
+            "alias": "AMD25.521"
+          }
+        ]
+      },
+      {
+        "criterion": "已披露的分部/产品范围",
+        "alternatives": [
+          {
+            "alias": "AMD25.481"
+          }
+        ]
+      },
+      {
+        "criterion": "已披露的分部/产品范围",
+        "alternatives": [
+          {
+            "alias": "AMD25.66"
+          }
+        ]
+      },
+      {
+        "criterion": "已披露的分部/产品范围",
+        "alternatives": [
+          {
+            "alias": "AMD25.67"
+          }
+        ]
+      },
+      {
+        "criterion": "分部数据：Data Center | $ | 16,635",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Data Center | $ | 16,635"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U14",
+    "family": "nvda_asof_20240221",
+    "split": "dev",
+    "answerability": "answerable_with_limits",
+    "mandatory_facts": [
+      "仅NVDA FY2024，as_of2024-02-21",
+      "收入60,922、数据中心47,525同比约217%、OCF28,090为已实现",
+      "40%推理为估计；Hopper供给改善为当时现状；下一代供给约束及汽车需求为预期",
+      "当时风险有中国占比下降、间接客户集中19%、义务16.1十亿美元及竞争替代",
+      "订单/库存/竞争/许可是监测失效条件，不是后来结果"
+    ],
+    "expected_limits": [
+      "不能预测确定增速、兑现概率或股价",
+      "只保证日期级公开时点，不保证申报前盘中可知"
+    ],
+    "material_errors": [
+      "后续年报回溯FY2024数字泄漏",
+      "Blackwell或H20后见事实",
+      "把预期作已实现"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "已实现收入：Revenue",
+        "alternatives": [
+          {
+            "alias": "NVDA24.699",
+            "row": "Revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "数据中心及同比基数：Data Center",
+        "alternatives": [
+          {
+            "alias": "NVDA24.1081",
+            "row": "Data Center"
+          }
+        ]
+      },
+      {
+        "criterion": "现金流：Net cash provided by operating activities",
+        "alternatives": [
+          {
+            "alias": "NVDA24.722",
+            "row": "Net cash provided by operating activities"
+          }
+        ]
+      },
+      {
+        "criterion": "推理估计与产品",
+        "alternatives": [
+          {
+            "alias": "NVDA24.501"
+          }
+        ]
+      },
+      {
+        "criterion": "当时供需判断",
+        "alternatives": [
+          {
+            "alias": "NVDA24.473"
+          },
+          {
+            "alias": "NVDA24.266"
+          }
+        ]
+      },
+      {
+        "criterion": "当时可知的风险",
+        "alternatives": [
+          {
+            "alias": "NVDA24.481"
+          }
+        ]
+      },
+      {
+        "criterion": "当时可知的风险",
+        "alternatives": [
+          {
+            "alias": "NVDA24.549"
+          }
+        ]
+      },
+      {
+        "criterion": "当时可知的风险",
+        "alternatives": [
+          {
+            "alias": "NVDA24.994"
+          }
+        ]
+      },
+      {
+        "criterion": "当时可知的风险",
+        "alternatives": [
+          {
+            "alias": "NVDA24.244"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U15",
+    "family": "cross_company_cash",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "三家各自在库三年净利润/OCF上升",
+      "MU FCF121/1,668/58,963，毛PPE不扣补助",
+      "NVDA合并PPE+无形资产代理27,021/60,853/96,676不等于严格PPE-only",
+      "AMD合计FCF1,121/2,405/6,697；2025持续经营5,519，支出974+38与OCF6,493+1,216对应",
+      "SBC三年数值与经济意义、营运资金及制造/fabless差异限制盈利质量结论"
+    ],
+    "expected_limits": [
+      "不能凭水平增大排名盈利质量",
+      "NVDA严格PPE拆分不足正常保留缺项"
+    ],
+    "material_errors": [
+      "AMD合计OCF只减持续支出",
+      "NVDA合并行冒充严格PPE",
+      "将非现金SBC视为零成本"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "MU现金流和净利：Net income",
+        "alternatives": [
+          {
+            "alias": "MU26.780",
+            "row": "Net income"
+          }
+        ]
+      },
+      {
+        "criterion": "MU现金流和净利：Net cash provided by operating activities",
+        "alternatives": [
+          {
+            "alias": "MU26.780",
+            "row": "Net cash provided by operating activities"
+          }
+        ]
+      },
+      {
+        "criterion": "MU现金流和净利：Expenditures for property, plant, and equipment",
+        "alternatives": [
+          {
+            "alias": "MU26.780",
+            "row": "Expenditures for property, plant, and equipment"
+          }
+        ]
+      },
+      {
+        "criterion": "MU现金流和净利：Stock-based compensation",
+        "alternatives": [
+          {
+            "alias": "MU26.780",
+            "row": "Stock-based compensation"
+          }
+        ]
+      },
+      {
+        "criterion": "NVDA现金流：Net income",
+        "alternatives": [
+          {
+            "alias": "NVDA26.729",
+            "row": "Net income"
+          }
+        ]
+      },
+      {
+        "criterion": "NVDA现金流：Net cash provided by operating activities",
+        "alternatives": [
+          {
+            "alias": "NVDA26.729",
+            "row": "Net cash provided by operating activities"
+          }
+        ]
+      },
+      {
+        "criterion": "NVDA现金流：Purchases related to property and equipment and intangible assets",
+        "alternatives": [
+          {
+            "alias": "NVDA26.729",
+            "row": "Purchases related to property and equipment and intangible assets"
+          }
+        ]
+      },
+      {
+        "criterion": "NVDA现金流：Stock-based compensation expense",
+        "alternatives": [
+          {
+            "alias": "NVDA26.729",
+            "row": "Stock-based compensation expense"
+          }
+        ]
+      },
+      {
+        "criterion": "NVDA现金流：Accounts receivable |",
+        "alternatives": [
+          {
+            "alias": "NVDA26.729",
+            "row": "Accounts receivable |"
+          }
+        ]
+      },
+      {
+        "criterion": "NVDA现金流：Inventories |",
+        "alternatives": [
+          {
+            "alias": "NVDA26.729",
+            "row": "Inventories |"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD净利润：Net income",
+        "alternatives": [
+          {
+            "alias": "AMD25.602",
+            "row": "Net income"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD净利润：Income from continuing operations, net of tax",
+        "alternatives": [
+          {
+            "alias": "AMD25.602",
+            "row": "Income from continuing operations, net of tax"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD净利润：Income from discontinued operations, net of tax",
+        "alternatives": [
+          {
+            "alias": "AMD25.602",
+            "row": "Income from discontinued operations, net of tax"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD现金流：Net cash provided by operating activities of continuing operations",
+        "alternatives": [
+          {
+            "alias": "AMD25.622",
+            "row": "Net cash provided by operating activities of continuing operations"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD现金流：Net cash provided by operating activities of discontinued operations",
+        "alternatives": [
+          {
+            "alias": "AMD25.622",
+            "row": "Net cash provided by operating activities of discontinued operations"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD现金流：Purchases of property and equipment | ( 974",
+        "alternatives": [
+          {
+            "alias": "AMD25.622",
+            "row": "Purchases of property and equipment | ( 974"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD现金流：Purchases of property and equipment | ( 38",
+        "alternatives": [
+          {
+            "alias": "AMD25.622",
+            "row": "Purchases of property and equipment | ( 38"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD现金流：Stock-based compensation",
+        "alternatives": [
+          {
+            "alias": "AMD25.622",
+            "row": "Stock-based compensation"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U16",
+    "family": "cross_company_product_scope",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "GeForce/Radeon RX、RTX/Quadro与Radeon PRO的用途交集",
+      "数据中心加速Hopper/Blackwell与Instinct，EPYC服务器CPU及Grace不同产品角色",
+      "市场份额须市场/地区/期别/收入或出货定义与完整分母",
+      "按2026-10-11年报范围先答产品映射，并明确不提供无依据份额"
+    ],
+    "expected_limits": [
+      "份额数字子问资料不足是预期正确行为，不判整题失败",
+      "外部统计须另行定义来源和口径"
+    ],
+    "material_errors": [
+      "A/(A+B)当全市场份额",
+      "TOP500采用率当GPU市场份额",
+      "把竞争映射作性能胜负"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "可支持的产品映射",
+        "alternatives": [
+          {
+            "alias": "NVDA24.74"
+          }
+        ]
+      },
+      {
+        "criterion": "可支持的产品映射",
+        "alternatives": [
+          {
+            "alias": "NVDA24.90"
+          }
+        ]
+      },
+      {
+        "criterion": "可支持的产品映射",
+        "alternatives": [
+          {
+            "alias": "NVDA24.63"
+          }
+        ]
+      },
+      {
+        "criterion": "可支持的产品映射",
+        "alternatives": [
+          {
+            "alias": "NVDA26.82"
+          }
+        ]
+      },
+      {
+        "criterion": "可支持的产品映射",
+        "alternatives": [
+          {
+            "alias": "AMD25.66"
+          }
+        ]
+      },
+      {
+        "criterion": "可支持的产品映射",
+        "alternatives": [
+          {
+            "alias": "AMD25.67"
+          }
+        ]
+      },
+      {
+        "criterion": "可支持的产品映射",
+        "alternatives": [
+          {
+            "alias": "AMD25.86"
+          }
+        ]
+      },
+      {
+        "criterion": "可支持的产品映射",
+        "alternatives": [
+          {
+            "alias": "AMD25.87"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U17",
+    "family": "cross_company_data_center",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "两家三年数据中心收入份额同比与实际年末",
+      "首末累计NVDA307.65%/AMD156.08%跨两个间隔",
+      "大致配对NVDA24/AMD23等，仍错位一月",
+      "NVDA终端市场、AMD报告分部，不同CPU/GPU/网络/系统内容",
+      "NVDA自身口径增速更高，AMD份额末年小降"
+    ],
+    "expected_limits": [
+      "不能严格调整得到纯AI GPU增速或份额"
+    ],
+    "material_errors": [
+      "按同名FY对齐",
+      "数据中心全是AI GPU",
+      "两家占比均单调升"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "NVDA收入：Data Center",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1076",
+            "row": "Data Center"
+          }
+        ]
+      },
+      {
+        "criterion": "NVDA收入：Total revenue",
+        "alternatives": [
+          {
+            "alias": "NVDA26.1076",
+            "row": "Total revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "NVDA前期基数：Data Center",
+        "alternatives": [
+          {
+            "alias": "NVDA24.1081",
+            "row": "Data Center"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD收入：Data Center | $ | 16,635",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Data Center | $ | 16,635"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD收入：Total net revenue",
+        "alternatives": [
+          {
+            "alias": "AMD25.721",
+            "row": "Total net revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD前期基数：Data Center | $ | 6,496",
+        "alternatives": [
+          {
+            "alias": "AMD23.727",
+            "row": "Data Center | $ | 6,496"
+          }
+        ]
+      },
+      {
+        "criterion": "产品边界",
+        "alternatives": [
+          {
+            "alias": "NVDA26.82"
+          }
+        ]
+      },
+      {
+        "criterion": "产品边界",
+        "alternatives": [
+          {
+            "alias": "NVDA26.84"
+          }
+        ]
+      },
+      {
+        "criterion": "产品边界",
+        "alternatives": [
+          {
+            "alias": "AMD25.66"
+          }
+        ]
+      },
+      {
+        "criterion": "产品边界",
+        "alternatives": [
+          {
+            "alias": "AMD25.67"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U18",
+    "family": "cross_company_software",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "NVDA CUDA/库工具、NVLink/InfiniBand/Ethernet及系统协同",
+      "FY2025付费AI Enterprise/vGPU和DGX Cloud、公司自报590万开发者；FY2026支持6000应用",
+      "AMD ROCm工具与开放生态、Infinity Fabric/Pensando网络",
+      "Silo完成、FY2024 ZT拟收购、FY2025完成收购并出售制造，MI350X部署与Helios预览区分",
+      "厂商自述不是独立性能或迁移成本测试"
+    ],
+    "expected_limits": [
+      "缺同条件独立测试、迁移项目和可比软件收入",
+      "应用数不是付费客户数"
+    ],
+    "material_errors": [
+      "开放等于无迁移成本",
+      "计划当商用",
+      "财务或生态自述直接证明性能胜负"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "NVDA24.59"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "NVDA25.87"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "NVDA25.108"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "NVDA26.71"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "NVDA26.84"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "AMD23.80"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "AMD24.52"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "AMD24.54"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "AMD25.49"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "AMD25.50"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "AMD25.52"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "AMD25.46"
+          }
+        ]
+      },
+      {
+        "criterion": "软件、商业化、互连、产品状态",
+        "alternatives": [
+          {
+            "alias": "AMD25.70"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U19",
+    "family": "supply_commitments",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "NVDA晶圆TSMC/Samsung、内存供应商和CoWoS；AMD先进节点TSMC及其他厂商/封测",
+      "两家三年库存和采购义务；NVDA可用预付款见长短期拆分",
+      "AMD旧承诺已有软件/技术/IP，2025明确含云服务；不能把增加全部归云",
+      "H20费用4,500与MI308800−360=440及需求/产能/许可风险机制",
+      "承诺期限可取消性产品及财年不同，不据绝对金额排名风险"
+    ],
+    "expected_limits": [
+      "AMD HBM供应商份额与双方完整同口径预付不足"
+    ],
+    "material_errors": [
+      "供货商可无条件互换",
+      "库存预付义务费用重复加总",
+      "转回相关费用概括为所有库存可重估"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "供应安排",
+        "alternatives": [
+          {
+            "alias": "NVDA24.117"
+          }
+        ]
+      },
+      {
+        "criterion": "供应安排",
+        "alternatives": [
+          {
+            "alias": "AMD25.151"
+          }
+        ]
+      },
+      {
+        "criterion": "供应安排",
+        "alternatives": [
+          {
+            "alias": "AMD25.292"
+          }
+        ]
+      },
+      {
+        "criterion": "库存：Inventories",
+        "alternatives": [
+          {
+            "alias": "NVDA24.711",
+            "row": "Inventories"
+          }
+        ]
+      },
+      {
+        "criterion": "库存：Inventories",
+        "alternatives": [
+          {
+            "alias": "NVDA25.735",
+            "row": "Inventories"
+          }
+        ]
+      },
+      {
+        "criterion": "库存：Inventories",
+        "alternatives": [
+          {
+            "alias": "NVDA26.718",
+            "row": "Inventories"
+          }
+        ]
+      },
+      {
+        "criterion": "库存：Inventories",
+        "alternatives": [
+          {
+            "alias": "AMD23.617",
+            "row": "Inventories"
+          }
+        ]
+      },
+      {
+        "criterion": "库存：Inventories",
+        "alternatives": [
+          {
+            "alias": "AMD24.609",
+            "row": "Inventories"
+          }
+        ]
+      },
+      {
+        "criterion": "库存：Inventories",
+        "alternatives": [
+          {
+            "alias": "AMD25.612",
+            "row": "Inventories"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "NVDA24.994"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "NVDA25.1000"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "NVDA26.695"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "AMD23.956"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "AMD24.923"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "AMD25.847"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "AMD24.921"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "AMD25.573"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "NVDA24.949"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "NVDA25.960"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "NVDA26.148"
+          }
+        ]
+      },
+      {
+        "criterion": "承诺、预付及损失",
+        "alternatives": [
+          {
+            "alias": "AMD25.491"
+          }
+        ]
+      },
+      {
+        "criterion": "长期预付：Prepaid supply and capacity agreements (1)",
+        "alternatives": [
+          {
+            "alias": "NVDA24.948",
+            "row": "Prepaid supply and capacity agreements (1)"
+          }
+        ]
+      },
+      {
+        "criterion": "长期预付：Prepaid supply and capacity agreements (1)",
+        "alternatives": [
+          {
+            "alias": "NVDA25.959",
+            "row": "Prepaid supply and capacity agreements (1)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "U20",
+    "family": "cross_company_profitability",
+    "split": "dev",
+    "answerability": "partial",
+    "mandatory_facts": [
+      "两公司三年GAAP毛利率、经营利润率、R&D绝对额及收入比",
+      "NVDA利润率和R&D金额较高，AMD R&D费用率较高，但不等于技术强弱",
+      "AMD25销售成本摊销2.98pp、MI3081.27pp；全部摊销经营率6.51pp、SBC4.73pp",
+      "NVDA26 H20初始费用2.08pp、SBC2.96pp；不把准备释放全归H20",
+      "规模组合及会计因果不能唯一分解，调整非正式non-GAAP"
+    ],
+    "expected_limits": [
+      "非现金不等于无经济成本",
+      "AMD合并利润此处为持续经营，分部不是合并GAAP"
+    ],
+    "material_errors": [
+      "全部All Other加回毛利",
+      "摊销重复计入",
+      "剩余差异等于护城河",
+      "投入等于产出"
+    ],
+    "evidence_groups": [
+      {
+        "criterion": "GAAP表原数：Revenue",
+        "alternatives": [
+          {
+            "alias": "NVDA26.706",
+            "row": "Revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "GAAP表原数：Gross profit",
+        "alternatives": [
+          {
+            "alias": "NVDA26.706",
+            "row": "Gross profit"
+          }
+        ]
+      },
+      {
+        "criterion": "GAAP表原数：Operating income",
+        "alternatives": [
+          {
+            "alias": "NVDA26.706",
+            "row": "Operating income"
+          }
+        ]
+      },
+      {
+        "criterion": "GAAP表原数：Research and development",
+        "alternatives": [
+          {
+            "alias": "NVDA26.706",
+            "row": "Research and development"
+          }
+        ]
+      },
+      {
+        "criterion": "GAAP表原数：Net revenue",
+        "alternatives": [
+          {
+            "alias": "AMD25.602",
+            "row": "Net revenue"
+          }
+        ]
+      },
+      {
+        "criterion": "GAAP表原数：Gross profit",
+        "alternatives": [
+          {
+            "alias": "AMD25.602",
+            "row": "Gross profit"
+          }
+        ]
+      },
+      {
+        "criterion": "GAAP表原数：Operating income",
+        "alternatives": [
+          {
+            "alias": "AMD25.602",
+            "row": "Operating income"
+          }
+        ]
+      },
+      {
+        "criterion": "GAAP表原数：Research and development",
+        "alternatives": [
+          {
+            "alias": "AMD25.602",
+            "row": "Research and development"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD成本摊销：Amortization of acquisition-related intangibles | 1,031",
+        "alternatives": [
+          {
+            "alias": "AMD25.602",
+            "row": "Amortization of acquisition-related intangibles | 1,031"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD成本摊销：Amortization of acquisition-related intangibles | 1,223",
+        "alternatives": [
+          {
+            "alias": "AMD25.602",
+            "row": "Amortization of acquisition-related intangibles | 1,223"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD All Other",
+        "alternatives": [
+          {
+            "alias": "AMD25.723"
+          }
+        ]
+      },
+      {
+        "criterion": "AMD MI308",
+        "alternatives": [
+          {
+            "alias": "AMD25.481"
+          }
+        ]
+      },
+      {
+        "criterion": "NVDA SBC：Stock-based compensation expense",
+        "alternatives": [
+          {
+            "alias": "NVDA26.729",
+            "row": "Stock-based compensation expense"
+          }
+        ]
+      },
+      {
+        "criterion": "组合与费用驱动",
+        "alternatives": [
+          {
+            "alias": "NVDA25.579"
+          }
+        ]
+      },
+      {
+        "criterion": "组合与费用驱动",
+        "alternatives": [
+          {
+            "alias": "NVDA26.558"
+          }
+        ]
+      },
+      {
+        "criterion": "组合与费用驱动",
+        "alternatives": [
+          {
+            "alias": "NVDA26.559"
+          }
+        ]
+      }
+    ]
+  }
+]

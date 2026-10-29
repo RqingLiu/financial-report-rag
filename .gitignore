@@ -1,0 +1,38 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+data/raw/
+data/processed/
+data/cache/
+logs/
+.DS_Store
+
+# Shared specs/templates/skills belong in Git; local cursors and runs do not.
+.specify/feature.json
+.specify/cache/
+.specify/logs/
+.specify/runs/
+.agents/*
+!.agents/skills/
+.codex/auth.json
+.codex/history.jsonl
+.codex/sessions/
+.codex/log/
+
+# ANN benchmark local vector snapshots are reproducible caches, not source/reports.
+reports/ann_scale/*/source_vectors.npy
+reports/ann_scale/*/queries.json
+
+# Public source tree: retain compact navigation/results, keep full local experiment artifacts.
+/reports/**
+!/reports/README.md
+!/reports/test_release.json
+!/reports/public/
+!/reports/public/**
+/docs/local/
+/data/generalization/processed/

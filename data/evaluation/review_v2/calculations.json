@@ -1,0 +1,416 @@
+{
+  "status": "draft_pending_human",
+  "year_order": "descending; MU/NVDA FY2026/2025/2024, AMD FY2025/2024/2023",
+  "notes": [
+    "Dollar values USD millions; cash capex inputs retain negative outflow sign",
+    "NVDA reported purchase row includes intangible assets; not exact PPE-only capex",
+    "AMD total FCF includes continuing and discontinued PPE outflows"
+  ],
+  "facts_and_calculations": {
+    "MU": {
+      "Revenue": [
+        133188,
+        37378,
+        25111
+      ],
+      "Gross margin": [
+        107504,
+        14873,
+        5613
+      ],
+      "Operating income": [
+        99340,
+        9770,
+        1304
+      ],
+      "Net income": [
+        84969,
+        8539,
+        778
+      ],
+      "Research and development": [
+        5650,
+        3798,
+        3430
+      ],
+      "OCF": [
+        89675,
+        17525,
+        8507
+      ],
+      "cash_capex_line": [
+        -30712,
+        -15857,
+        -8386
+      ],
+      "SBC": [
+        1333,
+        972,
+        833
+      ],
+      "gross_margin_pct": [
+        80.71598041865633,
+        39.79078602386431,
+        22.352753773246782
+      ],
+      "operating_margin_pct": [
+        74.58629906598192,
+        26.138370164267748,
+        5.192943331607662
+      ],
+      "rd_pct": [
+        4.242123915067424,
+        10.161057306436941,
+        13.659352475010952
+      ],
+      "OCF_minus_reported_capex": [
+        58963,
+        1668,
+        121
+      ],
+      "products": {
+        "DRAM": [
+          100679,
+          28578,
+          17603
+        ],
+        "NAND": [
+          31785,
+          8503,
+          7227
+        ],
+        "Other (primarily NOR)": [
+          724,
+          297,
+          281
+        ]
+      },
+      "previous_products": {
+        "DRAM": [
+          17603,
+          10978,
+          22386
+        ],
+        "NAND": [
+          7227,
+          4206,
+          7811
+        ]
+      },
+      "product_share_pct": {
+        "DRAM": [
+          75.592,
+          76.457,
+          70.101
+        ],
+        "NAND": [
+          23.865,
+          22.749,
+          28.78
+        ],
+        "Other (primarily NOR)": [
+          0.544,
+          0.795,
+          1.119
+        ]
+      },
+      "product_yoy_pct": {
+        "DRAM": [
+          252.295,
+          62.347,
+          60.348
+        ],
+        "NAND": [
+          273.809,
+          17.656,
+          71.826
+        ]
+      },
+      "inventory_end_desc": [
+        10372,
+        8355,
+        8875
+      ],
+      "inventory_begin_desc": [
+        8355,
+        8875,
+        8387
+      ],
+      "cogs_desc": [
+        25684,
+        22505,
+        19498
+      ],
+      "fiscal_days_desc": [
+        371,
+        364,
+        364
+      ],
+      "DIO_desc": [
+        135.254,
+        139.341,
+        161.129
+      ]
+    },
+    "NVDA": {
+      "Revenue": [
+        215938,
+        130497,
+        60922
+      ],
+      "Gross profit": [
+        153463,
+        97858,
+        44301
+      ],
+      "Operating income": [
+        130387,
+        81453,
+        32972
+      ],
+      "Net income": [
+        120067,
+        72880,
+        29760
+      ],
+      "Research and development": [
+        18497,
+        12914,
+        8675
+      ],
+      "OCF": [
+        102718,
+        64089,
+        28090
+      ],
+      "cash_capex_line": [
+        -6042,
+        -3236,
+        -1069
+      ],
+      "SBC": [
+        6386,
+        4737,
+        3549
+      ],
+      "gross_margin_pct": [
+        71.06808435754708,
+        74.98869705816992,
+        72.71757329043696
+      ],
+      "operating_margin_pct": [
+        60.38168363141272,
+        62.417526839697466,
+        54.121663766783755
+      ],
+      "rd_pct": [
+        8.565884652076058,
+        9.896012935163261,
+        14.239519385443684
+      ],
+      "OCF_minus_reported_capex": [
+        96676,
+        60853,
+        27021
+      ],
+      "data_center": [
+        193737,
+        115186,
+        47525
+      ],
+      "data_center_share": [
+        89.718808176421,
+        88.26716322980604,
+        78.00958602803586
+      ],
+      "data_center_yoy": [
+        68.19491952146963,
+        142.36927932667015,
+        216.72775741419525
+      ],
+      "AR_desc": [
+        38466,
+        23065,
+        9999
+      ],
+      "AR_pct_revenue": [
+        17.813,
+        17.675,
+        16.413
+      ],
+      "OCF_pct_revenue": [
+        47.568,
+        49.111,
+        46.108
+      ],
+      "DSO_average_proxy_desc": [
+        51.86,
+        46.113,
+        41.304
+      ]
+    },
+    "AMD": {
+      "Net revenue": [
+        34639,
+        25785,
+        22680
+      ],
+      "Gross profit": [
+        17152,
+        12725,
+        10460
+      ],
+      "Operating income": [
+        3694,
+        1900,
+        401
+      ],
+      "Net income": [
+        4335,
+        1641,
+        854
+      ],
+      "Research and development": [
+        8091,
+        6456,
+        5872
+      ],
+      "OCF": [
+        7709,
+        3041,
+        1667
+      ],
+      "cash_capex_line": [
+        -974,
+        -636,
+        -546
+      ],
+      "SBC": [
+        1638,
+        1407,
+        1384
+      ],
+      "gross_margin_pct": [
+        49.51644100580271,
+        49.350397517936784,
+        46.119929453262785
+      ],
+      "operating_margin_pct": [
+        10.664280146655504,
+        7.368625169672289,
+        1.7680776014109347
+      ],
+      "rd_pct": [
+        23.358064609255464,
+        25.03781268179174,
+        25.89065255731922
+      ],
+      "segments_revenue": {
+        "Data Center": [
+          16635,
+          12579,
+          6496
+        ],
+        "Client": [
+          10640,
+          7054,
+          4651
+        ],
+        "Gaming": [
+          3910,
+          2595,
+          6212
+        ],
+        "Total Client and Gaming": [
+          14550,
+          9649,
+          10863
+        ],
+        "Embedded": [
+          3454,
+          3557,
+          5321
+        ]
+      },
+      "DC_share": [
+        48.024,
+        48.784,
+        28.642
+      ],
+      "DC_yoy": [
+        32.244,
+        93.642,
+        7.496
+      ],
+      "continuing_OCF": [
+        6493,
+        3041,
+        1667
+      ],
+      "discontinued_OCF": [
+        1216,
+        0,
+        0
+      ],
+      "discontinued_capex": [
+        -38,
+        0,
+        0
+      ],
+      "FCF_continuing_desc": [
+        5519,
+        2405,
+        1121
+      ],
+      "FCF_total_desc": [
+        6697,
+        2405,
+        1121
+      ],
+      "invalid_mixed_scope_example": {
+        "values": [
+          6735,
+          2405,
+          1121
+        ],
+        "reason": "Total OCF minus continuing-only PPE; not the total or continuing FCF. Use FCF_total_desc or FCF_continuing_desc."
+      }
+    }
+  },
+  "formulas": {
+    "revenue_share_pct": "product_revenue / total_revenue * 100",
+    "yoy_pct": "(current / prior - 1) * 100",
+    "gross_margin_pct": "gross_profit / revenue * 100",
+    "operating_margin_pct": "operating_income / revenue * 100",
+    "DIO": "(begin_inventory + end_inventory) / 2 / annual_COGS * fiscal_days",
+    "DSO_proxy": "(begin_net_AR + end_net_AR) / 2 / total_revenue * 364; total revenue is not credit sales",
+    "FCF_proxy": "OCF + signed_PPE_cash_outflow; match continuing/total scope",
+    "NVDA_alternative_only": "OCF + signed_combined_PPE_and_intangible_cash_purchase_line; NOT strict PPE-only FCF"
+  },
+  "table_sources": {
+    "MU": [
+      "MU26.759",
+      "MU26.780",
+      "MU26.986",
+      "MU26.766",
+      "MU24.713",
+      "MU24.958",
+      "MU26.614"
+    ],
+    "NVDA": [
+      "NVDA26.706",
+      "NVDA26.729",
+      "NVDA26.1076",
+      "NVDA26.718",
+      "NVDA25.735",
+      "NVDA24.711",
+      "NVDA24.1081"
+    ],
+    "AMD": [
+      "AMD25.602",
+      "AMD25.622",
+      "AMD25.721",
+      "AMD23.727"
+    ]
+  }
+}

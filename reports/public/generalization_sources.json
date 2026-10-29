@@ -1,0 +1,93 @@
+{
+  "as_of": "2026-10-28",
+  "manifest": "data/generalization/sources.jsonl",
+  "source_manifest_sha256": "050742e4d0a351b4cae57e26c911087903c3c03a8753d6be6f4cfbeb6b87b767",
+  "index_id": "e7fc13a07ce9d588",
+  "documents": [
+    {
+      "document_id": "GOOGL_FY2025",
+      "filed_at": "2026-02-05",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+      "source_sha256": "f47917b541d1b973525e851cdde8edcea07dd0410e73457c3730125b18a94872",
+      "raw_bytes": 2616974,
+      "blocks": 1332,
+      "chunks": 447,
+      "tables": 181,
+      "images_unverified": 2,
+      "proxy_tokens": 111981,
+      "max_chunk_proxy_tokens": 698,
+      "source_coverage": "passed for parsed non-image non-whitespace text"
+    },
+    {
+      "document_id": "GOOGL_FY2024",
+      "filed_at": "2025-02-05",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm",
+      "source_sha256": "2e6389cad289f322fd53ff1b0c9da6675e10c9f0da61928087014d4595d0c0e3",
+      "raw_bytes": 2528819,
+      "blocks": 1378,
+      "chunks": 449,
+      "tables": 180,
+      "images_unverified": 2,
+      "proxy_tokens": 113441,
+      "max_chunk_proxy_tokens": 732,
+      "source_coverage": "passed for parsed non-image non-whitespace text"
+    },
+    {
+      "document_id": "GOOGL_FY2023",
+      "filed_at": "2024-01-31",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204424000022/goog-20231231.htm",
+      "source_sha256": "019ebb67340294d7d732f3c1caf5cdd291606b9da32dc08c6cb6b0f1f78d8892",
+      "raw_bytes": 2410878,
+      "blocks": 1350,
+      "chunks": 452,
+      "tables": 178,
+      "images_unverified": 2,
+      "proxy_tokens": 110188,
+      "max_chunk_proxy_tokens": 659,
+      "source_coverage": "passed for parsed non-image non-whitespace text"
+    },
+    {
+      "document_id": "AMZN_FY2025",
+      "filed_at": "2026-02-06",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+      "source_sha256": "401bfac8bd2037f52d7cabbe61a76db59603eb3d5a0f64ad4e82359d525e6fe7",
+      "raw_bytes": 1968817,
+      "blocks": 937,
+      "chunks": 288,
+      "tables": 90,
+      "images_unverified": 0,
+      "proxy_tokens": 90985,
+      "max_chunk_proxy_tokens": 707,
+      "source_coverage": "passed for parsed non-image non-whitespace text"
+    },
+    {
+      "document_id": "AMZN_FY2024",
+      "filed_at": "2025-02-07",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm",
+      "source_sha256": "f6261bbcb18226e5a0b70415e235d76949491552654445356f1af7389eb009a4",
+      "raw_bytes": 1922830,
+      "blocks": 923,
+      "chunks": 283,
+      "tables": 89,
+      "images_unverified": 0,
+      "proxy_tokens": 89162,
+      "max_chunk_proxy_tokens": 753,
+      "source_coverage": "passed for parsed non-image non-whitespace text"
+    },
+    {
+      "document_id": "AMZN_FY2023",
+      "filed_at": "2024-02-02",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm",
+      "source_sha256": "4f41b9a58aeed51dccd3b450e6810b2264b3d17088a64e1f2d0486a8c96207a5",
+      "raw_bytes": 1945653,
+      "blocks": 928,
+      "chunks": 283,
+      "tables": 91,
+      "images_unverified": 0,
+      "proxy_tokens": 90115,
+      "max_chunk_proxy_tokens": 742,
+      "source_coverage": "passed for parsed non-image non-whitespace text"
+    }
+  ],
+  "new_embedding_list_cost_usd": "0.01320294"
+}

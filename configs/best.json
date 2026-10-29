@@ -1,0 +1,23 @@
+{
+  "config": {
+    "name": "structure_512_table_context_hybrid_domain",
+    "index_name": "structure_512_table_context",
+    "method": "hybrid",
+    "query_language": "original",
+    "dense_k": 30,
+    "fts_k": 30,
+    "rrf_c": 60,
+    "grouped": true,
+    "expand_parent": false,
+    "context_budget_tokens": 8000,
+    "tree_sections": 3,
+    "domain_query": true
+  },
+  "selected_on": "dev macro recall@10, then recall@5, then context cost",
+  "selected_at": "2026-10-11T23:26:08.227989+00:00",
+  "dev_recall_at10": 0.9466666666666667,
+  "dataset_sha256": "a583c3b96f74b96613708ef5e6df513df604ff859dfb0685378f66f04078404b",
+  "grid_sha256": "c7f58373217ee6615853f9c21e71830bcc77aaaaf75c6824f7163c8c7a39416f",
+  "test_read_for_selection": false,
+  "retrieval_code_sha256": "ee38bed2a0a5ea1f8f755a7bab6223f6f05de69c5204d809832f0102229693e9"
+}

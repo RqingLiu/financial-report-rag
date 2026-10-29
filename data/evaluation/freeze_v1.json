@@ -1,0 +1,36 @@
+{
+  "version": "golden-v1",
+  "sha256": "a583c3b96f74b96613708ef5e6df513df604ff859dfb0685378f66f04078404b",
+  "spec_sha256": "469cbee1f502742ee1cb160d5bfaf41fa41fa4e202cc35074ced33c9abf65dab",
+  "prompt_sha256": "cecd4d8fd7db040bc8e811bf85416006022ed3b50eae619e5fdd58033dbf6ffe",
+  "count": 60,
+  "splits": {
+    "dev": 30,
+    "test": 30
+  },
+  "categories": {
+    "table": 18,
+    "cross_company": 6,
+    "text": 10,
+    "cross_year": 8,
+    "footnote": 7,
+    "amendment": 1,
+    "boundary": 10
+  },
+  "source_documents": [
+    "AMD_FY2023",
+    "AMD_FY2024",
+    "AMD_FY2025",
+    "AMD_FY2025_A_0000002488-26-000021",
+    "MU_FY2024",
+    "MU_FY2025",
+    "MU_FY2026",
+    "NVDA_FY2024",
+    "NVDA_FY2025",
+    "NVDA_FY2026"
+  ],
+  "review": "GPT source checked, human approval still pending",
+  "generation": "Current GPT conversation; fixed specs imported into RAGAS Testset",
+  "llm_api_used": false,
+  "frozen_before_retrieval_tuning": true
+}

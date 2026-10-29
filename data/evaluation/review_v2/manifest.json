@@ -1,0 +1,37 @@
+{
+  "version": "user-seed-reference-drafts-v2",
+  "status": "pending_human_review",
+  "created_date": "2026-10-25",
+  "generation": "offline current GPT conversation; authored answer specs plus deterministic arithmetic; not runtime retrieval results",
+  "generation_api_called": false,
+  "database_called": false,
+  "cases": 20,
+  "evidence_blocks": 153,
+  "sources_checked": {
+    "MU_FY2026": "02614fff54223e2c5aad03618a0ac1a9e1c445151a166fd738875fd123f6b89d",
+    "MU_FY2024": "709975ad6c638f2cdb33c4e69b1966d1fb611f4f440239d1d3638c60f238d00c",
+    "MU_FY2025": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+    "NVDA_FY2024": "ef68081f90c4d2ae0920d3d359360b8893ffd422439cfa6bb2a9cf1b6f7ccb92",
+    "NVDA_FY2026": "63458b8a89dcf7317d9adab6bb8a2edfe1d5b3d51c7de62a977389941584cebd",
+    "NVDA_FY2025": "4c8a513740a211865018e27462f570c4b858d1de644ff0ea3dcc14ea3066e970",
+    "AMD_FY2025": "b2a1cd60c4944e7f9b9ac542d9ea725b14c3b7e899f36221a0bc424236944be1",
+    "AMD_FY2024": "00fdd8c0a0aed30b7430ba524ce3c0e7bcb54f06f112a6753578b8247a805901",
+    "AMD_FY2023": "3f857981468517010a6de7e4279c71f479ccad9a7e04a6c7de1a28b457cbe903"
+  },
+  "seed_sha256": "a3190d8570be81d4786d05c0b62baa163b76163305f0fffd36f1216ce960429e",
+  "draft_spec_sha256": "4a617b7c5a90a8541d40a2f6f176b42e900009cf6472f3da743fc5d91d9b798d",
+  "outputs_sha256": {
+    "reference_drafts.jsonl": "71bcd96a9474b3526e9ab2db1ccaf2f0c7328e174eb6cbeeaaa75a368daf8c24",
+    "evidence_catalog.jsonl": "9b3f62badbc6f6edb1b511037e61b1bbbcc9a2b2edf846185e64e68f274fefcf",
+    "review.md": "2d4f6c8c03c7f97973255468eaaa323094f9c87d58967f3e501bd421eed82bc3",
+    "calculations.json": "6f2cdc8922802acfe8bf372b7c21ed36b26e0e08301a392fc6b35ce583c2ab43"
+  },
+  "scope_limitations": [
+    "Development material, not an independent holdout",
+    "Evidence list is not yet a complete gold qrels or mandatory/alternative evidence-group annotation",
+    "Raw DOM/source-span checks do not prove semantic correctness or disclosure absence",
+    "U16 currently/latest intent remains to be clarified; no current external market-share data added",
+    "No retrieval-quality, RAGAS LLM-judge, or production-system result is claimed"
+  ],
+  "calculation_fixture": "Offline annotation arithmetic and inputs; not a deployed financial tool or automatic claim verification"
+}

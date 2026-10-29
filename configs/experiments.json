@@ -1,0 +1,196 @@
+[
+  {
+    "name": "recursive_384_plain_dense",
+    "index_name": "recursive_384_plain"
+  },
+  {
+    "name": "recursive_384_plain_hybrid_group_parent",
+    "index_name": "recursive_384_plain",
+    "method": "hybrid",
+    "grouped": true,
+    "expand_parent": true
+  },
+  {
+    "name": "recursive_768_context_dense",
+    "index_name": "recursive_768_context"
+  },
+  {
+    "name": "recursive_768_context_hybrid_group_parent",
+    "index_name": "recursive_768_context",
+    "method": "hybrid",
+    "grouped": true,
+    "expand_parent": true
+  },
+  {
+    "name": "structure_512_context_dense",
+    "index_name": "structure_512_context"
+  },
+  {
+    "name": "structure_512_context_hybrid_group_parent",
+    "index_name": "structure_512_context",
+    "method": "hybrid",
+    "grouped": true,
+    "expand_parent": true
+  },
+  {
+    "name": "structure_900_context_dense",
+    "index_name": "structure_900_context"
+  },
+  {
+    "name": "structure_900_context_hybrid_group_parent",
+    "index_name": "structure_900_context",
+    "method": "hybrid",
+    "grouped": true,
+    "expand_parent": true
+  },
+  {
+    "name": "structure512_dense_group_parent",
+    "index_name": "structure_512_context",
+    "method": "dense",
+    "grouped": true,
+    "expand_parent": true
+  },
+  {
+    "name": "structure512_fts_group_parent",
+    "index_name": "structure_512_context",
+    "method": "fts",
+    "grouped": true,
+    "expand_parent": true
+  },
+  {
+    "name": "structure512_tree_group_parent",
+    "index_name": "structure_512_context",
+    "method": "tree",
+    "grouped": true,
+    "expand_parent": true
+  },
+  {
+    "name": "structure512_dense_parent",
+    "index_name": "structure_512_context",
+    "expand_parent": true
+  },
+  {
+    "name": "structure512_hybrid_group",
+    "index_name": "structure_512_context",
+    "method": "hybrid",
+    "grouped": true
+  },
+  {
+    "name": "structure512_manual_english",
+    "index_name": "structure_512_context",
+    "method": "hybrid",
+    "grouped": true,
+    "expand_parent": true,
+    "query_language": "english"
+  },
+  {
+    "name": "recursive_768_context_dense_domain",
+    "index_name": "recursive_768_context",
+    "method": "dense",
+    "grouped": true,
+    "expand_parent": false,
+    "domain_query": true
+  },
+  {
+    "name": "recursive_768_context_dense_domain_parent",
+    "index_name": "recursive_768_context",
+    "method": "dense",
+    "grouped": true,
+    "expand_parent": true,
+    "domain_query": true
+  },
+  {
+    "name": "recursive_768_context_hybrid_domain",
+    "index_name": "recursive_768_context",
+    "method": "hybrid",
+    "grouped": true,
+    "expand_parent": false,
+    "domain_query": true
+  },
+  {
+    "name": "recursive_768_context_hybrid_domain_parent",
+    "index_name": "recursive_768_context",
+    "method": "hybrid",
+    "grouped": true,
+    "expand_parent": true,
+    "domain_query": true
+  },
+  {
+    "name": "structure_512_context_dense_domain",
+    "index_name": "structure_512_context",
+    "method": "dense",
+    "grouped": true,
+    "expand_parent": false,
+    "domain_query": true
+  },
+  {
+    "name": "structure_512_context_dense_domain_parent",
+    "index_name": "structure_512_context",
+    "method": "dense",
+    "grouped": true,
+    "expand_parent": true,
+    "domain_query": true
+  },
+  {
+    "name": "structure_512_context_hybrid_domain",
+    "index_name": "structure_512_context",
+    "method": "hybrid",
+    "grouped": true,
+    "expand_parent": false,
+    "domain_query": true
+  },
+  {
+    "name": "structure_512_context_hybrid_domain_parent",
+    "index_name": "structure_512_context",
+    "method": "hybrid",
+    "grouped": true,
+    "expand_parent": true,
+    "domain_query": true
+  },
+  {
+    "name": "structure_512_table_context_dense_domain",
+    "index_name": "structure_512_table_context",
+    "method": "dense",
+    "grouped": true,
+    "expand_parent": false,
+    "domain_query": true
+  },
+  {
+    "name": "structure_512_table_context_dense_domain_parent",
+    "index_name": "structure_512_table_context",
+    "method": "dense",
+    "grouped": true,
+    "expand_parent": true,
+    "domain_query": true
+  },
+  {
+    "name": "structure_512_table_context_hybrid_domain",
+    "index_name": "structure_512_table_context",
+    "method": "hybrid",
+    "grouped": true,
+    "expand_parent": false,
+    "domain_query": true
+  },
+  {
+    "name": "structure_512_table_context_hybrid_domain_parent",
+    "index_name": "structure_512_table_context",
+    "method": "hybrid",
+    "grouped": true,
+    "expand_parent": true,
+    "domain_query": true
+  },
+  {
+    "name": "structure_table_raw_dense_parent",
+    "index_name": "structure_512_table_context",
+    "grouped": true,
+    "expand_parent": true
+  },
+  {
+    "name": "pageindex_markdown_tree_domain",
+    "index_name": "structure_512_table_context",
+    "method": "tree",
+    "grouped": true,
+    "expand_parent": true,
+    "domain_query": true
+  }
+]

@@ -1,0 +1,5222 @@
+[
+  {
+    "id": "N001",
+    "case_ids": [
+      "U01"
+    ],
+    "metric": "MU FY2026 DRAM收入占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "100679",
+        "alias": "MU26.986",
+        "row": "DRAM",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "133188",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "75.59164489293329729405051506",
+    "expected": "75.59",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N002",
+    "case_ids": [
+      "U01",
+      "U05"
+    ],
+    "metric": "MU FY2026 DRAM同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "100679",
+        "alias": "MU26.986",
+        "row": "DRAM",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "28578",
+        "alias": "MU26.986",
+        "row": "DRAM",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "252.2954720414304709916719155",
+    "expected": "252.30",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N003",
+    "case_ids": [
+      "U01"
+    ],
+    "metric": "MU FY2026 NAND收入占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "31785",
+        "alias": "MU26.986",
+        "row": "NAND",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "133188",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "23.86476259122443463375078836",
+    "expected": "23.86",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N004",
+    "case_ids": [
+      "U01",
+      "U05"
+    ],
+    "metric": "MU FY2026 NAND同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "31785",
+        "alias": "MU26.986",
+        "row": "NAND",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "8503",
+        "alias": "MU26.986",
+        "row": "NAND",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "273.8092437963071856991650006",
+    "expected": "273.81",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N005",
+    "case_ids": [
+      "U01"
+    ],
+    "metric": "MU FY2026 Other (primarily NOR)收入占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "724",
+        "alias": "MU26.986",
+        "row": "Other (primarily NOR)",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "133188",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "0.5435925158422680721986965793",
+    "expected": "0.54",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N006",
+    "case_ids": [
+      "U02"
+    ],
+    "metric": "MU FY2026平均库存DIO",
+    "operation": "avg_days",
+    "inputs": [
+      {
+        "value": "8355",
+        "alias": "MU26.766",
+        "row": "Inventories",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "10372",
+        "alias": "MU26.766",
+        "row": "Inventories",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25684",
+        "alias": "MU26.759",
+        "row": "Cost of goods sold",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "371",
+        "alias": "MU26.614",
+        "source_phrase": "Fiscal 2026 contained 53 weeks and fiscal 2025 and 2024 each contained 52 weeks.",
+        "unit": "fiscal_days",
+        "fiscal_year": 2026
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "days",
+    "decimal_places": 2,
+    "exact_decimal": "135.2537961376732596168821056",
+    "expected": "135.25",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N007",
+    "case_ids": [
+      "U01",
+      "U02"
+    ],
+    "metric": "MU FY2026毛利率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "107504",
+        "alias": "MU26.759",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "133188",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "80.71598041865633540559209538",
+    "expected": "80.72",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N008",
+    "case_ids": [
+      "U02",
+      "U15"
+    ],
+    "metric": "MU FY2026现金余量",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "89675",
+        "alias": "MU26.780",
+        "row": "Net cash provided by operating activities",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-30712",
+        "alias": "MU26.780",
+        "row": "Expenditures for property, plant, and equipment",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "OCF_minus_gross_cash_PPE",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "58963",
+    "expected": "58963",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N009",
+    "case_ids": [
+      "U01"
+    ],
+    "metric": "MU FY2025 DRAM收入占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "28578",
+        "alias": "MU26.986",
+        "row": "DRAM",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "37378",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "76.45673925838728663919952913",
+    "expected": "76.46",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N010",
+    "case_ids": [
+      "U01",
+      "U05"
+    ],
+    "metric": "MU FY2025 DRAM同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "28578",
+        "alias": "MU26.986",
+        "row": "DRAM",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "17603",
+        "alias": "MU26.986",
+        "row": "DRAM",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "62.34732716014315741634948590",
+    "expected": "62.35",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N011",
+    "case_ids": [
+      "U01"
+    ],
+    "metric": "MU FY2025 NAND收入占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "8503",
+        "alias": "MU26.986",
+        "row": "NAND",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "37378",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "22.74867569158328428487345497",
+    "expected": "22.75",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N012",
+    "case_ids": [
+      "U01",
+      "U05"
+    ],
+    "metric": "MU FY2025 NAND同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "8503",
+        "alias": "MU26.986",
+        "row": "NAND",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "7227",
+        "alias": "MU26.986",
+        "row": "NAND",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "17.65601217656012176560121770",
+    "expected": "17.66",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N013",
+    "case_ids": [
+      "U01"
+    ],
+    "metric": "MU FY2025 Other (primarily NOR)收入占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "297",
+        "alias": "MU26.986",
+        "row": "Other (primarily NOR)",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "37378",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "0.7945850500294290759270158917",
+    "expected": "0.79",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N014",
+    "case_ids": [
+      "U02"
+    ],
+    "metric": "MU FY2025平均库存DIO",
+    "operation": "avg_days",
+    "inputs": [
+      {
+        "value": "8875",
+        "alias": "MU24.713",
+        "row": "Inventories",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "8355",
+        "alias": "MU26.766",
+        "row": "Inventories",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "22505",
+        "alias": "MU26.759",
+        "row": "Cost of goods sold",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "364",
+        "alias": "MU26.614",
+        "source_phrase": "Fiscal 2026 contained 53 weeks and fiscal 2025 and 2024 each contained 52 weeks.",
+        "unit": "fiscal_days",
+        "fiscal_year": 2025
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "days",
+    "decimal_places": 2,
+    "exact_decimal": "139.3405909797822706065318818",
+    "expected": "139.34",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N015",
+    "case_ids": [
+      "U01",
+      "U02"
+    ],
+    "metric": "MU FY2025毛利率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "14873",
+        "alias": "MU26.759",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "37378",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "39.79078602386430520627106854",
+    "expected": "39.79",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N016",
+    "case_ids": [
+      "U02",
+      "U15"
+    ],
+    "metric": "MU FY2025现金余量",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "17525",
+        "alias": "MU26.780",
+        "row": "Net cash provided by operating activities",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-15857",
+        "alias": "MU26.780",
+        "row": "Expenditures for property, plant, and equipment",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "OCF_minus_gross_cash_PPE",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "1668",
+    "expected": "1668",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N017",
+    "case_ids": [
+      "U01"
+    ],
+    "metric": "MU FY2024 DRAM收入占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "17603",
+        "alias": "MU26.986",
+        "row": "DRAM",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25111",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "70.10075265819760264425948787",
+    "expected": "70.10",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N018",
+    "case_ids": [
+      "U01",
+      "U05"
+    ],
+    "metric": "MU FY2024 DRAM同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "17603",
+        "alias": "MU26.986",
+        "row": "DRAM",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "10978",
+        "alias": "MU24.958",
+        "row": "DRAM",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "60.34796866460193113499726730",
+    "expected": "60.35",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N019",
+    "case_ids": [
+      "U01"
+    ],
+    "metric": "MU FY2024 NAND收入占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "7227",
+        "alias": "MU26.986",
+        "row": "NAND",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25111",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "28.78021584166301620803631874",
+    "expected": "28.78",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N020",
+    "case_ids": [
+      "U01",
+      "U05"
+    ],
+    "metric": "MU FY2024 NAND同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "7227",
+        "alias": "MU26.986",
+        "row": "NAND",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "4206",
+        "alias": "MU24.958",
+        "row": "NAND",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "71.82596291012838801711840230",
+    "expected": "71.83",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N021",
+    "case_ids": [
+      "U01"
+    ],
+    "metric": "MU FY2024 Other (primarily NOR)收入占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "281",
+        "alias": "MU26.986",
+        "row": "Other (primarily NOR)",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25111",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "1.119031500139381147704193381",
+    "expected": "1.12",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N022",
+    "case_ids": [
+      "U02"
+    ],
+    "metric": "MU FY2024平均库存DIO",
+    "operation": "avg_days",
+    "inputs": [
+      {
+        "value": "8387",
+        "alias": "MU24.713",
+        "row": "Inventories",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "8875",
+        "alias": "MU24.713",
+        "row": "Inventories",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "19498",
+        "alias": "MU26.759",
+        "row": "Cost of goods sold",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "364",
+        "alias": "MU26.614",
+        "source_phrase": "Fiscal 2026 contained 53 weeks and fiscal 2025 and 2024 each contained 52 weeks.",
+        "unit": "fiscal_days",
+        "fiscal_year": 2024
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "days",
+    "decimal_places": 2,
+    "exact_decimal": "161.1285260026669401989947687",
+    "expected": "161.13",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N023",
+    "case_ids": [
+      "U01",
+      "U02"
+    ],
+    "metric": "MU FY2024毛利率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "5613",
+        "alias": "MU26.759",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25111",
+        "alias": "MU26.759",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "22.35275377324678427780653897",
+    "expected": "22.35",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N024",
+    "case_ids": [
+      "U02",
+      "U15"
+    ],
+    "metric": "MU FY2024现金余量",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "8507",
+        "alias": "MU26.780",
+        "row": "Net cash provided by operating activities",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-8386",
+        "alias": "MU26.780",
+        "row": "Expenditures for property, plant, and equipment",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "OCF_minus_gross_cash_PPE",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "121",
+    "expected": "121",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N025",
+    "case_ids": [
+      "U03",
+      "U17"
+    ],
+    "metric": "NVDA FY2026数据中心占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "193737",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "215938",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "89.71880817642100973427557910",
+    "expected": "89.72",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N026",
+    "case_ids": [
+      "U03",
+      "U17"
+    ],
+    "metric": "NVDA FY2026数据中心同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "193737",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "115186",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "68.19491952146962304446720960",
+    "expected": "68.19",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N027",
+    "case_ids": [
+      "U04"
+    ],
+    "metric": "NVDA FY2026应收收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "38466",
+        "alias": "NVDA26.718",
+        "row": "Accounts receivable, net",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "215938",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "17.81344645222239716955792866",
+    "expected": "17.81",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N028",
+    "case_ids": [
+      "U04"
+    ],
+    "metric": "NVDA FY2026OCF收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "102718",
+        "alias": "NVDA26.729",
+        "row": "Net cash provided by operating activities",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "215938",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "47.56828348877918661838120201",
+    "expected": "47.57",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N029",
+    "case_ids": [
+      "U04"
+    ],
+    "metric": "NVDA FY2026平均应收DSO",
+    "operation": "avg_days",
+    "inputs": [
+      {
+        "value": "23065",
+        "alias": "NVDA25.735",
+        "row": "Accounts receivable, net",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "38466",
+        "alias": "NVDA26.718",
+        "row": "Accounts receivable, net",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "215938",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "364",
+        "unit": "fiscal_days",
+        "period_end": "2026-01-25",
+        "prior_period_end": "2025-01-26",
+        "date_source_alias": "NVDA26.718"
+      }
+    ],
+    "scope": "average_net_AR_over_total_revenue_proxy",
+    "unit": "days",
+    "decimal_places": 2,
+    "exact_decimal": "51.86045068491881929072233696",
+    "expected": "51.86",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N030",
+    "case_ids": [
+      "U15"
+    ],
+    "metric": "NVDA FY2026PPE加无形资产现金代理",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "102718",
+        "alias": "NVDA26.729",
+        "row": "Net cash provided by operating activities",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-6042",
+        "alias": "NVDA26.729",
+        "row": "Purchases related to property and equipment and intangible assets",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "not_strict_PPE_only",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "96676",
+    "expected": "96676",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N031",
+    "case_ids": [
+      "U03",
+      "U17"
+    ],
+    "metric": "NVDA FY2025数据中心占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "115186",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "130497",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "88.26716322980604918120723082",
+    "expected": "88.27",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N032",
+    "case_ids": [
+      "U03",
+      "U17"
+    ],
+    "metric": "NVDA FY2025数据中心同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "115186",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "47525",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "142.3692793266701735928458706",
+    "expected": "142.37",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N033",
+    "case_ids": [
+      "U04"
+    ],
+    "metric": "NVDA FY2025应收收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "23065",
+        "alias": "NVDA25.735",
+        "row": "Accounts receivable, net",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "130497",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "17.67473581768163252795083412",
+    "expected": "17.67",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N034",
+    "case_ids": [
+      "U04"
+    ],
+    "metric": "NVDA FY2025OCF收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "64089",
+        "alias": "NVDA26.729",
+        "row": "Net cash provided by operating activities",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "130497",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "49.11147382698452837996275776",
+    "expected": "49.11",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N035",
+    "case_ids": [
+      "U04"
+    ],
+    "metric": "NVDA FY2025平均应收DSO",
+    "operation": "avg_days",
+    "inputs": [
+      {
+        "value": "9999",
+        "alias": "NVDA24.711",
+        "row": "Accounts receivable, net",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "23065",
+        "alias": "NVDA25.735",
+        "row": "Accounts receivable, net",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "130497",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "364",
+        "unit": "fiscal_days",
+        "period_end": "2025-01-26",
+        "prior_period_end": "2024-01-28",
+        "date_source_alias": "NVDA25.735"
+      }
+    ],
+    "scope": "average_net_AR_over_total_revenue_proxy",
+    "unit": "days",
+    "decimal_places": 2,
+    "exact_decimal": "46.11330528671157191353057925",
+    "expected": "46.11",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N036",
+    "case_ids": [
+      "U15"
+    ],
+    "metric": "NVDA FY2025PPE加无形资产现金代理",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "64089",
+        "alias": "NVDA26.729",
+        "row": "Net cash provided by operating activities",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-3236",
+        "alias": "NVDA26.729",
+        "row": "Purchases related to property and equipment and intangible assets",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "not_strict_PPE_only",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "60853",
+    "expected": "60853",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N037",
+    "case_ids": [
+      "U03",
+      "U17"
+    ],
+    "metric": "NVDA FY2024数据中心占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "47525",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "60922",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "78.00958602803584911854502479",
+    "expected": "78.01",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N038",
+    "case_ids": [
+      "U03",
+      "U17"
+    ],
+    "metric": "NVDA FY2024数据中心同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "47525",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "15005",
+        "alias": "NVDA24.1081",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "216.7277574141952682439186938",
+    "expected": "216.73",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N039",
+    "case_ids": [
+      "U04"
+    ],
+    "metric": "NVDA FY2024应收收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "9999",
+        "alias": "NVDA24.711",
+        "row": "Accounts receivable, net",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "60922",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "16.41279012507796854994911526",
+    "expected": "16.41",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N040",
+    "case_ids": [
+      "U04"
+    ],
+    "metric": "NVDA FY2024OCF收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "28090",
+        "alias": "NVDA26.729",
+        "row": "Net cash provided by operating activities",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "60922",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "46.10813827517153080988805358",
+    "expected": "46.11",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N041",
+    "case_ids": [
+      "U04"
+    ],
+    "metric": "NVDA FY2024平均应收DSO",
+    "operation": "avg_days",
+    "inputs": [
+      {
+        "value": "3827",
+        "alias": "NVDA24.711",
+        "row": "Accounts receivable, net",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "9999",
+        "alias": "NVDA24.711",
+        "row": "Accounts receivable, net",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "60922",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "364",
+        "unit": "fiscal_days",
+        "period_end": "2024-01-28",
+        "prior_period_end": "2023-01-29",
+        "date_source_alias": "NVDA24.711"
+      }
+    ],
+    "scope": "average_net_AR_over_total_revenue_proxy",
+    "unit": "days",
+    "decimal_places": 2,
+    "exact_decimal": "41.30415941695939069630018712",
+    "expected": "41.30",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N042",
+    "case_ids": [
+      "U15"
+    ],
+    "metric": "NVDA FY2024PPE加无形资产现金代理",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "28090",
+        "alias": "NVDA26.729",
+        "row": "Net cash provided by operating activities",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-1069",
+        "alias": "NVDA26.729",
+        "row": "Purchases related to property and equipment and intangible assets",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "not_strict_PPE_only",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "27021",
+    "expected": "27021",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N043",
+    "case_ids": [
+      "U13",
+      "U17"
+    ],
+    "metric": "AMD FY2025数据中心占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "16635",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "34639",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "48.02390369236987210947198245",
+    "expected": "48.02",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N044",
+    "case_ids": [
+      "U13",
+      "U17"
+    ],
+    "metric": "AMD FY2025数据中心同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "16635",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "12579",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "32.24421655139518244693536850",
+    "expected": "32.24",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N045",
+    "case_ids": [
+      "U15"
+    ],
+    "metric": "AMD FY2025持续经营FCF",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "6493",
+        "alias": "AMD25.622",
+        "row": "Net cash provided by operating activities of continuing operations",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-974",
+        "alias": "AMD25.622",
+        "row": "Purchases of property and equipment",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "continuing_operations",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "5519",
+    "expected": "5519",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N046",
+    "case_ids": [
+      "U15"
+    ],
+    "metric": "AMD FY2025合计FCF",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "6493",
+        "alias": "AMD25.622",
+        "row": "Net cash provided by operating activities of continuing operations",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-974",
+        "alias": "AMD25.622",
+        "row": "Purchases of property and equipment",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "1216",
+        "alias": "AMD25.622",
+        "row": "Net cash provided by operating activities of discontinued operations",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-38",
+        "alias": "AMD25.622",
+        "row": "Purchases of property and equipment",
+        "occurrence": 1,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "continuing_plus_discontinued",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "6697",
+    "expected": "6697",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N047",
+    "case_ids": [
+      "U13",
+      "U17"
+    ],
+    "metric": "AMD FY2024数据中心占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "12579",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25785",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "48.78417684700407213496218732",
+    "expected": "48.78",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N048",
+    "case_ids": [
+      "U13",
+      "U17"
+    ],
+    "metric": "AMD FY2024数据中心同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "12579",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "6496",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "93.64224137931034482758620690",
+    "expected": "93.64",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N049",
+    "case_ids": [
+      "U15"
+    ],
+    "metric": "AMD FY2024持续经营FCF",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "3041",
+        "alias": "AMD25.622",
+        "row": "Net cash provided by operating activities of continuing operations",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-636",
+        "alias": "AMD25.622",
+        "row": "Purchases of property and equipment",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "continuing_operations",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "2405",
+    "expected": "2405",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N050",
+    "case_ids": [
+      "U15"
+    ],
+    "metric": "AMD FY2024合计FCF",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "3041",
+        "alias": "AMD25.622",
+        "row": "Net cash provided by operating activities of continuing operations",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-636",
+        "alias": "AMD25.622",
+        "row": "Purchases of property and equipment",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "0",
+        "alias": "AMD25.622",
+        "row": "Net cash provided by operating activities of discontinued operations",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "0",
+        "alias": "AMD25.622",
+        "row": "Purchases of property and equipment",
+        "occurrence": 1,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "continuing_plus_discontinued",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "2405",
+    "expected": "2405",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N051",
+    "case_ids": [
+      "U13",
+      "U17"
+    ],
+    "metric": "AMD FY2023数据中心占比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "6496",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "22680",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "28.64197530864197530864197531",
+    "expected": "28.64",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N052",
+    "case_ids": [
+      "U13",
+      "U17"
+    ],
+    "metric": "AMD FY2023数据中心同比",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "6496",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "6043",
+        "alias": "AMD23.727",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2022,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "7.496276683766341221247724600",
+    "expected": "7.50",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N053",
+    "case_ids": [
+      "U15"
+    ],
+    "metric": "AMD FY2023持续经营FCF",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "1667",
+        "alias": "AMD25.622",
+        "row": "Net cash provided by operating activities of continuing operations",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-546",
+        "alias": "AMD25.622",
+        "row": "Purchases of property and equipment",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "continuing_operations",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "1121",
+    "expected": "1121",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N054",
+    "case_ids": [
+      "U15"
+    ],
+    "metric": "AMD FY2023合计FCF",
+    "operation": "cash_residual",
+    "inputs": [
+      {
+        "value": "1667",
+        "alias": "AMD25.622",
+        "row": "Net cash provided by operating activities of continuing operations",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-546",
+        "alias": "AMD25.622",
+        "row": "Purchases of property and equipment",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "0",
+        "alias": "AMD25.622",
+        "row": "Net cash provided by operating activities of discontinued operations",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "0",
+        "alias": "AMD25.622",
+        "row": "Purchases of property and equipment",
+        "occurrence": 1,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "continuing_plus_discontinued",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "1121",
+    "expected": "1121",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N055",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "NVDA FY2026 毛利率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "153463",
+        "alias": "NVDA26.706",
+        "row": "Gross profit",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "215938",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "71.06808435754707369707971733",
+    "expected": "71.07",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N056",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "NVDA FY2026 经营利润率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "130387",
+        "alias": "NVDA26.706",
+        "row": "Operating income",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "215938",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "60.38168363141272031786901796",
+    "expected": "60.38",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N057",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "NVDA FY2026 研发收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "18497",
+        "alias": "NVDA26.706",
+        "row": "Research and development",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "215938",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "8.565884652076058868749363243",
+    "expected": "8.57",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N058",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "NVDA FY2025 毛利率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "97858",
+        "alias": "NVDA26.706",
+        "row": "Gross profit",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "130497",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "74.98869705816991961501030675",
+    "expected": "74.99",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N059",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "NVDA FY2025 经营利润率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "81453",
+        "alias": "NVDA26.706",
+        "row": "Operating income",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "130497",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "62.41752683969746430952435688",
+    "expected": "62.42",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N060",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "NVDA FY2025 研发收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "12914",
+        "alias": "NVDA26.706",
+        "row": "Research and development",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "130497",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "9.896012935163260458094822103",
+    "expected": "9.90",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N061",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "NVDA FY2024 毛利率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "44301",
+        "alias": "NVDA26.706",
+        "row": "Gross profit",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "60922",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "72.71757329043695216834641016",
+    "expected": "72.72",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N062",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "NVDA FY2024 经营利润率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "32972",
+        "alias": "NVDA26.706",
+        "row": "Operating income",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "60922",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "54.12166376678375627852007485",
+    "expected": "54.12",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N063",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "NVDA FY2024 研发收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "8675",
+        "alias": "NVDA26.706",
+        "row": "Research and development",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "60922",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "14.23951938544368208528938643",
+    "expected": "14.24",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N064",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD FY2025 毛利率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "17152",
+        "alias": "AMD25.602",
+        "row": "Gross profit",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "34639",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "49.51644100580270793036750484",
+    "expected": "49.52",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N065",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD FY2025 经营利润率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "3694",
+        "alias": "AMD25.602",
+        "row": "Operating income",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "34639",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "10.66428014665550391177574410",
+    "expected": "10.66",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N066",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD FY2025 研发收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "8091",
+        "alias": "AMD25.602",
+        "row": "Research and development",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "34639",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "23.35806460925546349490458731",
+    "expected": "23.36",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N067",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD FY2024 毛利率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "12725",
+        "alias": "AMD25.602",
+        "row": "Gross profit",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25785",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "49.35039751793678495249175877",
+    "expected": "49.35",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N068",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD FY2024 经营利润率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "1900",
+        "alias": "AMD25.602",
+        "row": "Operating income",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25785",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "7.368625169672290091138258678",
+    "expected": "7.37",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N069",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD FY2024 研发收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "6456",
+        "alias": "AMD25.602",
+        "row": "Research and development",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25785",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "25.03781268179173938336242001",
+    "expected": "25.04",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N070",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD FY2023 毛利率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "10460",
+        "alias": "AMD25.602",
+        "row": "Gross profit",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "22680",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "46.11992945326278659611992945",
+    "expected": "46.12",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N071",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD FY2023 经营利润率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "401",
+        "alias": "AMD25.602",
+        "row": "Operating income",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "22680",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "1.768077601410934744268077601",
+    "expected": "1.77",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N072",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD FY2023 研发收入比",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "5872",
+        "alias": "AMD25.602",
+        "row": "Research and development",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "22680",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "25.89065255731922398589065256",
+    "expected": "25.89",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N073",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2025 Data Center收入增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "16635",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "12579",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "4056",
+    "expected": "4056",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N074",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2025 Client |收入增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "10640",
+        "alias": "AMD25.721",
+        "row": "Client |",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "7054",
+        "alias": "AMD25.721",
+        "row": "Client |",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "3586",
+    "expected": "3586",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N075",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2025 Gaming |收入增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "3910",
+        "alias": "AMD25.721",
+        "row": "Gaming |",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "2595",
+        "alias": "AMD25.721",
+        "row": "Gaming |",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "1315",
+    "expected": "1315",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N076",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2025 Embedded收入增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "3454",
+        "alias": "AMD25.721",
+        "row": "Embedded",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "3557",
+        "alias": "AMD25.721",
+        "row": "Embedded",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "-103",
+    "expected": "-103",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N077",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2025 Total net revenue收入增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "34639",
+        "alias": "AMD25.721",
+        "row": "Total net revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25785",
+        "alias": "AMD25.721",
+        "row": "Total net revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "8854",
+    "expected": "8854",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N078",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2025 Data Center经营利润增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "3603",
+        "alias": "AMD25.721",
+        "row": "Data Center | $ | 3,603",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "3482",
+        "alias": "AMD25.721",
+        "row": "Data Center | $ | 3,603",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "121",
+    "expected": "121",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N079",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2025 Client and Gaming经营利润增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "2855",
+        "alias": "AMD25.721",
+        "row": "Client and Gaming | 2,855",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "1187",
+        "alias": "AMD25.721",
+        "row": "Client and Gaming | 2,855",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "1668",
+    "expected": "1668",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N080",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2025 Embedded经营利润增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "1243",
+        "alias": "AMD25.721",
+        "row": "Embedded | 1,243",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "1421",
+        "alias": "AMD25.721",
+        "row": "Embedded | 1,243",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "-178",
+    "expected": "-178",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N081",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2025 All Other经营利润增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "-4007",
+        "alias": "AMD25.721",
+        "row": "All Other | (",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-4190",
+        "alias": "AMD25.721",
+        "row": "All Other | (",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "183",
+    "expected": "183",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N082",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2025 Total operating income经营利润增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "3694",
+        "alias": "AMD25.721",
+        "row": "Total operating income",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "1900",
+        "alias": "AMD25.721",
+        "row": "Total operating income",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "1794",
+    "expected": "1794",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N083",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2024 Data Center收入增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "12579",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "6496",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "6083",
+    "expected": "6083",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N084",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2024 Client |收入增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "7054",
+        "alias": "AMD25.721",
+        "row": "Client |",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "4651",
+        "alias": "AMD25.721",
+        "row": "Client |",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "2403",
+    "expected": "2403",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N085",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2024 Gaming |收入增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "2595",
+        "alias": "AMD25.721",
+        "row": "Gaming |",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "6212",
+        "alias": "AMD25.721",
+        "row": "Gaming |",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "-3617",
+    "expected": "-3617",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N086",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2024 Embedded收入增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "3557",
+        "alias": "AMD25.721",
+        "row": "Embedded",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "5321",
+        "alias": "AMD25.721",
+        "row": "Embedded",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "-1764",
+    "expected": "-1764",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N087",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2024 Total net revenue收入增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "25785",
+        "alias": "AMD25.721",
+        "row": "Total net revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "22680",
+        "alias": "AMD25.721",
+        "row": "Total net revenue",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "3105",
+    "expected": "3105",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N088",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2024 Data Center经营利润增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "3482",
+        "alias": "AMD25.721",
+        "row": "Data Center | $ | 3,603",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "1267",
+        "alias": "AMD25.721",
+        "row": "Data Center | $ | 3,603",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "2215",
+    "expected": "2215",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N089",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2024 Client and Gaming经营利润增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "1187",
+        "alias": "AMD25.721",
+        "row": "Client and Gaming | 2,855",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "925",
+        "alias": "AMD25.721",
+        "row": "Client and Gaming | 2,855",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "262",
+    "expected": "262",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N090",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2024 Embedded经营利润增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "1421",
+        "alias": "AMD25.721",
+        "row": "Embedded | 1,243",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "2628",
+        "alias": "AMD25.721",
+        "row": "Embedded | 1,243",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "-1207",
+    "expected": "-1207",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N091",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2024 All Other经营利润增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "-4190",
+        "alias": "AMD25.721",
+        "row": "All Other | (",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-4419",
+        "alias": "AMD25.721",
+        "row": "All Other | (",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "229",
+    "expected": "229",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N092",
+    "case_ids": [
+      "U11"
+    ],
+    "metric": "AMD FY2024 Total operating income经营利润增量",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "1900",
+        "alias": "AMD25.721",
+        "row": "Total operating income",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "401",
+        "alias": "AMD25.721",
+        "row": "Total operating income",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "1499",
+    "expected": "1499",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N093",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU FY2023 NRV净影响",
+    "operation": "sum",
+    "inputs": [
+      {
+        "value": "-1831",
+        "alias": "MU25.613",
+        "row": "Provision to write down inventory to NRV",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "844",
+        "alias": "MU25.613",
+        "row": "Lower costs",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "-987",
+    "expected": "-987",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N094",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU FY2024指定NRV毛利率影响",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "987",
+        "alias": "MU25.613",
+        "row": "Lower costs",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25111",
+        "alias": "MU24.699",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "3.930548365258253355103341165",
+    "expected": "3.93",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N095",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU FY2023指定NRV毛利率影响",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "check_id": "N093",
+        "value": "-987",
+        "unit": "USD_million"
+      },
+      {
+        "value": "15540",
+        "alias": "MU24.699",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "-6.351351351351351351351351351",
+    "expected": "-6.35",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N096",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU指定NRV跨年毛利率变化",
+    "operation": "nrv_margin_delta",
+    "inputs": [
+      {
+        "value": "987",
+        "alias": "MU25.613",
+        "row": "Lower costs",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25111",
+        "alias": "MU24.699",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "check_id": "N093",
+        "value": "-987",
+        "unit": "USD_million"
+      },
+      {
+        "value": "15540",
+        "alias": "MU24.699",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "10.28189971660960470645469252",
+    "expected": "10.28",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N097",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU报告毛利率跨年变化",
+    "operation": "margin_delta",
+    "inputs": [
+      {
+        "value": "5613",
+        "alias": "MU24.699",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "25111",
+        "alias": "MU24.699",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-1416",
+        "alias": "MU24.699",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "15540",
+        "alias": "MU24.699",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "31.46472288521589624691850808",
+    "expected": "31.46",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N098",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU剩余毛利率变化",
+    "operation": "difference",
+    "inputs": [
+      {
+        "check_id": "N097",
+        "value": "31.46472288521589624691850808",
+        "unit": "percentage_points"
+      },
+      {
+        "check_id": "N096",
+        "value": "10.28189971660960470645469252",
+        "unit": "percentage_points"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "21.18282316860629154046381556",
+    "expected": "21.18",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N099",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU FY2024调整毛利",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "5613",
+        "alias": "MU24.699",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "987",
+        "alias": "MU25.613",
+        "row": "Lower costs",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "4626",
+    "expected": "4626",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N100",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU FY2024调整毛利率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "check_id": "N099",
+        "value": "4626",
+        "unit": "USD_million"
+      },
+      {
+        "value": "25111",
+        "alias": "MU24.699",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "18.42220540798853092270319780",
+    "expected": "18.42",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N101",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU FY2023调整毛利",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "-1416",
+        "alias": "MU24.699",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "check_id": "N093",
+        "value": "-987",
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "-429",
+    "expected": "-429",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N102",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU FY2023调整毛利率",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "check_id": "N101",
+        "value": "-429",
+        "unit": "USD_million"
+      },
+      {
+        "value": "15540",
+        "alias": "MU24.699",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "-2.760617760617760617760617761",
+    "expected": "-2.76",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N103",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU指定NRV毛利额变动",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "987",
+        "alias": "MU25.613",
+        "row": "Lower costs",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "check_id": "N093",
+        "value": "-987",
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "1974",
+    "expected": "1974",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N104",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU FY2024报告毛利额变动",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "5613",
+        "alias": "MU24.699",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-1416",
+        "alias": "MU24.699",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "7029",
+    "expected": "7029",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N105",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU剩余毛利额变动",
+    "operation": "difference",
+    "inputs": [
+      {
+        "check_id": "N104",
+        "value": "7029",
+        "unit": "USD_million"
+      },
+      {
+        "check_id": "N103",
+        "value": "1974",
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "5055",
+    "expected": "5055",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N106",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU NRV占毛利额改善比例",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "check_id": "N103",
+        "value": "1974",
+        "unit": "USD_million"
+      },
+      {
+        "check_id": "N104",
+        "value": "7029",
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "28.08365343576611182244985062",
+    "expected": "28.08",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N107",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU FY2025报告毛利额变动",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "14873",
+        "alias": "MU25.740",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "5613",
+        "alias": "MU25.740",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 1,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "9260",
+    "expected": "9260",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N108",
+    "case_ids": [
+      "U06"
+    ],
+    "metric": "MU FY2025指定调整毛利变动",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "14873",
+        "alias": "MU25.740",
+        "row": "Gross margin",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "check_id": "N099",
+        "value": "4626",
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "10247",
+    "expected": "10247",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N109",
+    "case_ids": [
+      "U12"
+    ],
+    "metric": "AMD FY2023业务经营利润合计",
+    "operation": "sum",
+    "inputs": [
+      {
+        "value": "1267",
+        "alias": "AMD23.727",
+        "row": "Data Center | $ | 1,267",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-46",
+        "alias": "AMD23.727",
+        "row": "Client | (",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "971",
+        "alias": "AMD23.727",
+        "row": "Gaming | 971",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "2628",
+        "alias": "AMD23.727",
+        "row": "Embedded | 2,628",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "4820",
+    "expected": "4820",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N110",
+    "case_ids": [
+      "U12"
+    ],
+    "metric": "AMD FY2023 All Other四项",
+    "operation": "sum",
+    "inputs": [
+      {
+        "value": "2811",
+        "alias": "AMD23.729",
+        "row": "Amortization",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "1384",
+        "alias": "AMD23.729",
+        "row": "Stock-based",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "258",
+        "alias": "AMD23.729",
+        "row": "Acquisition-related",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      },
+      {
+        "value": "-34",
+        "alias": "AMD23.729",
+        "row": "Licensing gain",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "4419",
+    "expected": "4419",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N111",
+    "case_ids": [
+      "U12"
+    ],
+    "metric": "AMD FY2023合并经营利润",
+    "operation": "difference",
+    "inputs": [
+      {
+        "check_id": "N109",
+        "value": "4820",
+        "unit": "USD_million"
+      },
+      {
+        "check_id": "N110",
+        "value": "4419",
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "401",
+    "expected": "401",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N112",
+    "case_ids": [
+      "U17"
+    ],
+    "metric": "NVDA首末累计增长",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "193737",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "47525",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "307.6528143082588111520252499",
+    "expected": "307.65",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N113",
+    "case_ids": [
+      "U17"
+    ],
+    "metric": "NVDA首末收入增加",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "193737",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "47525",
+        "alias": "NVDA26.1076",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2024,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "146212",
+    "expected": "146212",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N114",
+    "case_ids": [
+      "U17"
+    ],
+    "metric": "AMD首末累计增长",
+    "operation": "yoy_pct",
+    "inputs": [
+      {
+        "value": "16635",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "6496",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "percent",
+    "decimal_places": 2,
+    "exact_decimal": "156.0806650246305418719211823",
+    "expected": "156.08",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N115",
+    "case_ids": [
+      "U17"
+    ],
+    "metric": "AMD首末收入增加",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "16635",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "6496",
+        "alias": "AMD25.721",
+        "row": "Data Center",
+        "occurrence": 0,
+        "numeric_column": 2,
+        "fiscal_year": 2023,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "10139",
+    "expected": "10139",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N116",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD25 销售成本摊销影响",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "1031",
+        "alias": "AMD25.602",
+        "row": "Amortization of acquisition-related intangibles",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "34639",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "analytical_not_official_non_GAAP",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "2.976413868760645515170761281",
+    "expected": "2.98",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N117",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD25 经营费用摊销影响",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "1223",
+        "alias": "AMD25.602",
+        "row": "Amortization of acquisition-related intangibles",
+        "occurrence": 1,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "34639",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "analytical_not_official_non_GAAP",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "3.530702387482317618868904991",
+    "expected": "3.53",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N118",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD25 全部摊销经营率影响",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "2254",
+        "alias": "AMD25.723",
+        "row": "Amortization of acquisition-related intangibles",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "34639",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "analytical_not_official_non_GAAP",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "6.507116256242963134039666272",
+    "expected": "6.51",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N119",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD25 SBC经营率影响",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "1638",
+        "alias": "AMD25.723",
+        "row": "Stock-based compensation expense",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      },
+      {
+        "value": "34639",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "analytical_not_official_non_GAAP",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "4.728773925344265134674788533",
+    "expected": "4.73",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N120",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "AMD25 MI308影响",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "440",
+        "alias": "AMD25.481",
+        "source_phrase": "$440 million",
+        "unit": "USD_million"
+      },
+      {
+        "value": "34639",
+        "alias": "AMD25.602",
+        "row": "Net revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2025,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "initial_and_related_net_charge_analytical",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "1.270244522070498570974912671",
+    "expected": "1.27",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N121",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "NVDA26 H20初始费用影响",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "4500",
+        "alias": "NVDA26.148",
+        "source_phrase": "$4.5 billion",
+        "source_value": "4.5",
+        "source_unit": "USD_billion",
+        "unit": "USD_million",
+        "scale": "1000"
+      },
+      {
+        "value": "215938",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "initial_charge_not_all_year_net_inventory_effect",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "2.083931498856153155072289268",
+    "expected": "2.08",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N122",
+    "case_ids": [
+      "U20"
+    ],
+    "metric": "NVDA26 SBC经营率影响",
+    "operation": "ratio_pct",
+    "inputs": [
+      {
+        "value": "6386",
+        "alias": "NVDA26.729",
+        "row": "Stock-based compensation expense",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      },
+      {
+        "value": "215938",
+        "alias": "NVDA26.706",
+        "row": "Revenue",
+        "occurrence": 0,
+        "numeric_column": 0,
+        "fiscal_year": 2026,
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "analytical_not_official_non_GAAP",
+    "unit": "percentage_points",
+    "decimal_places": 2,
+    "exact_decimal": "2.957330344821198677398142059",
+    "expected": "2.96",
+    "tolerance": {
+      "normal_abs": "0.005",
+      "minor_precision_abs": "0.02",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  },
+  {
+    "id": "N123",
+    "case_ids": [
+      "U19"
+    ],
+    "metric": "AMD MI308净费用",
+    "operation": "difference",
+    "inputs": [
+      {
+        "value": "800",
+        "alias": "AMD25.491",
+        "source_phrase": "$800 million",
+        "unit": "USD_million"
+      },
+      {
+        "value": "360",
+        "alias": "AMD25.491",
+        "source_phrase": "$360 million",
+        "unit": "USD_million"
+      }
+    ],
+    "scope": "consolidated_GAAP",
+    "unit": "USD_million",
+    "decimal_places": 0,
+    "exact_decimal": "440",
+    "expected": "440",
+    "tolerance": {
+      "normal_abs": "0",
+      "minor_precision_abs": "0",
+      "material_if": [
+        "wrong source/period/units/sign/formula/scope even when numerically close"
+      ],
+      "retrieval_penalty_for_pure_rounding": false
+    }
+  }
+]

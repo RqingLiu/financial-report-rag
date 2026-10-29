@@ -1,0 +1,17 @@
+# 005 — Correctness contracts, reproducible delivery and unseen issuers
+
+Status: implementation in progress. User authorized correctness fixes, GitHub publication and Alphabet/Amazon three-year ingestion; new evaluation questions will be supplied later.
+
+FR1 Bind selected companies to actual catalog aliases or explicitly confirmed report/company metadata. Reject extra companies, mismatched source mentions, omitted selected-company tasks and lost exclusions. Validate bounded typed confirmed_context while retaining its JSON dictionary wire format.
+FR2 Preserve explicit per-company report-FY constraints, including different years across companies, exclusion and common-year comparison. Keep report FY distinct from fact periods; ambiguous natural language remains a clarification/evaluation boundary, not a claim of complete semantic parsing. Increment planner/cache contract version.
+FR3 Fix long <=4-row table loss without changing current valid-corpus chunk payloads. Preserve all source spans; a target chunk size is not a hard limit for indivisible rows. Verify all existing frozen chunks reproduce before publishing new sources. Reject unsupported source loss explicitly.
+FR4 Preflight immutable document identity/hash before paid embedding; still recheck atomically during publication. Company aliases are trusted metadata, not Python issuer lists. Source/date/publication boundaries remain enforced.
+FR5 Acquire latest three publicly filed annual 10-Ks for Alphabet (GOOGL, Google parent) and Amazon (AMZN) as of 2026-10-28, excluding future filings. Keep the existing source manifest/gold/configs immutable; new generalization manifest and metadata are separate. Same selected chunk/model/dimension and existing shared billing stop. First parse/audit/estimate, then embed/cache/publish; no model answers or new gold generation.
+FR6 Prepare a standalone Git repository containing code, specs, dependency locks, CI, concise entry README and detailed linked docs. Ignore credentials, raw/cache/processed data, local logs/archives/full traces and personal machine audits. Scan the actual staged tree, never print secret values. User explicitly selected **public** RqingLiu/financial-report-rag. Push only after checks; no unrelated learning directories.
+FR7 Sync current QueryPlan contract/diagram notes in README and Notion; preserve history and state what remains unverified. User can prepare new natural questions, expected scope/date and reviewed evidence after corpus is ready.
+
+FR8 Live integration found a missing required planner field repeated after generic repair feedback. Supply the generated Pydantic response schema and bounded field/type error paths for the existing single repair, without adding defaults or weakening required fields; retain failed paid responses and add a regression.
+
+Acceptance: offline and DB regressions plus explicit scope/table/preflight counterexamples; existing corpus chunk byte equality and frozen golden --check; six new raw filings with source/hash/period and ingestion audits; no paid generation; budget/immutability checks; staged secret/size/symlink safety check and GitHub remote commit verification.
+
+Non-goals: financial calculator/forecasts, semantic answer validator, universal natural-language entity/period resolution, public deployment, model-framework migration, production quality claims or spending the remaining budget unnecessarily.

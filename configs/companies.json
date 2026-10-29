@@ -1,0 +1,20 @@
+[
+  {
+    "ticker": "AMD",
+    "cik": 2488,
+    "name": "ADVANCED MICRO DEVICES INC",
+    "aliases": []
+  },
+  {
+    "ticker": "MU",
+    "cik": 723125,
+    "name": "MICRON TECHNOLOGY INC",
+    "aliases": []
+  },
+  {
+    "ticker": "NVDA",
+    "cik": 1045810,
+    "name": "NVIDIA CORP",
+    "aliases": []
+  }
+]

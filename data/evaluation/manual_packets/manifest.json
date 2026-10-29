@@ -1,0 +1,6 @@
+{
+  "batches": 6,
+  "questions": 60,
+  "contains_reference_answers": false,
+  "purpose": "Independent manual answer generation/review; do not tune released test labels"
+}
