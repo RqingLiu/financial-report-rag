@@ -12,7 +12,7 @@
 | 005 Correctness/release | Company/FY guard fixes, long-table preservation, source coverage, paid-call preflight, six new company filings and public delivery |
 | 006 Trace explorer | Local query/SSE/history UI with candidates, evidence citations and bounded safe trace projection |
 | 007 Trace Studio | Connected graph, step I/O/nested calls, code map/file/function navigation, source identity and read-only published-report catalog;94 offline/corpus tests passed,7 DB tests skipped; real replay/catalog checks without new paid calls |
-| 008 Public guide/main delivery | Bilingual README, Chinese deep dive, source-hashed public experiment exports, saved success/failure examples and privacy-reviewed screenshot;101 local tests passed,27 v2 aggregate arms recomputed |
+| 008 Public guide/main delivery | Bilingual README (project narrative consolidated into README after initial release), source-hashed public experiment exports, saved success/failure examples and privacy-reviewed screenshot;101 local tests passed,27 v2 aggregate arms recomputed |
 
 Full local audit/trace artifacts are not bundled into the source repository. This public summary preserves the conclusions and limitations. A clean clone rebuilds its own data/cache using pinned SEC source manifests; it does not inherit the developer's billed usage or private keys.
 

@@ -1,6 +1,6 @@
 # 实验目录与可追溯结果
 
-[项目首页](../README.zh-CN.md) · [项目深挖](project-deep-dive.md) · [指标边界](evaluation.md) · [公开JSON目录](../reports/public/experiments/README.md)
+[项目首页](../README.zh-CN.md) · [指标边界](evaluation.md) · [公开JSON目录](../reports/public/experiments/README.md)
 
 本页呈现历史实测，不是新跑一轮评测。所有百分比均附对应JSON；来源文件SHA256在[manifest](../reports/public/experiments/manifest.json)。20题全部为开发数据；原始模型消息/大Trace保留本地。公开汇总与逐题计数足以检查算术，不等于不提供原始运行文件也能完整重建所有付费响应。
 
