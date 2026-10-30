@@ -113,13 +113,6 @@
   },
   "generation_quality_for_new_issuers": "not evaluated; user questions pending",
   "provider_price_source": "https://docs.voyageai.com/docs/pricing",
-  "paid_budget_summary": {
-    "known_peak_list_cost_usd": "1.31560524",
-    "unresolved_reserved_usd": "0.0093642",
-    "stop_usd": "1.6",
-    "authorization_usd": "5.00",
-    "halted": false
-  },
   "github_delivery": {
     "url": "https://github.com/RqingLiu/financial-report-rag",
     "visibility": "public",
@@ -132,5 +125,6 @@
       "skipped_local_corpus_or_db": 11
     },
     "publication_scan": "actual Git index; credential/private-path/size checks passed"
-  }
+  },
+  "privacy_note": "Account-level billing ledger/status omitted from public receipt; experiment-specific usage/cost observations retained."
 }

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-29",
+  "note": "Allowlisted copies of historical observations; no new benchmark. Raw runs stay local.",
+  "sources": {
+    "v1_dev": {
+      "local_source": "reports/dev_comparison.json",
+      "sha256": "a6bba605a51c0aee5ebab47cbde1f79de10626678c4e63413f2b87695511d700"
+    },
+    "context": {
+      "local_source": "reports/context_budget/20261027T072215Z_6c99b5/results.json",
+      "sha256": "eaa3ee6cd481035c2998636521040ead0173330d3f211d62827854c801a8b4c3"
+    },
+    "funnel": {
+      "local_source": "reports/context_budget/20261027T072215Z_6c99b5/funnel_analysis.json",
+      "sha256": "aaf08ba8eacd604c78786aeeb447dfc529c7336803de0412d524e9a92adaa4ae"
+    },
+    "rerank": {
+      "local_source": "reports/rerank/20261027T170703Z_9a25db/results.json",
+      "sha256": "4807e5f28346d8ef3d57cc30538771be6ec4c1b3c3777e0eeb1be2b313307d33"
+    },
+    "coarse": {
+      "local_source": "reports/coarse_rank/20261028T014418Z_b5443e/results.json",
+      "sha256": "fc976571aed3be55621e1dd64d52d623f59ee0c1c6c17509930add6574dec3d6"
+    },
+    "focused": {
+      "local_source": "reports/focused_queries/20261028T022730Z_78c0ce/results.json",
+      "sha256": "50ef870453efd33af30ca7426253d1279dda86809fbddbdd9dcf6f9f6aa19ba5"
+    },
+    "serving": {
+      "local_source": "reports/serving/20261028_objective_v4/evaluation.json",
+      "sha256": "c4680d46d53ba5189dcdf4e35b1c942de49d764f27feac2a261792aa48cabc85"
+    },
+    "ann_real": {
+      "local_source": "reports/serving/ann_benchmark.json",
+      "sha256": "5b9ee543914731cf944858a1a7858fcfd725854304d091a869728a8e0bc78df4"
+    },
+    "ann_synthetic": {
+      "local_source": "reports/ann_scale/20261028_scale_v1/summary.json",
+      "sha256": "8c69813774011e934c47d84fa3082ae5a9741a9efee297efc1f1230e353e96f6"
+    },
+    "ann_setup": {
+      "local_source": "reports/ann_scale/20261028_scale_v1/manifest.json",
+      "sha256": "03deb3c750fbdb00a85f8d199cefb3417c582494b18c2b4e9c9722223103e636"
+    },
+    "ann_cleanup": {
+      "local_source": "reports/ann_scale/20261028_scale_v1/cleanup.json",
+      "sha256": "fd9281c38be8525d483aec5a4b0910ea133c0176f2b9bdd3adec5e3b909066d4"
+    },
+    "rerank_cost": {
+      "local_source": "reports/rerank/20261027T170703Z_9a25db/turn_cost_and_latency.json",
+      "sha256": "2ff63e93bdfac53d2f0f897a4e3a723032a4a1db5310ce877ae9ae656c8e99d0"
+    }
+  }
+}

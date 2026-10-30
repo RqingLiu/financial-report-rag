@@ -1,0 +1,63 @@
+{
+  "snapshot_date": "2026-10-29",
+  "feature": "008-public-project-guide",
+  "includes_completed_features": [
+    "006-trace-explorer",
+    "007-trace-studio"
+  ],
+  "status": "local_validation_passed",
+  "local_tests_with_prepared_corpus_and_isolated_database": {
+    "tests": 101,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "known_warnings": "2 existing RAGAS IDBasedContextRecall deprecation warnings",
+  "source_fingerprint_sha256": "02d808bc6c758cf35eba9017f92cf944fd725768f9fa65820c32388329f551e4",
+  "frozen_golden_read_only_check": {
+    "questions": 20,
+    "mandatory_evidence_groups": 225,
+    "numeric_checks": 123,
+    "status": "passed"
+  },
+  "public_evidence": {
+    "v2_arms_recomputed": 27,
+    "status": "passed",
+    "source_exports_match_local_inputs": true
+  },
+  "browser": "Saved trace, code map, source navigation, read-only catalog; desktop and319px checked without paid requests.",
+  "privacy": {
+    "new_public_exports": "Allowlisted metrics and short saved-demo projections; no provider IDs/system messages/runtime credentials or absolute machine paths.",
+    "screenshot": "Workflow/code region only; excludes private trace identifiers and local run timestamps.",
+    "historical_receipts": "Account-level budget/remaining-billing status removed; experiment-specific usage/cost retained."
+  },
+  "paid_api_calls_for_publication": 0,
+  "large_synthetic_fixtures_recreated": false,
+  "retrieval_models_budgets_and_frozen_labels_changed": false,
+  "ci": "Credential-free Linux contracts and public evidence checks run on push/PR; inspect repository Actions for the delivered commit.",
+  "limitations": [
+    "Development evidence recall is not answer accuracy.",
+    "Synthetic SQL timings are not end-to-end production p95/RPS.",
+    "No independent new-company holdout or financial-calculator acceptance."
+  ],
+  "clean_staged_export_without_private_files": {
+    "tests": 101,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 11
+  },
+  "staged_publication_scan": {
+    "status": "passed",
+    "files": 239,
+    "failures": 0
+  },
+  "github_source_ci": {
+    "url": "https://github.com/RqingLiu/financial-report-rag/actions/runs/40996153668",
+    "source_commit": "cca5b4c3247531577c9b803211bdb7e743e4f31d",
+    "conclusion": "success",
+    "passed": 90,
+    "explicit_corpus_or_db_skips": 11,
+    "public_evidence_arms_recomputed": 27,
+    "staged_secret_scan_failures": 0
+  }
+}

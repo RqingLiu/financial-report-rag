@@ -1,0 +1,19 @@
+{
+  "n": 59,
+  "mean_overlap_at20": 0.9898305084745763,
+  "ann_index_used": 59,
+  "exact_mean_ms": 6.754015525013713,
+  "ann_mean_ms": 6.350610093450395,
+  "frozen_chunks": {
+    "n": 11401
+  },
+  "identical_copied_chunks": {
+    "n": 2759
+  },
+  "scope": "small 2759-chunk corpus; filtered real cached queries, no API; warm small-corpus timings do not establish scale benefit",
+  "provenance": {
+    "local_source": "reports/serving/ann_benchmark.json",
+    "sha256": "5b9ee543914731cf944858a1a7858fcfd725854304d091a869728a8e0bc78df4"
+  },
+  "interpretation_boundary": "Nearest-neighbor overlap / SQL-only timing, not financial evidence or service RPS."
+}

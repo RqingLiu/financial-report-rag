@@ -1,0 +1,767 @@
+{
+  "status": "recorded_demo_not_live_or_ground_truth",
+  "success": {
+    "inputs": {
+      "original_question": "比较Google FY2024年报和Amazon FY2025年报披露的云业务收入，说明两者披露口径。",
+      "as_of": "2026-10-28"
+    },
+    "status": "generated",
+    "structured_answer": {
+      "sections": [
+        {
+          "need_id": "n1",
+          "status": "supported",
+          "answer": "Alphabet FY2024年报（报告财年FY2024，期末2024-12-31）披露的Google Cloud收入为43,229百万美元，对应实际期间为截至2024年12月31日的年度（2024年1月1日至2024年12月31日）[E2][E3][E7]。同表列示2023年为33,088百万美元、2022年为26,280百万美元[E2][E3]。该金额为Google Cloud分部收入，币种为美元，单位为百万美元[E2][E3]。",
+          "citations": [
+            "E2",
+            "E3",
+            "E7"
+          ],
+          "missing_evidence": []
+        },
+        {
+          "need_id": "n2",
+          "status": "supported",
+          "answer": "Amazon FY2025年报（报告财年FY2025，期末2025-12-31）披露的AWS净销售额为128,725百万美元，对应实际期间为截至2025年12月31日的年度（2025年1月1日至2025年12月31日）[E1][E5][E6]。同表列示2024年为107,556百万美元、2023年为90,757百万美元[E1][E5]。该金额为AWS分部净销售额，币种为美元，单位为百万美元[E1][E5]。",
+          "citations": [
+            "E1",
+            "E5",
+            "E6"
+          ],
+          "missing_evidence": []
+        },
+        {
+          "need_id": "n3",
+          "status": "partial",
+          "answer": "Google口径：Alphabet将Google Cloud作为三个报告分部之一（Google Services、Google Cloud、Other Bets）[E9]。Google Cloud包括面向企业客户的基础设施与平台服务、应用及其他服务，收入主要来自Google Cloud Platform（按消费量计费及订阅，含AI基础设施、Vertex AI、Gemini for Google Cloud、网络安全、数据与分析）、Google Workspace（企业云通信与协作工具订阅）及其他企业服务[E4][E9][E13]。收入确认：消费型云服务在客户使用服务时按使用量确认，订阅型在合同期内按比例确认[E4]。列报为分部收入，与合并总收入350,018百万美元相区分[E2][E3]。Amazon口径：Amazon将AWS作为三个报告分部之一（North America、International、AWS）[E10][E15]。AWS分部由面向初创企业、企业、政府机构和学术机构的全球计算、存储、数据库及其他服务销售构成[E1][E10]。收入确认：AWS收入按单独售价分摊至各项服务，主要按客户使用量（如按需交付的计算或存储容量）在服务提供时确认；部分服务（含计算和数据库）以固定期限固定数量提供，按比例确认[E12]。列报为分部净销售额，与合并净销售额716,924百万美元相区分[E1][E5]。两者口径差异：Google Cloud为分部收入（revenues），Amazon AWS为分部净销售额（net sales）；Google Cloud包含Workspace等企业协作应用订阅，AWS描述为计算、存储、数据库及其他服务；两者均按使用量/订阅确认收入，但具体服务范围与列报科目名称不同[E4][E9][E10][E12]。",
+          "citations": [
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E9",
+            "E10",
+            "E12",
+            "E13",
+            "E15"
+          ],
+          "missing_evidence": [
+            "本次提供的证据未包含两家公司对云业务收入确认的完整会计政策全文（如Amazon对AWS各类服务的详细确认时点、Google对Workspace订阅确认的完整说明），仅包含上述摘录段落",
+            "本次提供的证据未包含两家公司分部间内部交易抵销的完整说明（Amazon仅说明报告分部间无内部收入交易[E10]；Google未在提供证据中说明分部间收入抵销细节）"
+          ]
+        }
+      ],
+      "limitations": [
+        "两家公司报告财年不同：Google为FY2024（期末2024-12-31），Amazon为FY2025（期末2025-12-31），所披露云业务收入对应实际期间不同，不可直接视为同一期间比较[E1][E2]",
+        "Google Cloud为分部收入（revenues），Amazon AWS为分部净销售额（net sales），列报科目名称不同[E1][E2]",
+        "金额均为美元百万美元，未进行汇率调整或跨公司口径调整",
+        "未进行任何财务计算或估算，仅引用原文披露数字"
+      ]
+    },
+    "evidence": [
+      {
+        "citation": "E1",
+        "document_id": "AMZN_FY2025",
+        "ticker": "AMZN",
+        "fiscal_year": 2025,
+        "period_end": "2025-12-31",
+        "filed_at": "2026-02-06",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+        "chunk_id": "e7fc13a07ce9d588:AMZN_FY2025:c0226:9dfb7f77",
+        "source_spans": [
+          {
+            "end": 267325,
+            "start": 266375,
+            "block_id": "AMZN_FY2025:b0818:142a1756de"
+          },
+          {
+            "end": 266375,
+            "start": 266225,
+            "block_id": "AMZN_FY2025:b0818:142a1756de"
+          },
+          {
+            "end": 265924,
+            "start": 265921,
+            "block_id": "AMZN_FY2025:b0815:32fd72a0e0"
+          },
+          {
+            "end": 266112,
+            "start": 265926,
+            "block_id": "AMZN_FY2025:b0816:56ce8242b5"
+          },
+          {
+            "end": 266223,
+            "start": 266114,
+            "block_id": "AMZN_FY2025:b0817:59de29bb62"
+          },
+          {
+            "block_id": "AMZN_FY2025:b0818:142a1756de",
+            "start": 266225,
+            "end": 267478
+          }
+        ],
+        "preview": "Company: AMZN; report FY: 2025; period end: 2025-12-31; filed: 2026-02-06; 10-K.\n\n| Year Ended December 31,\n | 2023 |  | 2024 |  | 2025\nNorth America |  |  |  |  | \nNet sales | $ | 352,828 |  |  | $ | 387,497 |  |  | $ | 426,305 | \nOperating expenses | 337,951 |  |  | 362,530 |  |  | 396,686 | \nOperating income | $ | 1",
+        "preview_truncated": true
+      },
+      {
+        "citation": "E2",
+        "document_id": "GOOGL_FY2024",
+        "ticker": "GOOGL",
+        "fiscal_year": 2024,
+        "period_end": "2024-12-31",
+        "filed_at": "2025-02-05",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm",
+        "chunk_id": "e7fc13a07ce9d588:GOOGL_FY2024:c0393:4d40db80",
+        "source_spans": [
+          {
+            "end": 345542,
+            "start": 344563,
+            "block_id": "GOOGL_FY2024:b1285:feb5ae049f"
+          },
+          {
+            "end": 344563,
+            "start": 344411,
+            "block_id": "GOOGL_FY2024:b1285:feb5ae049f"
+          },
+          {
+            "end": 343916,
+            "start": 343287,
+            "block_id": "GOOGL_FY2024:b1282:46ba3c7e8c"
+          },
+          {
+            "end": 344297,
+            "start": 343918,
+            "block_id": "GOOGL_FY2024:b1283:6e297508c5"
+          },
+          {
+            "end": 344409,
+            "start": 344299,
+            "block_id": "GOOGL_FY2024:b1284:814bacb44e"
+          },
+          {
+            "block_id": "GOOGL_FY2024:b1285:feb5ae049f",
+            "start": 344411,
+            "end": 345813
+          }
+        ],
+        "preview": "Company: GOOGL; report FY: 2024; period end: 2024-12-31; filed: 2025-02-05; 10-K.\n\n| Year Ended December 31,\n | 2022 |  | 2023 |  | 2024\nRevenues: |  |  |  |  | \nGoogle Services | $ | 253,528 |  |  | $ | 272,543 |  |  | $ | 304,930 | \nGoogle Cloud | 26,280 |  |  | 33,088 |  |  | 43,229 | \nOther Bets | 1,068 |  |  | 1,5",
+        "preview_truncated": true
+      },
+      {
+        "citation": "E3",
+        "document_id": "GOOGL_FY2024",
+        "ticker": "GOOGL",
+        "fiscal_year": 2024,
+        "period_end": "2024-12-31",
+        "filed_at": "2025-02-05",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm",
+        "chunk_id": "e7fc13a07ce9d588:GOOGL_FY2024:c0260:eb5380f8",
+        "source_spans": [
+          {
+            "end": 260907,
+            "start": 260212,
+            "block_id": "GOOGL_FY2024:b0988:16619b93a3"
+          },
+          {
+            "end": 260110,
+            "start": 260094,
+            "block_id": "GOOGL_FY2024:b0985:3cd0156496"
+          },
+          {
+            "end": 260134,
+            "start": 260112,
+            "block_id": "GOOGL_FY2024:b0986:49702ad361"
+          },
+          {
+            "end": 260210,
+            "start": 260136,
+            "block_id": "GOOGL_FY2024:b0987:8fc58b8ed7"
+          },
+          {
+            "block_id": "GOOGL_FY2024:b0988:16619b93a3",
+            "start": 260212,
+            "end": 260907
+          }
+        ],
+        "preview": "Company: GOOGL; report FY: 2024; period end: 2024-12-31; filed: 2025-02-05; 10-K.\n\n| Year Ended December 31,\n | 2022 |  | 2023 |  | 2024\nGoogle Search & other | $ | 162,450 |  |  | $ | 175,033 |  |  | $ | 198,084 | \nYouTube ads | 29,243 |  |  | 31,510 |  |  | 36,147 | \nGoogle Network | 32,780 |  |  | 31,312 |  |  | 30,",
+        "preview_truncated": true
+      },
+      {
+        "citation": "E4",
+        "document_id": "GOOGL_FY2024",
+        "ticker": "GOOGL",
+        "fiscal_year": 2024,
+        "period_end": "2024-12-31",
+        "filed_at": "2025-02-05",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm",
+        "chunk_id": "e7fc13a07ce9d588:GOOGL_FY2024:c0240:f39a7bac",
+        "source_spans": [
+          {
+            "end": 232370,
+            "start": 232196,
+            "block_id": "GOOGL_FY2024:b0866:1d4e75c6a1"
+          },
+          {
+            "end": 232470,
+            "start": 232372,
+            "block_id": "GOOGL_FY2024:b0867:a0117e92a7"
+          },
+          {
+            "end": 232548,
+            "start": 232472,
+            "block_id": "GOOGL_FY2024:b0868:ec2d7dbdf8"
+          },
+          {
+            "end": 232580,
+            "start": 232550,
+            "block_id": "GOOGL_FY2024:b0869:0900f81b1f"
+          },
+          {
+            "end": 232904,
+            "start": 232582,
+            "block_id": "GOOGL_FY2024:b0870:0cf58c6f9a"
+          },
+          {
+            "end": 232927,
+            "start": 232906,
+            "block_id": "GOOGL_FY2024:b0871:6f1a7b8efe"
+          },
+          {
+            "end": 232976,
+            "start": 232929,
+            "block_id": "GOOGL_FY2024:b0872:96c0700f8f"
+          },
+          {
+            "end": 233294,
+            "start": 232978,
+            "block_id": "GOOGL_FY2024:b0873:7a07607cd8"
+          },
+          {
+            "end": 233526,
+            "start": 233296,
+            "block_id": "GOOGL_FY2024:b0874:1e231af581"
+          },
+          {
+            "end": 233556,
+            "start": 233528,
+            "block_id": "GOOGL_FY2024:b0875:e2100b9ad8"
+          },
+          {
+            "end": 234048,
+            "start": 233558,
+            "block_id": "GOOGL_FY2024:b0876:fe5e271232"
+          },
+          {
+            "end": 234100,
+            "start": 234050,
+            "block_id": "GOOGL_FY2024:b0877:fdd4d16d36"
+          },
+          {
+            "end": 234390,
+            "start": 234102,
+            "block_id": "GOOGL_FY2024:b0878:94a2c44b30"
+          },
+          {
+            "end": 234423,
+            "start": 234392,
+            "block_id": "GOOGL_FY2024:b0879:f515bdaf44"
+          },
+          {
+            "end": 234780,
+            "start": 234425,
+            "block_id": "GOOGL_FY2024:b0880:0dfc1ce155"
+          },
+          {
+            "end": 234799,
+            "start": 234782,
+            "block_id": "GOOGL_FY2024:b0881:decad72e99"
+          },
+          {
+            "end": 235088,
+            "start": 234801,
+            "block_id": "GOOGL_FY2024:b0882:5d63ea2a52"
+          },
+          {
+            "end": 235106,
+            "start": 235090,
+            "block_id": "GOOGL_FY2024:b0883:9198de8cd5"
+          }
+        ],
+        "preview": "Company: GOOGL; fiscal year: 2024; period end: 2024-12-31; Item 8; 10-K.\n• consumer subscriptions, which primarily include revenues from YouTube services, such as YouTube TV, YouTube Music and Premium, and NFL Sunday Ticket, as well as Google One;\n\n• platforms, which primarily include revenues from Google Play sales of",
+        "preview_truncated": true
+      },
+      {
+        "citation": "E5",
+        "document_id": "AMZN_FY2025",
+        "ticker": "AMZN",
+        "fiscal_year": 2025,
+        "period_end": "2025-12-31",
+        "filed_at": "2026-02-06",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+        "chunk_id": "e7fc13a07ce9d588:AMZN_FY2025:c0229:cf1d82a8",
+        "source_spans": [
+          {
+            "end": 268227,
+            "start": 267633,
+            "block_id": "AMZN_FY2025:b0821:49a666e747"
+          },
+          {
+            "end": 267497,
+            "start": 267480,
+            "block_id": "AMZN_FY2025:b0819:a9360e0212"
+          },
+          {
+            "end": 267631,
+            "start": 267499,
+            "block_id": "AMZN_FY2025:b0820:1ccfa84e87"
+          },
+          {
+            "block_id": "AMZN_FY2025:b0821:49a666e747",
+            "start": 267633,
+            "end": 268227
+          }
+        ],
+        "preview": "Company: AMZN; report FY: 2025; period end: 2025-12-31; filed: 2026-02-06; 10-K.\n\n| Year Ended December 31,\n | 2023 |  | 2024 |  | 2025\nNet Sales: |  |  |  |  | \nOnline stores (1) | $ | 231,872 |  |  | $ | 247,029 |  |  | $ | 269,287 | \nPhysical stores (2) | 20,030 |  |  | 21,215 |  |  | 22,561 | \nThird-party seller se",
+        "preview_truncated": true
+      },
+      {
+        "citation": "E6",
+        "document_id": "AMZN_FY2025",
+        "ticker": "AMZN",
+        "fiscal_year": 2025,
+        "period_end": "2025-12-31",
+        "filed_at": "2026-02-06",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+        "chunk_id": "e7fc13a07ce9d588:AMZN_FY2025:c0086:4cd9b98e",
+        "source_spans": [
+          {
+            "end": 113091,
+            "start": 112321,
+            "block_id": "AMZN_FY2025:b0339:92e263f214"
+          },
+          {
+            "end": 111825,
+            "start": 111035,
+            "block_id": "AMZN_FY2025:b0336:9f90ef4c25"
+          },
+          {
+            "end": 111836,
+            "start": 111827,
+            "block_id": "AMZN_FY2025:b0337:d68f12d448"
+          },
+          {
+            "end": 112319,
+            "start": 111838,
+            "block_id": "AMZN_FY2025:b0338:ce7888a26a"
+          },
+          {
+            "block_id": "AMZN_FY2025:b0339:92e263f214",
+            "start": 112321,
+            "end": 113091
+          }
+        ],
+        "preview": "Company: AMZN; report FY: 2025; period end: 2025-12-31; filed: 2026-02-06; 10-K.\n\n| Year Ended December 31,\n | 2024 |  | 2025\nNet Sales: |  |  | \nNorth America | $ | 387,497 |  |  | $ | 426,305 | \nInternational | 142,906 |  |  | 161,894 | \nAWS | 107,556 |  |  | 128,725 | \nConsolidated | $ | 637,959 |  |  | $ | 716,924 ",
+        "preview_truncated": true
+      },
+      {
+        "citation": "E7",
+        "document_id": "GOOGL_FY2024",
+        "ticker": "GOOGL",
+        "fiscal_year": 2024,
+        "period_end": "2024-12-31",
+        "filed_at": "2025-02-05",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm",
+        "chunk_id": "e7fc13a07ce9d588:GOOGL_FY2024:c0138:0b96d2ca",
+        "source_spans": [
+          {
+            "end": 161401,
+            "start": 160876,
+            "block_id": "GOOGL_FY2024:b0571:67ccfa56f3"
+          },
+          {
+            "end": 160802,
+            "start": 160785,
+            "block_id": "GOOGL_FY2024:b0568:eb7f96a2fc"
+          },
+          {
+            "end": 160812,
+            "start": 160804,
+            "block_id": "GOOGL_FY2024:b0569:838df84f2e"
+          },
+          {
+            "end": 160874,
+            "start": 160814,
+            "block_id": "GOOGL_FY2024:b0570:9b206d8241"
+          },
+          {
+            "block_id": "GOOGL_FY2024:b0571:67ccfa56f3",
+            "start": 160876,
+            "end": 161401
+          }
+        ],
+        "preview": "Company: GOOGL; report FY: 2024; period end: 2024-12-31; filed: 2025-02-05; 10-K.\n\n| Year Ended December 31,\n | 2023 |  | 2024\nGoogle Search & other | $ | 175,033 |  |  | $ | 198,084 | \nYouTube ads | 31,510 |  |  | 36,147 | \nGoogle Network | 31,312 |  |  | 30,359 | \nGoogle advertising | 237,855 |  |  | 264,590 | \nGoogl",
+        "preview_truncated": true
+      },
+      {
+        "citation": "E9",
+        "document_id": "GOOGL_FY2024",
+        "ticker": "GOOGL",
+        "fiscal_year": 2024,
+        "period_end": "2024-12-31",
+        "filed_at": "2025-02-05",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm",
+        "chunk_id": "e7fc13a07ce9d588:GOOGL_FY2024:c0390:df0c29ff",
+        "source_spans": [
+          {
+            "end": 341031,
+            "start": 340975,
+            "block_id": "GOOGL_FY2024:b1273:41de582d9c"
+          },
+          {
+            "end": 341112,
+            "start": 341033,
+            "block_id": "GOOGL_FY2024:b1274:46924ceb35"
+          },
+          {
+            "end": 341511,
+            "start": 341114,
+            "block_id": "GOOGL_FY2024:b1275:2224f37acf"
+          },
+          {
+            "end": 341853,
+            "start": 341513,
+            "block_id": "GOOGL_FY2024:b1276:82dba9b588"
+          },
+          {
+            "end": 342068,
+            "start": 341855,
+            "block_id": "GOOGL_FY2024:b1277:9796e68388"
+          },
+          {
+            "end": 342609,
+            "start": 342070,
+            "block_id": "GOOGL_FY2024:b1278:17d5393a1d"
+          },
+          {
+            "end": 342614,
+            "start": 342611,
+            "block_id": "GOOGL_FY2024:b1279:d4d9ce8c54"
+          }
+        ],
+        "preview": "Company: GOOGL; fiscal year: 2024; period end: 2024-12-31; Item 8; 10-K.\nNote 15. Information about Segments and Geographic Areas\n\nWe report our segment results as Google Services, Google Cloud, and Other Bets:\n\n• Google Services includes products and services such as ads, Android, Chrome, devices, Google Maps, Google ",
+        "preview_truncated": true
+      },
+      {
+        "citation": "E10",
+        "document_id": "AMZN_FY2025",
+        "ticker": "AMZN",
+        "fiscal_year": 2025,
+        "period_end": "2025-12-31",
+        "filed_at": "2026-02-06",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+        "chunk_id": "e7fc13a07ce9d588:AMZN_FY2025:c0224:7de6a5e4",
+        "source_spans": [
+          {
+            "end": 263701,
+            "start": 263195,
+            "block_id": "AMZN_FY2025:b0807:bcfa40b664"
+          },
+          {
+            "end": 263732,
+            "start": 263703,
+            "block_id": "AMZN_FY2025:b0808:5808ad922d"
+          },
+          {
+            "end": 265112,
+            "start": 263734,
+            "block_id": "AMZN_FY2025:b0809:518c673270"
+          },
+          {
+            "end": 265131,
+            "start": 265114,
+            "block_id": "AMZN_FY2025:b0810:a9360e0212"
+          },
+          {
+            "end": 265146,
+            "start": 265133,
+            "block_id": "AMZN_FY2025:b0811:64be0885bc"
+          },
+          {
+            "end": 265435,
+            "start": 265148,
+            "block_id": "AMZN_FY2025:b0812:3005dde825"
+          },
+          {
+            "end": 265450,
+            "start": 265437,
+            "block_id": "AMZN_FY2025:b0813:93202df2ec"
+          },
+          {
+            "end": 265919,
+            "start": 265452,
+            "block_id": "AMZN_FY2025:b0814:924446212e"
+          },
+          {
+            "end": 265924,
+            "start": 265921,
+            "block_id": "AMZN_FY2025:b0815:32fd72a0e0"
+          },
+          {
+            "end": 266112,
+            "start": 265926,
+            "block_id": "AMZN_FY2025:b0816:56ce8242b5"
+          }
+        ],
+        "preview": "Company: AMZN; fiscal year: 2025; period end: 2025-12-31; Cover; 10-K.\nChanges in tax laws, regulations, administrative practices, principles, and interpretations may impact our tax contingencies. Due to various factors, including the inherent complexities and uncertainties of the judicial, administrative, and regulato",
+        "preview_truncated": true
+      },
+      {
+        "citation": "E12",
+        "document_id": "AMZN_FY2025",
+        "ticker": "AMZN",
+        "fiscal_year": 2025,
+        "period_end": "2025-12-31",
+        "filed_at": "2026-02-06",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+        "chunk_id": "e7fc13a07ce9d588:AMZN_FY2025:c0137:c29c7ad1",
+        "source_spans": [
+          {
+            "end": 165476,
+            "start": 165469,
+            "block_id": "AMZN_FY2025:b0504:c4b7330bd9"
+          },
+          {
+            "end": 166054,
+            "start": 165478,
+            "block_id": "AMZN_FY2025:b0505:b013a064e3"
+          },
+          {
+            "end": 166131,
+            "start": 166056,
+            "block_id": "AMZN_FY2025:b0506:21c10ba0e7"
+          },
+          {
+            "end": 166416,
+            "start": 166133,
+            "block_id": "AMZN_FY2025:b0507:bba4e47c8c"
+          },
+          {
+            "end": 166900,
+            "start": 166418,
+            "block_id": "AMZN_FY2025:b0508:9bfb5a96a7"
+          },
+          {
+            "end": 167171,
+            "start": 166902,
+            "block_id": "AMZN_FY2025:b0509:41ca5b6c20"
+          },
+          {
+            "end": 167190,
+            "start": 167173,
+            "block_id": "AMZN_FY2025:b0510:a9360e0212"
+          },
+          {
+            "end": 167708,
+            "start": 167192,
+            "block_id": "AMZN_FY2025:b0511:8787e108e8"
+          },
+          {
+            "end": 168322,
+            "start": 167710,
+            "block_id": "AMZN_FY2025:b0512:1c1bb46cef"
+          }
+        ],
+        "preview": "Company: AMZN; fiscal year: 2025; period end: 2025-12-31; Cover; 10-K.\nRevenue\n\nRevenue is measured based on the amount of consideration that we expect to receive, reduced by estimates for return allowances, promotional discounts, and rebates. Revenue also excludes any amounts collected on behalf of third parties, incl",
+        "preview_truncated": true
+      },
+      {
+        "citation": "E13",
+        "document_id": "GOOGL_FY2024",
+        "ticker": "GOOGL",
+        "fiscal_year": 2024,
+        "period_end": "2024-12-31",
+        "filed_at": "2025-02-05",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm",
+        "chunk_id": "e7fc13a07ce9d588:GOOGL_FY2024:c0127:562c5c8f",
+        "source_spans": [
+          {
+            "end": 151257,
+            "start": 150972,
+            "block_id": "GOOGL_FY2024:b0504:0f75b1a668"
+          },
+          {
+            "end": 151271,
+            "start": 151259,
+            "block_id": "GOOGL_FY2024:b0505:69bd2211a0"
+          },
+          {
+            "end": 151326,
+            "start": 151273,
+            "block_id": "GOOGL_FY2024:b0506:1e5177d165"
+          },
+          {
+            "end": 151644,
+            "start": 151328,
+            "block_id": "GOOGL_FY2024:b0507:7a07607cd8"
+          },
+          {
+            "end": 151876,
+            "start": 151646,
+            "block_id": "GOOGL_FY2024:b0508:1e231af581"
+          },
+          {
+            "end": 151906,
+            "start": 151878,
+            "block_id": "GOOGL_FY2024:b0509:e2100b9ad8"
+          },
+          {
+            "end": 152102,
+            "start": 151908,
+            "block_id": "GOOGL_FY2024:b0510:2d27409fdd"
+          },
+          {
+            "end": 152114,
+            "start": 152104,
+            "block_id": "GOOGL_FY2024:b0511:cf90ed0b1d"
+          },
+          {
+            "end": 152233,
+            "start": 152116,
+            "block_id": "GOOGL_FY2024:b0512:98f6ccdeab"
+          },
+          {
+            "end": 152253,
+            "start": 152235,
+            "block_id": "GOOGL_FY2024:b0513:97c33f6800"
+          },
+          {
+            "end": 152915,
+            "start": 152255,
+            "block_id": "GOOGL_FY2024:b0514:b140ee9084"
+          },
+          {
+            "end": 152933,
+            "start": 152917,
+            "block_id": "GOOGL_FY2024:b0515:9198de8cd5"
+          },
+          {
+            "end": 153000,
+            "start": 152935,
+            "block_id": "GOOGL_FY2024:b0516:1f857a8ca9"
+          },
+          {
+            "end": 153017,
+            "start": 153002,
+            "block_id": "GOOGL_FY2024:b0517:a18b0cfc9a"
+          },
+          {
+            "end": 153253,
+            "start": 153019,
+            "block_id": "GOOGL_FY2024:b0518:ca923e406c"
+          },
+          {
+            "end": 153345,
+            "start": 153255,
+            "block_id": "GOOGL_FY2024:b0519:9060626143"
+          },
+          {
+            "end": 153391,
+            "start": 153347,
+            "block_id": "GOOGL_FY2024:b0520:c058b947f3"
+          },
+          {
+            "end": 153657,
+            "start": 153393,
+            "block_id": "GOOGL_FY2024:b0521:5847ce1617"
+          },
+          {
+            "end": 153722,
+            "start": 153659,
+            "block_id": "GOOGL_FY2024:b0522:a6d5e9d98a"
+          }
+        ],
+        "preview": "Company: GOOGL; fiscal year: 2024; period end: 2024-12-31; Item 7; 10-K.\nFluctuations in our Google subscriptions, platforms, and devices revenues have been, and may continue to be, affected by factors in addition to the general factors described above, such as changes in customer usage and demand, number of subscriber",
+        "preview_truncated": true
+      },
+      {
+        "citation": "E15",
+        "document_id": "AMZN_FY2025",
+        "ticker": "AMZN",
+        "fiscal_year": 2025,
+        "period_end": "2025-12-31",
+        "filed_at": "2026-02-06",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+        "chunk_id": "e7fc13a07ce9d588:AMZN_FY2025:c0016:b8ffc9b4",
+        "source_spans": [
+          {
+            "end": 6666,
+            "start": 6178,
+            "block_id": "AMZN_FY2025:b0052:381b0ff3c3"
+          },
+          {
+            "end": 6675,
+            "start": 6668,
+            "block_id": "AMZN_FY2025:b0053:c910d474dc"
+          },
+          {
+            "end": 7063,
+            "start": 6677,
+            "block_id": "AMZN_FY2025:b0054:9783d358f4"
+          },
+          {
+            "end": 7430,
+            "start": 7065,
+            "block_id": "AMZN_FY2025:b0055:a2ed5958d8"
+          },
+          {
+            "end": 7441,
+            "start": 7432,
+            "block_id": "AMZN_FY2025:b0056:212b350d5a"
+          },
+          {
+            "end": 8333,
+            "start": 7443,
+            "block_id": "AMZN_FY2025:b0057:2374fa8dc7"
+          },
+          {
+            "end": 8716,
+            "start": 8335,
+            "block_id": "AMZN_FY2025:b0058:d498636fae"
+          },
+          {
+            "end": 8725,
+            "start": 8718,
+            "block_id": "AMZN_FY2025:b0059:0f931497b8"
+          }
+        ],
+        "preview": "Company: AMZN; fiscal year: 2025; period end: 2025-12-31; Cover; 10-K.\nThis Annual Report on Form 10-K and the documents incorporated herein by reference contain forward-looking statements based on expectations, estimates, and projections as of the date of this filing. Actual results and outcomes may differ materially ",
+        "preview_truncated": true
+      }
+    ],
+    "structural_validation": "passed; semantic support still unverified",
+    "semantic_support": "not independently verified"
+  },
+  "failure": {
+    "inputs": {
+      "original_question": "比较Google FY2024年报和Amazon FY2025年报披露的云业务收入，说明两者披露口径。",
+      "as_of": "2026-10-28"
+    },
+    "status": "error",
+    "error": {
+      "type": "PlanRejected",
+      "code": "planner_schema_invalid"
+    },
+    "explanation": "Planner schema rejected. Generic repair was insufficient; later fix supplies exact schema-field feedback. Not silently relaxed."
+  },
+  "provenance": [
+    {
+      "source_kind": "saved_success_trace",
+      "sha256": "8c496d18e09b58cc0fddc7a57b45759e379ce077fc5df168bbaf9746aa2d831f"
+    },
+    {
+      "source_kind": "saved_failed_trace",
+      "sha256": "3c9d6dd7817978c1c3cf96ec4b5d132f65b4c82ed3829d1ea17036c5591be1f7"
+    }
+  ]
+}

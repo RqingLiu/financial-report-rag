@@ -1,0 +1,96 @@
+{
+  "dataset": "20 dev questions; offline gold-aware diagnosis only",
+  "source_run": "reports/planner/20261027T034153Z_198f65",
+  "context_run": "reports/context_budget/20261027T072215Z_6c99b5",
+  "golden_sha256": "04d39406720979da6c7ec092d073d6e24d9c9b8747d6c10e36162c3eb0220f3a",
+  "scoring_code_sha256": "71ce35014bbd801f07391dd5091726ce520daed02b6662c4a879c515e3543a91",
+  "diagnostic_script_sha256": "957613e3b32a3fd0c90003ac750fe52ecae7983079df2a89bf071b81ce189807",
+  "model_api_calls": 0,
+  "metrics": {
+    "candidate_union": {
+      "macro_recall": 0.9447291235334714,
+      "found_groups": 209,
+      "required_groups": 225,
+      "complete_questions": 15
+    },
+    "retained_ranked": {
+      "macro_recall": 0.9447291235334714,
+      "found_groups": 209,
+      "required_groups": 225,
+      "complete_questions": 15
+    },
+    "raw_top10": {
+      "macro_recall": 0.35346396658896656,
+      "found_groups": 74,
+      "required_groups": 225,
+      "complete_questions": 2
+    },
+    "raw_top20": {
+      "macro_recall": 0.48341762404262406,
+      "found_groups": 103,
+      "required_groups": 225,
+      "complete_questions": 2
+    },
+    "raw_top40": {
+      "macro_recall": 0.6430013494959147,
+      "found_groups": 137,
+      "required_groups": 225,
+      "complete_questions": 4
+    },
+    "raw_top80": {
+      "macro_recall": 0.8095376996192214,
+      "found_groups": 176,
+      "required_groups": 225,
+      "complete_questions": 9
+    },
+    "final_rank30_8K": {
+      "macro_recall": 0.4734338578088578,
+      "found_groups": 102,
+      "required_groups": 225,
+      "complete_questions": 2
+    }
+  },
+  "pool_counts": {
+    "search_calls": {
+      "min": 2,
+      "mean": 17.1,
+      "max": 48
+    },
+    "raw_hits_with_repeats": {
+      "min": 40,
+      "mean": 342,
+      "max": 960
+    },
+    "unique_candidate_chunks": {
+      "min": 29,
+      "mean": 177.85,
+      "max": 573
+    },
+    "retained_ranked_chunks": {
+      "min": 29,
+      "mean": 174.8,
+      "max": 512
+    },
+    "context_window_chunks": {
+      "min": 29,
+      "mean": 75.3,
+      "max": 80
+    },
+    "final_items": {
+      "min": 16,
+      "mean": 19.55,
+      "max": 28
+    }
+  },
+  "final_missing_group_stage_counts": {
+    "inside_window80_not_selected": 74,
+    "outside_window80_or_span_not_complete_in_window": 33,
+    "candidate_union_missing": 16
+  },
+  "interpretation": "Stage attribution, not proof of unique semantic cause. Raw prefixes exclude table expansion and token limits; final context includes both. No claim of answer accuracy or reliable precision.",
+  "provenance": {
+    "local_source": "reports/context_budget/20261027T072215Z_6c99b5/funnel_analysis.json",
+    "sha256": "aaf08ba8eacd604c78786aeeb447dfc529c7336803de0412d524e9a92adaa4ae"
+  },
+  "interpretation_boundary": "Source-span evidence recall; not answer accuracy. Historical/dev conditions, not current production acceptance."
+}

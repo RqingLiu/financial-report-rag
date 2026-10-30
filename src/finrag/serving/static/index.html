@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FinRAG · Trace Explorer</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="brand" href="/"
+        ><span class="brand-mark">F</span>FinRAG <span class="divider">/</span
+        ><span class="brand-sub">Trace Studio</span></a
+      >
+      <div class="header-right">
+        <span class="connection"
+          ><span id="health-dot" class="dot"></span
+          ><span id="health">检查数据库…</span></span
+        ><span class="local">LOCAL</span
+        ><a href="/docs" target="_blank" rel="noopener">API ↗</a>
+      </div>
+    </header>
+    <main>
+      <section class="composer">
+        <div class="composer-title">
+          <div>
+            <div class="eyebrow">FINANCIAL RESEARCH</div>
+            <h1>财报检索与运行追踪</h1>
+          </div>
+          <span class="session-badge" id="session-badge">准备就绪</span>
+        </div>
+        <form id="query-form">
+          <label class="sr-only" for="question">研究问题</label>
+          <div class="question-row">
+            <textarea
+              id="question"
+              required
+              minlength="2"
+              maxlength="12000"
+              rows="2"
+              placeholder="比较 Google FY2024 与 Amazon FY2025 年报披露的云业务收入，说明披露口径。"
+            ></textarea
+            ><button class="primary" id="submit" type="submit">
+              <span>运行查询</span><span>↗</span>
+            </button>
+          </div>
+          <div class="query-options">
+            <label for="as-of">公开截止日</label
+            ><input id="as-of" type="date" required /><label
+              class="sr-only"
+              for="mode"
+              >执行范围</label
+            ><select id="mode">
+              <option value="answer">检索 + 引用答案</option>
+              <option value="retrieve">仅检索与上下文</option>
+            </select>
+            <details class="background">
+              <summary>添加阅读背景</summary>
+              <textarea
+                id="background"
+                maxlength="12000"
+                rows="3"
+                placeholder="公司、报告财年、章节或已确认范围"
+              ></textarea>
+            </details>
+            <span class="cost-note">新运行调用付费 API · 沿用预算上限</span>
+          </div>
+        </form>
+      </section>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <section class="workspace">
+        <div class="flow-area">
+          <div class="section-bar">
+            <div>
+              <span class="eyebrow">EXECUTION MAP</span>
+              <h2>
+                查询工作流 <span class="status-pill" id="run-status">IDLE</span>
+              </h2>
+            </div>
+            <div class="graph-tools">
+              <button id="open-code-map" class="text-button">
+                代码地图 ↗
+              </button>
+              <button id="zoom-out" class="icon-button" aria-label="缩小流程图">
+                −</button
+              ><span id="zoom-label">100%</span
+              ><button id="zoom-in" class="icon-button" aria-label="放大流程图">
+                ＋</button
+              ><button id="fit" class="text-button">适应画布</button>
+            </div>
+          </div>
+          <div
+            id="graph-viewport"
+            class="graph-viewport"
+            aria-label="可缩放流程图；点击节点查看详情"
+          >
+            <div id="graph-world" class="graph-world">
+              <svg id="edges" viewBox="0 0 920 330" aria-hidden="true">
+                <defs>
+                  <marker
+                    id="arrow"
+                    markerWidth="7"
+                    markerHeight="7"
+                    refX="6"
+                    refY="3.5"
+                    orient="auto"
+                  >
+                    <path d="M0 0 L7 3.5 L0 7" />
+                  </marker>
+                </defs>
+                <path
+                  class="edge"
+                  d="M220 85H245 M450 85H475 M680 85H705 M805 140V190 M705 245H680 M475 245H450 M245 245H220"
+                />
+              </svg>
+              <section
+                id="pipeline"
+                class="pipeline"
+                aria-label="八个工作流节点"
+              ></section>
+            </div>
+            <div class="canvas-caption">
+              <span class="legend-dot"></span>点击节点检查 · 拖动画布平移 ·
+              使用按钮缩放
+            </div>
+          </div>
+          <section id="stats" class="stats" aria-label="运行统计"></section>
+          <div class="run-caption">
+            <span id="run-label" class="eyebrow">PIPELINE AT A GLANCE</span>
+            <h3 id="run-title">选择节点，查看组件与数据。</h3>
+            <p id="run-meta" class="muted"></p>
+          </div>
+        </div>
+        <aside class="inspector" aria-label="步骤检查器">
+          <div class="inspector-heading">
+            <span class="eyebrow">STEP INSPECTOR</span>
+            <h2 id="step-title">问题规划</h2>
+            <div id="step-meta"></div>
+          </div>
+          <div id="call-list" class="call-list"></div>
+          <nav
+            id="inspector-tabs"
+            class="inspector-tabs"
+            aria-label="步骤详情"
+          ></nav>
+          <div id="inspector-body" class="inspector-body"></div>
+        </aside>
+      </section>
+      <section class="results">
+        <div class="results-header">
+          <nav id="tabs" class="tabs" aria-label="运行数据视图"></nav>
+          <details class="history-control">
+            <summary>历史运行 <span>↗</span></summary>
+            <div class="history-menu">
+              <p class="small muted">打开保存的 trace，不调用 API。</p>
+              <select id="history" aria-label="选择历史 trace">
+                <option value="">选择记录…</option>
+              </select>
+              <div class="history-actions">
+                <button id="load" class="secondary">打开记录</button
+                ><button
+                  id="refresh"
+                  class="icon-button"
+                  aria-label="刷新历史记录"
+                >
+                  ↻
+                </button>
+              </div>
+            </div>
+          </details>
+        </div>
+        <section id="content" class="content"></section>
+      </section>
+      <footer>
+        真实程序调用与证据记录；不展示模型内部思考。引用格式校验不等于事实正确。
+      </footer>
+    </main>
+    <dialog id="evidence-dialog">
+      <div class="dialog-top">
+        <h2 id="evidence-title">证据</h2>
+        <button id="close-evidence" class="icon-button" aria-label="关闭证据">
+          ×
+        </button>
+      </div>
+      <div id="evidence-body"></div>
+    </dialog>
+  </body>
+</html>

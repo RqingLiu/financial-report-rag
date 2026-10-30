@@ -13,6 +13,8 @@ Span-based group recall measures whether mandatory source text was recovered; ma
 
 ## Historical controlled development comparison
 
+The [experiment guide](experiments.md) covers v1 selection, context/rerank/focused-query studies and ANN conditions. [Public exports](../reports/public/experiments/README.md) include source hashes and per-question counts; `python scripts/verify_public_evidence.py` recomputes aggregate arithmetic without raw paid traces or DB credentials.
+
 | Planner / coarse retrieval | Reranker | Candidate macro recall | Top80 recall | Final-context recall |
 | --- | --- | ---: | ---: | ---: |
 | Original dense | LLM | 94.47% | 80.95% | 67.66% |
@@ -28,7 +30,7 @@ The diagnostic lesson is candidate→shortlist→context loss: changing only emb
 
 The historical2,759-chunk corpus had59 scoped queries with mean HNSW/exact Top20 overlap98.98%, with actual index-plan checks. The later10k/30k/100k expansion used locally perturbed vectors, not new financial documents. Strong synthetic clusters caused an HNSW construction pathology. It demonstrates distribution/parameter sensitivity, not real financial-corpus recall or RPS. Large synthetic fixture tables were removed; recipes/results remain local.
 
-The correctness update adds company-alias/FY counterexamples, typed confirmations, short/fat table preservation, pre-embedding conflict checks and exact reproduction of the original selected chunks. The final local DB-backed suite passed87 tests; clean-checkout Linux CI passed76 with11 local corpus/DB cases explicitly skipped. The public validation summary records the evidence. DB tests require `FINRAG_INTEGRATION=1`.
+The correctness update adds company-alias/FY counterexamples, typed confirmations, short/fat table preservation, pre-embedding conflict checks and exact reproduction of the original selected chunks. Its historical local DB-backed suite passed87 tests and clean-checkout Linux CI passed76 with11 skips; these receipts are preserved rather than overwritten. The newer guide/UI release passed101 local DB/corpus tests; see [current validation](../reports/public/project_guide_validation.json). DB tests require `FINRAG_INTEGRATION=1`.
 
 ## Still required before a quality claim
 
