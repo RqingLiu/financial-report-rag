@@ -1,0 +1,1679 @@
+{
+  "scope": "20 dev; unchanged index/scope/search budgets/Top80; no answer generation",
+  "summary": [
+    {
+      "arm": "wide",
+      "n": 20,
+      "mean_candidate_count": 177.85,
+      "candidate": {
+        "macro_recall": 0.9447291235334714,
+        "micro_found": 209,
+        "complete": 15,
+        "improved": [],
+        "regressed": []
+      },
+      "shortlist": {
+        "macro_recall": 0.8095376996192214,
+        "micro_found": 176,
+        "complete": 9,
+        "improved": [],
+        "regressed": []
+      },
+      "context": {
+        "macro_recall": 0.676592664581795,
+        "micro_found": 146,
+        "complete": 4,
+        "improved": [],
+        "regressed": []
+      }
+    },
+    {
+      "arm": "focused",
+      "n": 20,
+      "mean_candidate_count": 181.15,
+      "candidate": {
+        "macro_recall": 0.9406530365769497,
+        "micro_found": 208,
+        "complete": 14,
+        "improved": [
+          "U19"
+        ],
+        "regressed": [
+          "U20"
+        ]
+      },
+      "shortlist": {
+        "macro_recall": 0.822411631243153,
+        "micro_found": 179,
+        "complete": 9,
+        "improved": [
+          "U02",
+          "U15",
+          "U18"
+        ],
+        "regressed": []
+      },
+      "context": {
+        "macro_recall": 0.6981204423595728,
+        "micro_found": 150,
+        "complete": 4,
+        "improved": [
+          "U02",
+          "U15"
+        ],
+        "regressed": []
+      }
+    },
+    {
+      "arm": "mixed",
+      "n": 20,
+      "mean_candidate_count": 154.55,
+      "candidate": {
+        "macro_recall": 0.9310062974465149,
+        "micro_found": 204,
+        "complete": 14,
+        "improved": [],
+        "regressed": [
+          "U19",
+          "U20"
+        ]
+      },
+      "shortlist": {
+        "macro_recall": 0.820761454728846,
+        "micro_found": 174,
+        "complete": 10,
+        "improved": [
+          "U02",
+          "U07",
+          "U15",
+          "U16"
+        ],
+        "regressed": [
+          "U18",
+          "U19",
+          "U20"
+        ]
+      },
+      "context": {
+        "macro_recall": 0.6678215293160945,
+        "micro_found": 140,
+        "complete": 4,
+        "improved": [
+          "U02",
+          "U15"
+        ],
+        "regressed": [
+          "U19",
+          "U20"
+        ]
+      }
+    }
+  ],
+  "per_question": [
+    {
+      "query_id": "U01",
+      "arm": "wide",
+      "search_jobs": 18,
+      "candidate_count": 147,
+      "evidence_tokens": 7614,
+      "prompt_tokens": 16755,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 12,
+        "groups_required": 12,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 12,
+        "groups_required": 12,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.5833333333333334,
+        "groups_found": 7,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U02",
+      "arm": "wide",
+      "search_jobs": 12,
+      "candidate_count": 121,
+      "evidence_tokens": 7906,
+      "prompt_tokens": 15641,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 8,
+        "groups_required": 8,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.625,
+        "groups_found": 5,
+        "groups_required": 8,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.25,
+        "groups_found": 2,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U03",
+      "arm": "wide",
+      "search_jobs": 18,
+      "candidate_count": 185,
+      "evidence_tokens": 7864,
+      "prompt_tokens": 18253,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U04",
+      "arm": "wide",
+      "search_jobs": 12,
+      "candidate_count": 125,
+      "evidence_tokens": 7968,
+      "prompt_tokens": 16157,
+      "candidate": {
+        "recall": 0.8571428571428571,
+        "groups_found": 6,
+        "groups_required": 7,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U05",
+      "arm": "wide",
+      "search_jobs": 6,
+      "candidate_count": 65,
+      "evidence_tokens": 7823,
+      "prompt_tokens": 17961,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U06",
+      "arm": "wide",
+      "search_jobs": 6,
+      "candidate_count": 82,
+      "evidence_tokens": 7868,
+      "prompt_tokens": 15778,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U07",
+      "arm": "wide",
+      "search_jobs": 18,
+      "candidate_count": 204,
+      "evidence_tokens": 7684,
+      "prompt_tokens": 16087,
+      "candidate": {
+        "recall": 0.8888888888888888,
+        "groups_found": 8,
+        "groups_required": 9,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.5555555555555556,
+        "groups_found": 5,
+        "groups_required": 9,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.4444444444444444,
+        "groups_found": 4,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U08",
+      "arm": "wide",
+      "search_jobs": 12,
+      "candidate_count": 111,
+      "evidence_tokens": 7980,
+      "prompt_tokens": 18783,
+      "candidate": {
+        "recall": 0.9166666666666666,
+        "groups_found": 11,
+        "groups_required": 12,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.9166666666666666,
+        "groups_found": 11,
+        "groups_required": 12,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.6666666666666666,
+        "groups_found": 8,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U09",
+      "arm": "wide",
+      "search_jobs": 6,
+      "candidate_count": 90,
+      "evidence_tokens": 7895,
+      "prompt_tokens": 18639,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U10",
+      "arm": "wide",
+      "search_jobs": 18,
+      "candidate_count": 125,
+      "evidence_tokens": 7583,
+      "prompt_tokens": 15051,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.9090909090909091,
+        "groups_found": 10,
+        "groups_required": 11,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.9090909090909091,
+        "groups_found": 10,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U11",
+      "arm": "wide",
+      "search_jobs": 18,
+      "candidate_count": 128,
+      "evidence_tokens": 7974,
+      "prompt_tokens": 16584,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 16,
+        "groups_required": 16,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 16,
+        "groups_required": 16,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.9375,
+        "groups_found": 15,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U12",
+      "arm": "wide",
+      "search_jobs": 2,
+      "candidate_count": 29,
+      "evidence_tokens": 7342,
+      "prompt_tokens": 15707,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U13",
+      "arm": "wide",
+      "search_jobs": 6,
+      "candidate_count": 64,
+      "evidence_tokens": 7887,
+      "prompt_tokens": 16059,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U14",
+      "arm": "wide",
+      "search_jobs": 4,
+      "candidate_count": 68,
+      "evidence_tokens": 7975,
+      "prompt_tokens": 16996,
+      "candidate": {
+        "recall": 0.6666666666666666,
+        "groups_found": 6,
+        "groups_required": 9,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.6666666666666666,
+        "groups_found": 6,
+        "groups_required": 9,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.6666666666666666,
+        "groups_found": 6,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U15",
+      "arm": "wide",
+      "search_jobs": 36,
+      "candidate_count": 462,
+      "evidence_tokens": 7988,
+      "prompt_tokens": 15293,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 18,
+        "groups_required": 18,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.7777777777777778,
+        "groups_found": 14,
+        "groups_required": 18,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.7222222222222222,
+        "groups_found": 13,
+        "groups_required": 18,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U16",
+      "arm": "wide",
+      "search_jobs": 36,
+      "candidate_count": 317,
+      "evidence_tokens": 7516,
+      "prompt_tokens": 16795,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 8,
+        "groups_required": 8,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.5,
+        "groups_found": 4,
+        "groups_required": 8,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.375,
+        "groups_found": 3,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U17",
+      "arm": "wide",
+      "search_jobs": 24,
+      "candidate_count": 232,
+      "evidence_tokens": 7939,
+      "prompt_tokens": 17709,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.8,
+        "groups_found": 8,
+        "groups_required": 10,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U18",
+      "arm": "wide",
+      "search_jobs": 24,
+      "candidate_count": 202,
+      "evidence_tokens": 7801,
+      "prompt_tokens": 15329,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 13,
+        "groups_required": 13,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.6153846153846154,
+        "groups_found": 8,
+        "groups_required": 13,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.38461538461538464,
+        "groups_found": 5,
+        "groups_required": 13,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U19",
+      "arm": "wide",
+      "search_jobs": 18,
+      "candidate_count": 227,
+      "evidence_tokens": 7903,
+      "prompt_tokens": 15974,
+      "candidate": {
+        "recall": 0.5652173913043478,
+        "groups_found": 13,
+        "groups_required": 23,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.34782608695652173,
+        "groups_found": 8,
+        "groups_required": 23,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.08695652173913043,
+        "groups_found": 2,
+        "groups_required": 23,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U20",
+      "arm": "wide",
+      "search_jobs": 48,
+      "candidate_count": 573,
+      "evidence_tokens": 7956,
+      "prompt_tokens": 14971,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 16,
+        "groups_required": 16,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.5625,
+        "groups_found": 9,
+        "groups_required": 16,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.5625,
+        "groups_found": 9,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U01",
+      "arm": "focused",
+      "search_jobs": 18,
+      "candidate_count": 147,
+      "evidence_tokens": 7900,
+      "prompt_tokens": 17081,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 12,
+        "groups_required": 12,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 12,
+        "groups_required": 12,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.5833333333333334,
+        "groups_found": 7,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U02",
+      "arm": "focused",
+      "search_jobs": 12,
+      "candidate_count": 154,
+      "evidence_tokens": 7888,
+      "prompt_tokens": 15161,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 8,
+        "groups_required": 8,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.75,
+        "groups_found": 6,
+        "groups_required": 8,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.625,
+        "groups_found": 5,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U03",
+      "arm": "focused",
+      "search_jobs": 18,
+      "candidate_count": 173,
+      "evidence_tokens": 7864,
+      "prompt_tokens": 18253,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U04",
+      "arm": "focused",
+      "search_jobs": 12,
+      "candidate_count": 125,
+      "evidence_tokens": 7968,
+      "prompt_tokens": 16157,
+      "candidate": {
+        "recall": 0.8571428571428571,
+        "groups_found": 6,
+        "groups_required": 7,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U05",
+      "arm": "focused",
+      "search_jobs": 6,
+      "candidate_count": 74,
+      "evidence_tokens": 7632,
+      "prompt_tokens": 17745,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U06",
+      "arm": "focused",
+      "search_jobs": 6,
+      "candidate_count": 72,
+      "evidence_tokens": 7806,
+      "prompt_tokens": 15525,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U07",
+      "arm": "focused",
+      "search_jobs": 18,
+      "candidate_count": 202,
+      "evidence_tokens": 7684,
+      "prompt_tokens": 16087,
+      "candidate": {
+        "recall": 0.8888888888888888,
+        "groups_found": 8,
+        "groups_required": 9,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.5555555555555556,
+        "groups_found": 5,
+        "groups_required": 9,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.4444444444444444,
+        "groups_found": 4,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U08",
+      "arm": "focused",
+      "search_jobs": 12,
+      "candidate_count": 112,
+      "evidence_tokens": 7980,
+      "prompt_tokens": 18783,
+      "candidate": {
+        "recall": 0.9166666666666666,
+        "groups_found": 11,
+        "groups_required": 12,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.9166666666666666,
+        "groups_found": 11,
+        "groups_required": 12,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.6666666666666666,
+        "groups_found": 8,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U09",
+      "arm": "focused",
+      "search_jobs": 6,
+      "candidate_count": 86,
+      "evidence_tokens": 7895,
+      "prompt_tokens": 18639,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U10",
+      "arm": "focused",
+      "search_jobs": 18,
+      "candidate_count": 121,
+      "evidence_tokens": 7535,
+      "prompt_tokens": 15090,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.9090909090909091,
+        "groups_found": 10,
+        "groups_required": 11,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.9090909090909091,
+        "groups_found": 10,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U11",
+      "arm": "focused",
+      "search_jobs": 18,
+      "candidate_count": 149,
+      "evidence_tokens": 7985,
+      "prompt_tokens": 16703,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 16,
+        "groups_required": 16,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 16,
+        "groups_required": 16,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.9375,
+        "groups_found": 15,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U12",
+      "arm": "focused",
+      "search_jobs": 2,
+      "candidate_count": 30,
+      "evidence_tokens": 7878,
+      "prompt_tokens": 16976,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U13",
+      "arm": "focused",
+      "search_jobs": 6,
+      "candidate_count": 71,
+      "evidence_tokens": 7887,
+      "prompt_tokens": 16059,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U14",
+      "arm": "focused",
+      "search_jobs": 4,
+      "candidate_count": 68,
+      "evidence_tokens": 7975,
+      "prompt_tokens": 16996,
+      "candidate": {
+        "recall": 0.6666666666666666,
+        "groups_found": 6,
+        "groups_required": 9,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.6666666666666666,
+        "groups_found": 6,
+        "groups_required": 9,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.6666666666666666,
+        "groups_found": 6,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U15",
+      "arm": "focused",
+      "search_jobs": 36,
+      "candidate_count": 533,
+      "evidence_tokens": 7908,
+      "prompt_tokens": 14732,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 18,
+        "groups_required": 18,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.8333333333333334,
+        "groups_found": 15,
+        "groups_required": 18,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.7777777777777778,
+        "groups_found": 14,
+        "groups_required": 18,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U16",
+      "arm": "focused",
+      "search_jobs": 36,
+      "candidate_count": 317,
+      "evidence_tokens": 7516,
+      "prompt_tokens": 16795,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 8,
+        "groups_required": 8,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.5,
+        "groups_found": 4,
+        "groups_required": 8,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.375,
+        "groups_found": 3,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U17",
+      "arm": "focused",
+      "search_jobs": 24,
+      "candidate_count": 225,
+      "evidence_tokens": 7939,
+      "prompt_tokens": 17709,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.8,
+        "groups_found": 8,
+        "groups_required": 10,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U18",
+      "arm": "focused",
+      "search_jobs": 24,
+      "candidate_count": 211,
+      "evidence_tokens": 7817,
+      "prompt_tokens": 15343,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 13,
+        "groups_required": 13,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.6923076923076923,
+        "groups_found": 9,
+        "groups_required": 13,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.38461538461538464,
+        "groups_found": 5,
+        "groups_required": 13,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U19",
+      "arm": "focused",
+      "search_jobs": 18,
+      "candidate_count": 233,
+      "evidence_tokens": 7818,
+      "prompt_tokens": 15939,
+      "candidate": {
+        "recall": 0.6086956521739131,
+        "groups_found": 14,
+        "groups_required": 23,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.34782608695652173,
+        "groups_found": 8,
+        "groups_required": 23,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.08695652173913043,
+        "groups_found": 2,
+        "groups_required": 23,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U20",
+      "arm": "focused",
+      "search_jobs": 48,
+      "candidate_count": 520,
+      "evidence_tokens": 7954,
+      "prompt_tokens": 15658,
+      "candidate": {
+        "recall": 0.875,
+        "groups_found": 14,
+        "groups_required": 16,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.5625,
+        "groups_found": 9,
+        "groups_required": 16,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.5625,
+        "groups_found": 9,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U01",
+      "arm": "mixed",
+      "search_jobs": 18,
+      "candidate_count": 147,
+      "evidence_tokens": 7900,
+      "prompt_tokens": 17081,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 12,
+        "groups_required": 12,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 12,
+        "groups_required": 12,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.5833333333333334,
+        "groups_found": 7,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U02",
+      "arm": "mixed",
+      "search_jobs": 12,
+      "candidate_count": 124,
+      "evidence_tokens": 7904,
+      "prompt_tokens": 14956,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 8,
+        "groups_required": 8,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 8,
+        "groups_required": 8,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.625,
+        "groups_found": 5,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U03",
+      "arm": "mixed",
+      "search_jobs": 18,
+      "candidate_count": 165,
+      "evidence_tokens": 7864,
+      "prompt_tokens": 18253,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U04",
+      "arm": "mixed",
+      "search_jobs": 12,
+      "candidate_count": 125,
+      "evidence_tokens": 7968,
+      "prompt_tokens": 16157,
+      "candidate": {
+        "recall": 0.8571428571428571,
+        "groups_found": 6,
+        "groups_required": 7,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U05",
+      "arm": "mixed",
+      "search_jobs": 6,
+      "candidate_count": 63,
+      "evidence_tokens": 7940,
+      "prompt_tokens": 17932,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U06",
+      "arm": "mixed",
+      "search_jobs": 6,
+      "candidate_count": 74,
+      "evidence_tokens": 7851,
+      "prompt_tokens": 16037,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U07",
+      "arm": "mixed",
+      "search_jobs": 18,
+      "candidate_count": 183,
+      "evidence_tokens": 7808,
+      "prompt_tokens": 16669,
+      "candidate": {
+        "recall": 0.8888888888888888,
+        "groups_found": 8,
+        "groups_required": 9,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.7777777777777778,
+        "groups_found": 7,
+        "groups_required": 9,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.4444444444444444,
+        "groups_found": 4,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U08",
+      "arm": "mixed",
+      "search_jobs": 12,
+      "candidate_count": 98,
+      "evidence_tokens": 7980,
+      "prompt_tokens": 18783,
+      "candidate": {
+        "recall": 0.9166666666666666,
+        "groups_found": 11,
+        "groups_required": 12,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.9166666666666666,
+        "groups_found": 11,
+        "groups_required": 12,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.6666666666666666,
+        "groups_found": 8,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U09",
+      "arm": "mixed",
+      "search_jobs": 6,
+      "candidate_count": 63,
+      "evidence_tokens": 7895,
+      "prompt_tokens": 18639,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U10",
+      "arm": "mixed",
+      "search_jobs": 18,
+      "candidate_count": 113,
+      "evidence_tokens": 7499,
+      "prompt_tokens": 15056,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.9090909090909091,
+        "groups_found": 10,
+        "groups_required": 11,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.9090909090909091,
+        "groups_found": 10,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U11",
+      "arm": "mixed",
+      "search_jobs": 18,
+      "candidate_count": 137,
+      "evidence_tokens": 7974,
+      "prompt_tokens": 16584,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 16,
+        "groups_required": 16,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 16,
+        "groups_required": 16,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.9375,
+        "groups_found": 15,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U12",
+      "arm": "mixed",
+      "search_jobs": 2,
+      "candidate_count": 24,
+      "evidence_tokens": 6579,
+      "prompt_tokens": 14032,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      },
+      "context": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U13",
+      "arm": "mixed",
+      "search_jobs": 6,
+      "candidate_count": 60,
+      "evidence_tokens": 7887,
+      "prompt_tokens": 16059,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.7142857142857143,
+        "groups_found": 5,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U14",
+      "arm": "mixed",
+      "search_jobs": 4,
+      "candidate_count": 43,
+      "evidence_tokens": 7957,
+      "prompt_tokens": 17479,
+      "candidate": {
+        "recall": 0.6666666666666666,
+        "groups_found": 6,
+        "groups_required": 9,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.6666666666666666,
+        "groups_found": 6,
+        "groups_required": 9,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.6666666666666666,
+        "groups_found": 6,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U15",
+      "arm": "mixed",
+      "search_jobs": 36,
+      "candidate_count": 368,
+      "evidence_tokens": 7939,
+      "prompt_tokens": 14721,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 18,
+        "groups_required": 18,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.8333333333333334,
+        "groups_found": 15,
+        "groups_required": 18,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.7777777777777778,
+        "groups_found": 14,
+        "groups_required": 18,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U16",
+      "arm": "mixed",
+      "search_jobs": 36,
+      "candidate_count": 232,
+      "evidence_tokens": 7463,
+      "prompt_tokens": 16957,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 8,
+        "groups_required": 8,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.625,
+        "groups_found": 5,
+        "groups_required": 8,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.375,
+        "groups_found": 3,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U17",
+      "arm": "mixed",
+      "search_jobs": 24,
+      "candidate_count": 219,
+      "evidence_tokens": 7905,
+      "prompt_tokens": 16841,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      },
+      "context": {
+        "recall": 0.8,
+        "groups_found": 8,
+        "groups_required": 10,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U18",
+      "arm": "mixed",
+      "search_jobs": 24,
+      "candidate_count": 186,
+      "evidence_tokens": 7779,
+      "prompt_tokens": 15205,
+      "candidate": {
+        "recall": 1.0,
+        "groups_found": 13,
+        "groups_required": 13,
+        "complete": true
+      },
+      "shortlist": {
+        "recall": 0.46153846153846156,
+        "groups_found": 6,
+        "groups_required": 13,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.38461538461538464,
+        "groups_found": 5,
+        "groups_required": 13,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U19",
+      "arm": "mixed",
+      "search_jobs": 18,
+      "candidate_count": 218,
+      "evidence_tokens": 7921,
+      "prompt_tokens": 16486,
+      "candidate": {
+        "recall": 0.4782608695652174,
+        "groups_found": 11,
+        "groups_required": 23,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.2608695652173913,
+        "groups_found": 6,
+        "groups_required": 23,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.043478260869565216,
+        "groups_found": 1,
+        "groups_required": 23,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U20",
+      "arm": "mixed",
+      "search_jobs": 48,
+      "candidate_count": 449,
+      "evidence_tokens": 7952,
+      "prompt_tokens": 14836,
+      "candidate": {
+        "recall": 0.8125,
+        "groups_found": 13,
+        "groups_required": 16,
+        "complete": false
+      },
+      "shortlist": {
+        "recall": 0.25,
+        "groups_found": 4,
+        "groups_required": 16,
+        "complete": false
+      },
+      "context": {
+        "recall": 0.0,
+        "groups_found": 0,
+        "groups_required": 16,
+        "complete": false
+      }
+    }
+  ],
+  "provenance": {
+    "local_source": "reports/focused_queries/20261028T022730Z_78c0ce/results.json",
+    "sha256": "50ef870453efd33af30ca7426253d1279dda86809fbddbdd9dcf6f9f6aa19ba5"
+  },
+  "interpretation_boundary": "Source-span evidence recall; not answer accuracy. Historical/dev conditions, not current production acceptance."
+}

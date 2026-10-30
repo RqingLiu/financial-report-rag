@@ -3,7 +3,10 @@
   "feature": "006-trace-explorer",
   "retrieval_defaults_changed": false,
   "validation": {
-    "local_tests_with_db": {"passed": 95, "failed": 0},
+    "local_tests_with_db": {
+      "passed": 95,
+      "failed": 0
+    },
     "github_source_ci": {
       "url": "https://github.com/RqingLiu/financial-report-rag/actions/runs/40833557543",
       "source_commit": "fce897aea04a84983a30bfa1f6740bbb86f2d3ab",
@@ -13,13 +16,30 @@
     },
     "ruff": "passed",
     "javascript_syntax": "passed",
-    "python_wheel_static_assets": ["index.html", "style.css", "app.js"],
-    "golden_v2_read_only_check": {"questions": 20, "evidence_groups": 225, "numeric_checks": 123},
+    "python_wheel_static_assets": [
+      "index.html",
+      "style.css",
+      "app.js"
+    ],
+    "golden_v2_read_only_check": {
+      "questions": 20,
+      "evidence_groups": 225,
+      "numeric_checks": 123
+    },
     "browser": {
       "desktop_width": 1440,
       "narrow_width": 390,
       "horizontal_page_overflow": false,
-      "checked": ["historical replay", "planner", "candidate filters", "candidate details", "live query", "answer citation to evidence and SEC link", "context view", "console errors absent"]
+      "checked": [
+        "historical replay",
+        "planner",
+        "candidate filters",
+        "candidate details",
+        "live query",
+        "answer citation to evidence and SEC link",
+        "context view",
+        "console errors absent"
+      ]
     }
   },
   "live_smoke": {
@@ -31,20 +51,15 @@
     "selected_evidence_items": 18,
     "evidence_proxy_tokens": 7986,
     "full_prompt_proxy_tokens": 18487,
-    "top_level_span_seconds": 18.70,
+    "top_level_span_seconds": 18.7,
     "answer_structural_validation": "passed; semantic support unverified",
     "incremental_peak_list_estimate_usd": "0.01688394"
-  },
-  "shared_billing": {
-    "known_peak_list_estimate_usd": "1.33248918",
-    "unresolved_reserved_usd": "0.0093642",
-    "cumulative_stop_usd": "1.60",
-    "provider_invoice_verified": false
   },
   "limitations": [
     "One live smoke query is not a held-out quality or throughput evaluation.",
     "Stage durations exclude setup/serialization/network and are not end-to-end p95.",
     "Browser disconnect preserves workers; process restarts are not durable-job recovery.",
     "No public deployment or authentication; loopback only."
-  ]
+  ],
+  "privacy_note": "Account-level billing ledger/status omitted from public receipt; experiment-specific usage/cost observations retained."
 }

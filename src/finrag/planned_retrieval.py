@@ -129,7 +129,9 @@ class PlannedRetriever:
             )
             s["outputs"] = {"usage_events": self.embedder.events[before:], "vectors_logged": False}
         records = []
-        with trace.stage("retrieve", {"jobs": len(jobs), "index_id": self.index_id}):
+        with trace.stage(
+            "retrieve", {"jobs": len(jobs), "index_id": self.index_id, "as_of": str(plan.as_of)}
+        ) as parent:
             for job in jobs:
                 with trace.stage("retrieve." + job["method"], job) as s:
                     started = perf_counter()
@@ -148,6 +150,11 @@ class PlannedRetriever:
                     }
                     records.append(record)
                     s["outputs"] = {"hits": record["hits"]}
+            parent["outputs"] = {
+                "completed_searches": len(records),
+                "hit_count": sum(len(r["hits"]) for r in records),
+                "unique_chunks": len({h["chunk"]["id"] for r in records for h in r["hits"]}),
+            }
         return records
 
     def context(self, records, config, trace, mode="weighted_rrf", *, plan=None):

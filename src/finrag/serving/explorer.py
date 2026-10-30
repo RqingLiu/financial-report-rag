@@ -17,6 +17,31 @@ def pick(row, keys):
     return {k: row[k] for k in keys.split() if k in row}
 
 
+def catalog_view(catalog, as_of):
+    """Current published DB catalog, kept separate from historical trace snapshots."""
+    filings = []
+    eligible = [f for f in catalog.filings if f.filed_at <= as_of]
+    for filing in eligible[:500]:
+        row = pick(
+            filing.model_dump(),
+            "id ticker fiscal_year form period_end filed_at source_url amends_document_id",
+        )
+        # Conventional managed raw-file location, not an arbitrary file endpoint.
+        if re.fullmatch(r"[A-Za-z0-9_-]+", filing.id):
+            raw = ROOT / "data/raw" / f"{filing.id}.html"
+            if raw.is_file() and not raw.is_symlink():
+                row["local_raw_path"] = f"data/raw/{filing.id}.html"
+        filings.append(row)
+    return {
+        "source": "current_published_database",
+        "as_of": as_of,
+        "documents": len(eligible),
+        "returned_documents": len(filings),
+        "truncated": len(eligible) > len(filings),
+        "filings": filings,
+    }
+
+
 def hit_view(hit, *, text_limit=4000):
     chunk = hit.get("chunk", {})
     text = chunk.get("text", "")
@@ -47,33 +72,139 @@ def generation_view(row):
     return pick(row, "answer structured_answer structural_validation finish_reason")
 
 
+def model_input(inputs):
+    """Project known business payloads; never forward system/raw messages."""
+    purpose = inputs.get("purpose")
+    allowed = {
+        "query_planning": "request catalog",
+        "candidate_rerank": "question reading_context confirmed_context as_of companies needs candidates",
+        "planned_answer": "question reading_context confirmed_context as_of plan evidence",
+    }
+    if purpose not in allowed:
+        return None
+    for message in inputs.get("messages", []):
+        if message.get("role") != "user":
+            continue
+        try:
+            payload = json.loads(message.get("content", ""))
+            if isinstance(payload, dict):
+                return business_fields(pick(payload, allowed[purpose]))
+        except (ValueError, TypeError):
+            pass
+    return None
+
+
+BUSINESS_KEYS = frozenset(
+    [
+        "request",
+        "catalog",
+        "question",
+        "original_question",
+        "reading_context",
+        "confirmed_context",
+        "as_of",
+        "ticker",
+        "cik",
+        "name",
+        "aliases",
+        "reports",
+        "document_id",
+        "fiscal_year",
+        "period_end",
+        "filed_at",
+        "source_url",
+        "companies",
+        "source_mention",
+        "report_years",
+        "needs",
+        "id",
+        "description",
+        "source_quote",
+        "candidates",
+        "i",
+        "source",
+        "report_fy",
+        "line",
+        "line_count",
+        "lines",
+        "plan",
+        "evidence",
+        "citation",
+        "chunk_id",
+        "source_spans",
+        "text",
+        "block_id",
+        "start",
+        "end",
+        "section",
+        "tasks",
+        "need_ids",
+        "tickers",
+        "dense_queries",
+        "keywords",
+        "depends_on",
+        "route",
+        "action",
+        "period_basis",
+        "period_interpretation",
+        "excluded_tickers",
+        "limitations",
+        "clarification_questions",
+        "report_document_id",
+        "date_precision",
+        "exclude_later_filings",
+    ]
+)
+
+
+def business_fields(value):
+    """Drop unexpected nested provider/config keys, including inside user JSON."""
+    if isinstance(value, dict):
+        return {k: business_fields(v) for k, v in value.items() if k in BUSINESS_KEYS}
+    if isinstance(value, list):
+        return [business_fields(v) for v in value]
+    return value
+
+
 def stage_view(row):
     """Never recursively expose generic provider events/messages/configuration."""
     name = row["name"]
     inputs, outputs = row.get("inputs", {}), row.get("outputs", {})
     out = pick(row, "id parent_id name status started_at ended_at duration_seconds error_type")
+    source = row.get("source")
+    if isinstance(source, dict):
+        path = source.get("path", "")
+        if path.startswith(("src/finrag/", "tests/")) and ".." not in path.split("/"):
+            out["source"] = pick(source, "path function line sha256")
     out["inputs"] = pick(
         inputs,
         "purpose max_tokens json_object method candidates evidence_cap prompt_cap "
         "queries input_type model jobs task_id group documents query k variants "
-        "rrf_c coarse_policy lexical_weight index_id",
+        "rrf_c coarse_policy lexical_weight index_id request as_of candidate_ids need_ids "
+        "evidence_ids search_count",
     )
     visible = {}
     if name == "catalog_snapshot":
-        visible = pick(outputs, "documents fingerprint")
+        visible = pick(outputs, "documents fingerprint catalog")
     elif name in ("query_plan", "evidence_regroup"):
         visible = pick(outputs, "cached attempts validated_plan")
     elif name == "llm_call":
+        business = model_input(inputs)
+        if business is not None:
+            out["inputs"]["business_payload"] = business
         visible = pick(
             outputs, "requested_model response_model usage peak_list_cost_usd finish_reason"
         )
     elif name == "embed_queries":
         visible = {
+            "vectors_logged": False,
             "usage_events": [
                 pick(e, "model input_type tokens peak_list_cost_usd cached")
                 for e in outputs.get("usage_events", [])
-            ]
+            ],
         }
+    elif name == "retrieve":
+        visible = pick(outputs, "completed_searches hit_count unique_chunks")
     elif name.startswith("retrieve."):
         visible = {"hits": [hit_view(h, text_limit=1200) for h in outputs.get("hits", [])]}
     elif name == "fusion":

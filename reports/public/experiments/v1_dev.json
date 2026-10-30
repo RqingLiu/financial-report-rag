@@ -1,0 +1,1102 @@
+{
+  "scope": "Historical v1:30 dev queries,25 answerable;28 configurations, not28 chunk strategies; references not independently reviewed.",
+  "rows": [
+    {
+      "config": {
+        "name": "recursive_384_plain_dense",
+        "index_name": "recursive_384_plain",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": false,
+        "expand_parent": false,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:50.885982+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.35333333333333333,
+          "micro_recall": 0.1927710843373494,
+          "complete_question_rate": 0.28
+        },
+        "10": {
+          "macro_recall": 0.44,
+          "micro_recall": 0.26506024096385544,
+          "complete_question_rate": 0.32
+        },
+        "20": {
+          "macro_recall": 0.5266666666666666,
+          "micro_recall": 0.3373493975903614,
+          "complete_question_rate": 0.4
+        }
+      },
+      "median_latency_seconds": 0.007637541042640805,
+      "mean_context_proxy_tokens": 6193.64
+    },
+    {
+      "config": {
+        "name": "recursive_384_plain_hybrid_group_parent",
+        "index_name": "recursive_384_plain",
+        "method": "hybrid",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:51.863768+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.19333333333333333,
+          "micro_recall": 0.08433734939759036,
+          "complete_question_rate": 0.16
+        },
+        "10": {
+          "macro_recall": 0.26666666666666666,
+          "micro_recall": 0.1927710843373494,
+          "complete_question_rate": 0.2
+        },
+        "20": {
+          "macro_recall": 0.30666666666666664,
+          "micro_recall": 0.24096385542168675,
+          "complete_question_rate": 0.2
+        }
+      },
+      "median_latency_seconds": 0.03291666600853205,
+      "mean_context_proxy_tokens": 7938.96
+    },
+    {
+      "config": {
+        "name": "recursive_768_context_dense",
+        "index_name": "recursive_768_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": false,
+        "expand_parent": false,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:52.051669+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.5066666666666667,
+          "micro_recall": 0.37349397590361444,
+          "complete_question_rate": 0.44
+        },
+        "10": {
+          "macro_recall": 0.6866666666666666,
+          "micro_recall": 0.5301204819277109,
+          "complete_question_rate": 0.64
+        },
+        "20": {
+          "macro_recall": 0.6866666666666666,
+          "micro_recall": 0.5301204819277109,
+          "complete_question_rate": 0.64
+        }
+      },
+      "median_latency_seconds": 0.005465790978632867,
+      "mean_context_proxy_tokens": 7916.8
+    },
+    {
+      "config": {
+        "name": "recursive_768_context_hybrid_group_parent",
+        "index_name": "recursive_768_context",
+        "method": "hybrid",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:53.500590+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.22,
+          "micro_recall": 0.0963855421686747,
+          "complete_question_rate": 0.2
+        },
+        "10": {
+          "macro_recall": 0.24,
+          "micro_recall": 0.13253012048192772,
+          "complete_question_rate": 0.2
+        },
+        "20": {
+          "macro_recall": 0.24,
+          "micro_recall": 0.13253012048192772,
+          "complete_question_rate": 0.2
+        }
+      },
+      "median_latency_seconds": 0.039623415912501514,
+      "mean_context_proxy_tokens": 7855.08
+    },
+    {
+      "config": {
+        "name": "structure_512_context_dense",
+        "index_name": "structure_512_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": false,
+        "expand_parent": false,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:53.711749+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.42666666666666664,
+          "micro_recall": 0.25301204819277107,
+          "complete_question_rate": 0.36
+        },
+        "10": {
+          "macro_recall": 0.62,
+          "micro_recall": 0.42168674698795183,
+          "complete_question_rate": 0.48
+        },
+        "20": {
+          "macro_recall": 0.8266666666666667,
+          "micro_recall": 0.6265060240963856,
+          "complete_question_rate": 0.8
+        }
+      },
+      "median_latency_seconds": 0.00681625003926456,
+      "mean_context_proxy_tokens": 6483.64
+    },
+    {
+      "config": {
+        "name": "structure_512_context_hybrid_group_parent",
+        "index_name": "structure_512_context",
+        "method": "hybrid",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:54.797536+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.22,
+          "micro_recall": 0.12048192771084337,
+          "complete_question_rate": 0.2
+        },
+        "10": {
+          "macro_recall": 0.34,
+          "micro_recall": 0.24096385542168675,
+          "complete_question_rate": 0.32
+        },
+        "20": {
+          "macro_recall": 0.36666666666666664,
+          "micro_recall": 0.26506024096385544,
+          "complete_question_rate": 0.32
+        }
+      },
+      "median_latency_seconds": 0.035809916094876826,
+      "mean_context_proxy_tokens": 7827.44
+    },
+    {
+      "config": {
+        "name": "structure_900_context_dense",
+        "index_name": "structure_900_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": false,
+        "expand_parent": false,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:55.010171+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.36,
+          "micro_recall": 0.20481927710843373,
+          "complete_question_rate": 0.28
+        },
+        "10": {
+          "macro_recall": 0.47333333333333333,
+          "micro_recall": 0.3253012048192771,
+          "complete_question_rate": 0.4
+        },
+        "20": {
+          "macro_recall": 0.6333333333333333,
+          "micro_recall": 0.4819277108433735,
+          "complete_question_rate": 0.56
+        }
+      },
+      "median_latency_seconds": 0.00613191700540483,
+      "mean_context_proxy_tokens": 7292.8
+    },
+    {
+      "config": {
+        "name": "structure_900_context_hybrid_group_parent",
+        "index_name": "structure_900_context",
+        "method": "hybrid",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:56.209317+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.22,
+          "micro_recall": 0.0963855421686747,
+          "complete_question_rate": 0.2
+        },
+        "10": {
+          "macro_recall": 0.22,
+          "micro_recall": 0.0963855421686747,
+          "complete_question_rate": 0.2
+        },
+        "20": {
+          "macro_recall": 0.26,
+          "micro_recall": 0.14457831325301204,
+          "complete_question_rate": 0.2
+        }
+      },
+      "median_latency_seconds": 0.03668533300515264,
+      "mean_context_proxy_tokens": 7924.24
+    },
+    {
+      "config": {
+        "name": "structure512_dense_group_parent",
+        "index_name": "structure_512_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:56.722842+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.48,
+          "micro_recall": 0.3493975903614458,
+          "complete_question_rate": 0.44
+        },
+        "10": {
+          "macro_recall": 0.6266666666666667,
+          "micro_recall": 0.46987951807228917,
+          "complete_question_rate": 0.6
+        },
+        "20": {
+          "macro_recall": 0.7466666666666667,
+          "micro_recall": 0.5783132530120482,
+          "complete_question_rate": 0.72
+        }
+      },
+      "median_latency_seconds": 0.014266833080910146,
+      "mean_context_proxy_tokens": 7887.68
+    },
+    {
+      "config": {
+        "name": "structure512_fts_group_parent",
+        "index_name": "structure_512_context",
+        "method": "fts",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:57.380675+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.04,
+          "micro_recall": 0.012048192771084338,
+          "complete_question_rate": 0.04
+        },
+        "10": {
+          "macro_recall": 0.04,
+          "micro_recall": 0.012048192771084338,
+          "complete_question_rate": 0.04
+        },
+        "20": {
+          "macro_recall": 0.04,
+          "micro_recall": 0.012048192771084338,
+          "complete_question_rate": 0.04
+        }
+      },
+      "median_latency_seconds": 0.019689333043061197,
+      "mean_context_proxy_tokens": 7607.92
+    },
+    {
+      "config": {
+        "name": "structure512_tree_group_parent",
+        "index_name": "structure_512_context",
+        "method": "tree",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:58.123215+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.48,
+          "micro_recall": 0.3493975903614458,
+          "complete_question_rate": 0.44
+        },
+        "10": {
+          "macro_recall": 0.6266666666666667,
+          "micro_recall": 0.46987951807228917,
+          "complete_question_rate": 0.6
+        },
+        "20": {
+          "macro_recall": 0.7466666666666667,
+          "micro_recall": 0.5783132530120482,
+          "complete_question_rate": 0.72
+        }
+      },
+      "median_latency_seconds": 0.019995125010609627,
+      "mean_context_proxy_tokens": 7889.36
+    },
+    {
+      "config": {
+        "name": "structure512_dense_parent",
+        "index_name": "structure_512_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": false,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:58.512572+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.44,
+          "micro_recall": 0.27710843373493976,
+          "complete_question_rate": 0.36
+        },
+        "10": {
+          "macro_recall": 0.5866666666666667,
+          "micro_recall": 0.42168674698795183,
+          "complete_question_rate": 0.52
+        },
+        "20": {
+          "macro_recall": 0.7066666666666667,
+          "micro_recall": 0.5301204819277109,
+          "complete_question_rate": 0.64
+        }
+      },
+      "median_latency_seconds": 0.012384500005282462,
+      "mean_context_proxy_tokens": 7879.52
+    },
+    {
+      "config": {
+        "name": "structure512_hybrid_group",
+        "index_name": "structure_512_context",
+        "method": "hybrid",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": false,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:25:58.990845+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.21333333333333332,
+          "micro_recall": 0.10843373493975904,
+          "complete_question_rate": 0.2
+        },
+        "10": {
+          "macro_recall": 0.36,
+          "micro_recall": 0.21686746987951808,
+          "complete_question_rate": 0.32
+        },
+        "20": {
+          "macro_recall": 0.56,
+          "micro_recall": 0.37349397590361444,
+          "complete_question_rate": 0.44
+        }
+      },
+      "median_latency_seconds": 0.01139216695446521,
+      "mean_context_proxy_tokens": 6726.96
+    },
+    {
+      "config": {
+        "name": "structure512_manual_english",
+        "index_name": "structure_512_context",
+        "method": "hybrid",
+        "query_language": "english",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:00.038433+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.48,
+          "micro_recall": 0.30120481927710846,
+          "complete_question_rate": 0.44
+        },
+        "10": {
+          "macro_recall": 0.52,
+          "micro_recall": 0.3493975903614458,
+          "complete_question_rate": 0.52
+        },
+        "20": {
+          "macro_recall": 0.56,
+          "micro_recall": 0.3855421686746988,
+          "complete_question_rate": 0.52
+        }
+      },
+      "median_latency_seconds": 0.030462499940767884,
+      "mean_context_proxy_tokens": 7936.88
+    },
+    {
+      "config": {
+        "name": "recursive_768_context_dense_domain",
+        "index_name": "recursive_768_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": false,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:00.163377+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.7066666666666667,
+          "micro_recall": 0.5783132530120482,
+          "complete_question_rate": 0.68
+        },
+        "10": {
+          "macro_recall": 0.8666666666666667,
+          "micro_recall": 0.7349397590361446,
+          "complete_question_rate": 0.84
+        },
+        "20": {
+          "macro_recall": 0.88,
+          "micro_recall": 0.7710843373493976,
+          "complete_question_rate": 0.84
+        }
+      },
+      "median_latency_seconds": 0.00232979201246053,
+      "mean_context_proxy_tokens": 7940.12
+    },
+    {
+      "config": {
+        "name": "recursive_768_context_dense_domain_parent",
+        "index_name": "recursive_768_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:00.856004+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.72,
+          "micro_recall": 0.6024096385542169,
+          "complete_question_rate": 0.72
+        },
+        "10": {
+          "macro_recall": 0.7644444444444445,
+          "micro_recall": 0.6506024096385542,
+          "complete_question_rate": 0.76
+        },
+        "20": {
+          "macro_recall": 0.7644444444444445,
+          "micro_recall": 0.6506024096385542,
+          "complete_question_rate": 0.76
+        }
+      },
+      "median_latency_seconds": 0.019233957980759442,
+      "mean_context_proxy_tokens": 7762.08
+    },
+    {
+      "config": {
+        "name": "recursive_768_context_hybrid_domain",
+        "index_name": "recursive_768_context",
+        "method": "hybrid",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": false,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:01.313633+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.74,
+          "micro_recall": 0.6144578313253012,
+          "complete_question_rate": 0.64
+        },
+        "10": {
+          "macro_recall": 0.8733333333333333,
+          "micro_recall": 0.7951807228915663,
+          "complete_question_rate": 0.72
+        },
+        "20": {
+          "macro_recall": 0.8866666666666667,
+          "micro_recall": 0.8192771084337349,
+          "complete_question_rate": 0.76
+        }
+      },
+      "median_latency_seconds": 0.012687625014223158,
+      "mean_context_proxy_tokens": 7952.92
+    },
+    {
+      "config": {
+        "name": "recursive_768_context_hybrid_domain_parent",
+        "index_name": "recursive_768_context",
+        "method": "hybrid",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:02.587446+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.76,
+          "micro_recall": 0.6506024096385542,
+          "complete_question_rate": 0.68
+        },
+        "10": {
+          "macro_recall": 0.76,
+          "micro_recall": 0.6506024096385542,
+          "complete_question_rate": 0.68
+        },
+        "20": {
+          "macro_recall": 0.76,
+          "micro_recall": 0.6506024096385542,
+          "complete_question_rate": 0.68
+        }
+      },
+      "median_latency_seconds": 0.03407783305738121,
+      "mean_context_proxy_tokens": 7876.28
+    },
+    {
+      "config": {
+        "name": "structure_512_context_dense_domain",
+        "index_name": "structure_512_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": false,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:02.843263+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.4777777777777778,
+          "micro_recall": 0.2891566265060241,
+          "complete_question_rate": 0.4
+        },
+        "10": {
+          "macro_recall": 0.8311111111111111,
+          "micro_recall": 0.6746987951807228,
+          "complete_question_rate": 0.68
+        },
+        "20": {
+          "macro_recall": 0.9244444444444444,
+          "micro_recall": 0.7951807228915663,
+          "complete_question_rate": 0.88
+        }
+      },
+      "median_latency_seconds": 0.0064530420349910855,
+      "mean_context_proxy_tokens": 6527.32
+    },
+    {
+      "config": {
+        "name": "structure_512_context_dense_domain_parent",
+        "index_name": "structure_512_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:03.367494+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.5044444444444445,
+          "micro_recall": 0.3373493975903614,
+          "complete_question_rate": 0.44
+        },
+        "10": {
+          "macro_recall": 0.8844444444444445,
+          "micro_recall": 0.7349397590361446,
+          "complete_question_rate": 0.84
+        },
+        "20": {
+          "macro_recall": 0.92,
+          "micro_recall": 0.7831325301204819,
+          "complete_question_rate": 0.88
+        }
+      },
+      "median_latency_seconds": 0.015035375021398067,
+      "mean_context_proxy_tokens": 7936.96
+    },
+    {
+      "config": {
+        "name": "structure_512_context_hybrid_domain",
+        "index_name": "structure_512_context",
+        "method": "hybrid",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": false,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:03.816484+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.66,
+          "micro_recall": 0.5301204819277109,
+          "complete_question_rate": 0.44
+        },
+        "10": {
+          "macro_recall": 0.7466666666666667,
+          "micro_recall": 0.6506024096385542,
+          "complete_question_rate": 0.48
+        },
+        "20": {
+          "macro_recall": 0.9066666666666666,
+          "micro_recall": 0.8313253012048193,
+          "complete_question_rate": 0.72
+        }
+      },
+      "median_latency_seconds": 0.013216625084169209,
+      "mean_context_proxy_tokens": 7738.84
+    },
+    {
+      "config": {
+        "name": "structure_512_context_hybrid_domain_parent",
+        "index_name": "structure_512_context",
+        "method": "hybrid",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:04.714593+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.8,
+          "micro_recall": 0.7228915662650602,
+          "complete_question_rate": 0.76
+        },
+        "10": {
+          "macro_recall": 0.88,
+          "micro_recall": 0.8433734939759037,
+          "complete_question_rate": 0.8
+        },
+        "20": {
+          "macro_recall": 0.88,
+          "micro_recall": 0.8433734939759037,
+          "complete_question_rate": 0.8
+        }
+      },
+      "median_latency_seconds": 0.02363812504336238,
+      "mean_context_proxy_tokens": 7948.52
+    },
+    {
+      "config": {
+        "name": "structure_512_table_context_dense_domain",
+        "index_name": "structure_512_table_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": false,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:04.995822+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.6666666666666666,
+          "micro_recall": 0.5542168674698795,
+          "complete_question_rate": 0.56
+        },
+        "10": {
+          "macro_recall": 0.8711111111111111,
+          "micro_recall": 0.7469879518072289,
+          "complete_question_rate": 0.8
+        },
+        "20": {
+          "macro_recall": 0.9511111111111111,
+          "micro_recall": 0.8674698795180723,
+          "complete_question_rate": 0.88
+        }
+      },
+      "median_latency_seconds": 0.009272958035580814,
+      "mean_context_proxy_tokens": 6816.92
+    },
+    {
+      "config": {
+        "name": "structure_512_table_context_dense_domain_parent",
+        "index_name": "structure_512_table_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:05.524022+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.68,
+          "micro_recall": 0.5783132530120482,
+          "complete_question_rate": 0.6
+        },
+        "10": {
+          "macro_recall": 0.8711111111111111,
+          "micro_recall": 0.7469879518072289,
+          "complete_question_rate": 0.8
+        },
+        "20": {
+          "macro_recall": 0.9333333333333333,
+          "micro_recall": 0.8192771084337349,
+          "complete_question_rate": 0.88
+        }
+      },
+      "median_latency_seconds": 0.015108708059415221,
+      "mean_context_proxy_tokens": 7926.12
+    },
+    {
+      "config": {
+        "name": "structure_512_table_context_hybrid_domain",
+        "index_name": "structure_512_table_context",
+        "method": "hybrid",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": false,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:05.973314+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.7866666666666666,
+          "micro_recall": 0.7710843373493976,
+          "complete_question_rate": 0.68
+        },
+        "10": {
+          "macro_recall": 0.9466666666666667,
+          "micro_recall": 0.9518072289156626,
+          "complete_question_rate": 0.92
+        },
+        "20": {
+          "macro_recall": 0.9866666666666667,
+          "micro_recall": 0.963855421686747,
+          "complete_question_rate": 0.96
+        }
+      },
+      "median_latency_seconds": 0.012927416944876313,
+      "mean_context_proxy_tokens": 7872.28
+    },
+    {
+      "config": {
+        "name": "structure_512_table_context_hybrid_domain_parent",
+        "index_name": "structure_512_table_context",
+        "method": "hybrid",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:06.904373+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.8,
+          "micro_recall": 0.7951807228915663,
+          "complete_question_rate": 0.72
+        },
+        "10": {
+          "macro_recall": 0.92,
+          "micro_recall": 0.8795180722891566,
+          "complete_question_rate": 0.84
+        },
+        "20": {
+          "macro_recall": 0.92,
+          "micro_recall": 0.8795180722891566,
+          "complete_question_rate": 0.84
+        }
+      },
+      "median_latency_seconds": 0.02621370810084045,
+      "mean_context_proxy_tokens": 7954.28
+    },
+    {
+      "config": {
+        "name": "structure_table_raw_dense_parent",
+        "index_name": "structure_512_table_context",
+        "method": "dense",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": false
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:07.429189+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.5266666666666666,
+          "micro_recall": 0.37349397590361444,
+          "complete_question_rate": 0.44
+        },
+        "10": {
+          "macro_recall": 0.76,
+          "micro_recall": 0.5903614457831325,
+          "complete_question_rate": 0.72
+        },
+        "20": {
+          "macro_recall": 0.76,
+          "micro_recall": 0.5903614457831325,
+          "complete_question_rate": 0.72
+        }
+      },
+      "median_latency_seconds": 0.014074625098146498,
+      "mean_context_proxy_tokens": 7936.64
+    },
+    {
+      "config": {
+        "name": "pageindex_markdown_tree_domain",
+        "index_name": "structure_512_table_context",
+        "method": "tree",
+        "query_language": "original",
+        "dense_k": 30,
+        "fts_k": 30,
+        "rrf_c": 60,
+        "grouped": true,
+        "expand_parent": true,
+        "context_budget_tokens": 8000,
+        "tree_sections": 3,
+        "domain_query": true
+      },
+      "split": "dev",
+      "answer_questions": 25,
+      "evaluated_at": "2026-10-11T23:26:08.224788+00:00",
+      "metric": "RAGAS IDBasedContextRecall; IDs assigned only after exact source-span coverage",
+      "at": {
+        "5": {
+          "macro_recall": 0.68,
+          "micro_recall": 0.5783132530120482,
+          "complete_question_rate": 0.6
+        },
+        "10": {
+          "macro_recall": 0.8711111111111111,
+          "micro_recall": 0.7469879518072289,
+          "complete_question_rate": 0.8
+        },
+        "20": {
+          "macro_recall": 0.9333333333333333,
+          "micro_recall": 0.8192771084337349,
+          "complete_question_rate": 0.88
+        }
+      },
+      "median_latency_seconds": 0.022736707935109735,
+      "mean_context_proxy_tokens": 7928.48
+    }
+  ],
+  "provenance": {
+    "local_source": "reports/dev_comparison.json",
+    "sha256": "a6bba605a51c0aee5ebab47cbde1f79de10626678c4e63413f2b87695511d700"
+  },
+  "interpretation_boundary": "Source-span evidence recall; not answer accuracy. Historical/dev conditions, not current production acceptance."
+}

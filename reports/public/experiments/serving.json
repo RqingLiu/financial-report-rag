@@ -1,0 +1,3324 @@
+{
+  "scope": "20 development queries, no holdout; same per-question SQL upper bound/k/index/context caps. Hybrid replaces the second dense variant with BM25, not extra calls. LLM mixes validated historical judgments and new Top80 judgments; CrossEncoder fresh on each shortlist. Not answer accuracy.",
+  "metrics": [
+    {
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "n": 20,
+      "candidate": 0.9447291235334714,
+      "ranked_candidate": 0.8095376996192214,
+      "final_context": 0.676592664581795,
+      "groups_found": 146,
+      "complete": 4,
+      "sql_jobs": 342,
+      "base_sql_jobs": 342
+    },
+    {
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "n": 20,
+      "candidate": 0.9447291235334714,
+      "ranked_candidate": 0.8095376996192214,
+      "final_context": 0.5919903466099118,
+      "groups_found": 128,
+      "complete": 4,
+      "sql_jobs": 342,
+      "base_sql_jobs": 342
+    },
+    {
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "n": 20,
+      "candidate": 0.956219806763285,
+      "ranked_candidate": 0.7919398536246363,
+      "final_context": 0.6762023091642657,
+      "groups_found": 146,
+      "complete": 5,
+      "sql_jobs": 342,
+      "base_sql_jobs": 342
+    },
+    {
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "n": 20,
+      "candidate": 0.956219806763285,
+      "ranked_candidate": 0.7919398536246363,
+      "final_context": 0.5582123884569536,
+      "groups_found": 121,
+      "complete": 4,
+      "sql_jobs": 342,
+      "base_sql_jobs": 342
+    },
+    {
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "n": 20,
+      "candidate": 0.9477053140096618,
+      "ranked_candidate": 0.83869516353212,
+      "final_context": 0.7152920207811512,
+      "groups_found": 152,
+      "complete": 5,
+      "sql_jobs": 342,
+      "base_sql_jobs": 342
+    },
+    {
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "n": 20,
+      "candidate": 0.9477053140096618,
+      "ranked_candidate": 0.83869516353212,
+      "final_context": 0.5889602517048169,
+      "groups_found": 129,
+      "complete": 4,
+      "sql_jobs": 342,
+      "base_sql_jobs": 342
+    }
+  ],
+  "per_question": [
+    {
+      "id": "U01",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 12,
+          "groups_required": 12,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 12,
+          "groups_required": 12,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.5,
+          "groups_found": 6,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U01",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 12,
+          "groups_required": 12,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 12,
+          "groups_required": 12,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.5833333333333334,
+          "groups_found": 7,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U02",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.625,
+          "groups_found": 5,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.375,
+          "groups_found": 3,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U02",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.625,
+          "groups_found": 5,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.25,
+          "groups_found": 2,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U03",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U03",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U04",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 0.8571428571428571,
+          "groups_found": 6,
+          "groups_required": 7,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.7142857142857143,
+          "groups_found": 5,
+          "groups_required": 7,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.7142857142857143,
+          "groups_found": 5,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U04",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 0.8571428571428571,
+          "groups_found": 6,
+          "groups_required": 7,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.7142857142857143,
+          "groups_found": 5,
+          "groups_required": 7,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.7142857142857143,
+          "groups_found": 5,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U05",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U05",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U06",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.42857142857142855,
+          "groups_found": 3,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U06",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.7142857142857143,
+          "groups_found": 5,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U07",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.8888888888888888,
+          "groups_found": 8,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.5555555555555556,
+          "groups_found": 5,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.4444444444444444,
+          "groups_found": 4,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U07",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.8888888888888888,
+          "groups_found": 8,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.5555555555555556,
+          "groups_found": 5,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.4444444444444444,
+          "groups_found": 4,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U08",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 0.9166666666666666,
+          "groups_found": 11,
+          "groups_required": 12,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.9166666666666666,
+          "groups_found": 11,
+          "groups_required": 12,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.3333333333333333,
+          "groups_found": 4,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U08",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 0.9166666666666666,
+          "groups_found": 11,
+          "groups_required": 12,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.9166666666666666,
+          "groups_found": 11,
+          "groups_required": 12,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.6666666666666666,
+          "groups_found": 8,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U09",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U09",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U10",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.9090909090909091,
+          "groups_found": 10,
+          "groups_required": 11,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.36363636363636365,
+          "groups_found": 4,
+          "groups_required": 11,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U10",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.9090909090909091,
+          "groups_found": 10,
+          "groups_required": 11,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.9090909090909091,
+          "groups_found": 10,
+          "groups_required": 11,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U11",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.9375,
+          "groups_found": 15,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U11",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.9375,
+          "groups_found": 15,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U12",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 2,
+      "base_sql_jobs": 2,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U12",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 2,
+      "base_sql_jobs": 2,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U13",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.8571428571428571,
+          "groups_found": 6,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U13",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.7142857142857143,
+          "groups_found": 5,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U14",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 4,
+      "base_sql_jobs": 4,
+      "scores": {
+        "candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.4444444444444444,
+          "groups_found": 4,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U14",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 4,
+      "base_sql_jobs": 4,
+      "scores": {
+        "candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U15",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 18,
+          "groups_required": 18,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.7777777777777778,
+          "groups_found": 14,
+          "groups_required": 18,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.7777777777777778,
+          "groups_found": 14,
+          "groups_required": 18,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U15",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 18,
+          "groups_required": 18,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.7777777777777778,
+          "groups_found": 14,
+          "groups_required": 18,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.7222222222222222,
+          "groups_found": 13,
+          "groups_required": 18,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U16",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.5,
+          "groups_found": 4,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.25,
+          "groups_found": 2,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U16",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.5,
+          "groups_found": 4,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.375,
+          "groups_found": 3,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U17",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.5,
+          "groups_found": 5,
+          "groups_required": 10,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U17",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.8,
+          "groups_found": 8,
+          "groups_required": 10,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U18",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 13,
+          "groups_required": 13,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.6153846153846154,
+          "groups_found": 8,
+          "groups_required": 13,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.3076923076923077,
+          "groups_found": 4,
+          "groups_required": 13,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U18",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 13,
+          "groups_required": 13,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.6153846153846154,
+          "groups_found": 8,
+          "groups_required": 13,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.38461538461538464,
+          "groups_found": 5,
+          "groups_required": 13,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U19",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.5652173913043478,
+          "groups_found": 13,
+          "groups_required": 23,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.34782608695652173,
+          "groups_found": 8,
+          "groups_required": 23,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.043478260869565216,
+          "groups_found": 1,
+          "groups_required": 23,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U19",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.5652173913043478,
+          "groups_found": 13,
+          "groups_required": 23,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.34782608695652173,
+          "groups_found": 8,
+          "groups_required": 23,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.08695652173913043,
+          "groups_found": 2,
+          "groups_required": 23,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U20",
+      "arm": "wide_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 48,
+      "base_sql_jobs": 48,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.5625,
+          "groups_found": 9,
+          "groups_required": 16,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.5625,
+          "groups_found": 9,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U20",
+      "arm": "wide_dense",
+      "ranker": "llm",
+      "sql_jobs": 48,
+      "base_sql_jobs": 48,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.5625,
+          "groups_found": 9,
+          "groups_required": 16,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.5625,
+          "groups_found": 9,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U01",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 12,
+          "groups_required": 12,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.4166666666666667,
+          "groups_found": 5,
+          "groups_required": 12,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.3333333333333333,
+          "groups_found": 4,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U01",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 12,
+          "groups_required": 12,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.4166666666666667,
+          "groups_found": 5,
+          "groups_required": 12,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.16666666666666666,
+          "groups_found": 2,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U02",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.75,
+          "groups_found": 6,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.25,
+          "groups_found": 2,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U02",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.75,
+          "groups_found": 6,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.625,
+          "groups_found": 5,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U03",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U03",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U04",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.5714285714285714,
+          "groups_found": 4,
+          "groups_required": 7,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.5714285714285714,
+          "groups_found": 4,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U04",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.5714285714285714,
+          "groups_found": 4,
+          "groups_required": 7,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.5714285714285714,
+          "groups_found": 4,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U05",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U05",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U06",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.42857142857142855,
+          "groups_found": 3,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U06",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U07",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.8888888888888888,
+          "groups_found": 8,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.4444444444444444,
+          "groups_found": 4,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U07",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.8888888888888888,
+          "groups_found": 8,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.4444444444444444,
+          "groups_found": 4,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U08",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 0.9166666666666666,
+          "groups_found": 11,
+          "groups_required": 12,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 8,
+          "groups_required": 12,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.3333333333333333,
+          "groups_found": 4,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U08",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 0.9166666666666666,
+          "groups_found": 11,
+          "groups_required": 12,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 8,
+          "groups_required": 12,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.5833333333333334,
+          "groups_found": 7,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U09",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U09",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U10",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.9090909090909091,
+          "groups_found": 10,
+          "groups_required": 11,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.45454545454545453,
+          "groups_found": 5,
+          "groups_required": 11,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U10",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.9090909090909091,
+          "groups_found": 10,
+          "groups_required": 11,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.9090909090909091,
+          "groups_found": 10,
+          "groups_required": 11,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U11",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.9375,
+          "groups_found": 15,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U11",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.9375,
+          "groups_found": 15,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U12",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 2,
+      "base_sql_jobs": 2,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U12",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 2,
+      "base_sql_jobs": 2,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U13",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.8571428571428571,
+          "groups_found": 6,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U13",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.7142857142857143,
+          "groups_found": 5,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U14",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 4,
+      "base_sql_jobs": 4,
+      "scores": {
+        "candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.4444444444444444,
+          "groups_found": 4,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U14",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 4,
+      "base_sql_jobs": 4,
+      "scores": {
+        "candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.5555555555555556,
+          "groups_found": 5,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U15",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 18,
+          "groups_required": 18,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.8333333333333334,
+          "groups_found": 15,
+          "groups_required": 18,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.8333333333333334,
+          "groups_found": 15,
+          "groups_required": 18,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U15",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 18,
+          "groups_required": 18,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.8333333333333334,
+          "groups_found": 15,
+          "groups_required": 18,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.7777777777777778,
+          "groups_found": 14,
+          "groups_required": 18,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U16",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.875,
+          "groups_found": 7,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.25,
+          "groups_found": 2,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U16",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.875,
+          "groups_found": 7,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.375,
+          "groups_found": 3,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U17",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.3,
+          "groups_found": 3,
+          "groups_required": 10,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U17",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.8,
+          "groups_found": 8,
+          "groups_required": 10,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U18",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 13,
+          "groups_required": 13,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.46153846153846156,
+          "groups_found": 6,
+          "groups_required": 13,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.3076923076923077,
+          "groups_found": 4,
+          "groups_required": 13,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U18",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 13,
+          "groups_required": 13,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.46153846153846156,
+          "groups_found": 6,
+          "groups_required": 13,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.38461538461538464,
+          "groups_found": 5,
+          "groups_required": 13,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U19",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.6521739130434783,
+          "groups_found": 15,
+          "groups_required": 23,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.5217391304347826,
+          "groups_found": 12,
+          "groups_required": 23,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.043478260869565216,
+          "groups_found": 1,
+          "groups_required": 23,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U19",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.6521739130434783,
+          "groups_found": 15,
+          "groups_required": 23,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.5217391304347826,
+          "groups_found": 12,
+          "groups_required": 23,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.30434782608695654,
+          "groups_found": 7,
+          "groups_required": 23,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U20",
+      "arm": "regroup_dense",
+      "ranker": "crossencoder",
+      "sql_jobs": 48,
+      "base_sql_jobs": 48,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.5,
+          "groups_found": 8,
+          "groups_required": 16,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.375,
+          "groups_found": 6,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U20",
+      "arm": "regroup_dense",
+      "ranker": "llm",
+      "sql_jobs": 48,
+      "base_sql_jobs": 48,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.5,
+          "groups_found": 8,
+          "groups_required": 16,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.375,
+          "groups_found": 6,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U01",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 12,
+          "groups_required": 12,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 12,
+          "groups_required": 12,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.3333333333333333,
+          "groups_found": 4,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U01",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 12,
+          "groups_required": 12,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 12,
+          "groups_required": 12,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.5833333333333334,
+          "groups_found": 7,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U02",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.75,
+          "groups_found": 6,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.25,
+          "groups_found": 2,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U02",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.75,
+          "groups_found": 6,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.625,
+          "groups_found": 5,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U03",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U03",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U04",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.8571428571428571,
+          "groups_found": 6,
+          "groups_required": 7,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.5714285714285714,
+          "groups_found": 4,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U04",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.8571428571428571,
+          "groups_found": 6,
+          "groups_required": 7,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.8571428571428571,
+          "groups_found": 6,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U05",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U05",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U06",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.42857142857142855,
+          "groups_found": 3,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U06",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U07",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.8888888888888888,
+          "groups_found": 8,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.5555555555555556,
+          "groups_found": 5,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U07",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.8888888888888888,
+          "groups_found": 8,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.4444444444444444,
+          "groups_found": 4,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U08",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 0.8333333333333334,
+          "groups_found": 10,
+          "groups_required": 12,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.8333333333333334,
+          "groups_found": 10,
+          "groups_required": 12,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.3333333333333333,
+          "groups_found": 4,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U08",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 12,
+      "base_sql_jobs": 12,
+      "scores": {
+        "candidate": {
+          "recall": 0.8333333333333334,
+          "groups_found": 10,
+          "groups_required": 12,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.8333333333333334,
+          "groups_found": 10,
+          "groups_required": 12,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.6666666666666666,
+          "groups_found": 8,
+          "groups_required": 12,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U09",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U09",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U10",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.8181818181818182,
+          "groups_found": 9,
+          "groups_required": 11,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.45454545454545453,
+          "groups_found": 5,
+          "groups_required": 11,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U10",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.8181818181818182,
+          "groups_found": 9,
+          "groups_required": 11,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.8181818181818182,
+          "groups_found": 9,
+          "groups_required": 11,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U11",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.9375,
+          "groups_found": 15,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U11",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.9375,
+          "groups_found": 15,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U12",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 2,
+      "base_sql_jobs": 2,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U12",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 2,
+      "base_sql_jobs": 2,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 1.0,
+          "groups_found": 11,
+          "groups_required": 11,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "U13",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.8571428571428571,
+          "groups_found": 6,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U13",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 6,
+      "base_sql_jobs": 6,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 1.0,
+          "groups_found": 7,
+          "groups_required": 7,
+          "complete": true
+        },
+        "final_context": {
+          "recall": 0.7142857142857143,
+          "groups_found": 5,
+          "groups_required": 7,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U14",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 4,
+      "base_sql_jobs": 4,
+      "scores": {
+        "candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.4444444444444444,
+          "groups_found": 4,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U14",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 4,
+      "base_sql_jobs": 4,
+      "scores": {
+        "candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.6666666666666666,
+          "groups_found": 6,
+          "groups_required": 9,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U15",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 18,
+          "groups_required": 18,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.8333333333333334,
+          "groups_found": 15,
+          "groups_required": 18,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.8333333333333334,
+          "groups_found": 15,
+          "groups_required": 18,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U15",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 18,
+          "groups_required": 18,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.8333333333333334,
+          "groups_found": 15,
+          "groups_required": 18,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.7777777777777778,
+          "groups_found": 14,
+          "groups_required": 18,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U16",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.625,
+          "groups_found": 5,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.25,
+          "groups_found": 2,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U16",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 36,
+      "base_sql_jobs": 36,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 8,
+          "groups_required": 8,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.625,
+          "groups_found": 5,
+          "groups_required": 8,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.375,
+          "groups_found": 3,
+          "groups_required": 8,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U17",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.9,
+          "groups_found": 9,
+          "groups_required": 10,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.4,
+          "groups_found": 4,
+          "groups_required": 10,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U17",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 10,
+          "groups_required": 10,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.9,
+          "groups_found": 9,
+          "groups_required": 10,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.7,
+          "groups_found": 7,
+          "groups_required": 10,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U18",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 13,
+          "groups_required": 13,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.7692307692307693,
+          "groups_found": 10,
+          "groups_required": 13,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.46153846153846156,
+          "groups_found": 6,
+          "groups_required": 13,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U18",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 24,
+      "base_sql_jobs": 24,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 13,
+          "groups_required": 13,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.7692307692307693,
+          "groups_found": 10,
+          "groups_required": 13,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.6153846153846154,
+          "groups_found": 8,
+          "groups_required": 13,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U19",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.5652173913043478,
+          "groups_found": 13,
+          "groups_required": 23,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.30434782608695654,
+          "groups_found": 7,
+          "groups_required": 23,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.043478260869565216,
+          "groups_found": 1,
+          "groups_required": 23,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U19",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 18,
+      "base_sql_jobs": 18,
+      "scores": {
+        "candidate": {
+          "recall": 0.5652173913043478,
+          "groups_found": 13,
+          "groups_required": 23,
+          "complete": false
+        },
+        "ranked_candidate": {
+          "recall": 0.30434782608695654,
+          "groups_found": 7,
+          "groups_required": 23,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.08695652173913043,
+          "groups_found": 2,
+          "groups_required": 23,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U20",
+      "arm": "wide_hybrid",
+      "ranker": "crossencoder",
+      "sql_jobs": 48,
+      "base_sql_jobs": 48,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.75,
+          "groups_found": 12,
+          "groups_required": 16,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.625,
+          "groups_found": 10,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "U20",
+      "arm": "wide_hybrid",
+      "ranker": "llm",
+      "sql_jobs": 48,
+      "base_sql_jobs": 48,
+      "scores": {
+        "candidate": {
+          "recall": 1.0,
+          "groups_found": 16,
+          "groups_required": 16,
+          "complete": true
+        },
+        "ranked_candidate": {
+          "recall": 0.75,
+          "groups_found": 12,
+          "groups_required": 16,
+          "complete": false
+        },
+        "final_context": {
+          "recall": 0.4375,
+          "groups_found": 7,
+          "groups_required": 16,
+          "complete": false
+        }
+      }
+    }
+  ],
+  "provenance": {
+    "local_source": "reports/serving/20261028_objective_v4/evaluation.json",
+    "sha256": "c4680d46d53ba5189dcdf4e35b1c942de49d764f27feac2a261792aa48cabc85"
+  },
+  "interpretation_boundary": "Source-span evidence recall; not answer accuracy. Historical/dev conditions, not current production acceptance."
+}

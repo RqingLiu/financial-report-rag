@@ -1,0 +1,1060 @@
+{
+  "dataset": "golden_v2: 20 development questions, not independent holdout",
+  "metric": "exact source-span evidence-group recall; not answer accuracy",
+  "gold_sha256": "04d39406720979da6c7ec092d073d6e24d9c9b8747d6c10e36162c3eb0220f3a",
+  "controlled": "same saved plans/dense candidates/window80/table expansion/8K; no new queries",
+  "model_api_calls": 0,
+  "new_model_api_cost_usd": 0,
+  "metrics": [
+    {
+      "variant": "rank10",
+      "strategy": "rank",
+      "item_safety_cap": 10,
+      "token_budget": 8000,
+      "n": 20,
+      "macro_recall": 0.36596396658896657,
+      "micro_found": 78,
+      "micro_required": 225,
+      "complete_questions": 2,
+      "improved_vs_rank10": 0,
+      "regressed_vs_rank10": [],
+      "mean_tokens": 4326.1,
+      "max_tokens": 5892,
+      "mean_items": 10,
+      "median_context_build_seconds": 0.014583229552954435
+    },
+    {
+      "variant": "rank30",
+      "strategy": "rank",
+      "item_safety_cap": 30,
+      "token_budget": 8000,
+      "n": 20,
+      "macro_recall": 0.4734338578088578,
+      "micro_found": 102,
+      "micro_required": 225,
+      "complete_questions": 2,
+      "improved_vs_rank10": 11,
+      "regressed_vs_rank10": [],
+      "mean_tokens": 7956.75,
+      "max_tokens": 8000,
+      "mean_items": 19.55,
+      "median_context_build_seconds": 0.007261833408847451
+    },
+    {
+      "variant": "need10",
+      "strategy": "need_budget",
+      "item_safety_cap": 10,
+      "token_budget": 8000,
+      "n": 20,
+      "macro_recall": 0.2640359399055051,
+      "micro_found": 50,
+      "micro_required": 225,
+      "complete_questions": 1,
+      "improved_vs_rank10": 6,
+      "regressed_vs_rank10": [
+        "U04",
+        "U06",
+        "U09",
+        "U11",
+        "U12",
+        "U13",
+        "U15",
+        "U18",
+        "U20"
+      ],
+      "mean_tokens": 3176.35,
+      "max_tokens": 4720,
+      "mean_items": 10,
+      "median_context_build_seconds": 0.010480562574230134
+    },
+    {
+      "variant": "need30",
+      "strategy": "need_budget",
+      "item_safety_cap": 30,
+      "token_budget": 8000,
+      "n": 20,
+      "macro_recall": 0.4515620943066595,
+      "micro_found": 89,
+      "micro_required": 225,
+      "complete_questions": 3,
+      "improved_vs_rank10": 13,
+      "regressed_vs_rank10": [
+        "U11",
+        "U12",
+        "U18",
+        "U20"
+      ],
+      "mean_tokens": 7876.5,
+      "max_tokens": 7999,
+      "mean_items": 22.9,
+      "median_context_build_seconds": 0.013582104467786849
+    }
+  ],
+  "per_question": [
+    {
+      "query_id": "U01",
+      "variant": "rank10",
+      "context_proxy_tokens": 4355,
+      "context_items": 10,
+      "score": {
+        "recall": 0.3333333333333333,
+        "groups_found": 4,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U02",
+      "variant": "rank10",
+      "context_proxy_tokens": 2717,
+      "context_items": 10,
+      "score": {
+        "recall": 0.0,
+        "groups_found": 0,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U03",
+      "variant": "rank10",
+      "context_proxy_tokens": 3315,
+      "context_items": 10,
+      "score": {
+        "recall": 0.45454545454545453,
+        "groups_found": 5,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U04",
+      "variant": "rank10",
+      "context_proxy_tokens": 5009,
+      "context_items": 10,
+      "score": {
+        "recall": 0.2857142857142857,
+        "groups_found": 2,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U05",
+      "variant": "rank10",
+      "context_proxy_tokens": 4704,
+      "context_items": 10,
+      "score": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U06",
+      "variant": "rank10",
+      "context_proxy_tokens": 2871,
+      "context_items": 10,
+      "score": {
+        "recall": 0.2857142857142857,
+        "groups_found": 2,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U07",
+      "variant": "rank10",
+      "context_proxy_tokens": 4780,
+      "context_items": 10,
+      "score": {
+        "recall": 0.2222222222222222,
+        "groups_found": 2,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U08",
+      "variant": "rank10",
+      "context_proxy_tokens": 4175,
+      "context_items": 10,
+      "score": {
+        "recall": 0.4166666666666667,
+        "groups_found": 5,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U09",
+      "variant": "rank10",
+      "context_proxy_tokens": 2678,
+      "context_items": 10,
+      "score": {
+        "recall": 0.6,
+        "groups_found": 6,
+        "groups_required": 10,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U10",
+      "variant": "rank10",
+      "context_proxy_tokens": 4508,
+      "context_items": 10,
+      "score": {
+        "recall": 0.09090909090909091,
+        "groups_found": 1,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U11",
+      "variant": "rank10",
+      "context_proxy_tokens": 4816,
+      "context_items": 10,
+      "score": {
+        "recall": 0.8125,
+        "groups_found": 13,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U12",
+      "variant": "rank10",
+      "context_proxy_tokens": 3887,
+      "context_items": 10,
+      "score": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U13",
+      "variant": "rank10",
+      "context_proxy_tokens": 4705,
+      "context_items": 10,
+      "score": {
+        "recall": 0.42857142857142855,
+        "groups_found": 3,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U14",
+      "variant": "rank10",
+      "context_proxy_tokens": 4357,
+      "context_items": 10,
+      "score": {
+        "recall": 0.2222222222222222,
+        "groups_found": 2,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U15",
+      "variant": "rank10",
+      "context_proxy_tokens": 5892,
+      "context_items": 10,
+      "score": {
+        "recall": 0.1111111111111111,
+        "groups_found": 2,
+        "groups_required": 18,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U16",
+      "variant": "rank10",
+      "context_proxy_tokens": 4907,
+      "context_items": 10,
+      "score": {
+        "recall": 0.25,
+        "groups_found": 2,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U17",
+      "variant": "rank10",
+      "context_proxy_tokens": 4621,
+      "context_items": 10,
+      "score": {
+        "recall": 0.2,
+        "groups_found": 2,
+        "groups_required": 10,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U18",
+      "variant": "rank10",
+      "context_proxy_tokens": 4468,
+      "context_items": 10,
+      "score": {
+        "recall": 0.23076923076923078,
+        "groups_found": 3,
+        "groups_required": 13,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U19",
+      "variant": "rank10",
+      "context_proxy_tokens": 4875,
+      "context_items": 10,
+      "score": {
+        "recall": 0.0,
+        "groups_found": 0,
+        "groups_required": 23,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U20",
+      "variant": "rank10",
+      "context_proxy_tokens": 4882,
+      "context_items": 10,
+      "score": {
+        "recall": 0.375,
+        "groups_found": 6,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U01",
+      "variant": "rank30",
+      "context_proxy_tokens": 7990,
+      "context_items": 18,
+      "score": {
+        "recall": 0.4166666666666667,
+        "groups_found": 5,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U02",
+      "variant": "rank30",
+      "context_proxy_tokens": 7962,
+      "context_items": 20,
+      "score": {
+        "recall": 0.0,
+        "groups_found": 0,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U03",
+      "variant": "rank30",
+      "context_proxy_tokens": 7987,
+      "context_items": 23,
+      "score": {
+        "recall": 0.9090909090909091,
+        "groups_found": 10,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U04",
+      "variant": "rank30",
+      "context_proxy_tokens": 8000,
+      "context_items": 21,
+      "score": {
+        "recall": 0.2857142857142857,
+        "groups_found": 2,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U05",
+      "variant": "rank30",
+      "context_proxy_tokens": 7976,
+      "context_items": 18,
+      "score": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U06",
+      "variant": "rank30",
+      "context_proxy_tokens": 7922,
+      "context_items": 26,
+      "score": {
+        "recall": 0.2857142857142857,
+        "groups_found": 2,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U07",
+      "variant": "rank30",
+      "context_proxy_tokens": 7844,
+      "context_items": 17,
+      "score": {
+        "recall": 0.3333333333333333,
+        "groups_found": 3,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U08",
+      "variant": "rank30",
+      "context_proxy_tokens": 7988,
+      "context_items": 21,
+      "score": {
+        "recall": 0.5,
+        "groups_found": 6,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U09",
+      "variant": "rank30",
+      "context_proxy_tokens": 7950,
+      "context_items": 28,
+      "score": {
+        "recall": 0.9,
+        "groups_found": 9,
+        "groups_required": 10,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U10",
+      "variant": "rank30",
+      "context_proxy_tokens": 7966,
+      "context_items": 20,
+      "score": {
+        "recall": 0.2727272727272727,
+        "groups_found": 3,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U11",
+      "variant": "rank30",
+      "context_proxy_tokens": 7990,
+      "context_items": 19,
+      "score": {
+        "recall": 0.8125,
+        "groups_found": 13,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U12",
+      "variant": "rank30",
+      "context_proxy_tokens": 7922,
+      "context_items": 21,
+      "score": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U13",
+      "variant": "rank30",
+      "context_proxy_tokens": 7913,
+      "context_items": 17,
+      "score": {
+        "recall": 0.42857142857142855,
+        "groups_found": 3,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U14",
+      "variant": "rank30",
+      "context_proxy_tokens": 7985,
+      "context_items": 20,
+      "score": {
+        "recall": 0.3333333333333333,
+        "groups_found": 3,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U15",
+      "variant": "rank30",
+      "context_proxy_tokens": 7999,
+      "context_items": 16,
+      "score": {
+        "recall": 0.3333333333333333,
+        "groups_found": 6,
+        "groups_required": 18,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U16",
+      "variant": "rank30",
+      "context_proxy_tokens": 7982,
+      "context_items": 17,
+      "score": {
+        "recall": 0.375,
+        "groups_found": 3,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U17",
+      "variant": "rank30",
+      "context_proxy_tokens": 7950,
+      "context_items": 17,
+      "score": {
+        "recall": 0.6,
+        "groups_found": 6,
+        "groups_required": 10,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U18",
+      "variant": "rank30",
+      "context_proxy_tokens": 7923,
+      "context_items": 18,
+      "score": {
+        "recall": 0.3076923076923077,
+        "groups_found": 4,
+        "groups_required": 13,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U19",
+      "variant": "rank30",
+      "context_proxy_tokens": 7927,
+      "context_items": 17,
+      "score": {
+        "recall": 0.0,
+        "groups_found": 0,
+        "groups_required": 23,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U20",
+      "variant": "rank30",
+      "context_proxy_tokens": 7959,
+      "context_items": 17,
+      "score": {
+        "recall": 0.375,
+        "groups_found": 6,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U01",
+      "variant": "need10",
+      "context_proxy_tokens": 3121,
+      "context_items": 10,
+      "score": {
+        "recall": 0.3333333333333333,
+        "groups_found": 4,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U02",
+      "variant": "need10",
+      "context_proxy_tokens": 2606,
+      "context_items": 10,
+      "score": {
+        "recall": 0.0,
+        "groups_found": 0,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U03",
+      "variant": "need10",
+      "context_proxy_tokens": 2017,
+      "context_items": 10,
+      "score": {
+        "recall": 0.7272727272727273,
+        "groups_found": 8,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U04",
+      "variant": "need10",
+      "context_proxy_tokens": 2601,
+      "context_items": 10,
+      "score": {
+        "recall": 0.14285714285714285,
+        "groups_found": 1,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U05",
+      "variant": "need10",
+      "context_proxy_tokens": 4094,
+      "context_items": 10,
+      "score": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U06",
+      "variant": "need10",
+      "context_proxy_tokens": 1608,
+      "context_items": 10,
+      "score": {
+        "recall": 0.14285714285714285,
+        "groups_found": 1,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U07",
+      "variant": "need10",
+      "context_proxy_tokens": 4198,
+      "context_items": 10,
+      "score": {
+        "recall": 0.3333333333333333,
+        "groups_found": 3,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U08",
+      "variant": "need10",
+      "context_proxy_tokens": 3535,
+      "context_items": 10,
+      "score": {
+        "recall": 0.5,
+        "groups_found": 6,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U09",
+      "variant": "need10",
+      "context_proxy_tokens": 1359,
+      "context_items": 10,
+      "score": {
+        "recall": 0.2,
+        "groups_found": 2,
+        "groups_required": 10,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U10",
+      "variant": "need10",
+      "context_proxy_tokens": 2605,
+      "context_items": 10,
+      "score": {
+        "recall": 0.09090909090909091,
+        "groups_found": 1,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U11",
+      "variant": "need10",
+      "context_proxy_tokens": 3578,
+      "context_items": 10,
+      "score": {
+        "recall": 0.0,
+        "groups_found": 0,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U12",
+      "variant": "need10",
+      "context_proxy_tokens": 3016,
+      "context_items": 10,
+      "score": {
+        "recall": 0.18181818181818182,
+        "groups_found": 2,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U13",
+      "variant": "need10",
+      "context_proxy_tokens": 4710,
+      "context_items": 10,
+      "score": {
+        "recall": 0.2857142857142857,
+        "groups_found": 2,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U14",
+      "variant": "need10",
+      "context_proxy_tokens": 2689,
+      "context_items": 10,
+      "score": {
+        "recall": 0.2222222222222222,
+        "groups_found": 2,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U15",
+      "variant": "need10",
+      "context_proxy_tokens": 1649,
+      "context_items": 10,
+      "score": {
+        "recall": 0.0,
+        "groups_found": 0,
+        "groups_required": 18,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U16",
+      "variant": "need10",
+      "context_proxy_tokens": 3978,
+      "context_items": 10,
+      "score": {
+        "recall": 0.5,
+        "groups_found": 4,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U17",
+      "variant": "need10",
+      "context_proxy_tokens": 4023,
+      "context_items": 10,
+      "score": {
+        "recall": 0.5,
+        "groups_found": 5,
+        "groups_required": 10,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U18",
+      "variant": "need10",
+      "context_proxy_tokens": 4517,
+      "context_items": 10,
+      "score": {
+        "recall": 0.07692307692307693,
+        "groups_found": 1,
+        "groups_required": 13,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U19",
+      "variant": "need10",
+      "context_proxy_tokens": 4720,
+      "context_items": 10,
+      "score": {
+        "recall": 0.043478260869565216,
+        "groups_found": 1,
+        "groups_required": 23,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U20",
+      "variant": "need10",
+      "context_proxy_tokens": 2903,
+      "context_items": 10,
+      "score": {
+        "recall": 0.0,
+        "groups_found": 0,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U01",
+      "variant": "need30",
+      "context_proxy_tokens": 7922,
+      "context_items": 22,
+      "score": {
+        "recall": 0.75,
+        "groups_found": 9,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U02",
+      "variant": "need30",
+      "context_proxy_tokens": 7999,
+      "context_items": 26,
+      "score": {
+        "recall": 0.25,
+        "groups_found": 2,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U03",
+      "variant": "need30",
+      "context_proxy_tokens": 7870,
+      "context_items": 30,
+      "score": {
+        "recall": 1.0,
+        "groups_found": 11,
+        "groups_required": 11,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U04",
+      "variant": "need30",
+      "context_proxy_tokens": 7913,
+      "context_items": 25,
+      "score": {
+        "recall": 0.2857142857142857,
+        "groups_found": 2,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U05",
+      "variant": "need30",
+      "context_proxy_tokens": 7842,
+      "context_items": 21,
+      "score": {
+        "recall": 1.0,
+        "groups_found": 7,
+        "groups_required": 7,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U06",
+      "variant": "need30",
+      "context_proxy_tokens": 7797,
+      "context_items": 28,
+      "score": {
+        "recall": 0.5714285714285714,
+        "groups_found": 4,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U07",
+      "variant": "need30",
+      "context_proxy_tokens": 7896,
+      "context_items": 19,
+      "score": {
+        "recall": 0.3333333333333333,
+        "groups_found": 3,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U08",
+      "variant": "need30",
+      "context_proxy_tokens": 7944,
+      "context_items": 20,
+      "score": {
+        "recall": 0.5,
+        "groups_found": 6,
+        "groups_required": 12,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U09",
+      "variant": "need30",
+      "context_proxy_tokens": 6914,
+      "context_items": 30,
+      "score": {
+        "recall": 0.8,
+        "groups_found": 8,
+        "groups_required": 10,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U10",
+      "variant": "need30",
+      "context_proxy_tokens": 7977,
+      "context_items": 24,
+      "score": {
+        "recall": 0.36363636363636365,
+        "groups_found": 4,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U11",
+      "variant": "need30",
+      "context_proxy_tokens": 7935,
+      "context_items": 23,
+      "score": {
+        "recall": 0.0625,
+        "groups_found": 1,
+        "groups_required": 16,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U12",
+      "variant": "need30",
+      "context_proxy_tokens": 7948,
+      "context_items": 21,
+      "score": {
+        "recall": 0.45454545454545453,
+        "groups_found": 5,
+        "groups_required": 11,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U13",
+      "variant": "need30",
+      "context_proxy_tokens": 7842,
+      "context_items": 17,
+      "score": {
+        "recall": 0.42857142857142855,
+        "groups_found": 3,
+        "groups_required": 7,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U14",
+      "variant": "need30",
+      "context_proxy_tokens": 7902,
+      "context_items": 29,
+      "score": {
+        "recall": 0.3333333333333333,
+        "groups_found": 3,
+        "groups_required": 9,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U15",
+      "variant": "need30",
+      "context_proxy_tokens": 7977,
+      "context_items": 29,
+      "score": {
+        "recall": 0.2777777777777778,
+        "groups_found": 5,
+        "groups_required": 18,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U16",
+      "variant": "need30",
+      "context_proxy_tokens": 7912,
+      "context_items": 18,
+      "score": {
+        "recall": 0.5,
+        "groups_found": 4,
+        "groups_required": 8,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U17",
+      "variant": "need30",
+      "context_proxy_tokens": 7992,
+      "context_items": 19,
+      "score": {
+        "recall": 1.0,
+        "groups_found": 10,
+        "groups_required": 10,
+        "complete": true
+      }
+    },
+    {
+      "query_id": "U18",
+      "variant": "need30",
+      "context_proxy_tokens": 7987,
+      "context_items": 17,
+      "score": {
+        "recall": 0.07692307692307693,
+        "groups_found": 1,
+        "groups_required": 13,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U19",
+      "variant": "need30",
+      "context_proxy_tokens": 7985,
+      "context_items": 18,
+      "score": {
+        "recall": 0.043478260869565216,
+        "groups_found": 1,
+        "groups_required": 23,
+        "complete": false
+      }
+    },
+    {
+      "query_id": "U20",
+      "variant": "need30",
+      "context_proxy_tokens": 7976,
+      "context_items": 22,
+      "score": {
+        "recall": 0.0,
+        "groups_found": 0,
+        "groups_required": 16,
+        "complete": false
+      }
+    }
+  ],
+  "provenance": {
+    "local_source": "reports/context_budget/20261027T072215Z_6c99b5/results.json",
+    "sha256": "eaa3ee6cd481035c2998636521040ead0173330d3f211d62827854c801a8b4c3"
+  },
+  "interpretation_boundary": "Source-span evidence recall; not answer accuracy. Historical/dev conditions, not current production acceptance."
+}

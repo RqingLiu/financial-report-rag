@@ -3,6 +3,7 @@
 import asyncio
 import json
 from contextlib import contextmanager
+from datetime import date
 from pathlib import Path
 from threading import BoundedSemaphore
 from urllib.parse import urlparse
@@ -16,7 +17,8 @@ from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from ..planning import Request
-from .explorer import history, load_trace, stage_view, trace_view
+from .code_view import code_view, component_map
+from .explorer import catalog_view, history, load_trace, stage_view, trace_view
 from .runtime import query, resources
 
 
@@ -63,6 +65,24 @@ def create_app(config):
     @app.get("/traces")
     def traces():
         return {"traces": history()}
+
+    @app.get("/code/{component}")
+    def component_code(component: str):
+        return code_view(component)
+
+    @app.get("/components")
+    def components():
+        return component_map()
+
+    @app.get("/catalog")
+    def catalog(as_of: date):
+        try:
+            with resources(config, models=False) as (store, *_):
+                result = catalog_view(store.catalog(), str(as_of))
+                result["index_id"] = store.index_id
+            return result
+        except Exception:  # noqa: BLE001 — no DB details in read-only browser errors
+            raise HTTPException(503, "database_unavailable") from None
 
     @app.get("/traces/{query_id}")
     def trace(query_id: str):

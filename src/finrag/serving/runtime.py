@@ -102,7 +102,15 @@ def select_context(data, plan, ranked, store, catalog, config, llm, ce, trace):
         raise PlanRejected("crossencoder_limit80")
     blocks = fetch_blocks(shortlist, store)
     grades, priorities = {}, None
-    with trace.stage("rerank", {"method": config.reranker, "candidates": len(shortlist)}) as stage:
+    with trace.stage(
+        "rerank",
+        {
+            "method": config.reranker,
+            "candidates": len(shortlist),
+            "candidate_ids": [h.chunk.id for h in shortlist],
+            "need_ids": [n.id for n in plan.needs],
+        },
+    ) as stage:
         if config.reranker == "llm":
             candidates = candidates_for_rerank(shortlist, blocks, catalog.by_id)
             logs = ROOT / "logs/serving_rerank" / data["query_id"]
@@ -138,7 +146,11 @@ def select_context(data, plan, ranked, store, catalog, config, llm, ce, trace):
         }
     with trace.stage(
         "context_build",
-        {"evidence_cap": config.evidence_tokens, "prompt_cap": config.full_prompt_tokens},
+        {
+            "evidence_cap": config.evidence_tokens,
+            "prompt_cap": config.full_prompt_tokens,
+            "candidate_ids": [h.chunk.id for h in shortlist],
+        },
     ) as stage:
         selected, texts, evidence, metadata = select_reranked(
             shortlist,
@@ -186,20 +198,21 @@ def execute(
     )
     model = TracedModel(llm, trace)
     try:
-        with trace.stage("catalog_snapshot", {}) as stage:
+        with trace.stage("catalog_snapshot", {"as_of": str(request.as_of)}) as stage:
             catalog = store.catalog()
             stage["outputs"] = {
                 "documents": len(catalog.filings),
                 "fingerprint": digest(json.dumps(catalog.metadata(request.as_of), sort_keys=True)),
+                "catalog": catalog.metadata(request.as_of),
             }
-        with trace.stage("query_plan", {}) as stage:
+        with trace.stage("query_plan", {"request": request.model_dump(mode="json")}) as stage:
             plan, event = plan_request(
                 request, catalog, config.pipeline, model, ROOT / "data/cache/plans"
             )
             stage["outputs"] = {**event, "validated_plan": plan.model_dump(mode="json")}
         data["original_plan"] = plan.model_dump(mode="json")
         if plan.action == "retrieve" and config.regroup:
-            with trace.stage("evidence_regroup", {}) as stage:
+            with trace.stage("evidence_regroup", {"need_ids": [n.id for n in plan.needs]}) as stage:
                 plan, event = regroup(
                     plan, catalog, config.pipeline, model, ROOT / "data/cache/regroup"
                 )
@@ -222,6 +235,7 @@ def execute(
                 "rrf_c": fusion_config.rrf_c,
                 "coarse_policy": config.coarse_policy,
                 "lexical_weight": fusion_config.fts_weight,
+                "search_count": len(records),
             },
         ) as stage:
             ranked, provenance = rank_records(records, fusion_config)
@@ -248,7 +262,13 @@ def execute(
         }
         data["status"] = "retrieved" if evidence else "insufficient_evidence"
         if evidence and do_generate:
-            with trace.stage("generation", {}) as stage:
+            with trace.stage(
+                "generation",
+                {
+                    "request": request.model_dump(mode="json"),
+                    "evidence_ids": [e["citation"] for e in evidence],
+                },
+            ) as stage:
                 data["generation"] = generate_answer(data, model)
                 stage["outputs"] = data["generation"]
             data["status"] = "generated"

@@ -205,3 +205,146 @@ def test_disconnect_keeps_admission_until_real_worker_finishes(monkeypatch):
             pass
 
     asyncio.run(scenario())
+
+
+def test_code_registry_is_bounded_and_rejects_arbitrary_paths():
+    from finrag.serving.code_view import COMPONENTS
+
+    client = TestClient(create_app(ServingConfig()))
+    for component in COMPONENTS:
+        response = client.get(f"/code/{component}")
+        assert response.status_code == 200
+        payload = response.json()
+        assert payload["version"] == "current_checkout"
+        for snippet in payload["snippets"]:
+            assert snippet["path"].startswith("src/finrag/")
+            assert len(snippet["sha256"]) == 64
+            assert len(snippet["text"].splitlines()) <= 140
+            assert snippet["start_line"] <= snippet["end_line"]
+    for name in (".env", "config", "unknown", "..%2F.env"):
+        assert client.get(f"/code/{name}").status_code == 404
+
+
+def test_new_span_has_real_callsite_and_legacy_is_not_reconstructed():
+    from hashlib import sha256
+    from pathlib import Path
+
+    trace = Trace("a" * 32, {})
+    with trace.stage("catalog_snapshot"):
+        pass
+    source = trace.data["stages"][0]["source"]
+    assert source["path"] == "tests/test_explorer.py"
+    assert source["function"] == "test_new_span_has_real_callsite_and_legacy_is_not_reconstructed"
+    content = Path(__file__).read_bytes()
+    assert source["sha256"] == sha256(content).hexdigest()
+    assert 'trace.stage("catalog_snapshot")' in content.decode().splitlines()[source["line"] - 1]
+    assert trace_view(trace.data)["stages"][0]["source"] == source
+    del trace.data["stages"][0]["source"]
+    assert "source" not in trace_view(trace.data)["stages"][0]
+
+
+def test_known_model_business_payload_omits_unexpected_nested_fields():
+    payload = {
+        "request": {"question": "Revenue?", "api_key": "PRIVATE_KEY"},
+        "catalog": [{"ticker": "ANY", "headers": "PRIVATE_HEADER"}],
+        "response_contract": "PRIVATE_SCHEMA",
+    }
+    trace = Trace("a" * 32, {})
+    with trace.stage(
+        "llm_call",
+        {
+            "purpose": "query_planning",
+            "messages": [
+                {"role": "system", "content": "PRIVATE_PROMPT"},
+                {"role": "user", "content": json.dumps(payload)},
+            ],
+        },
+    ) as row:
+        row["outputs"] = {"answer": "PRIVATE_RESPONSE", "usage": {"total_tokens": 20}}
+    view = trace_view(trace.data)
+    business = view["stages"][0]["inputs"]["business_payload"]
+    assert business == {"request": {"question": "Revenue?"}, "catalog": [{"ticker": "ANY"}]}
+    assert "PRIVATE" not in json.dumps(view)
+
+
+def test_component_map_matches_allowlisted_code_and_explains_shared_calls():
+    client = TestClient(create_app(ServingConfig()))
+    components = client.get("/components").json()["components"]
+    assert {
+        "catalog_snapshot",
+        "query_plan",
+        "retrieve",
+        "rerank",
+        "entry",
+        "ingestion",
+    } <= components.keys()
+    for component, refs in components.items():
+        snippets = client.get(f"/code/{component}").json()["snippets"]
+        assert len(refs) == len(snippets)
+        for ref, snippet in zip(refs, snippets, strict=True):
+            assert "text" not in ref and ref["role"]
+            assert all(ref[k] == snippet[k] for k in ref)
+    assert any(r["symbol"] == "DeepSeek.generate" for r in components["rerank"])
+    assert any(r["symbol"] == "execute" for r in components["entry"])
+
+
+def test_current_catalog_is_published_read_only_and_filters_asof(monkeypatch, tmp_path):
+    from contextlib import contextmanager
+    from types import SimpleNamespace
+
+    from finrag.models import Filing
+    from finrag.planning import Catalog
+
+    def filing(doc, filed):
+        return Filing(
+            id=doc,
+            ticker="ANY",
+            cik=1,
+            fiscal_year=2024,
+            form="10-K",
+            accession=doc,
+            period_end="2024-12-31",
+            filed_at=filed,
+            source_url="https://www.sec.gov/example",
+        )
+
+    raw = tmp_path / "data/raw"
+    raw.mkdir(parents=True)
+    (raw / "ANY_FY2024.html").write_text("local original")
+    monkeypatch.setattr("finrag.serving.explorer.ROOT", tmp_path)
+
+    @contextmanager
+    def resources(config, *, models):
+        assert models is False
+        yield (
+            SimpleNamespace(
+                index_id="index-test",
+                catalog=lambda: Catalog(
+                    [filing("ANY_FY2024", "2025-02-01"), filing("ANY_FY2025", "2026-02-01")]
+                ),
+            ),
+            None,
+            None,
+            None,
+        )
+
+    monkeypatch.setattr("finrag.serving.api.resources", resources)
+    client = TestClient(create_app(ServingConfig()))
+    result = client.get("/catalog?as_of=2025-02-01").json()
+    assert result["source"] == "current_published_database"
+    assert result["index_id"] == "index-test" and result["documents"] == 1
+    assert result["filings"][0]["local_raw_path"] == "data/raw/ANY_FY2024.html"
+    assert result["filings"][0]["source_url"] == "https://www.sec.gov/example"
+    assert result["truncated"] is False
+    assert client.get("/catalog").status_code == 422
+    assert client.get("/catalog?as_of=invalid").status_code == 422
+
+
+def test_catalog_failure_does_not_expose_database_details(monkeypatch):
+    def fail(*args, **kwargs):
+        raise RuntimeError("PRIVATE_DSN")
+
+    monkeypatch.setattr("finrag.serving.api.resources", fail)
+    response = TestClient(create_app(ServingConfig())).get("/catalog?as_of=2025-02-01")
+    assert response.status_code == 503
+    assert response.json() == {"detail": "database_unavailable"}
