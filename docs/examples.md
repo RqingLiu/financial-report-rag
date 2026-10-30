@@ -52,4 +52,4 @@ Google口径：Alphabet将Google Cloud作为三个报告分部之一（Google Se
 
 同类问题的早一次运行返回 `error / planner_schema_invalid`。Planner缺少必填字段，泛化的“请修复JSON”反馈未解决；系统保留严格拒绝，没有静默放宽契约。随后增加字段路径与JSON schema反馈，再做成功的真实运行。失败记录与成功记录都保留，不删除失败来制造成功率。
 
-其他可检查的负面结果包括：[need预算策略偏好短文本、模型选行漏关键会计行、任务重组候选提高但Top80下降、合成ANN强聚簇漏召回](project-deep-dive.md#5-三个值得深入讲的排查案例)。
+其他可检查的负面结果包括：[need预算策略偏好短文本、模型选行漏关键会计行、任务重组候选提高但Top80下降、合成ANN强聚簇漏召回](experiments.md)。
