@@ -50,5 +50,14 @@
     "status": "passed",
     "files": 239,
     "failures": 0
+  },
+  "github_source_ci": {
+    "url": "https://github.com/RqingLiu/financial-report-rag/actions/runs/40996153668",
+    "source_commit": "cca5b4c3247531577c9b803211bdb7e743e4f31d",
+    "conclusion": "success",
+    "passed": 90,
+    "explicit_corpus_or_db_skips": 11,
+    "public_evidence_arms_recomputed": 27,
+    "staged_secret_scan_failures": 0
   }
 }
