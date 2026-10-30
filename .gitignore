@@ -15,6 +15,8 @@ logs/
 .DS_Store
 
 # Shared specs/templates/skills belong in Git; local cursors and runs do not.
+# One-off public-guide delivery notes remain local; functional specs stay versioned.
+/specs/008-public-project-guide/
 .specify/feature.json
 .specify/cache/
 .specify/logs/
