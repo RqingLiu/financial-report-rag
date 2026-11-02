@@ -6,7 +6,7 @@
 - 先读 [README](README.md)、[当前架构](docs/architecture.md)和[章程](.specify/memory/constitution.md)。
 - 当前日常入口`python -m finrag.serving.cli`。历史规格001–005与旧CLI保留，用于回归和实验复现；`finrag.pipeline`是上一版入口，不是当前默认。
   [开发/代码地图](docs/development.md)、[评测边界](docs/evaluation.md)、[数据入库](docs/data-and-ingestion.md)是公开说明；完整本地历史README/trace不提交Git。安装工具或编写规格不等于授权执行整个 implement 工作流。
-- 新功能读对应 spec，再更新 plan/tasks；执行代码使用 `.venv/bin/python`。
+- 新功能读对应 spec，再更新 plan/tasks；执行代码使用 `.venv/bin/python`。规格、计划、任务、检查表与规格章程统一使用英文。
 - 需要 Spec Kit 工作流时读取 `.agents/skills/speckit-<step>/SKILL.md`。
 - 当前功能由 `.specify/feature.json` 指定，不从 Git 分支推断。
 - 不覆盖冻结配置、标注或发布标记；不为纯文档改动启动付费评测。

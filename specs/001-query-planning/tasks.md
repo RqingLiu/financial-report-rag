@@ -1,40 +1,41 @@
-# Tasks: QueryPlan与RAG增量
+# Tasks: QueryPlan and RAG Increment
 
-## 聚焦子查询对照（FR026–029 / SC009）
-- [x] T019 实现只改查询表达的refiner、三组计划、搜索配额等价校验和失败/缓存契约测试。
-- [x] T020 保持chunk/index、只读PG，先pilot后运行20题，记录全部候选与Top80；复用旧评分，仅评分新增Top80候选，在共享预算下保存真实context。
-- [x] T021 分层评测、逐题失败/进退、来源/预算/索引/保护hash校验与回归，更新README/Notion流程及结论，不自动切换默认。
+## Focused subquery comparison (FR026–029 / SC009)
+- [x] T019 Implement wording-only refinement, three plan arms, equivalent-search-quota validation and failure/cache contracts.
+- [x] T020 Keep chunks/indexes and read-only PostgreSQL; pilot then run 20 questions, saving pools/Top80. Reuse old scores, grade only new Top80 candidates and save actual context under the shared budget.
+- [x] T021 Evaluate stages, per-question failures/changes, source/budget/index/protected hashes and regressions. Update README/Notion flow/results without changing defaults.
 
-验收：主结果`reports/focused_queries/20261028T022730Z_78c0ce/`。wide/focused/mixed的Top80宏Recall80.95/82.24/82.08%，最终context67.66/69.81/66.78%；focused最终2题改善18持平0退步，150/225组、完整4/20，未达70%。全池focused略退，U19最终仍2/23；mixed在U19/U20退步，均未默认替换。56 passed/1 skipped、lint通过；60份context/6759来源跨度、过滤/任务/查询数/SQL预算/双预算、基线字节重放与索引/保护hash通过。只给70个Top80新增候选评分，本轮含失败pilot共US$0.03394216保守列表价，累计0.97575738、旧未知0.0093642保留。README §8.10 / Notion §5.12与§3.4 / §5.10流程同步；无新答案、独立holdout或冷请求成本证明。
+Acceptance: `reports/focused_queries/20261028T022730Z_78c0ce/`. Wide/focused/mixed Top80 macro recall 80.95/82.24/82.08%; final 67.66/69.81/66.78%. Focused: 2 improved/18 unchanged/0 regressed, 150/225 groups, 4/20 complete, below 70%. Its full pool slightly regressed; U19 remained 2/23. Mixed regressed on U19/U20; neither promoted. Tests: 56 passed/1 skipped; lint passed. Verified 60 contexts/6,759 spans, filters/tasks/query counts/SQL/dual budgets, byte-identical baseline replay and index/protected hashes. Only 70 new Top80 candidates graded. Round including failed pilot: $0.03394216 conservative list price; cumulative $0.97575738 and old unknown $0.0093642 retained. Historical README §8.10, Notion §5.12 and diagrams §3.4/§5.10 synchronized. No new answers, independent holdout or cold-request cost claim.
 
-## Top80 粗排离线实验（FR023–025 / SC008）
-- [x] T016 实现8组预声明粗排策略，隔离LLM评分/gold，保存Top80及选择理由与CPU耗时。
-- [x] T017 零API回放旧精排评分和原表context，验证原结果一致、原文/双预算/as_of及保护hash。
-- [x] T018 运行20题、比较候选与最终context、逐题退步/模型代理和v1/v2任务差异；执行适当回归，更新README/Notion，不自动替换默认。
+## Offline Top80 coarse ranking (FR023–025 / SC008)
+- [x] T016 Implement8 predeclared strategies isolated from LLM scores/gold; save Top80, reasons and CPU time.
+- [x] T017 Replay old scores/original-table context with zero API calls; verify baseline identity, text/dual budgets/as_of/protected hashes.
+- [x] T018 Run 20 questions; compare shortlist/final coverage, regressions/model proxies and v1/v2 task differences. Run regressions and update README/Notion without default promotion.
 
-验收：`reports/coarse_rank/20261028T014418Z_b5443e/`（UTC；本地10月27日）。Top80全局RRF候选宏Recall80.95%→82.18%、复用精排context67.66%→68.77%，5改善/13持平/U14与U17退步，未达70%、不推广默认。8组160份context的原文/双预算/as_of/保护hash与原Top80重放通过，50 passed/1 skipped、lint通过，新增API/费用0。原池漏16组均未召回目标Block，U19占10组；v1平均3.08证据组/v2为11.25，不混比旧成绩。候选内BM25不等于全库召回，模型相关性代理不当人工Precision，复用评分不当新服务验收。
-- [x] T001 修订spec/plan与旧SC-004；记录baseline和可扩展性审查。
-- [x] T002 planning.py：语料catalog、结构化计划与约束验证（FR001–006,013–014）。
-- [x] T003 planned_retrieval.py / context.py：独立scope、候选与来源上下文预算（FR005,007–008,015–016）。
-- [x] T004 answering.py / pipeline.py：逐项答案、trace/离线对照与CLI（FR009–012,016–017）。
-- [x] T005 companies配置与采集入口配置化；新增公司契约（FR013）。
-- [x] T006 离线/回归/真实20题dev与六题生成pilot，费用/退步记录（SC001–005）。
-- [x] T007 根据实测整理推荐配置、下一轮reranker/计算工具计划；更新README与Notion。
+Acceptance: `reports/coarse_rank/20261028T014418Z_b5443e/` (UTC; local October 27). Global RRF Top80 macro recall 80.95%→82.18%, reused-score context 67.66%→68.77%; 5 improved/13 unchanged/U14 and U17 regressed. Below 70%; no default promotion. All 8 arms/160 contexts passed text/dual-budget/as_of/protected-hash/original-Top80 replay checks; 50 passed/1 skipped, lint passed, zero new API cost. All 16 missing pool groups lacked target Blocks, 10 from U19. V1 averages3.08 evidence groups versus v2's11.25; scores are not directly comparable. Local BM25 is not full-corpus recall; model relevance is not human Precision; reused scores are not new-service acceptance.
 
-验收记录：20题均规划/检索/生成成功；同Top10/8K宏覆盖13.56%→36.60%，14题改善/4持平/U07与U15退步。39 passed/1 skipped；原索引与冻结hash不变。正式数值/语义与独立holdout、精排、确定性计算属于后续，未勾作完成。
+- [x] T001 Revise spec/plan/SC-004; record baseline and scaling audit.
+- [x] T002 `planning.py`: corpus catalog, structured planning and scope validation (FR001–006,013–014).
+- [x] T003 `planned_retrieval.py`/`context.py`: independent scope, candidates and source-context budgets (FR005, 007–008,015–016).
+- [x] T004 `answering.py`/`pipeline.py`: need-level answers, traces/offline controls and CLI (FR009–012,016–017).
+- [x] T005 Configurable company/collection entry and new-company contracts (FR013).
+- [x] T006 Offline/regression/real20-question dev run and 6-question generation pilot; record cost/regressions (SC001–005).
+- [x] T007 Summarize measured recommendations and next reranker/calculator work; update README/Notion.
 
-## 2026-10-27 上下文预算实验（FR018–019 / SC006）
-- [x] T008 实现显式need_budget策略、运行时need/task/来源关联与边际收益/token成本日志，保持旧策略行为。
-- [x] T009 增加零API离线四组对照命令，选择与gold评分分离，保存实际上下文/逐题结果/哈希。
-- [x] T010 来源、预算、共享需求、不依赖gold、缺plan与旧策略回放测试；运行20题只读实验。
-- [x] T011 记录收益/退步/限制与推荐结论，更新README、Notion §5.8和实验入口；不默认替换或宣称生成质量提升。
+Acceptance: all 20 questions planned/retrieved/generated successfully. At Top10/8K, macro coverage 13.56%→36.60%; 14 improved/4 unchanged/U07 and U15 regressed. Tests: 39 passed/1 skipped; original index/frozen hashes unchanged. Formal numeric/semantic review, independent holdout, reranking and deterministic calculation were future work at this stage, not accepted as complete.
 
-结果：`reports/context_budget/20261027T072215Z_6c99b5/`；rank10/rank30/need10/need30宏证据Recall为36.60%/47.34%/26.40%/45.16%。需求感知未胜同上限rank，保留为实验选项；原默认不变。42 passed/1 skipped，80份实际上下文预算通过，20题旧rank10完全重放，费用0，保护哈希未变。补检索/分层提取/新答案生成不在本轮完成项。
+## 2026-10-27: Context-budget experiment (FR018–019 / SC006)
+- [x] T008 Add explicit need_budget selection, runtime need/task/source links and marginal-benefit/token-cost logs; preserve old selection.
+- [x] T009 Add zero-API four-arm replay with selection/gold isolation; save actual contexts/results/hashes.
+- [x] T010 Test sources, budgets, shared needs, gold isolation, missing plans and old replay; run 20 read-only cases.
+- [x] T011 Record gains/regressions/limits/recommendation; update README, Notion §5.8 and experiment entry without changing defaults or claiming better generation.
 
-## 固定实际上下文成本的精排，目标70%（FR020–022 / SC007）
-- [x] T012 核验PG表格存储；实现带缓存/trace/预算的全候选LLM精排及严格行/need校验。
-- [x] T013 实现仅原文行抽取、真实span重建与完整prompt/证据双token上限；旧答案消息构造兼容。
-- [x] T014 先pilot验证，再全20题评分并按四组选择；gold只在选择后评分，不改默认/旧数据。
-- [x] T015 原文跨度/表格保留/注入与非法ID/双预算/缓存契约回归，记录70%目标、退步与费用；同步README/Notion。
+Outcome: `reports/context_budget/20261027T072215Z_6c99b5/`; rank10/rank30/need10/need30 macro evidence recall 36.60%/47.34%/26.40%/45.16%. Need-aware selection did not beat rank under matching caps; retain only as experiment. Tests: 42 passed/1 skipped; 80 actual contexts passed budgets; all 20 rank10 outputs replayed exactly. Zero cost, protected hashes unchanged. Follow-up retrieval, hierarchical extraction and new answer generation were not completed here.
 
-验收：`reports/rerank/20261027T170703Z_9a25db/`；同rank30逐题实际证据/完整输入预算，宏Recall47.34%→71.45%（17改善/3持平/0退步），达到70%目标；压缩+need分配75.24%但U12退步。更早原10条实际预算下仅56.95%，分开报告。47 passed/1 skipped；100上下文/8919来源区间、双预算/as_of、gold只读与冻结核心hash通过。新增峰时列表价usage估算US$0.76523250、另US$0.0093642异常请求计费未知预留；续跑复用19题及成功batch。未生成答案、未接生产默认、无财务事实库/工具验收。
+## Fixed actual context-cost reranking, target 70% (FR020–022 / SC007)
+- [x] T012 Verify PostgreSQL table storage; add full-pool LLM grading with cache/trace/budget and strict line/need validation.
+- [x] T013 Extract original lines only, rebuild actual spans and enforce full-prompt/evidence dual token caps; preserve old answer-message compatibility.
+- [x] T014 Pilot then grade20 questions and select four arms; load gold after selection; preserve defaults/old data.
+- [x] T015 Test spans, table retention, injection/invalid IDs, dual budgets and cache; report target/regressions/cost and sync README/Notion.
+
+Acceptance: `reports/rerank/20261027T170703Z_9a25db/`. Under rank30 per-question actual evidence/full-input caps, macro recall 47.34%→71.45% (17 improved/3 unchanged/0 regressed), meeting 70%. Compression+need allocation 75.24% regressed on U12. Earlier 10-item actual-budget result 56.95% is separate. Tests: 47 passed/1 skipped; 100 contexts/8,919 spans, dual budgets/as_of/read-only gold/frozen core hashes verified. Incremental peak list-price usage estimate $0.76523250 plus $0.0093642 unknown reservation; resume reused 19 questions/successful batches. No generated answers, serving-default switch or financial-fact/tool acceptance.

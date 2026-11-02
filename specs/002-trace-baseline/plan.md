@@ -1,23 +1,23 @@
-# Implementation Plan: 可审计开发基线
+# Implementation Plan: Auditable Development Baseline
 **Date**: 2026-10-26 | **Spec**: [spec.md](spec.md)
 
 ## Technical Context / Decisions
-复用Python3.12、httpx、Pydantic、PostgreSQL、Voyage及既有Retriever。新入口 `python -m finrag.baseline`，不改旧检索源码以保护冻结回放指纹。Repository代理记录真实dense/fts搜索；Retriever子类仅捕获super._search输出，复用原RRF/interleave重建排序诊断。保存所有候选payload用于离线span评分；实际生成只拿super.retrieve(k=10)的返回。
+Reuse Python3.12, httpx, Pydantic, PostgreSQL, Voyage and the existing Retriever. New entry:`python -m finrag.baseline`. Preserve old retrieval source to protect frozen replay fingerprints. A Repository proxy records actual dense/fts searches; a Retriever subclass captures only super._search output and reconstructs diagnostics using original RRF/interleave. Save all candidate payloads for offline span scoring; actual generation receives only super.retrieve(k=10) output.
 
-新模块 `tracing.py`（本地JSON stage层级）、`generation.py`（DeepSeek与跨服务预算）、`baseline.py`（query-only适配、观测、评测、Markdown/HTML复核）。`tests/test_baseline.py`覆盖语义重要契约。无云账户凭证时显式local_only，不隐式开通服务。未来可以把同一trace映射至LangSmith。
+New modules:`tracing.py` for local JSON stage hierarchy, `generation.py` for DeepSeek/shared budgets, and `baseline.py` for query-only adaptation, observation, evaluation and Markdown/HTML review. `tests/test_baseline.py` covers important behavior. Without cloud credentials, explicitly use local_only rather than provisioning a service. The trace can later map to LangSmith.
 
 ## Contracts
-- query-only文件 → 原问+阅读背景；U14使用confirmed_context，冲突拒绝。不得从gold.documents或证据group生成过滤条件。相同合法输入用于检索和生成；corpus_scope仅解释可用材料，不把所有公司拼成过滤条件。
-- stage: id,parent_id,name,start/end/duration,status,inputs,outputs。不自动序列化客户端/Settings/header/异常正文。每题trace单独原子保存。
-- 三种score：候选并集、未限上下文的融合top5/10/20、真实最终context。前两者为诊断；不冒充线上top20。评分在检索与生成结束后加载gold，不改变运行时。
-- 数值/事实/引用语义默认pending_human；可给引用ID/日期的结构检查，不能当faithfulness。生成可给原文与公式，未执行确定性计算需说明未验证。
-- budget: fcntl锁保护JSONL事件，reserve→settle；未决预留永久占用直到人工对账。固定共享路径，最高新请求停止阈值4.5美元。请求前以UTF8字节+固定封装余量估算输入上界，按max_tokens预留输出。DeepSeek峰时未命中价0.30/1.20美元每百万作为保守估计；Voyage4-lite0.02。返回usage后记保守列表价，不冒充时段/优惠后的发票。未知响应/超时不重试，保留预留；已知未发出的连接失败可释放。未知usage终止付费批次。
-- DeepSeek模型deepseek-flash，thinking disabled，temperature0，max_tokens4096，串行，httpx超时60秒，0自动重试；无Search/Fetch。模型响应名/ID和finish_reason记录。
-- 复用嵌入缓存；仅query缺失调用，跨服务共享预算；不重建任何文档embedding。
-- 每次实验唯一目录；断点通过已完成query trace复用，明确reused。可只跑retrieval，或只对既有trace生成，避免重复检索。
+- Query-only input supplies original question/reading context. U14 uses confirmed_context; reject conflicts. Never derive filters from gold.documents or evidence groups. Retrieval/generation receive the same valid input. corpus_scope describes available material, not a filter containing every company.
+- Stage fields:id,parent_id,name,start/end/duration,status,inputs,outputs. Never automatically serialize clients, Settings, headers or exception bodies. Atomically save one trace per question.
+- Three scores: candidate union, fused top5/10/20 without context limits, and actual final context. The first two are diagnostics, not online Top20 claims. Load gold after retrieval/generation; scoring cannot change runtime.
+- Numeric/factual/citation-semantic review defaults to pending_human. Citation-ID/date checks are structural, not faithfulness. Generation may state source text/formulas but must label arithmetic unverified without deterministic execution.
+- Budget: fcntl-locked JSONL events, reserve→settle. Unresolved reservations remain until manual reconciliation. Fixed shared path; stop new calls at $4.5. Before calls, estimate an input upper bound from UTF8 bytes plus envelope allowance and reserve max_tokens output. Conservative historical prices per million: DeepSeek peak uncached input/output $0.30/$1.20; Voyage4-lite $0.02. Settle using reported usage/list price, not an invoice reflecting discounts/time bands. Do not retry unknown responses/timeouts; retain reservation. Release only confirmed unsent connection failures. Unknown usage stops the paid batch.
+- DeepSeek model deepseek-flash, thinking disabled, temperature 0, max_tokens 4096, serial, httpx timeout 60 seconds, zero automatic retries; no Search/Fetch. Record returned model name/ID and finish_reason.
+- Reuse embedding cache, call only for missing query vectors, and share the provider budget. Do not rebuild document embeddings.
+- Unique run directory per experiment. Resume from completed query traces with explicit reused status. Support retrieval-only or generation from existing traces to avoid duplicate retrieval.
 
 ## Constitution Check
-来源/财年/截止日显式；gold隔离；新独立模块不改变冻结行为；无新后台服务；费用与单次调用有界；错误不伪装证据不足；本地秘密忽略；验收不宣称答案已人工通过。全部符合。
+Explicit sources/FY/cutoff; gold isolation; independent modules preserving frozen behavior; no new background service; bounded cost/calls; service errors distinguished from missing evidence; ignored local secrets; no claim of human-approved answers. Compliant.
 
 ## Execution / Evidence
-先离线契约与既有回归、gold --check；只读DB连通性；20题检索诊断；6题生成pilot（U02/U03/U06/U09/U12/U14）；核对真实usage与截断后完成余14题。保存manifest/trace/scores/review/summary。观察后报告根因，不在本轮调检索参数。新API价格核对来源：DeepSeek官方pricing与chat API、Voyage官方pricing（2026-10-26）。
+Run offline contracts/old regressions/gold --check, read-only DB connectivity, 20-question retrieval diagnostics, then a6-question generation pilot (U02/U03/U06/U09/U12/U14). Check actual usage/truncation before the remaining 14. Save manifest/trace/scores/review/summary. Report root causes after observation; do not tune retrieval in this round. Pricing sources checked2026-10-26: official DeepSeek pricing/chat API and Voyage pricing.
