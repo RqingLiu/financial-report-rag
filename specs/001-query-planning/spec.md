@@ -1,170 +1,139 @@
-# Feature Specification: 用户 Query 理解与检索规划
+# Feature Specification: Query Understanding and Retrieval Planning
 
 **Feature Directory**: `specs/001-query-planning`
 **Created**: 2026-10-25
-**Status**: Implemented as experimental path — 20题dev已跑通；语义/数值验收与独立holdout仍未完成
-**Input**: 将中文、口语、别名、追问和复合问题转成保留约束的检索计划，复用已有 RAG，
-发现歧义与缺项，并衡量改写/拆解收益。
+**Status**: Implemented as an experimental path. The 20-question development run is complete; semantic/numeric acceptance and an independent holdout remain pending.
+**Input**: Convert Chinese, colloquial wording, aliases, follow-ups and compound questions into retrieval plans that preserve constraints. Reuse the existing RAG pipeline, identify ambiguity and missing information, and measure rewriting/decomposition gains.
 
 ## User Scenarios & Testing
 
-### User Story 1 - 明确问题保留原意与范围 (Priority: P1)
+### User Story 1 - Preserve intent and scope for explicit questions (Priority: P1)
 
-用户明确指定公司和财年时，系统转为可检索的信息需求，保留原始表达与所有确认约束。
+When a user specifies companies and fiscal years, convert the question into searchable information needs while retaining the original wording and every confirmed constraint.
 
-**Why this priority**: 改写以不丢失公司、期间、指标和否定条件为前提。
-**Independent Test**: 比较规范问题和同意图口语变体的约束及必需证据组。
-
-**Acceptance Scenarios**:
-
-1. **Given** AMD FY2024 合并收入，**When** 使用已消歧的“AMD 24 财年营收”变体，
-   **Then** 保留相同的公司/期间/指标范围及原问。
-2. **Given** 明确且原路径可处理的简单问题，**When** 提问，
-   **Then** 允许直接检索，不强制增加规划调用。
-3. **Given** 显式排除公司或期间，**When** 改写，**Then** 排除条件仍生效。
-
-### User Story 2 - 歧义先澄清，越界说明缺项 (Priority: P1)
-
-用户问“这两年谁更赚钱”“那另一家呢”时，只继承已确认上下文，关键条件不明就澄清。
-
-**Why this priority**: 猜定口径或期间会改变用户原意。
-**Independent Test**: 核验需澄清、资料越界及上下文冲突案例的结果和实际检索范围。
+**Why this priority**: Rewriting must preserve companies, periods, metrics and exclusions.
+**Independent Test**: Compare constraints and required evidence groups for a canonical question and colloquial variants of the same intent.
 
 **Acceptance Scenarios**:
 
-1. **Given** 没有已确认的比较对象、指标或期间，**When** 问“这两年谁更赚钱”，
-   **Then** 询问缺少条件，不擅定毛利率或库中最新财年。
-2. **Given** 指定不存在于语料的公司/期间，**When** 提问，
-   **Then** 返回资料缺项，不换成相近公司或不同期间。
-3. **Given** “最新”无法由来源清单和截止日证明，**When** 规划，
-   **Then** 说明覆盖并澄清，不把库中最新冒充实际最新。
+1. **Given** a question about AMD FY2024 consolidated revenue, **When** the user supplies a disambiguated Chinese shorthand variant, **Then** preserve the company, period, metric and original question.
+2. **Given** a clear, simple question supported by the existing path, **When** it is submitted, **Then** allow direct retrieval without a mandatory planning call.
+3. **Given** an explicit company or period exclusion, **When** rewriting, **Then** preserve the exclusion.
 
-### User Story 3 - 拆解复合问题并检查覆盖 (Priority: P2)
+### User Story 2 - Clarify ambiguity and report missing material (Priority: P1)
 
-系统按多公司/多期间和主题拆解信息需求，列出依赖、证据与缺项。
+For questions such as “Who was more profitable over these two years?” or “What about the other company?”, inherit only confirmed context and clarify missing essential conditions.
 
-**Why this priority**: 一条高相关段落不代表覆盖完整比较问题。
-**Independent Test**: 核验子任务、约束继承、证据映射、合并覆盖和总预算。
+**Why this priority**: Guessing a metric definition or period changes the user's intent.
+**Independent Test**: Check outcomes and actual retrieval scope for clarification, out-of-corpus and context-conflict cases.
 
 **Acceptance Scenarios**:
 
-1. **Given** NVDA/AMD 各自 FY2024/FY2025 的已确认比较要求，**When** 规划，
-   **Then** 覆盖双方与所需期间，分别列出实际日期，不冒充共同自然年度。
-2. **Given** 需要尚未提供的取数或计算能力，**When** 执行，
-   **Then** 明确返回能力缺项，不把未执行任务描述为已完成。
-3. **Given** 某公司的原因证据缺失，**When** 合并，
-   **Then** 标明缺项，并在预算内补查或澄清，不以另一公司的证据代替。
+1. **Given** no confirmed comparison subjects, metric or period, **When** asked “Who was more profitable over these two years?”, **Then** ask for missing conditions rather than choosing gross margin or the latest fiscal year in the corpus.
+2. **Given** a company or period absent from the corpus, **When** queried, **Then** report missing material rather than substituting a similar company or another period.
+3. **Given** “latest” cannot be established from the source manifest and cutoff, **When** planning, **Then** explain coverage and clarify; do not equate the latest stored report with the latest actual report.
+
+### User Story 3 - Decompose compound questions and check coverage (Priority: P2)
+
+Split information needs by company, period and topic, and list dependencies, evidence and missing information.
+
+**Why this priority**: One highly relevant passage does not cover an entire comparison.
+**Independent Test**: Check subtasks, inherited constraints, evidence mappings, combined coverage and total budget.
+
+**Acceptance Scenarios**:
+
+1. **Given** confirmed NVDA/AMD comparisons for each company's FY2024/FY2025, **When** planning, **Then** cover both firms and required periods, list actual dates separately, and do not present them as identical calendar years.
+2. **Given** a need for unavailable data extraction or calculation, **When** executing, **Then** report the missing capability rather than claiming the task was completed.
+3. **Given** missing explanatory evidence for one company, **When** combining results, **Then** identify the gap and search again within budget or clarify; do not substitute another company's evidence.
 
 ### Edge Cases
 
-- 空问题、未确认指代、输入参数与会话冲突。
-- 报告 FY、自然年度、季度与表内比较期间不一致；修订与未公开报告。
-- 检索候选词提示可能原因，但原文不支持。
-- 无效计划、服务不可用、依赖循环、预算超限。
-- 区分缺证据与服务故障；未命中不能证明全文没有披露。
+- Empty questions, unresolved references, and conflicts between request parameters and conversation context.
+- Differences among report FY, calendar year, quarter and comparative table periods; amendments and unpublished reports.
+- Candidate terms suggest a cause that the source does not support.
+- Invalid plans, unavailable services, dependency cycles and budget limits.
+- Missing evidence and service failure are distinct; no retrieval hit does not prove the full report contains no disclosure.
 
 ## Scope and Change Boundaries
 
-- **In scope**: 理解/澄清、受约束改写、有限拆解、计划输出、已有取证路径接入、
-  缺项/预算记录、复用002在线模型的逐项生成契约及增量评测。
-- **Out of scope**: 财务事实库、确定性计算/预测/估值工具、UI和多Agent；在线模型适配复用002，不另建服务。
-  计划可表达这些信息需求，执行只能使用已提供的能力。
-- **Existing behavior to preserve**: CLI/证据包、基础过滤、固定术语扩展、来源定位、
-  冻结配置和数据；新路径可选择，未验收前不替换原默认路径。
-- **Sources**: [Notion v0.9 第 5.4、1.1、5.3、7.1 节](https://app.notion.com/p/Agent-3f6fda5b0ede808b9b60cee10e298cee)，
-  读取于 2026-10-25；[README 第 5、8、10 节](../../README.md)。
+- **In scope**: Understanding/clarification, constrained rewriting, bounded decomposition, plan output, existing evidence retrieval, gap/budget recording, reuse of feature 002's online need-level generation contract, and incremental evaluation.
+- **Out of scope**: Financial fact store, deterministic calculation/forecasting/valuation tools, UI and multiple agents. Reuse 002's model adapter rather than adding a service. Plans may describe these needs; execution may use only available capabilities.
+- **Existing behavior to preserve**: CLI/evidence packages, basic filters, fixed term expansion, source locations, frozen configurations and data. The new path remains optional and does not replace the original default before acceptance.
+- **Sources**: [Notion v0.9 sections 5.4, 1.1, 5.3, 7.1](https://app.notion.com/p/Agent-3f6fda5b0ede808b9b60cee10e298cee), read 2026-10-25; [README sections 5, 8, 10 at that time](../../README.md).
 
 ## Requirements
 
 ### Functional Requirements
 
-- **FR-001**: 保留原问、已确认上下文、规划版本和可追溯的决策记录。
-- **FR-002**: 公司、实际期间、报告范围、截止日、指标、否定条件分别表示；
-  改写/拆解不丢失显式约束，冲突不静默二选一。
-- **FR-003**: 关键条件缺失输出澄清；明确越界输出资料缺项。
-- **FR-004**: 简单问题可直通；子问题可独立理解并继承约束，映射到原始信息需求，
-  不加入假设答案。
-- **FR-005**: 取证任务分别提供语义表达、关键词及独立过滤；
-  保留公司/期间/主题到证据的映射，不只拼接成一个长问题。
-- **FR-006**: 子任务列明信息需求ID、可用路径和依赖（运行时不得使用gold证据组）；
-  不可用能力、非法依赖/计划明确返回，不伪装执行成功。
-- **FR-007**: 声明并执行子任务/变体/候选/最终证据/补查预算。
-  初始上限：4 子任务，每任务 2 个检索变体，1 轮补查，最终 10 条证据、8,000 代理 tokens。
-  候选配额与最终预算分别记录；调默认值需同步规格/配置及评测。
-- **FR-008**: 合并时去重、检查必需信息覆盖，输出缺项/停止原因；
-  得到 top-k 结果不自动代表任务完成。
-- **FR-009**: 新路径可与原路径对照；规划失败降级须标记，
-  仅在原路径能保留全部确认约束时允许，不扩大范围。
-- **FR-010**: 记录生效约束、任务/查询、路径、证据、预算和额外调用/费用/耗时，
-  或明确的未调用/不可测状态；不记录密钥。
-- **FR-011**: 增量评测人工核验信息需求与证据组，变体按意图分组；
-  不覆盖或用已发布测试再次选型，不将 gold 输入运行时。
-- **FR-012**: 仅调用明确开放的能力；规划不得直接成为任意数据库查询或代码执行权限。
-- **FR-013**: 公司及报告范围来自语料元数据与可配置登记，不在新路径内维护固定三家公司/财务术语词表。公司名未命中规则不直接判无公司，允许受校验的规划识别别名；未知实体/缺资料必须保留并报告。
-- **FR-014**: 查询规划以结构化输出返回；系统校验公司、期间、截止日、排除、任务依赖与预算。明确确认约束冲突时停止，不静默扩大范围。LLM结构化输出不等于语义必然正确。
-- **FR-015**: 文本/表格上下文仅按来源映射组装，可在预算内补完整原表或邻近表头；新增内容必须真实进入context才计覆盖。无法恢复的表格/图片明确能力缺项。
-- **FR-016**: 模型故障、计划非法、超限、空召回与待澄清分别记录；可复用已保存计划/候选离线比较，避免重复付费。新公司适配与数据量扩展能力不得冒充已做大规模压力测试。
-
-
-- **FR-017**: 回答按运行时needs逐项输出，校验遗漏、引用编号与截断；实际语义支持和财务计算正确性单独评测，结构通过不能标记答案已验证。
-- **FR-018**: 显式离线实验支持需求感知的上下文预算选择：仅使用已保存运行时plan、候选及来源，按need/task与来源的边际收益和token成本选取，共享证据不重复收费。任务/来源命中只是检索代理信号，不声明语义需求已满足。默认10条/8K保持；实验30条安全上限、同8K须单列，禁止把条数变化混称同k增益。
-- **FR-019**: 预算实验至少比较rank/需求感知 × 10/30条，在相同候选窗口、表格规则和8K预算下保存实际文本、来源span、逐题评分、退步、耗时与预算使用。先执行全部选择并落盘，再读取gold评分；不新增模型调用，不改标注/索引/旧报告，不自动替换默认配置。补检索、分层模型提取及答案正确性另行实验。
-- **FR-020**: 新一轮显式精排实验使用已授权DeepSeek和共享费用账本，对全部已保存候选进行分批语义相关性/need支持评分，精排先于80窗口截断。输入只有原问、运行时plan、来源及候选文本；禁止gold/参考答案/预期数字。分数是模型判断而非人工qrels；批次、提示词、raw response、费用、缓存和失败必须可审计。JSON/schema非法最多一次有界修复，服务错误不重试。
-- **FR-021**: 表格/正文压缩仅选原文行与原文区间，保留来源、表头/单位上下文；不得生成或改写数字。最终Hit的span只能指向实际展示文本，不能沿用被省略的整chunk跨度虚增Recall。表格结构已在PG JSONB，不等于财务事实库或可靠列语义解析；不新建事实表/改旧索引。
-- **FR-022**: 精排本轮以rank30实验每题实际证据token数和同一答案提示词完整输入代理token数为双重上限，均不增加；另报原rank10实际预算的诊断。精排自身API输入/输出、费用与延迟另计，不能说总成本未增加。上下文条数允许在30安全上限内变化，不依靠更大context达到目标。运行时限制不放宽公司、报告范围或as_of。
-
-- **FR-023**: 新增显式零 API Top80 粗排实验，固定原20题 QueryPlan、dense候选并集、索引与来源范围。仅从runtime搜索排名、距离、查询词和来源span构造shortlist；禁止旧LLM评分、gold或参考答案进入粗排函数。不扩大到超过80条，不按公司/题号写规则，不替换默认入口。
-- **FR-024**: 预先固定8组对照：原排序、全局RRF、原排序/全局RRF的来源去重、分组种子名额+RRF去重、候选池局部BM25与dense排名融合（含分组种子变体）、cosine排名去重。候选局部BM25仅重排已召回内容，不冒充全库BM25召回；种子名额不代表语义需求已满足。每组保存shortlist、来源/排名理由、CPU耗时。
-- **FR-025**: 全部shortlist落盘后才读取旧精排评分，复用保留原表的既有选择器及原rank30逐题双实际预算，保存真实上下文；全部选择完成后才读取gold评分。报告Top80宏/微证据Recall、最终context覆盖、逐题进退与旧LLM评分的相关性代理，后者不得称人工Precision@80。回放不证明新批次精排质量、真实API费用/延迟或独立泛化。
-
-- **FR-026**: 显式focused-query实验只改变已保存QueryPlan的dense查询表达；原公司、报告范围、as_of、needs、任务ID/need映射/tickers和每任务查询条数固定。模型基于原问、阅读背景、确认条件及运行时plan产生查询及need/证据目标说明，不接触gold、答案、历史失败标签或目标Block。非法结构/范围最多一次修复，缓存含提示词与完整输入hash。
-- **FR-027**: 预声明wide / focused / mixed三组；mixed在同查询名额内保留原首条宽查询和首条聚焦查询（单查询任务用聚焦查询），不得靠增加向量查询、分组SQL次数、dense_k或Top80获取收益。固定chunk/index、dense_k20、原RRF/交错、每组最多512候选和最终Top80；不引入新FTS/重切/事实库/Agent框架，不更换默认planner。
-- **FR-028**: 为新查询实际调用Voyage与只读PG，保存真实候选及本地trace；先完成全部检索与shortlist再读取gold进行候选/Top80阶段评分。精排可复用同原问/needs/来源文本的旧分数，Top80新增候选才付费评分；选择器沿用保留原表、原rank30逐题双实际预算。评分来源、缓存/新增成本分开，未生成答案不能声称答案正确率。
-- **FR-029**: 新调用使用原5美元共享账本，本轮累计停止阈值1.60美元（不清旧未知费用预留），单次LLM最多60秒总时限，服务失败不自动重试，结构最多一次修复。先小范围检查再完成20题，缓存与可审计续跑避免重复请求；遇失败保存明确状态/费用而非假成功。不因预算有余反复扩展提示词/网格。
+- **FR-001**: Retain the original question, confirmed context, planning version and traceable decision records.
+- **FR-002**: Represent company, actual period, report scope, cutoff, metric and exclusions separately. Rewriting/decomposition must preserve explicit constraints; conflicts must not be resolved silently.
+- **FR-003**: Return clarification for missing essential conditions and missing-material status for explicit out-of-corpus requests.
+- **FR-004**: Allow simple questions to bypass planning. Each subquestion must be understandable alone, inherit constraints and map to the original information need without assuming an answer.
+- **FR-005**: Evidence tasks provide semantic queries, keywords and independent filters. Preserve company/period/topic-to-evidence mappings rather than concatenating everything into one long question.
+- **FR-006**: Subtasks list information-need IDs, available paths and dependencies; runtime must not use gold evidence groups. Report unavailable capabilities and invalid dependencies/plans explicitly rather than claiming successful execution.
+- **FR-007**: Declare and enforce budgets for subtasks, variants, candidates, final evidence and follow-up retrieval. Initial limits: 4 subtasks, 2 retrieval variants per task, 1 follow-up round, 10 final evidence items and 8,000 proxy tokens. Record candidate quotas separately from the final budget; default changes require matching spec/config/evaluation updates.
+- **FR-008**: Deduplicate, check required information coverage, and report gaps/stop reasons when merging. Receiving top-k results does not establish task completion.
+- **FR-009**: Compare the new and original paths. Mark any fallback after planning failure; permit it only if the original path preserves every confirmed constraint without widening scope.
+- **FR-010**: Record effective constraints, tasks/queries, paths, evidence, budgets, additional calls/cost/time, or explicit not-called/not-measurable states. Do not record secrets.
+- **FR-011**: Manually review information needs and evidence groups for incremental evaluation; group variants by intent. Do not overwrite published tests, reuse them for selection, or pass gold to runtime.
+- **FR-012**: Invoke only explicitly available capabilities. A plan must not grant arbitrary database-query or code-execution permission.
+- **FR-013**: Derive company/report scope from corpus metadata and configurable registration. Do not maintain a fixed three-company or financial-term list in the new path. A name missed by rules is not automatically “no company”; allow validated model alias resolution and preserve/report unknown entities or missing material.
+- **FR-014**: Return structured plans and validate companies, periods, cutoff, exclusions, dependencies and budgets. Stop on conflicts with confirmed constraints; never silently widen scope. Structured output does not guarantee semantic correctness.
+- **FR-015**: Assemble text/table context only through source mappings. Restore complete original tables or nearby headers within budget; added material counts toward coverage only if it actually enters context. Report unsupported table/image recovery explicitly.
+- **FR-016**: Record model failure, invalid plans, resource limits, empty retrieval and clarification separately. Reuse saved plans/candidates for offline comparisons to avoid repeated paid calls. New-company support and scalable design are not evidence of completed large-scale stress tests.
+- **FR-017**: Answer each runtime need and validate omissions, citation IDs and truncation. Evaluate semantic support and financial arithmetic separately; valid structure does not mean a verified answer.
+- **FR-018**: Add an explicit offline need-aware context-budget experiment using only saved runtime plans, candidates and sources. Select by marginal need/task/source benefit and token cost without charging shared evidence twice. Task/source matches are retrieval proxies, not proof of semantic satisfaction. Retain the 10-item/8K default; report the 30-item safety cap with the same 8K separately, never as a same-k gain.
+- **FR-019**: Compare at least rank/need-aware selection ×10/30 items using identical candidate windows, table rules and 8K budgets. Save actual text, source spans, per-question scores/regressions, latency and budget use. Save every selection before loading gold. No new model calls or changes to labels/indexes/old reports/defaults; follow-up retrieval, hierarchical extraction and answer correctness require separate experiments.
+- **FR-020**: In an explicit reranking experiment, use the authorized DeepSeek API and shared ledger to grade semantic relevance/need support across all saved candidates in batches, before Top80 truncation. Inputs contain only the original question, runtime plan, sources and candidate text; exclude gold, reference answers and expected numbers. Scores are model judgments, not human qrels. Audit batches, prompts, raw responses, cost, cache and failure. Allow at most one bounded JSON/schema repair; do not retry service errors.
+- **FR-021**: Table/prose compression selects only original lines/spans and preserves sources, headers and units; it must not generate or rewrite numbers. Final Hit spans must identify text actually shown, not omitted whole-chunk spans that inflate recall. PostgreSQL JSONB tables are not a financial fact store or reliable column semantics. Do not add fact tables or change old indexes.
+- **FR-022**: Cap each question at its rank30 experiment's actual evidence tokens and serialized full-answer-input proxy tokens under the same answer prompt; neither may increase. Report original rank10 actual-budget diagnostics separately. Account for reranking API input/output, cost and latency separately; unchanged context cost does not mean unchanged total cost. Allow at most 30 items without expanding context or weakening company/report/as_of constraints.
+- **FR-023**: Add an explicit zero-API Top80 coarse-ranking experiment with fixed original 20-question plans, dense candidate union, indexes and source scope. Build shortlists only from runtime search ranks/distances/query terms/source spans. Exclude old LLM scores, gold and references from coarse ranking. Do not exceed80 items, add company/question-specific rules or replace the default entry point.
+- **FR-024**: Predeclare8 controls: original ranking, global RRF, source-deduplicated versions of both, group seed quotas+deduplicated RRF, candidate-local BM25+dense fusion with/without group seeds, and deduplicated cosine ranking. Local BM25 only reranks retrieved text, not full-corpus recall. Seed quotas do not prove need satisfaction. Save shortlists, source/ranking reasons and CPU time.
+- **FR-025**: Load old reranking scores only after all shortlists are saved. Reuse the original-table selector and rank30 per-question actual evidence/full-input caps; save actual context before gold scoring. Report Top80 macro/micro evidence recall, final coverage, per-question changes and correlation with old LLM relevance proxies; do not call the latter human Precision@80. Replay does not establish new-batch quality, live API cost/latency or independent generalization.
+- **FR-026**: The explicit focused-query experiment changes only dense-query wording in saved plans. Keep companies, report scope, as_of, needs, task IDs/need mappings/tickers and queries per task unchanged. Generate queries with need/evidence-objective explanations from original question, reading context, confirmations and runtime plan; exclude gold, answers, historical failure labels and target Blocks. Allow one structure/scope repair; cache prompt and complete input hashes.
+- **FR-027**: Predeclare wide/focused/mixed arms. Mixed keeps the first original wide query and first focused query within existing slots; single-query tasks use the focused query. No extra vector queries, group SQL calls, dense_k or Top80 capacity. Fix chunk/index, dense_k20, original RRF/interleave, at most 512 candidates and Top80. No new FTS, rechunking, fact store, agent framework or default planner change.
+- **FR-028**: Call Voyage and read-only PostgreSQL for new queries and save actual candidates/local traces. Complete all retrieval/shortlists before gold candidate/Top80 scoring. Reuse old scores only for identical question/needs/source text; pay only for new Top80 candidates. Retain original tables and rank30 per-question dual actual budgets. Separate reused/new score cost; no generated answers means no answer-accuracy claim.
+- **FR-029**: Share the original $5 ledger, with this round's cumulative stop at $1.60 and old unknown reservations retained. Limit each LLM call to 60 seconds total; no automatic service retry and at most one structural repair. Start with a pilot, then complete20 questions; resume/cache to avoid duplicates. Save explicit failure/cost states. Do not expand prompts or parameter grids merely because budget remains.
 
 ### Key Entities
 
-- **Original request**: 原问、已确认上下文、显式约束。
-- **QueryPlan**: 已解析约束、澄清/缺项、任务、依赖、路径和预算。
-- **Subtask**: 独立问题、范围、检索表达/关键词和证据要求。
-- **Execution record**: 实际执行、证据关系、缺项、停止原因与成本。
+- **Original request**: Original question, confirmed context and explicit constraints.
+- **QueryPlan**: Resolved constraints, clarification/gaps, tasks, dependencies, paths and budgets.
+- **Subtask**: Independent question, scope, retrieval queries/keywords and evidence requirements.
+- **Execution record**: Actual execution, evidence relations, gaps, stop reasons and cost.
 
 ## Success Criteria
 
 ### Measurable Outcomes
 
-- **SC-001**: 人工确认的边界案例中，显式公司/期间/截止日/否定约束 100% 保留；
-  无静默扩大范围或把未执行能力报告为完成的情况。
-- **SC-002**: 合法计划中每个子任务关联原始信息需求，证据关联子任务；
-  非法、超限及依赖循环案例全部明确返回。
-- **SC-003**: 原查询契约回归通过；原冻结标注、默认配置和发布标记的文件哈希不变。
-- **SC-004**: 在已发布20题dev上，分别保存旧baseline、元数据范围规划、查询改写/拆解、候选融合/上下文与生成的逐题结果。保持最终10条/8K代理token对照；更大预算只能另列诊断，不混称同预算收益。规范题证据完整率不下降、宏平均覆盖提升方可作为推荐实验；新路径先保持显式选择，不替换旧冻结默认。
-- **SC-005**: 离线构造公司中英连写、新公司、排除条件、历史截止日、语料外公司/期间、无效计划和预算失败的契约案例；同意图归dev家族。此类mock只验证契约，不充当独立泛化测试。独立holdout及真实口语评测另行准备。
-- **SC-006**: 20题dev离线预算实验记录四组结果与逐题进退，验证旧rank10重放一致、所有实际上下文不超8K/条数安全上限、source span来自实际文本、缺plan明确失败。只有对照结果支持时才推荐；不要求通过修改标签/逐题规则制造收益。
-- **SC-007**: 目标在20题dev的最终上下文宏证据Recall达到70%，固定FR022逐题成本上限，比较原排序、80内精排、全池精排、全池精排+来源压缩。先保存全部选择再离线读gold评分；记录未达标/逐题退步，不修改标注或按题硬编码。达到dev目标不代表独立holdout、语义/数值正确率或生产就绪。
-
-- **SC-008**: Top80实验各组候选不超过80、仅来自原池、as_of及来源完整性不变；原Top80和其精排context必须与历史结果重放一致。记录所有对照和退步，不根据20题反复扩展网格以制造胜出；不要求一定达到70%。验证选择/评分边界、重复span与新公司兼容、保护文件hash和零付费调用，并说明旧v1与v2数据集不可直接比较。
-
-- **SC-009**: 验证三组的过滤/任务/查询数/SQL组数/k完全相同，原wide逐题候选Top80及context与历史重放一致；核验PG索引指纹、来源与受保护配置/gold/旧报告hash不变。报告全池与Top80宏/微Recall、完整题、逐题进退、context与模型评分代理、SQL/embedding/LLM耗时和真实usage列表价费用；所有20题仍为dev，部分回答/未达标如实报告。若有任务内slot不足或信息需求改写遗漏，记录限制，不制造新增已验证能力。
+- **SC-001**: Preserve100% of explicit company/period/cutoff/exclusion constraints in manually confirmed boundary cases. Never silently widen scope or report unavailable execution as complete.
+- **SC-002**: Every valid subtask maps to an original information need, and evidence maps to subtasks. Return explicit outcomes for every invalid, over-limit or cyclic dependency case.
+- **SC-003**: Original query regressions pass; frozen labels/defaults/release-marker hashes remain unchanged.
+- **SC-004**: Save per-question results for the old baseline, metadata-scoped planning, rewriting/decomposition, fusion/context and generation on the published20-question dev set. Compare at 10 items/8K proxy tokens; report larger budgets separately. Recommend an experiment only if complete-question coverage does not fall and macro coverage improves. Keep the new path explicit rather than replacing the frozen default.
+- **SC-005**: Build offline contract cases for Chinese/English company names joined to text, new firms, exclusions, historical cutoffs, absent companies/periods, invalid plans and budget failures. Put same-intent cases in the dev family; mocks validate contracts, not independent generalization. Prepare independent holdout and natural colloquial evaluation separately.
+- **SC-006**: Record all four budget arms and per-question changes on 20 dev questions. Verify exact rank10 replay, actual context within 8K/item caps, spans matching shown text, and explicit missing-plan errors. Recommend only what controls support; do not change labels or add per-question rules to force gains.
+- **SC-007**: Target 70% final-context macro evidence recall on 20 dev questions under FR-022 per-question cost caps. Compare original ranking, Top80 reranking, full-pool reranking, and full-pool reranking with source compression. Save selections before loading gold; report misses/regressions without label changes or question-specific rules. Meeting the dev target is not holdout, semantic/numeric or production acceptance.
+- **SC-008**: Every Top80 arm contains at most 80 original-pool candidates with unchanged as_of/source integrity. Replay original Top80 and reranked context exactly. Record all controls/regressions without repeatedly expanding the grid to force a win; 70% is not mandatory. Verify selection/scoring isolation, duplicate spans, new-company compatibility, protected hashes and zero paid calls; explain why v1/v2 scores are not directly comparable.
+- **SC-009**: Verify identical filters/tasks/query counts/SQL groups/k across all three focused-query arms; replay wide candidates, Top80 and context exactly. Verify PostgreSQL index fingerprint, sources and protected config/gold/report hashes. Report pool/Top80 macro/micro recall, complete questions, per-question changes, context/model-score proxies, SQL/embedding/LLM time and actual-usage list-price cost. All 20 remain dev. Report partial answers, unmet targets, insufficient task slots and omitted needs without inventing verified capabilities.
 
 ## Acceptance Traceability
 
 | Requirement | Scenario / criterion | Verification evidence to produce |
 | --- | --- | --- |
-| FR-001, FR-010 | US1 / SC-002, SC-004 | 原问/执行记录与调用成本字段核验 |
-| FR-002, FR-003 | US1, US2 / SC-001 | 约束、冲突、澄清和越界案例 |
-| FR-004, FR-005 | US1, US3 / SC-001, SC-002 | 规范/口语问题的子任务和检索表达对照 |
-| FR-006, FR-012 | US3 / SC-001, SC-002 | 不可用能力、非法计划/依赖案例 |
-| FR-007, FR-008 | US3 / SC-002 | 预算、去重、覆盖及补查停止案例 |
-| FR-009 | US1 / SC-001, SC-003 | 原路径回归与不扩大范围的降级 |
-| FR-011 | SC-003, SC-004 | 数据分组/冻结哈希、逐题结果与限制 |
-| FR-013–016 | SC-001, SC-005 | 新公司/约束契约、来源映射、资源限额与失败记录 |
-| FR-017 | SC-004 | 20题逐need生成结构检查及未验证语义错误清单 |
+| FR-001, FR-010 | US1 / SC-002, SC-004 | Original request/execution records and call-cost fields |
+| FR-002, FR-003 | US1, US2 / SC-001 | Constraint, conflict, clarification and out-of-corpus cases |
+| FR-004, FR-005 | US1, US3 / SC-001, SC-002 | Canonical/colloquial task and retrieval-query comparisons |
+| FR-006, FR-012 | US3 / SC-001, SC-002 | Unavailable capabilities and invalid plans/dependencies |
+| FR-007, FR-008 | US3 / SC-002 | Budgets, deduplication, coverage and follow-up stop cases |
+| FR-009 | US1 / SC-001, SC-003 | Original-path regression and scope-preserving fallback |
+| FR-011 | SC-003, SC-004 | Intent splits/frozen hashes, per-question results and limits |
+| FR-013–016 | SC-001, SC-005 | New-company/scope contracts, source mappings, limits and failures |
+| FR-017 | SC-004 | Need-level structure checks on 20 questions and unverified semantic errors |
 
 ## Assumptions
 
-- 本次由用户明确授权改进；验收不使用已发布保留测试选型。
-- 原28条草稿验收方案被本轮20题dev+离线边界契约替代；20题v2已发布，独立holdout尚未准备。旧v1及历史结果保持不变。
-- 已有002在线模型适配可复用；本轮已生成20题，完整事实/数值/引用语义评分仍未完成。
-- 复用DeepSeek/Voyage与已建索引，费用共享前轮5美元授权的账本；精排后续迭代，生产财务计算未接入。
-- 首轮中文、英文与常见别名；不承诺任意语言或公司。
+- The user explicitly authorized these improvements; published held-out tests are not reused for selection.
+- The original 28-case draft was replaced by 20 dev questions plus offline boundary contracts. Published v2 has no independent holdout yet; v1 and historical results remain unchanged.
+- Feature 002's model adapter is reusable. Answers were generated for 20 questions; full factual/numeric/citation-support scoring remains incomplete.
+- Reuse DeepSeek/Voyage and existing indexes with the original $5 shared ledger. Further reranking iterations and production financial calculation are separate work.
+- Initial support covers Chinese, English and common aliases, not arbitrary languages or companies.

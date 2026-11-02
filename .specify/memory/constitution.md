@@ -15,71 +15,69 @@ Deferred placeholders: none; existing features are not retrospectively specified
 
 ## Core Principles
 
-### I. 来源与期间必须可核验
+### I. Verifiable sources and periods
 
-事实、段落和表格必须保留公司、document/accession、实际期间、申报时点及原文定位。
-报告财年与事实期间分别处理，`filed_at <= as_of` 是披露时点约束。
-改写不得改变用户确认的公司、期间、否定条件或比较范围。
-关键歧义必须澄清；缺资料返回缺项，不得猜数、混用版本或悄悄放宽过滤。
+Facts, passages and tables must retain company, document/accession, actual period, filing time and source location.
+Treat report FY and fact period separately; `filed_at <= as_of` constrains disclosure availability.
+Rewriting must preserve confirmed companies, periods, exclusions and comparison scope.
+Clarify material ambiguity. Report missing material rather than guessing numbers, mixing versions or silently loosening filters.
 
-### II. 能力声明必须有对应证据
+### II. Claims require evidence
 
-明确区分已实现、设计草稿和已验证。Recall@k 是检索证据覆盖，不代表答案正确率。
-冻结数据、发布标记和实验结果不得为新功能选型而覆盖或删除。
-新评测记录数据/配置/代码版本、划分、评分与成本；同意图及变体归入同一划分。
-gold/参考答案不得进入运行时查询、索引或工具输入；Mock 不证明真实检索和财务分析质量。
+Distinguish implemented behavior, design drafts and validated results. Recall@k measures evidence coverage, not answer accuracy.
+Do not overwrite/delete frozen data, release markers or results to select new features.
+Record data/config/code version, splits, scoring and cost for each evaluation. Keep an intent and its variants in one split.
+Gold/reference answers must not enter runtime queries, indexes or tools. Mocks do not establish real retrieval or financial-analysis quality.
 
-### III. 用边界明确的规格控制变更
+### III. Bounded specifications
 
-新功能或改变行为的改动先定义目标、范围、非目标、兼容边界、需求 ID 和验收条件。
-语义变更先更新 spec，再检查设计、任务和验证；不得只改代码或降低断言消除差异。
-冲突依据用户意图解决并记录；常规实现细节在已授权范围内自主决定。
-安装开发工具不等于授权实施所有候选能力；历史代码不必一次性补写规格。
+Before new features or behavior changes, define goals, scope, non-goals, compatibility, requirement IDs and acceptance criteria.
+Update the spec before semantic changes, then check design/tasks/validation. Do not merely change code or weaken assertions to hide differences.
+Resolve conflicts using user intent and record the impact; routine implementation choices remain within authorized scope.
+Installing development tools does not authorize all proposed features. Historical code does not need complete retrospective specifications.
 
-### IV. 数字计算与执行权限有明确边界
+### IV. Explicit calculation and execution permissions
 
-财务数值先核验指标、单位、币种、期间及口径，再由确定性代码计算，保留输入来源与公式。
-LLM 解释、用户假设和情景估计须与申报事实分开。
-数据库操作使用受控参数；模型输出不能成为任意 SQL、Shell 或代码执行权限。
-规划只能选择已声明可用的能力；查询变体、子任务、补查、调用和费用均有预算。
-工具缺项和服务故障须明确返回，不得伪装执行成功或无限重试。
+Check metric, unit, currency, period and accounting basis before financial arithmetic; use deterministic code and retain sources/formulas.
+Separate LLM explanations, user assumptions and scenarios from filed facts.
+Use controlled database parameters; model output cannot grant arbitrary SQL, shell or code execution.
+Plans may choose only declared available capabilities. Bound query variants, subtasks, follow-ups, calls and spending.
+Report unavailable tools and service errors explicitly; never claim unperformed execution or retry indefinitely.
 
-### V. 保持轻量、可复现的单项目架构
+### V. A small, reproducible project
 
-复用 Python CLI/Service、PostgreSQL + pgvector、既有元数据和来源关系。
-单主 Agent 是后续默认编排目标；检索、规划、Skills 和计算函数不自动成为独立 Agent。
-只有明确需求才引入额外服务、数据库、队列、框架或 Subagent。
-记录实际模型/提示词/配置和依赖版本；密钥只在本机受忽略配置中保存。
-测试针对受影响的契约、边界和结果，不为文档或低影响改动新增镜像测试。
+Reuse Python CLI/service, PostgreSQL + pgvector, metadata and provenance.
+One coordinating agent is the future default; retrieval, planning, skills and calculators are not automatically separate agents.
+Add services, databases, queues, frameworks or subagents only for a concrete requirement.
+Record actual models/prompts/configuration/dependencies. Keep secrets in ignored local configuration.
+Test affected behavior and outcomes; do not add implementation-mirroring tests for documentation or low-impact edits.
 
 ## Current Baseline and Document Ownership
 
-当前实现以 README、代码、配置和测试为证据：SEC HTML 采集、解析、切块、Voyage 向量化、
-混合检索、证据导出及冻结检索评测；含基础规则过滤和固定中英术语扩展。
-2026-10-26新增显式实验路径：元数据catalog QueryPlan、有界检索/来源表格组装、在线逐项生成及本地trace；旧路径保留用于复现。2026-10-27新增隔离服务路径：文档级原子入库、数据库catalog、ANN/BM25、精排接入生成及localhost API；证据目标planner与CrossEncoder为可选配置。财务事实层、确定性计算、预测/估值、自主Agent循环、独立语义验收和规模负载验收仍属后续。
+README, code, configuration and tests describe current implementation. The original baseline includes SEC HTML acquisition, parsing, chunking, Voyage embeddings, hybrid retrieval, evidence export and frozen evaluation, with rule-based filters and fixed Chinese/English term expansion.
+On 2026-10-26 an explicit experimental path added metadata-catalog QueryPlan, bounded retrieval/source-table assembly, online need-level generation and local traces; retain the old path for replay. On 2026-10-27 an isolated serving path added atomic document ingestion, database catalog, ANN/BM25, reranking integrated with generation and a localhost API. Evidence-objective planning and CrossEncoder remain optional. Financial facts, deterministic calculation, forecasting/valuation, autonomous agent loops, independent semantic acceptance and production-load acceptance remain future work.
 
-- Notion 保留总体路线图、调研和技术图，不整份复制到仓库。
-- README 说明当前代码；本章程约束开发；功能 `spec.md` 是执行契约。
-- `plan.md` 记录技术设计，`tasks.md` 追踪实施。Notion 候选方案进入功能范围后才成为承诺。
-- 用户最新指令优先；资料冲突记录影响并协调，规划文档不作为实现证明。
+- Notion holds the overall roadmap, research and technical diagrams; do not copy the full plan into the repository.
+- README describes current code; this constitution governs development; feature `spec.md` defines execution requirements.
+- `plan.md` records design and `tasks.md` tracks delivery. Notion proposals become commitments only when included in a feature's scope.
+- Latest user instructions take precedence. Record/resolve source conflicts; planning text is not proof of implementation.
 
-来源：[Notion v0.9 第 5.3、5.4、6、7 节，读取于 2026-10-25](https://app.notion.com/p/Agent-3f6fda5b0ede808b9b60cee10e298cee)，
-README 第 5、8、9、10 节。
+Sources: [Notion v0.9 sections 5.3, 5.4, 6, 7, read 2026-10-25](https://app.notion.com/p/Agent-3f6fda5b0ede808b9b60cee10e298cee), and historical README sections 5, 8, 9, 10.
 
 ## Development Workflow and Quality Gates
 
-1. 从一个可独立审查的改动开始，记录规格与兼容边界；必要时澄清。
-2. 设计检查本章程，复用实际模块，区分本次实现与未来依赖。
-3. 任务关联需求 ID 和验收方式；实施前检查 spec/plan/tasks 一致性。
-4. 完成适当的离线/契约验证；需要数据库或付费 API 时明确说明依赖和成本。
-5. 交付列出实现、验证证据和未完成项；发布测试冻结，后续选型另建版本。
-6. 功能规格采用 living contract：修改保留 Git 历史，同步下游设计/任务/验证。
+1. Start with one reviewable change and record specification/compatibility; clarify when necessary.
+2. Check the constitution, reuse actual modules, and distinguish current implementation from future dependencies.
+3. Map tasks to requirement IDs and verification. Check spec/plan/tasks consistency before implementation.
+4. Run appropriate offline/contract checks. State database and paid-API dependencies/costs.
+5. Deliver implementation, evidence and remaining work. Freeze release tests; create separate versions for later selection.
+6. Treat feature specifications as living contracts: preserve Git history and synchronize downstream design/tasks/validation.
 
 ## Governance
 
-语义版本：原则删除或不兼容重定义升主版本，新增约束升次版本，文字澄清升修订版本。
-修订说明原因、影响和必要迁移，并同步相关模板与功能文档；不增加单独审批平台。
-重要偏离在设计中说明理由、替代方案和验证，不得无记录绕过。
-工具版本以 `.specify/integration.json` 为准；升级时审查模板与 Skills 差异，保留项目定制。
+Semantic versioning: removed/incompatible principles require a major version; new constraints a minor version; wording clarification a patch.
+Explain changes and migration needs, updating related templates/documents without adding a separate approval platform.
+Record significant departures with reasons/alternatives/verification.
+Tool versions are recorded in `.specify/integration.json`; review template/skill changes on upgrade and preserve project customizations.
 
 **Version**: 1.0.1 | **Ratified**: 2026-10-25 | **Last Amended**: 2026-10-26
