@@ -10,15 +10,15 @@ from fastapi import HTTPException
 from fastapi.testclient import TestClient
 from test_planning import filing, plan
 
-from finrag.files import atomic_json
-from finrag.generation import Budget, ProviderFailure
-from finrag.planned_retrieval import prepare_searches
-from finrag.planning import Catalog, PipelineConfig, PlanRejected, Task
+from finrag.agent.planner import Catalog, PipelineConfig, PlanRejected, Task
+from finrag.agent.regroup import validate_regroup
+from finrag.core.files import atomic_json
+from finrag.providers.llm import Budget, ProviderFailure
+from finrag.providers.voyage import CrossEncoder, DocumentEmbedder
+from finrag.retrieval.lexical import query_terms, terms
+from finrag.retrieval.search import prepare_searches
 from finrag.serving.api import Admission, create_app
 from finrag.serving.config import ServingConfig
-from finrag.serving.lexical import query_terms, terms
-from finrag.serving.providers import CrossEncoder, DocumentEmbedder
-from finrag.serving.regroup import validate_regroup
 
 
 def test_concurrent_atomic_cache_write(tmp_path):
@@ -210,7 +210,7 @@ def test_api_rejects_excess_queries_before_worker_queue(monkeypatch):
 
 
 def test_reranker_diagnostic_length_does_not_invalidate_evidence():
-    from finrag.reranking import validate_grades
+    from finrag.retrieval.rerank import validate_grades
 
     text = json.dumps({"scores": [{"i": 0, "s": 4, "n": ["n1"], "l": [[1, 1]], "r": "x" * 1000}]})
     result = validate_grades(text, [{"chunk_id": "a", "lines": ["fact"]}], {"n1"})
@@ -220,7 +220,7 @@ def test_reranker_diagnostic_length_does_not_invalidate_evidence():
 
 
 def test_hybrid_replaces_variant_preserves_jobs_scope_and_k():
-    from finrag.serving.lexical import replace_second_variants
+    from finrag.retrieval.lexical import replace_second_variants
 
     cat = Catalog([filing()])
     cfg = PipelineConfig(fts_weight=0)
@@ -245,7 +245,7 @@ def test_hybrid_replaces_variant_preserves_jobs_scope_and_k():
 
 
 def test_objective_compiler_allocates_alternatives_without_exceeding_sql():
-    from finrag.serving.regroup import ObjectiveTask, compile_tasks
+    from finrag.agent.regroup import ObjectiveTask, compile_tasks
 
     cat = Catalog([filing("ACME"), filing("OTHER")])
     cfg = PipelineConfig(fts_weight=0)

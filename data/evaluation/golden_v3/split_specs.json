@@ -1,0 +1,4084 @@
+{
+  "version": "golden-v3-atomic-draft",
+  "created_at": "2026-11-07",
+  "review_status": "agent_curated_split_pending_human_review",
+  "rows": [
+    {
+      "id": "U01.01",
+      "parent_id": "U01",
+      "title": "产品分类",
+      "question": "仅依据MU FY2024–FY2026年报，核心产品按技术如何分类，HBM和NOR分别属于哪一类？",
+      "task_type": "lookup",
+      "answer_parts": [
+        {
+          "text": "核心技术类别为DRAM、NAND及其他（主要NOR）；HBM属于DRAM相关产品，不能与DRAM并列后重复加总。DRAM/NAND技术可跨客户市场分部销售。[MU26.986] [MU25.43] [MU25.44] [MU25.45] [MU25.46]"
+        }
+      ],
+      "facts": [
+        "识别DRAM、NAND、Other主要NOR；HBM属于DRAM。"
+      ],
+      "parent_fact_ids": [
+        "U01:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        8
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U01.01"
+    },
+    {
+      "id": "U01.02",
+      "parent_id": "U01",
+      "title": "产品收入矩阵",
+      "question": "仅依据MU FY2024–FY2026年报，DRAM和NAND三年的收入、占合并收入比例和同比增速分别是多少？说明FY2024同比基数，并另列Other收入及收入占比。",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1
+        },
+        {
+          "paragraph": 2
+        },
+        {
+          "text": "Other（主要NOR）FY2024/25/26收入为281/297/724百万美元，占比约1.12%/0.79%/0.54%；不可把这些公司内收入占比当作市场份额。[MU26.986]"
+        }
+      ],
+      "facts": [
+        "DRAM/NAND三年收入、份额、同比齐全并用FY2023作为最早同比分母。",
+        "列示Other收入和占比，说明百分比为公司收入内部分布。"
+      ],
+      "parent_fact_ids": [
+        "U01:f1",
+        "U01:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "numeric_check_ids": [
+        "N001",
+        "N002",
+        "N003",
+        "N004",
+        "N005",
+        "N009",
+        "N010",
+        "N011",
+        "N012",
+        "N013",
+        "N017",
+        "N018",
+        "N019",
+        "N020",
+        "N021"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U01.02"
+    },
+    {
+      "id": "U01.03",
+      "parent_id": "U01",
+      "title": "产品毛利披露",
+      "question": "仅依据MU FY2024–FY2026年报，能否分别给出DRAM和NAND三年的毛利率？如果不能，年报可支持什么口径的毛利率？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "text": "本轮核验的技术收入表缺少独立DRAM/NAND成本，不能给出可核验的产品毛利率。合并毛利率按原数为22.35%、39.79%、80.72%，仅说明公司整体；管理层另有DRAM/NAND毛利改善的定性讨论，分部毛利率也不能替代产品毛利率。[MU26.759] [MU26.636] [MU26.637]"
+        }
+      ],
+      "facts": [
+        "产品成本缺项，不以合并/分部毛利替代。",
+        "可给三年合并毛利率并标明口径。"
+      ],
+      "parent_fact_ids": [
+        "U01:f4"
+      ],
+      "parent_group_indexes": [
+        5,
+        6
+      ],
+      "numeric_check_ids": [
+        "N007",
+        "N015",
+        "N023"
+      ],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [],
+      "expected_limits": [
+        "缺少独立产品成本不等于外部没有产品利润率资料。"
+      ],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "mu_gm_disclosure"
+    },
+    {
+      "id": "U01.04",
+      "parent_id": "U01",
+      "title": "产品市占率边界",
+      "question": "仅依据MU FY2024–FY2026年报，这些年报是否足以给出DRAM、NAND或HBM的可比市场占有率？还缺什么？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "text": "本轮核验的三份10-K未核到可比产品市场份额数值；不能把产品收入占公司收入比例当作市场份额。需要统一市场/期间/收入或出货口径及完整市场分母；这里的结论限所查材料，不是对全部外部披露的穷尽检索。"
+        }
+      ],
+      "facts": [
+        "不编份额，不用公司内收入份额代替市场份额。"
+      ],
+      "parent_fact_ids": [
+        "U01:f4"
+      ],
+      "parent_group_indexes": [],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [
+        "所查材料未核到可比产品份额，不代表穷尽全部外部披露；不要求顺带回答产品成本。"
+      ],
+      "material_errors": [],
+      "answerability": "partial",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U01.04"
+    },
+    {
+      "id": "U01.05",
+      "parent_id": "U01",
+      "title": "产品与分部关系",
+      "question": "仅依据MU FY2024–FY2026年报，产品类别与客户市场分部是什么关系？FY2025重组后哪些历史分部或利润指标不能直接对应？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 4
+        },
+        {
+          "text": "产品技术与客户市场组织不是一一对应：HBM归DRAM，CMBU亦包括其他云内存，CDBU/MCBU等可跨DRAM/NAND。原CNBU/MBU/EBU/SBU不能机械映射新版CMBU/CDBU/MCBU/AEBU，合并/分部毛利不能代替产品毛利。[MU25.43] [MU25.44] [MU25.45] [MU25.46] [MU26.759]"
+        }
+      ],
+      "facts": [
+        "FY2025第四季度重组且追溯重述，正确说明两套分类交叉关系。"
+      ],
+      "parent_fact_ids": [
+        "U01:f3",
+        "U01:f4"
+      ],
+      "parent_group_indexes": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U01.05"
+    },
+    {
+      "id": "U02.01",
+      "parent_id": "U02",
+      "title": "库存与DIO",
+      "question": "仅依据MU FY2024–FY2026年报，三年库存余额和平均库存周转天数如何变化？请用各财年实际天数计算并列出公式输入。",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "paragraph": 2
+        }
+      ],
+      "facts": [
+        "库存8875/8355/10372，DIO161.13/139.34/135.25。",
+        "期初8387，平均库存/COGS，天数364/364/371。"
+      ],
+      "parent_fact_ids": [
+        "U02:f1",
+        "U02:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        3,
+        7
+      ],
+      "numeric_check_ids": [
+        "N006",
+        "N014",
+        "N022"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U02.01"
+    },
+    {
+      "id": "U02.02",
+      "parent_id": "U02",
+      "title": "合并毛利趋势",
+      "question": "仅依据MU FY2024–FY2026年报，三年合并GAAP毛利率分别是多少？是否逐年改善？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            3
+          ]
+        },
+        {
+          "text": "使用合并毛利/收入原数，FY2024/25/26约22.35%/39.79%/80.72%，不是分部或产品毛利率。[MU26.759]"
+        }
+      ],
+      "facts": [
+        "三年毛利率及单调上升趋势正确。"
+      ],
+      "parent_fact_ids": [
+        "U02:f3"
+      ],
+      "parent_group_indexes": [
+        2,
+        4
+      ],
+      "numeric_check_ids": [
+        "N007",
+        "N015",
+        "N023"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "mu_gm_disclosure"
+    },
+    {
+      "id": "U02.03",
+      "parent_id": "U02",
+      "title": "经营现金流与毛资本支出",
+      "question": "仅依据MU FY2024–FY2026年报，三年OCF与毛现金PPE支出如何变化，OCF减该毛支出的现金余量是多少？资本支出增加本身能否称为改善？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "text": "OCF减毛现金PPE支出为121/1,668/58,963百万美元；不抵扣政府补助。资本支出增加表示投入扩大，不是改善或恶化的充分条件。[MU26.780]"
+        }
+      ],
+      "facts": [
+        "三年OCF/PPE原数和现金余量正确。",
+        "不把CapEx增加自动称为经营改善。"
+      ],
+      "parent_fact_ids": [
+        "U02:f3",
+        "U02:f4"
+      ],
+      "parent_group_indexes": [
+        5,
+        6
+      ],
+      "numeric_check_ids": [
+        "N008",
+        "N016",
+        "N024"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "mu_cash_surplus"
+    },
+    {
+      "id": "U02.04",
+      "parent_id": "U02",
+      "title": "指标背离",
+      "question": "仅依据MU FY2024–FY2026年报，库存、平均DIO、毛利率、OCF和毛资本支出是否同步改善，哪两年的组合发生背离？无需重复完整财务表。",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 3
+        }
+      ],
+      "facts": [
+        "FY2025库存与DIO下降而GM/OCF上升；FY2026库存上升但DIO继续下降。",
+        "CapEx扩大不单独证明好坏。"
+      ],
+      "parent_fact_ids": [
+        "U02:f4"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [
+        "U02.01",
+        "U02.02",
+        "U02.03"
+      ],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U02.04"
+    },
+    {
+      "id": "U02.05",
+      "parent_id": "U02",
+      "title": "季度拐点边界",
+      "question": "仅依据MU FY2024–FY2026年报，仅凭这些年报，能否确定上述指标共同改善或中断的具体季度？已披露的季度成本线索能证明什么？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "paragraph": 4
+        },
+        {
+          "paragraph": 5
+        }
+      ],
+      "facts": [
+        "没有完整季度序列不能推共同季度拐点。",
+        "季度产能利用费用可作补充线索，不等于五指标联合证明。"
+      ],
+      "parent_fact_ids": [
+        "U02:f4"
+      ],
+      "parent_group_indexes": [],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "partial",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U02.05"
+    },
+    {
+      "id": "U03.01",
+      "parent_id": "U03",
+      "title": "数据中心年度增长",
+      "question": "仅依据NVDA FY2024–FY2026年报，三年Data Center收入、占合并收入比例及同比增速是多少？请标明实际财年末和最早同比分母。",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1
+        },
+        {
+          "paragraph": 2
+        }
+      ],
+      "facts": [
+        "金额47525/115186/193737，份额78.01/88.27/89.72%，同比216.73/142.37/68.19%。"
+      ],
+      "parent_fact_ids": [
+        "U03:f1"
+      ],
+      "parent_group_indexes": [
+        0,
+        3,
+        4
+      ],
+      "numeric_check_ids": [
+        "N025",
+        "N026",
+        "N031",
+        "N032",
+        "N037",
+        "N038"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "nvda_dc_three_years"
+    },
+    {
+      "id": "U03.02",
+      "parent_id": "U03",
+      "title": "增长驱动的量化边界",
+      "question": "仅依据NVDA FY2024–FY2026年报，管理层如何解释Data Center增长，哪些驱动有具体数量支持，哪些不能唯一分摊贡献？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 3
+        },
+        {
+          "paragraph": 4
+        },
+        {
+          "paragraph": 6
+        }
+      ],
+      "facts": [
+        "FY2024计算244%网络133%，40%推理为公司估计。",
+        "FY2025/26平台交付、计算/网络增长和Blackwell多数地位有区分，不能唯一分摊客户或架构贡献。"
+      ],
+      "parent_fact_ids": [
+        "U03:f2",
+        "U03:f3"
+      ],
+      "parent_group_indexes": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        1
+      ],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U03.02"
+    },
+    {
+      "id": "U03.03",
+      "parent_id": "U03",
+      "title": "季度环比边界",
+      "question": "仅依据NVDA FY2024–FY2026年报，这些年度Data Center资料是否足以计算连续季度环比？季度交付或客户占比描述能否替代季度收入？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "paragraph": 5
+        }
+      ],
+      "facts": [
+        "年度收入和季度产品/客户叙述不等于连续季度收入序列。"
+      ],
+      "parent_fact_ids": [
+        "U03:f1"
+      ],
+      "parent_group_indexes": [],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "partial",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U03.03"
+    },
+    {
+      "id": "U04.01",
+      "parent_id": "U04",
+      "title": "收入现金转化",
+      "question": "仅依据NVDA FY2024–FY2026年报，收入增长是否转化为OCF？列示三年收入、OCF及OCF/收入，并准确描述该比率趋势。",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "text": "OCF绝对额上升，但OCF/收入为46.11%→49.11%→47.57%，不是持续下降，也不是持续上升。[NVDA26.706] [NVDA26.729]"
+        }
+      ],
+      "facts": [
+        "收入/OCF原数和三年转化率准确，趋势非单调。"
+      ],
+      "parent_fact_ids": [
+        "U04:f1",
+        "U04:f4"
+      ],
+      "parent_group_indexes": [
+        0,
+        1
+      ],
+      "numeric_check_ids": [
+        "N028",
+        "N034",
+        "N040"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U04.01"
+    },
+    {
+      "id": "U04.02",
+      "parent_id": "U04",
+      "title": "应收与平均DSO代理",
+      "question": "仅依据NVDA FY2024–FY2026年报，应收相对收入是否增加？计算三年应收/收入和平均净应收DSO代理，说明分母与天数口径。",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            1,
+            2,
+            4,
+            6
+          ]
+        },
+        {
+          "paragraph": 2
+        }
+      ],
+      "facts": [
+        "AR/收入16.41/17.67/17.81%，DSO41.30/46.11/51.86。",
+        "期初3827，平均余额/总收入×364，不冒充真实赊销回收天数。"
+      ],
+      "parent_fact_ids": [
+        "U04:f1",
+        "U04:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "numeric_check_ids": [
+        "N027",
+        "N029",
+        "N033",
+        "N035",
+        "N039",
+        "N041"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U04.02"
+    },
+    {
+      "id": "U04.03",
+      "parent_id": "U04",
+      "title": "管理层解释与提前收款",
+      "question": "仅依据NVDA FY2024–FY2026年报，管理层怎样解释OCF变化？披露过哪些影响年末应收账款比较的收款时点因素？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 4
+        },
+        {
+          "paragraph": 6
+        }
+      ],
+      "facts": [
+        "OCF增长的管理层解释限收入增长，不编造延长账期。",
+        "557提前付款影响期末及下一期期初基数，不假定其他期完全无类似效应。"
+      ],
+      "parent_fact_ids": [
+        "U04:f3"
+      ],
+      "parent_group_indexes": [
+        5,
+        6
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U04.03"
+    },
+    {
+      "id": "U04.04",
+      "parent_id": "U04",
+      "title": "回款判断及反证",
+      "question": "仅依据NVDA FY2024–FY2026年报，综合年报信息，哪些证据支持、哪些削弱回款变慢判断？哪些缺失资料使其不能成为信用恶化定论？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 3
+        },
+        {
+          "paragraph": 5
+        },
+        {
+          "paragraph": 6
+        }
+      ],
+      "facts": [
+        "OCF增长与AR/DSO代理上升可并存，现金占用不等于坏账。",
+        "需可比账龄、付款条件、季度节奏与期后回款，不作信用定论。"
+      ],
+      "parent_fact_ids": [
+        "U04:f4"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [
+        "U04.01",
+        "U04.02",
+        "U04.03"
+      ],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U04.04"
+    },
+    {
+      "id": "U05.01",
+      "parent_id": "U05",
+      "title": "DRAM价格与位元驱动",
+      "question": "仅依据MU FY2024–FY2026年报，DRAM三年增长分别主要由ASP还是bit shipments推动？保留披露的近似区间，不给不存在的精确贡献。",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "text": "FY2024 DRAM收入约增60%，bit shipments增mid-40%区间、ASP增low-teen；FY2025约增62%，ASP增low-40%区间、位元增mid-teen；FY2026约增252%，ASP约增180%、位元增mid-20%。FY2026价格为主要驱动，bit不是芯片件数。[MU24.577] [MU25.603] [MU26.631]"
+        }
+      ],
+      "facts": [
+        "逐年DRAM ASP/bit方向与大致幅度准确，不固化区间。"
+      ],
+      "parent_fact_ids": [
+        "U05:f1",
+        "U05:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "numeric_check_ids": [
+        "N002",
+        "N010",
+        "N018"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0,
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U05.01"
+    },
+    {
+      "id": "U05.02",
+      "parent_id": "U05",
+      "title": "NAND价格与位元驱动",
+      "question": "仅依据MU FY2024–FY2026年报，NAND三年增长分别主要由ASP还是bit shipments推动？FY2025未披露精确ASP能否理解为ASP不变？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "text": "FY2024 NAND收入约增72%，ASP与位元均增low-30%区间；FY2025约增18%，主要由位元增high-teen驱动；FY2026约增274%，ASP约增200%、位元增mid-20%。FY2025主要由位元驱动不等于ASP变化为零。[MU24.578] [MU25.604] [MU26.632]"
+        }
+      ],
+      "facts": [
+        "逐年NAND方向与幅度正确，未披露ASP不等于零。"
+      ],
+      "parent_fact_ids": [
+        "U05:f1",
+        "U05:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "numeric_check_ids": [
+        "N004",
+        "N012",
+        "N020"
+      ],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        0,
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U05.02"
+    },
+    {
+      "id": "U05.03",
+      "parent_id": "U05",
+      "title": "精确归因限制",
+      "question": "仅依据MU FY2024–FY2026年报，为什么不能从这些价格/位元区间唯一分解收入增长的价格、数量和产品组合贡献？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "paragraph": 2
+        },
+        {
+          "paragraph": 3
+        },
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "乘法包含交互项，ASP可能已含组合，不能重复加总或固定low/mid/high数值。"
+      ],
+      "parent_fact_ids": [
+        "U05:f3"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        0,
+        1,
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U05.03"
+    },
+    {
+      "id": "U06.01",
+      "parent_id": "U06",
+      "title": "减记年度净影响",
+      "question": "仅依据MU FY2024–FY2026年报及其中FY2023比较数据，FY2023减记与低成本销售各是多少，FY2024/FY2025的指定NRV净影响如何变化？用毛利影响的统一符号列示。",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1
+        }
+      ],
+      "facts": [
+        "FY2023−1831+844=−987，FY2024+987，FY2025零，解释跨期成本机制。"
+      ],
+      "parent_fact_ids": [
+        "U06:f1"
+      ],
+      "parent_group_indexes": [
+        0,
+        1
+      ],
+      "numeric_check_ids": [
+        "N093"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U06.01"
+    },
+    {
+      "id": "U06.02",
+      "parent_id": "U06",
+      "title": "去除指定效应的毛利",
+      "question": "仅依据MU FY2024–FY2026年报及其中FY2023比较数据，移除指定NRV净效应后，FY2023和FY2024的分析调整毛利额、毛利率分别是多少？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 2
+        }
+      ],
+      "facts": [
+        "FY2024为4626/18.42%，FY2023为−429/−2.76%，非正式non-GAAP。"
+      ],
+      "parent_fact_ids": [
+        "U06:f2"
+      ],
+      "parent_group_indexes": [
+        1,
+        2,
+        3
+      ],
+      "numeric_check_ids": [
+        "N099",
+        "N100",
+        "N101",
+        "N102"
+      ],
+      "parent_limit_indexes": [
+        1
+      ],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U06.02"
+    },
+    {
+      "id": "U06.03",
+      "parent_id": "U06",
+      "title": "跨期毛利额桥接",
+      "question": "仅依据MU FY2024–FY2026年报及其中FY2023比较数据，FY2024毛利额比FY2023增加多少，其中NRV净效应变化是多少、占改善比例多少，剩余能否叫纯需求改善？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "text": "FY2024相对FY2023报告毛利额增加7,029百万美元，NRV净效应由−987变+987，变化1,974，占改善约28.08%。其余变化5,055混合规模、价格、成本及组合，不能全叫需求改善。[MU24.586] [MU24.587] [MU24.699] [MU25.740]"
+        }
+      ],
+      "facts": [
+        "报告毛利增7029，指定效应变化1974，占28.08%，剩5055不能唯一归需求。"
+      ],
+      "parent_fact_ids": [
+        "U06:f3",
+        "U06:f5"
+      ],
+      "parent_group_indexes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "numeric_check_ids": [
+        "N103",
+        "N104",
+        "N105",
+        "N106"
+      ],
+      "parent_limit_indexes": [
+        1
+      ],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U06.03"
+    },
+    {
+      "id": "U06.04",
+      "parent_id": "U06",
+      "title": "跨期毛利率桥接",
+      "question": "仅依据MU FY2024–FY2026年报及其中FY2023比较数据，FY2024相对FY2023的毛利率提高多少个百分点，其中两期NRV净效应各按本期收入折算后贡献多少？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 5
+        }
+      ],
+      "facts": [
+        "FY2024贡献3.93pp，FY2023−6.35pp，跨期10.28pp；报告31.46pp，剩21.18pp。"
+      ],
+      "parent_fact_ids": [
+        "U06:f3"
+      ],
+      "parent_group_indexes": [
+        1,
+        2,
+        3
+      ],
+      "numeric_check_ids": [
+        "N094",
+        "N095",
+        "N096",
+        "N097",
+        "N098"
+      ],
+      "parent_limit_indexes": [
+        1
+      ],
+      "parent_error_indexes": [
+        0,
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U06.04"
+    },
+    {
+      "id": "U06.05",
+      "parent_id": "U06",
+      "title": "批次耗尽与FY2025桥接",
+      "question": "仅依据MU FY2024–FY2026年报及其中FY2023比较数据，什么证据支持这批FY2023减记效应已耗尽？FY2025报告与移除指定效应后的毛利额增长各是多少，能否据此把FY2026所有库存影响填零？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "text": "FY2025毛利额升至14,873，较FY2024的5,613增加9,260；去掉FY2024指定987效应后，FY2024基数为4,626，故分析调整增量10,247。这里移除的是指定效应，非公司正式non-GAAP。[MU25.740] [MU25.613]"
+        },
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "844+987=1831且FY2025指定效应零；FY2025报告增9260、指定调整后增10247。",
+        "不能将指定批次耗尽外推成FY2026所有会计效应零。"
+      ],
+      "parent_fact_ids": [
+        "U06:f4"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "numeric_check_ids": [
+        "N107",
+        "N108"
+      ],
+      "parent_limit_indexes": [
+        0,
+        1
+      ],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U06.05"
+    },
+    {
+      "id": "U06.06",
+      "parent_id": "U06",
+      "title": "低成本销售的会计含义",
+      "question": "仅依据MU FY2024–FY2026年报及其中FY2023比较数据，销售已减记库存时的较低成本，为什么不是向上重估或减记转回？",
+      "task_type": "lookup",
+      "answer_parts": [
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "较低账面成本形成于先前减记，后续销售不等于资产重估；不能推所有库存可转回。"
+      ],
+      "parent_fact_ids": [
+        "U06:f5"
+      ],
+      "parent_group_indexes": [
+        0,
+        1
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U06.06"
+    },
+    {
+      "id": "U07.01",
+      "parent_id": "U07",
+      "title": "HBM产品阶段",
+      "question": "仅依据MU FY2024–FY2026年报，HBM从HBM3E量产/认证用交付到HBM4/HBM4E的状态如何演进？哪些已实现、哪些仍是送样或预期？",
+      "task_type": "time_reasoning",
+      "answer_parts": [
+        {
+          "paragraph": 1
+        },
+        {
+          "paragraph": 2
+        },
+        {
+          "paragraph": 3
+        },
+        {
+          "paragraph": 6
+        }
+      ],
+      "facts": [
+        "区分量产、认证用交付、送样和客户认证完成，说明3E12-high仍为多数。",
+        "HBM4E日历2027为预期。"
+      ],
+      "parent_fact_ids": [
+        "U07:f1",
+        "U07:f2",
+        "U07:f3"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U07.01"
+    },
+    {
+      "id": "U07.02",
+      "parent_id": "U07",
+      "title": "HBM财务贡献边界",
+      "question": "仅依据MU FY2024–FY2026年报，年报能否给出HBM独立三年收入/利润？CMBU数据和毛利改善叙述能支持什么？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "paragraph": 2
+        },
+        {
+          "paragraph": 5
+        }
+      ],
+      "facts": [
+        "CMBU13524/6129非独立HBM；定性毛利驱动不等于独立贡献序列。"
+      ],
+      "parent_fact_ids": [
+        "U07:f4"
+      ],
+      "parent_group_indexes": [
+        1,
+        3,
+        6,
+        7
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "partial",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U07.02"
+    },
+    {
+      "id": "U07.03",
+      "parent_id": "U07",
+      "title": "HBM投资支持",
+      "question": "仅依据MU FY2024–FY2026年报，三年总资本支出及新加坡封装安排如何支持HBM路径，哪些是未来产能，不能据此保证什么？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "毛CapEx8386/15857/30712；新加坡日历2027扩张为预期，非HBM专项或回报保证。"
+      ],
+      "parent_fact_ids": [
+        "U07:f3",
+        "U07:f4"
+      ],
+      "parent_group_indexes": [
+        4,
+        5,
+        8
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        1
+      ],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U07.03"
+    },
+    {
+      "id": "U08.01",
+      "parent_id": "U08",
+      "title": "库存及供给义务",
+      "question": "仅依据NVDA FY2024–FY2026年报，三年库存和库存采购/长期供应产能义务分别如何变化？两种金额是否可直接相加当即时风险？",
+      "task_type": "comparison",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "paragraph": 2
+        }
+      ],
+      "facts": [
+        "库存5282/10080/21403，义务16.1/30.8/95.2十亿美元，存量/承诺不同。"
+      ],
+      "parent_fact_ids": [
+        "U08:f1"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        8,
+        9,
+        10
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "nvda_supply_exposure"
+    },
+    {
+      "id": "U08.02",
+      "parent_id": "U08",
+      "title": "供给预付款",
+      "question": "仅依据NVDA FY2024–FY2026年报，合并长短期后FY2024、FY2025供给/产能预付约多少？FY2026缺独立拆分应怎样处理？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            3
+          ]
+        },
+        {
+          "paragraph": 2
+        }
+      ],
+      "facts": [
+        "约4.96/5.05十亿美元，短期为舍入披露；FY2026缺独立可比数，不用混合资产替代。"
+      ],
+      "parent_fact_ids": [
+        "U08:f2"
+      ],
+      "parent_group_indexes": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        1
+      ],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "nvda_prepaid_scope"
+    },
+    {
+      "id": "U08.03",
+      "parent_id": "U08",
+      "title": "保障供给与预测风险",
+      "question": "仅依据NVDA FY2024–FY2026年报，预付、长期产能与不可取消订单如何保障供给，又怎样放大需求预测和产品换代风险？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 3
+        }
+      ],
+      "facts": [
+        "供给锁定与客户取消/产品过渡风险并存，合同可取消性不对称。"
+      ],
+      "parent_fact_ids": [
+        "U08:f3"
+      ],
+      "parent_group_indexes": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U08.03"
+    },
+    {
+      "id": "U08.04",
+      "parent_id": "U08",
+      "title": "需求下降损失渠道",
+      "question": "仅依据NVDA FY2024–FY2026年报，需求低于预期时，公司会通过哪些渠道承担损失？H20已确认费用与全部未来承诺有什么区别？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "库存减值、过剩义务、取消费和预付回收分别判断；H2045亿美元不是全部952亿承诺即时亏损。"
+      ],
+      "parent_fact_ids": [
+        "U08:f4"
+      ],
+      "parent_group_indexes": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U08.04"
+    },
+    {
+      "id": "U09.01",
+      "parent_id": "U09",
+      "title": "收入客户集中度",
+      "question": "仅依据NVDA FY2024–FY2026年报，三年直接客户收入门槛披露、最大客户及门槛合计如何变化？是否单调上升，是否等于完整HHI？",
+      "task_type": "comparison",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            1
+          ]
+        },
+        {
+          "paragraph": 5
+        },
+        {
+          "text": "达到10%披露门槛的收入合计为13%→34%→36%，不是完整客户分布、固定Top-N或HHI。[NVDA26.1068] [NVDA26.1068] [NVDA26.1069] [NVDA26.1070]"
+        }
+      ],
+      "facts": [
+        "13%；12/11/11%；22/14%；最大13→12→22非单调，门槛和非HHI。"
+      ],
+      "parent_fact_ids": [
+        "U09:f1",
+        "U09:f3"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U09.01"
+    },
+    {
+      "id": "U09.02",
+      "parent_id": "U09",
+      "title": "应收客户集中度",
+      "question": "仅依据NVDA FY2024–FY2026年报，三年应收客户占比和前二合计怎样变化？它与收入集中度的期间/分母有何不同？",
+      "task_type": "comparison",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            2
+          ]
+        },
+        {
+          "text": "应收前二合计35%→33%→43%，并非单调。收入衡量全年交易流量，应收是年末未收余额，不能相互替代。[NVDA24.933] [NVDA25.944] [NVDA26.910]"
+        }
+      ],
+      "facts": [
+        "应收24/11、17/16、25/18/13，前二35/33/43非单调，分母不同。"
+      ],
+      "parent_fact_ids": [
+        "U09:f2"
+      ],
+      "parent_group_indexes": [
+        3,
+        4,
+        5
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U09.02"
+    },
+    {
+      "id": "U09.03",
+      "parent_id": "U09",
+      "title": "渠道层级及匿名边界",
+      "question": "仅依据NVDA FY2024–FY2026年报，直接与间接客户怎样定义？间接客户已披露什么，为什么仍不能识别匿名身份或还原全部最终用户集中度？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 3
+        },
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "采购路径不同于最终用户身份，直接客户也可为云/AI公司。",
+        "间接19%/至少10%及云服务贡献为估计，不能与直接收入加总或猜名。"
+      ],
+      "parent_fact_ids": [
+        "U09:f4",
+        "U09:f5"
+      ],
+      "parent_group_indexes": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0,
+        1
+      ],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U09.03"
+    },
+    {
+      "id": "U10.01",
+      "parent_id": "U10",
+      "title": "出口限制叙述演变",
+      "question": "按NVDA FY2024–FY2026年报各自申报时的披露，中国数据中心业务和全球许可框架的风险叙述发生了哪些实质变化？请按当时规则及报告时点说明。",
+      "task_type": "time_reasoning",
+      "answer_parts": [
+        {
+          "paragraph": 1
+        },
+        {
+          "paragraph": 2
+        },
+        {
+          "paragraph": 3
+        }
+      ],
+      "facts": [
+        "FY2024中国DC19→14%、Q4中个位数；FY2025部分恢复。",
+        "FY2025全球许可提案、FY2026报告记载宣布撤销及替代不确定。"
+      ],
+      "parent_fact_ids": [
+        "U10:f1",
+        "U10:f2",
+        "U10:f3"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        8,
+        9,
+        10
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        1
+      ],
+      "parent_error_indexes": [
+        3
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U10.01"
+    },
+    {
+      "id": "U10.02",
+      "parent_id": "U10",
+      "title": "已实现财务影响与期后事项",
+      "question": "按NVDA FY2024–FY2026年报各自申报时的披露，H20已确认费用和特定许可收入分别多少？H200许可信息属于什么时点，能否算FY2026已实现收入？",
+      "task_type": "lookup",
+      "answer_parts": [
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "H204500百万费用与特定许可60百万收入不混淆；H200为年末后更新且截至申报无该计划收入。"
+      ],
+      "parent_fact_ids": [
+        "U10:f4"
+      ],
+      "parent_group_indexes": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0,
+        1,
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U10.02"
+    },
+    {
+      "id": "U10.03",
+      "parent_id": "U10",
+      "title": "潜在禁售损失边界",
+      "question": "按NVDA FY2024–FY2026年报各自申报时的披露，为何不能用地区收入直接估算全面受限的实际利润损失？地区口径重述和最终需求有何影响？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "paragraph": 5
+        }
+      ],
+      "facts": [
+        "总部口径与历史重述需区分，地区收入非最终需求/禁售利润；缺成本情景不能估真实损失。"
+      ],
+      "parent_fact_ids": [
+        "U10:f5"
+      ],
+      "parent_group_indexes": [
+        7
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0,
+        1
+      ],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "partial",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U10.03"
+    },
+    {
+      "id": "U11.01",
+      "parent_id": "U11",
+      "title": "业务收入增量贡献",
+      "question": "仅依据AMD FY2023–FY2025年报，四项业务三年收入及两次增量分别多少？请与合并收入变化勾稽，解释哪些业务抵消增长。",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1
+        },
+        {
+          "paragraph": 2
+        },
+        {
+          "paragraph": 5
+        }
+      ],
+      "facts": [
+        "FY2024各增量6083/2403/−3617/−1764合计3105；FY2025为4056/3586/1315/−103合计8854。"
+      ],
+      "parent_fact_ids": [
+        "U11:f1"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        15
+      ],
+      "numeric_check_ids": [
+        "N073",
+        "N074",
+        "N075",
+        "N076",
+        "N077",
+        "N083",
+        "N084",
+        "N085",
+        "N086",
+        "N087"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U11.01"
+    },
+    {
+      "id": "U11.02",
+      "parent_id": "U11",
+      "title": "经营利润完整桥接",
+      "question": "仅依据AMD FY2023–FY2025年报，两次合并经营利润增量由哪些业务及All Other变化贡献？解释FY2025数据中心收入增长为何只带来较小利润增量。",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 3
+        },
+        {
+          "paragraph": 6
+        },
+        {
+          "text": "在FY2025重述比较口径下，Client and Gaming FY2023经营利润925、FY2024为1,187，增加262百万美元；不能用Client单独增加943代替合并分部增量。[AMD25.721]"
+        }
+      ],
+      "facts": [
+        "合并利润增1499/1794，纳入All Other改善229/183，FY2024 C&G合计增262。",
+        "FY2025 C&G+1668/DC+121及MI308和费用抵消，不将收入增长视为利润增长。"
+      ],
+      "parent_fact_ids": [
+        "U11:f2",
+        "U11:f4"
+      ],
+      "parent_group_indexes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14
+      ],
+      "numeric_check_ids": [
+        "N078",
+        "N079",
+        "N080",
+        "N081",
+        "N082",
+        "N088",
+        "N089",
+        "N090",
+        "N091",
+        "N092"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0,
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U11.02"
+    },
+    {
+      "id": "U11.03",
+      "parent_id": "U11",
+      "title": "分部重述可比性",
+      "question": "仅依据AMD FY2023–FY2025年报，Client/Gaming何时合并、如何重述，收入与经营利润分别哪些可以跨年比较，哪些不能反推？",
+      "task_type": "lookup",
+      "answer_parts": [
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "FY2025第一季合并且追溯，收入仍可分，最新独立利润不能编。"
+      ],
+      "parent_fact_ids": [
+        "U11:f3"
+      ],
+      "parent_group_indexes": [
+        11,
+        12,
+        13
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U11.03"
+    },
+    {
+      "id": "U12.01",
+      "parent_id": "U12",
+      "title": "分部至合并桥接",
+      "question": "仅依据AMD FY2023年报，FY2023四业务经营利润为何不等于合并经营利润？请给出加总及All Other勾稽。",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1
+        }
+      ],
+      "facts": [
+        "4820减All Other4419等于401，不删公司层费用。"
+      ],
+      "parent_fact_ids": [
+        "U12:f1"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "numeric_check_ids": [
+        "N109",
+        "N111"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023
+        ]
+      },
+      "related_intent_group": "U12.01"
+    },
+    {
+      "id": "U12.02",
+      "parent_id": "U12",
+      "title": "All Other组成",
+      "question": "仅依据AMD FY2023年报，All Other由哪些费用和收益组成，合计是多少？许可收益符号怎样处理？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 2
+        }
+      ],
+      "facts": [
+        "2811+1384+258−34=4419，类别不是报告分部。"
+      ],
+      "parent_fact_ids": [
+        "U12:f2"
+      ],
+      "parent_group_indexes": [
+        6,
+        7
+      ],
+      "numeric_check_ids": [
+        "N110"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0,
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023
+        ]
+      },
+      "related_intent_group": "U12.02"
+    },
+    {
+      "id": "U12.03",
+      "parent_id": "U12",
+      "title": "非现金费用经济含义",
+      "question": "仅依据AMD FY2023年报，股份支付和收购摊销为何不能仅因非现金而忽略？调整分析应保留哪些口径边界？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 3
+        }
+      ],
+      "facts": [
+        "SBC有薪酬/稀释含义，摊销非逐美元经济耗用，调整非GAAP替代。"
+      ],
+      "parent_fact_ids": [
+        "U12:f3"
+      ],
+      "parent_group_indexes": [
+        6,
+        7
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0,
+        1
+      ],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023
+        ]
+      },
+      "related_intent_group": "U12.03"
+    },
+    {
+      "id": "U12.04",
+      "parent_id": "U12",
+      "title": "经营利润不等于股东现金",
+      "question": "仅依据AMD FY2023年报，合并经营利润到净利润和现金还需哪些调节，为什么分部利润不能当股东可得现金？",
+      "task_type": "lookup",
+      "answer_parts": [
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "利息、其他损益、税、权益法收益及现金流调节，不等同股东现金。"
+      ],
+      "parent_fact_ids": [
+        "U12:f4"
+      ],
+      "parent_group_indexes": [
+        8,
+        9,
+        10
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023
+        ]
+      },
+      "related_intent_group": "U12.04"
+    },
+    {
+      "id": "U13.01",
+      "parent_id": "U13",
+      "title": "EPYC和Instinct贡献披露",
+      "question": "仅依据AMD FY2023–FY2025年报，各年度对EPYC与Instinct增长贡献有哪些明确数字、哪些仅定性？以数据中心总收入和同比作背景，不要求计算公司内收入占比。",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 1
+        }
+      ],
+      "facts": [
+        "三年DC6496/12579/16635及约7/94/32%，两产品定性共同推动，不能把全部归单一产品。"
+      ],
+      "parent_fact_ids": [
+        "U13:f1",
+        "U13:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        6
+      ],
+      "numeric_check_ids": [
+        "N044",
+        "N048",
+        "N052"
+      ],
+      "parent_limit_indexes": [
+        0,
+        1
+      ],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U13.01"
+    },
+    {
+      "id": "U13.02",
+      "parent_id": "U13",
+      "title": "产品事件与费用口径",
+      "question": "仅依据AMD FY2023–FY2025年报，MI308相关披露是什么性质？产品迭代、协议或费用能否反推Instinct收入和毛利？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "paragraph": 2
+        }
+      ],
+      "facts": [
+        "440为净费用，不能反推销售或利润，产品/协议事件不等于已实现收入。"
+      ],
+      "parent_fact_ids": [
+        "U13:f3"
+      ],
+      "parent_group_indexes": [
+        3,
+        4,
+        5
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        1,
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U13.02"
+    },
+    {
+      "id": "U13.03",
+      "parent_id": "U13",
+      "title": "AI GPU收入与份额边界",
+      "question": "仅依据AMD FY2023–FY2025年报，仅凭Data Center总收入，为什么不能得出独立AI GPU收入或全市场份额？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "paragraph": 3
+        }
+      ],
+      "facts": [
+        "独立EPYC/Instinct三年桥接、统一AI GPU定义和完整市场分母不足。"
+      ],
+      "parent_fact_ids": [
+        "U13:f4"
+      ],
+      "parent_group_indexes": [],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0,
+        1
+      ],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "partial",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "gpu_market_share_boundary"
+    },
+    {
+      "id": "U14.01",
+      "parent_id": "U14",
+      "title": "历史已实现业绩",
+      "question": "站在2024-02-21当天，只使用当时公开的NVDA FY2024年报，当时哪些已实现经营业绩支持增长判断？只引用该年报，不引用后来回溯数字。",
+      "task_type": "time_reasoning",
+      "answer_parts": [
+        {
+          "paragraph": 0
+        },
+        {
+          "paragraph": 1
+        }
+      ],
+      "facts": [
+        "60922收入、47525 DC/约217%、28090 OCF为当时披露的已实现业绩。",
+        "数据来源与截止日严格限NVDA FY2024、2024-02-21。"
+      ],
+      "parent_fact_ids": [
+        "U14:f1",
+        "U14:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        1
+      ],
+      "parent_error_indexes": [
+        0,
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024
+        ]
+      },
+      "related_intent_group": "U14.01"
+    },
+    {
+      "id": "U14.02",
+      "parent_id": "U14",
+      "title": "当时状态估计与预期",
+      "question": "站在2024-02-21当天，只使用当时公开的NVDA FY2024年报，怎样区分已披露的40%推理估计、Hopper供给现状和下一代供给/汽车需求预期？",
+      "task_type": "time_reasoning",
+      "answer_parts": [
+        {
+          "text": "40%推理收入是对FY2024的公司估计；Hopper供给改善、需求强是申报时现状/管理层判断；下一代产品供给受限和汽车处理需求增长属于未来预期。不能把这些都叫已实现，或把所有现状都叫未来。[NVDA24.473] [NVDA24.501]"
+        }
+      ],
+      "facts": [
+        "准确区分历史估计、现状与未来，不引入Blackwell/H20后见事实。"
+      ],
+      "parent_fact_ids": [
+        "U14:f1",
+        "U14:f3"
+      ],
+      "parent_group_indexes": [
+        3,
+        4
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0,
+        1,
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024
+        ]
+      },
+      "related_intent_group": "U14.02"
+    },
+    {
+      "id": "U14.03",
+      "parent_id": "U14",
+      "title": "历史增长失效条件",
+      "question": "站在2024-02-21当天，只使用当时公开的NVDA FY2024年报，哪些当时已知风险和可监测反证可能使增长判断失效，年报是否足以给确定增长率、概率或股价？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 3
+        },
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "中国DC份额下降、间接19%及16.1十亿义务和竞争替代为当时风险；监测标准不是后来事实。"
+      ],
+      "parent_fact_ids": [
+        "U14:f1",
+        "U14:f4",
+        "U14:f5"
+      ],
+      "parent_group_indexes": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        0,
+        1,
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024
+        ]
+      },
+      "related_intent_group": "U14.03"
+    },
+    {
+      "id": "U15.01",
+      "parent_id": "U15",
+      "title": "净利与OCF方向",
+      "question": "仅依据MU/NVDA FY2024–FY2026和AMD FY2023–FY2025年报，三家公司在各自三个报告财年的净利润、经营现金流是否逐年上升？请分别列示并标明AMD经营范围。",
+      "task_type": "comparison",
+      "answer_parts": [
+        {
+          "text": "MU："
+        },
+        {
+          "paragraph": 2,
+          "columns": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "text": "NVDA："
+        },
+        {
+          "paragraph": 5,
+          "columns": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "text": "AMD："
+        },
+        {
+          "paragraph": 8,
+          "columns": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "text": "AMD FY2025合计OCF7,709含持续经营6,493及终止经营1,216；合计净利4,335含持续经营4,269及终止经营66。FY2023/24无该项终止经营差异，比较趋势先统一经营范围。[AMD25.602] [AMD25.622]"
+        },
+        {
+          "text": "三家各自在所列财年的净利润和OCF均上升，不等于现金转化率持续改善。[MU26.759] [MU26.780] [NVDA26.706] [NVDA26.729] [AMD25.602] [AMD25.622]"
+        }
+      ],
+      "facts": [
+        "三家对应年份NI和OCF正确，AMD合计与持续/终止经营分清。"
+      ],
+      "parent_fact_ids": [
+        "U15:f1"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        4,
+        5,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ],
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U15.01"
+    },
+    {
+      "id": "U15.02",
+      "parent_id": "U15",
+      "title": "MU统一FCF",
+      "question": "仅依据MU FY2024–FY2026年报，按OCF减现金流量表毛PPE支出，MU三年FCF代理是多少？是否扣政府补助或资产出售？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 2
+        },
+        {
+          "paragraph": 3
+        }
+      ],
+      "facts": [
+        "FCF121/1668/58963，毛PPE不扣补助/出售，不替换为管理层调整口径。"
+      ],
+      "parent_fact_ids": [
+        "U15:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2
+      ],
+      "numeric_check_ids": [
+        "N008",
+        "N016",
+        "N024"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "mu_cash_surplus"
+    },
+    {
+      "id": "U15.03",
+      "parent_id": "U15",
+      "title": "NVDA严格PPE缺口",
+      "question": "仅依据NVDA FY2024–FY2026年报，NVDA能否算严格PPE-only FCF？若用PPE加无形资产合并行作额外代理，三年结果是多少？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 5
+        },
+        {
+          "paragraph": 6
+        }
+      ],
+      "facts": [
+        "严格PPE缺拆分是有效缺项；合并行代理27021/60853/96676须另标，不能冒充统一。"
+      ],
+      "parent_fact_ids": [
+        "U15:f3"
+      ],
+      "parent_group_indexes": [
+        4,
+        5,
+        6
+      ],
+      "numeric_check_ids": [
+        "N030",
+        "N036",
+        "N042"
+      ],
+      "parent_limit_indexes": [
+        1
+      ],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U15.03"
+    },
+    {
+      "id": "U15.04",
+      "parent_id": "U15",
+      "title": "AMD经营范围FCF",
+      "question": "仅依据AMD FY2023–FY2025年报，AMD三年合计FCF是多少？FY2025持续/终止经营的OCF与PPE支出应如何对应？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 8
+        },
+        {
+          "paragraph": 9
+        }
+      ],
+      "facts": [
+        "合计FCF1121/2405/6697，FY2025持续5519，6493/1216对应974/38。"
+      ],
+      "parent_fact_ids": [
+        "U15:f4"
+      ],
+      "parent_group_indexes": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "numeric_check_ids": [
+        "N045",
+        "N046",
+        "N049",
+        "N050",
+        "N053",
+        "N054"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U15.04"
+    },
+    {
+      "id": "U15.05",
+      "parent_id": "U15",
+      "title": "股份支付影响",
+      "question": "仅依据MU/NVDA FY2024–FY2026和AMD FY2023–FY2025年报，三家公司各自三年的SBC是多少，它怎样影响OCF与净利比较，为何不能视为无经济成本？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "text": "SBC三年依次为MU833/972/1333、NVDA3549/4737/6386、AMD1384/1407/1638百万美元。现金流加回不是没有员工薪酬或稀释成本，不能仅凭加回后的OCF更高排名盈利质量。[MU26.780] [NVDA26.729] [AMD25.622]"
+        }
+      ],
+      "facts": [
+        "数值与加回机制正确，明确薪酬/稀释经济含义。"
+      ],
+      "parent_fact_ids": [
+        "U15:f5"
+      ],
+      "parent_group_indexes": [
+        3,
+        7,
+        17
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ],
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U15.05"
+    },
+    {
+      "id": "U15.06",
+      "parent_id": "U15",
+      "title": "营运资金与现金转化",
+      "question": "仅依据MU/NVDA FY2024–FY2026和AMD FY2023–FY2025年报，哪些具体营运资金及其他非现金调节使净利和OCF不机械同步？这些数字为何不能直接证明盈利质量改善？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 12
+        }
+      ],
+      "facts": [
+        "用NVDA投资收益/AR/存货和MU AR/AP实例解释现金转化，不以金额增长代替质量。"
+      ],
+      "parent_fact_ids": [
+        "U15:f5"
+      ],
+      "parent_group_indexes": [
+        8,
+        9
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ],
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U15.06"
+    },
+    {
+      "id": "U15.07",
+      "parent_id": "U15",
+      "title": "业务模式与盈利质量边界",
+      "question": "仅依据MU/NVDA FY2024–FY2026和AMD FY2023–FY2025年报，制造/fabless、资本密集度、财年和FCF口径差异，怎样限制三家公司盈利质量排名？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 11
+        }
+      ],
+      "facts": [
+        "MU制造与NVDA/AMD fabless、财年和代理范围影响比较，不能仅按三年水平排名。"
+      ],
+      "parent_fact_ids": [
+        "U15:f5"
+      ],
+      "parent_group_indexes": [
+        2
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0,
+        1
+      ],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "MU": [
+          2024,
+          2025,
+          2026
+        ],
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U15.07",
+      "additional_source_groups": [
+        {
+          "alias": "NVDA24.116",
+          "quote": "We utilize a fabless and contracting manufacturing strategy, whereby we employ and partner with key suppliers for all phases of the manufacturing process, including wafer fabrication, assembly, testing, and packaging.",
+          "criterion": "NVDA外包制造策略"
+        },
+        {
+          "alias": "AMD25.292",
+          "quote": "We utilize third-party wafer foundries to fabricate the silicon wafers for all of our products.",
+          "criterion": "AMD第三方晶圆制造"
+        },
+        {
+          "alias": "MU26.766",
+          "quote": "Property, plant, and equipment | 63,310 |  | 46,590 | ",
+          "criterion": "MU实体PPE资本基数"
+        }
+      ]
+    },
+    {
+      "id": "U16.01",
+      "parent_id": "U16",
+      "title": "图形产品竞争映射",
+      "question": "截至2026-10-11，依据NVDA FY2024–FY2026及AMD FY2023–FY2025年报，游戏和专业图形产品中，GeForce/Radeon RX、RTX/Quadro/Radeon PRO有哪些用途交集？",
+      "task_type": "comparison",
+      "answer_parts": [
+        {
+          "text": "GeForce与Radeon RX在PC离散GPU用途竞争；RTX/Quadro与Radeon PRO在专业图形用途有交集。这里只比较定位，不据此裁定性能胜负或份额。[NVDA24.63] [NVDA24.90] [AMD25.86] [AMD25.87]"
+        }
+      ],
+      "facts": [
+        "产品用途交集清楚，不把竞争映射当性能胜负。"
+      ],
+      "parent_fact_ids": [
+        "U16:f1"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U16.01"
+    },
+    {
+      "id": "U16.02",
+      "parent_id": "U16",
+      "title": "数据中心CPU/GPU角色",
+      "question": "截至2026-10-11，依据NVDA FY2024–FY2026及AMD FY2023–FY2025年报，Hopper/Blackwell、Instinct、Grace和EPYC分别承担什么产品角色，哪些竞争、哪些可能协作？",
+      "task_type": "comparison",
+      "answer_parts": [
+        {
+          "text": "数据中心Hopper/Blackwell加速平台与Instinct面向训练/推理；EPYC为x86服务器CPU，Grace为NVDA数据中心CPU。CPU/GPU可能任务替代，也可能系统协作，不能两两等同或凭定位裁定性能。[NVDA24.74] [NVDA24.501] [NVDA26.82] [NVDA26.83] [AMD25.66] [AMD25.67]"
+        }
+      ],
+      "facts": [
+        "GPU加速平台与CPU角色分清，任务替代与系统协作并存，不把产品两两等同。"
+      ],
+      "parent_fact_ids": [
+        "U16:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U16.02"
+    },
+    {
+      "id": "U16.03",
+      "parent_id": "U16",
+      "title": "统一市占率资料边界",
+      "question": "截至2026-10-11，依据NVDA FY2024–FY2026及AMD FY2023–FY2025年报，这些年报是否足以给出独显、数据中心GPU、服务器CPU的当前可比份额？需要补哪些统计口径？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "paragraph": 0
+        },
+        {
+          "paragraph": 2
+        },
+        {
+          "paragraph": 3
+        }
+      ],
+      "facts": [
+        "不编份额；需市场、地区、期间、收入/出货及完整分母。",
+        "两家收入比例和TOP500采用不是全市场份额。"
+      ],
+      "parent_fact_ids": [
+        "U16:f3",
+        "U16:f4"
+      ],
+      "parent_group_indexes": [],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0,
+        1
+      ],
+      "parent_error_indexes": [
+        0,
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "partial",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "gpu_market_share_boundary"
+    },
+    {
+      "id": "U17.01",
+      "parent_id": "U17",
+      "title": "NVDA数据中心增长",
+      "question": "仅依据NVDA FY2024–FY2026年报，NVDA三年Data Center收入、占比和同比如何变化？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1
+        },
+        {
+          "text": "NVDA财年末依次为2024-01-28、2025-01-26、2026-01-25；FY2024同比基数为15,005百万美元。[NVDA24.1081] [NVDA26.1076]"
+        }
+      ],
+      "facts": [
+        "NVDA三年DC金额份额同比正确，按实际财年。"
+      ],
+      "parent_fact_ids": [
+        "U17:f1"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2
+      ],
+      "numeric_check_ids": [
+        "N025",
+        "N026",
+        "N031",
+        "N032",
+        "N037",
+        "N038"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "nvda_dc_three_years"
+    },
+    {
+      "id": "U17.02",
+      "parent_id": "U17",
+      "title": "AMD数据中心增长",
+      "question": "仅依据AMD FY2023–FY2025年报，AMD三年Data Center收入、占比和同比如何变化？最新年度占比是否继续上升？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 2
+        },
+        {
+          "text": "AMD FY2023/24/25年末为2023-12-30、2024-12-28、2025-12-27；最早同比基数6,043，FY2025占比48.02%低于FY2024的48.78%。[AMD23.727] [AMD25.721]"
+        }
+      ],
+      "facts": [
+        "AMD金额/份额/同比正确，最新份额小降而非单调上升。"
+      ],
+      "parent_fact_ids": [
+        "U17:f1",
+        "U17:f5"
+      ],
+      "parent_group_indexes": [
+        3,
+        4,
+        5
+      ],
+      "numeric_check_ids": [
+        "N043",
+        "N044",
+        "N047",
+        "N048",
+        "N051",
+        "N052"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U17.02"
+    },
+    {
+      "id": "U17.03",
+      "parent_id": "U17",
+      "title": "配对期间累计增长",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，按近似对应的实际期间比较，两家首末累计增长率和收入增加额各多少，为什么不是同名财年直接对齐？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "text": "首末年度跨两个间隔：NVDA收入增加146,212百万美元，累计307.65%；AMD增加10,139，累计156.08%。近似配对为NVDA FY2024↔AMD FY2023、FY2025↔FY2024、FY2026↔FY2025，仍有约一月错位，不能按同名FY机械对齐。[NVDA26.1076] [AMD25.721]"
+        }
+      ],
+      "facts": [
+        "跨两个间隔累计NVDA307.65%/146212，AMD156.08%/10139；24↔23等仍约一月错位。"
+      ],
+      "parent_fact_ids": [
+        "U17:f2",
+        "U17:f3"
+      ],
+      "parent_group_indexes": [
+        0,
+        3
+      ],
+      "numeric_check_ids": [
+        "N112",
+        "N113",
+        "N114",
+        "N115"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U17.03"
+    },
+    {
+      "id": "U17.04",
+      "parent_id": "U17",
+      "title": "数据中心口径可比性",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，两家Data Center包含的产品/服务和报告分类有何不同？年报能否严格调整成纯AI GPU的同口径增速或市场份额？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "paragraph": 4
+        },
+        {
+          "paragraph": 5
+        }
+      ],
+      "facts": [
+        "NVDA终端市场不同Compute & Networking分部，AMD为报告分部且含EPYC。",
+        "CPU/GPU/网络/系统边界和期间无法严格消除，不得下纯AI GPU增长结论。"
+      ],
+      "parent_fact_ids": [
+        "U17:f4",
+        "U17:f5"
+      ],
+      "parent_group_indexes": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U17.04"
+    },
+    {
+      "id": "U18.01",
+      "parent_id": "U18",
+      "title": "CUDA生态与商业化",
+      "question": "仅依据NVDA FY2024–FY2026年报，NVDA如何描述CUDA软件生态，年报有哪些采用与商业化证据？请区分自报开发者、应用数及付费客户。",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 1
+        },
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "CUDA/库/SDK等生态，自报590万开发者、6000应用与付费许可/DGX Cloud不混同。"
+      ],
+      "parent_fact_ids": [
+        "U18:f1",
+        "U18:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        1
+      ],
+      "parent_error_indexes": [
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ]
+      },
+      "related_intent_group": "U18.01"
+    },
+    {
+      "id": "U18.02",
+      "parent_id": "U18",
+      "title": "ROCm软件建设",
+      "question": "仅依据AMD FY2023–FY2025年报，AMD如何描述ROCm与软件工具的演进和相关收购，哪些建设已完成、哪些仍是计划？",
+      "task_type": "time_reasoning",
+      "answer_parts": [
+        {
+          "paragraph": 2
+        }
+      ],
+      "facts": [
+        "ROCm开放/工具扩展，Silo已完成与FY2024 ZT拟收购时点区分，不因开放推零迁移成本。"
+      ],
+      "parent_fact_ids": [
+        "U18:f3",
+        "U18:f4"
+      ],
+      "parent_group_indexes": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        0,
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U18.02"
+    },
+    {
+      "id": "U18.03",
+      "parent_id": "U18",
+      "title": "互连与系统状态",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，两家互连和系统方案各有什么披露？MI350X部署、Helios预览及ZT业务变化如何区分已实现与未来？",
+      "task_type": "comparison",
+      "answer_parts": [
+        {
+          "paragraph": 5
+        },
+        {
+          "text": "FY2025 MI350X已有客户部署，Helios仍为预览而非全面商用；产品阶段应逐项标注。[AMD25.49] [AMD25.52]"
+        }
+      ],
+      "facts": [
+        "NVLink/InfiniBand/Ethernet与Infinity Fabric/Pensando按用途比。",
+        "FY2025 ZT完成和制造出售、MI350X部署是事实，Helios预览非商用兑现。"
+      ],
+      "parent_fact_ids": [
+        "U18:f1",
+        "U18:f3",
+        "U18:f4"
+      ],
+      "parent_group_indexes": [
+        4,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U18.03"
+    },
+    {
+      "id": "U18.04",
+      "parent_id": "U18",
+      "title": "性能与护城河证明边界",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，仅凭两家年报，能否判定实测性能、迁移成本或软件护城河胜负？需要什么可比资料？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "paragraph": 3
+        }
+      ],
+      "facts": [
+        "厂商自述/投入/生态规模不是独立测试，缺同条件性能、迁移项目、留存/收入。"
+      ],
+      "parent_fact_ids": [
+        "U18:f5"
+      ],
+      "parent_group_indexes": [],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0,
+        1
+      ],
+      "parent_error_indexes": [
+        0,
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "partial",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U18.04"
+    },
+    {
+      "id": "U19.01",
+      "parent_id": "U19",
+      "title": "关键供应依赖",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，两家在晶圆、先进封装及HBM上有哪些供应依赖和已披露合作安排，哪些供应商信息仍不能确认？",
+      "task_type": "comparison",
+      "answer_parts": [
+        {
+          "paragraph": 1
+        }
+      ],
+      "facts": [
+        "NVDA TSMC/Samsung、内存三家和CoWoS；AMD先进节点TSMC等，不推HBM份额或可无条件替换。"
+      ],
+      "parent_fact_ids": [
+        "U19:f1"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        0
+      ],
+      "expected_limits": [
+        "未核到AMD HBM独立供应商份额，不能从NVDA披露推断AMD采购份额。"
+      ],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U19.01"
+    },
+    {
+      "id": "U19.02",
+      "parent_id": "U19",
+      "title": "库存与采购义务比较",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，两家三年库存和采购承诺分别多少？AMD承诺定义变动是否允许把全部增加归为云合同？",
+      "task_type": "comparison",
+      "answer_parts": [
+        {
+          "text": "NVDA三年库存为5,282/10,080/21,403百万美元，库存采购及长期供给/产能义务为16.1/30.8/95.2十亿美元；预付款另属不同余额口径，不并入供给义务。AMD库存为4,351/5,734/7,920百万美元，无条件采购/承诺为4,594/4,968/12,166百万美元，但FY2025定义还包含多年云服务等，不能把这组承诺与NVDA制造义务当成完全同口径。[NVDA24.711] [NVDA25.735] [NVDA26.718] [NVDA24.994] [NVDA25.1000] [NVDA26.695] [AMD23.617] [AMD24.609] [AMD25.612] [AMD23.956] [AMD24.923] [AMD25.573] [AMD25.847]"
+        },
+        {
+          "text": "AMD FY2023/24的采购承诺已包括软件、技术及IP许可，不能把早两年全部当作晶圆义务；FY2025又明确列入多年云服务安排。不能把承诺总额增量全部归为云合同。"
+        }
+      ],
+      "facts": [
+        "两公司库存与承诺数值正确，旧AMD已有软件/IP、FY2025增列云，非完全同口径。"
+      ],
+      "parent_fact_ids": [
+        "U19:f2",
+        "U19:f3"
+      ],
+      "parent_group_indexes": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "nvda_supply_exposure"
+    },
+    {
+      "id": "U19.03",
+      "parent_id": "U19",
+      "title": "预付款比较边界",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，现有材料能否完整比较双方三年独立供应预付款？可核对的NVDA长短期余额如何合并？",
+      "task_type": "boundary",
+      "answer_parts": [
+        {
+          "text": "NVDA FY2024长期2458百万加约25亿美元短期，合计约4.96十亿美元；FY2025长期1747百万加约33亿美元，合计约5.05十亿美元，短期为舍入数。缺双方完整同口径序列，不用Prepaid expenses and other assets总额替代。[NVDA24.948] [NVDA25.959] [NVDA24.949] [NVDA25.960]"
+        },
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "可核NVDA余额约数且双方全序列不足，不填零或拿混合总额替代。"
+      ],
+      "parent_fact_ids": [
+        "U19:f2"
+      ],
+      "parent_group_indexes": [
+        21,
+        22
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "partial",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "nvda_prepaid_scope"
+    },
+    {
+      "id": "U19.04",
+      "parent_id": "U19",
+      "title": "出口限制费用对比",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，H20与MI308分别确认了什么费用？AMD初始费用、部分冲回和净额如何勾稽，为什么不能当作未来最大损失？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 3
+        },
+        {
+          "paragraph": 5
+        }
+      ],
+      "facts": [
+        "NVDA4500；AMD800−360=440，冲回范围具体，不能重复加总/泛化存货重估。"
+      ],
+      "parent_fact_ids": [
+        "U19:f4"
+      ],
+      "parent_group_indexes": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "numeric_check_ids": [
+        "N123"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        1,
+        2
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U19.04"
+    },
+    {
+      "id": "U19.05",
+      "parent_id": "U19",
+      "title": "供给风险机制及排名边界",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，产能受限与需求走弱时两家承担损失的机制有哪些异同，为什么不能只用承诺绝对额排名风险？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 0
+        },
+        {
+          "paragraph": 3
+        },
+        {
+          "paragraph": 4
+        }
+      ],
+      "facts": [
+        "供应约束/较易取消客户订单与上游承诺不对称；期限、可取消性、产品/财年不同，不能按绝对金额排风险。"
+      ],
+      "parent_fact_ids": [
+        "U19:f5"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        2,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        0,
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U19.05"
+    },
+    {
+      "id": "U20.01",
+      "parent_id": "U20",
+      "title": "合并毛利率比较",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，两家公司三年的合并GAAP毛利率有何差异？请用原表计算，不以分部或非GAAP口径替代。",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            1
+          ]
+        },
+        {
+          "paragraph": 2
+        }
+      ],
+      "facts": [
+        "六个合并毛利率正确，财年实际期间与GAAP口径明确。"
+      ],
+      "parent_fact_ids": [
+        "U20:f1"
+      ],
+      "parent_group_indexes": [
+        0,
+        1,
+        4,
+        5
+      ],
+      "numeric_check_ids": [
+        "N055",
+        "N058",
+        "N061",
+        "N064",
+        "N067",
+        "N070"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U20.01"
+    },
+    {
+      "id": "U20.02",
+      "parent_id": "U20",
+      "title": "合并经营利润率比较",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，两家公司三年的合并GAAP经营利润率有何差异？AMD在这里的经营范围是什么？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            2
+          ]
+        },
+        {
+          "paragraph": 2
+        },
+        {
+          "text": "AMD该利润表为持续经营范围，分部利润不是合并GAAP。[AMD25.602]"
+        }
+      ],
+      "facts": [
+        "六个经营利润率准确，AMD持续经营、非分部调整值。"
+      ],
+      "parent_fact_ids": [
+        "U20:f1"
+      ],
+      "parent_group_indexes": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "numeric_check_ids": [
+        "N056",
+        "N059",
+        "N062",
+        "N065",
+        "N068",
+        "N071"
+      ],
+      "parent_limit_indexes": [
+        1
+      ],
+      "parent_error_indexes": [],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U20.02"
+    },
+    {
+      "id": "U20.03",
+      "parent_id": "U20",
+      "title": "研发金额与费用率比较",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，两家公司三年的研发金额与研发/收入各多少？金额、费用率与研发产出能否等同？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 1,
+          "columns": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "paragraph": 2
+        }
+      ],
+      "facts": [
+        "NVDA研发绝对额较高，AMD费用率较高；投入与产出不同。"
+      ],
+      "parent_fact_ids": [
+        "U20:f1",
+        "U20:f2"
+      ],
+      "parent_group_indexes": [
+        0,
+        3,
+        4,
+        7
+      ],
+      "numeric_check_ids": [
+        "N057",
+        "N060",
+        "N063",
+        "N066",
+        "N069",
+        "N072"
+      ],
+      "parent_limit_indexes": [],
+      "parent_error_indexes": [
+        3
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U20.03"
+    },
+    {
+      "id": "U20.04",
+      "parent_id": "U20",
+      "title": "AMD会计项目影响",
+      "question": "仅依据AMD FY2025年报，AMD FY2025收购摊销、SBC及MI308费用各影响哪些利润率、可量化多少个百分点？是否是正式non-GAAP？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "paragraph": 4
+        },
+        {
+          "paragraph": 6
+        },
+        {
+          "text": "经营费用内收购摊销1,223/34,639另相当于约3.53个百分点；它与销售成本内1,031的影响不得重复。[AMD25.602] [AMD25.723]"
+        }
+      ],
+      "facts": [
+        "COGS摊销2.98pp、MI3081.27pp；Opex摊销3.53pp、总摊销6.51pp、SBC4.73pp，不能全加回毛利或重复。"
+      ],
+      "parent_fact_ids": [
+        "U20:f3"
+      ],
+      "parent_group_indexes": [
+        4,
+        8,
+        9,
+        10,
+        11
+      ],
+      "numeric_check_ids": [
+        "N116",
+        "N117",
+        "N118",
+        "N119",
+        "N120"
+      ],
+      "parent_limit_indexes": [
+        0,
+        1
+      ],
+      "parent_error_indexes": [
+        0,
+        1
+      ],
+      "expected_limits": [
+        "分析调整不是公司正式non-GAAP。"
+      ],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "AMD": [
+          2025
+        ]
+      },
+      "related_intent_group": "U20.04"
+    },
+    {
+      "id": "U20.05",
+      "parent_id": "U20",
+      "title": "NVDA会计项目影响",
+      "question": "仅依据NVDA FY2026年报，NVDA FY2026 H20初始费用与SBC各相当于多少利润率百分点？为什么不能把全年准备释放全归H20？",
+      "task_type": "calculation",
+      "answer_parts": [
+        {
+          "text": "H20初始费用4500/215938=2.08个百分点，SBC6386/215938=2.96个百分点。H20不是剔除全年全部库存效应的净额，不可把全部准备释放归H20；这是分析调整而非正式non-GAAP，非现金不等于零经济成本。[NVDA26.148] [NVDA26.559] [NVDA26.729]"
+        }
+      ],
+      "facts": [
+        "4500/215938=2.08pp，6386/215938=2.96pp，前者初始费用非全年净调整。"
+      ],
+      "parent_fact_ids": [
+        "U20:f4"
+      ],
+      "parent_group_indexes": [
+        0,
+        12,
+        13,
+        14,
+        15
+      ],
+      "numeric_check_ids": [
+        "N121",
+        "N122"
+      ],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        1
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2026
+        ]
+      },
+      "related_intent_group": "U20.05"
+    },
+    {
+      "id": "U20.06",
+      "parent_id": "U20",
+      "title": "利润率与竞争力推断",
+      "question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，哪些披露支持、哪些削弱“利润率更高意味着产品竞争力更强”？哪些差异无法按技术、规模和会计原因唯一分解？",
+      "task_type": "synthesis",
+      "answer_parts": [
+        {
+          "paragraph": 0
+        },
+        {
+          "paragraph": 3
+        },
+        {
+          "paragraph": 4
+        },
+        {
+          "paragraph": 5
+        },
+        {
+          "paragraph": 7
+        }
+      ],
+      "facts": [
+        "可呈现财务变现和产品组合解释，但无统一技术/价格/规模因果桥接或同条件性能测试。",
+        "剩余差额不能叫护城河，投入/非现金调整不等于产出或零成本。"
+      ],
+      "parent_fact_ids": [
+        "U20:f2",
+        "U20:f5"
+      ],
+      "parent_group_indexes": [
+        10,
+        11,
+        13,
+        14,
+        15
+      ],
+      "numeric_check_ids": [],
+      "parent_limit_indexes": [
+        0
+      ],
+      "parent_error_indexes": [
+        2,
+        3
+      ],
+      "expected_limits": [],
+      "material_errors": [],
+      "answerability": "answerable_with_limits",
+      "depends_on": [],
+      "expected_scope": {
+        "NVDA": [
+          2024,
+          2025,
+          2026
+        ],
+        "AMD": [
+          2023,
+          2024,
+          2025
+        ]
+      },
+      "related_intent_group": "U20.06"
+    }
+  ],
+  "scoped_out": {
+    "U13": {
+      "numeric_check_ids": {
+        "N043": "原问未要求数据中心占公司收入比，子题不新增该要求；仍在U17.02检验。",
+        "N047": "同上。",
+        "N051": "同上。"
+      }
+    }
+  }
+}

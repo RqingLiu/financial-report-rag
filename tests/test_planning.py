@@ -3,11 +3,7 @@ from decimal import Decimal
 
 import pytest
 
-from finrag.answering import generate_answer
-from finrag.context import assemble, build_context
-from finrag.models import Block, Chunk, Filing, Hit
-from finrag.planned_retrieval import prepare_searches
-from finrag.planning import (
+from finrag.agent.planner import (
     Catalog,
     PipelineConfig,
     Plan,
@@ -16,6 +12,10 @@ from finrag.planning import (
     plan_request,
     validate_plan,
 )
+from finrag.answering.generation import generate_answer
+from finrag.core.models import Block, Chunk, Filing, Hit
+from finrag.retrieval.context import assemble, build_context
+from finrag.retrieval.search import prepare_searches
 
 
 def filing(ticker="ACME", year=2024, day="2024-02-20"):
@@ -237,19 +237,6 @@ def test_answer_validates_all_needs_and_citation_ids_without_gold():
 
 
 def test_opaque_document_id_and_explicit_year_exclusion():
-    from finrag.pipeline import inputs_from_query
-
-    row = {
-        "id": "mock",
-        "question": "ACME收入",
-        "reading_context": "FY2024",
-        "confirmed_context": {"report_document_id": "opaque-key:abc", "as_of": "2026-10-11"},
-        "as_of": "2026-10-11",
-        "corpus_scope": {"ACME": [2024]},
-    }
-    assert inputs_from_query(row)["confirmed_context"]["report_document_id"] == "opaque-key:abc"
-    with pytest.raises(PlanRejected, match="extra_fields"):
-        inputs_from_query({**row, "reference": "LABEL_MUST_NOT_ENTER"})
     catalog = Catalog([filing(), filing(year=2025)])
     request = Request(question="ACME FY2025收入，不要FY2024", as_of="2026-10-11")
     p = plan()
@@ -283,9 +270,9 @@ def test_dense_default_does_not_spend_fts_queries():
 def test_embedding_index_contract_and_unindexed_document_fail_before_embedding():
     from types import SimpleNamespace
 
-    from finrag.models import IndexConfig
-    from finrag.planned_retrieval import PlannedRetriever
-    from finrag.tracing import Trace
+    from finrag.core.models import IndexConfig
+    from finrag.core.tracing import Trace
+    from finrag.retrieval.search import PlannedRetriever
 
     class Conn:
         def execute(self, *args):
@@ -305,7 +292,7 @@ def test_embedding_index_contract_and_unindexed_document_fail_before_embedding()
 def test_source_cache_is_bounded_and_eviction_does_not_truncate_requested_sources():
     from types import SimpleNamespace
 
-    from finrag.context import EvidenceStore
+    from finrag.retrieval.context import EvidenceStore
 
     def block(key):
         return Block(
@@ -329,19 +316,3 @@ def test_source_cache_is_bounded_and_eviction_does_not_truncate_requested_source
     result = store.blocks(["a", "b"])
     assert set(result) == {"a", "b"} and all(b.text == "0123456789" for b in result.values())
     assert len(store.cache) <= 1 and store.characters <= 12
-
-
-def test_startup_failure_is_explicit_and_never_prints_secret_body(tmp_path, monkeypatch, capsys):
-    from finrag import pipeline
-
-    def fail():
-        raise RuntimeError("SECRET_VALUE_MUST_NOT_BE_PRINTED")
-
-    monkeypatch.setattr(pipeline, "_main", fail)
-    monkeypatch.setattr(pipeline, "ROOT", tmp_path)
-    with pytest.raises(SystemExit) as err:
-        pipeline.main()
-    assert err.value.code == 1
-    assert "startup_or_io_error" in capsys.readouterr().out
-    rows = list((tmp_path / "logs/pipeline_errors").glob("*.json"))
-    assert len(rows) == 1 and "SECRET_VALUE" not in rows[0].read_text()

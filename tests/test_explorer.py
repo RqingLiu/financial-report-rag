@@ -9,11 +9,11 @@ from fastapi import HTTPException
 from fastapi.concurrency import run_in_threadpool
 from fastapi.testclient import TestClient
 
-from finrag.planning import Request
+from finrag.agent.planner import Request
+from finrag.core.tracing import Trace
 from finrag.serving.api import create_app
 from finrag.serving.config import ServingConfig
 from finrag.serving.explorer import history, load_trace, trace_view
-from finrag.tracing import Trace
 
 
 def test_trace_sink_observes_nested_failure_without_changing_pipeline():
@@ -292,8 +292,8 @@ def test_current_catalog_is_published_read_only_and_filters_asof(monkeypatch, tm
     from contextlib import contextmanager
     from types import SimpleNamespace
 
-    from finrag.models import Filing
-    from finrag.planning import Catalog
+    from finrag.agent.planner import Catalog
+    from finrag.core.models import Filing
 
     def filing(doc, filed):
         return Filing(

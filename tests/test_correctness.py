@@ -6,11 +6,7 @@ import pytest
 from pydantic import ValidationError
 from test_planning import filing, plan
 
-from finrag.chunk import make_chunks
-from finrag.config import ROOT
-from finrag.files import read_jsonl
-from finrag.models import Block, IndexConfig
-from finrag.planning import (
+from finrag.agent.planner import (
     Catalog,
     PipelineConfig,
     PlanRejected,
@@ -18,8 +14,12 @@ from finrag.planning import (
     plan_request,
     validate_plan,
 )
+from finrag.core.config import ROOT
+from finrag.core.files import read_jsonl
+from finrag.core.models import Block, IndexConfig
+from finrag.ingestion.chunk import make_chunks
+from finrag.ingestion.publish import validate_source_coverage
 from finrag.serving.errors import ServingError
-from finrag.serving.ingestion import validate_source_coverage
 
 
 def catalog():
@@ -148,7 +148,7 @@ def test_long_short_row_table_is_not_dropped_after_paragraph(row_count):
 
 @pytest.mark.corpus
 def test_existing_selected_corpus_reproduces_exact_chunk_payloads():
-    from finrag.models import Filing
+    from finrag.core.models import Filing
 
     rows = json.loads((ROOT / "configs/indexes.json").read_text())
     ix = IndexConfig(**next(r for r in rows if r["name"] == "structure_512_table_context"))

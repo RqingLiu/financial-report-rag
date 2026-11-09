@@ -1,0 +1,136 @@
+{
+  "date": "2026-11-08",
+  "removed": [
+    {
+      "path": "src/finrag/experiments",
+      "bytes": 543402
+    },
+    {
+      "path": "src/finrag/vendor",
+      "bytes": 8823
+    },
+    {
+      "path": "tests/test_baseline.py",
+      "bytes": 8449
+    },
+    {
+      "path": "tests/test_coarse_ranking.py",
+      "bytes": 2485
+    },
+    {
+      "path": "tests/test_focused_query.py",
+      "bytes": 4671
+    },
+    {
+      "path": "tests/test_ann_scale.py",
+      "bytes": 4490
+    },
+    {
+      "path": "tests/test_answer_optimization.py",
+      "bytes": 2755
+    },
+    {
+      "path": "scripts/analyze_context_funnel.py",
+      "bytes": 6970
+    },
+    {
+      "path": "scripts/audit_ann_scale.py",
+      "bytes": 4952
+    },
+    {
+      "path": "scripts/export_public_experiments.py",
+      "bytes": 9385
+    },
+    {
+      "path": "scripts/restore_archive.py",
+      "bytes": 3332
+    },
+    {
+      "path": "prompts",
+      "bytes": 2960
+    },
+    {
+      "path": "research",
+      "bytes": 13238
+    },
+    {
+      "path": "archive",
+      "bytes": 390137544
+    },
+    {
+      "path": "configs/experiments",
+      "bytes": 6531
+    },
+    {
+      "path": "configs/experiments.json",
+      "bytes": 4882
+    },
+    {
+      "path": "data/evaluation/gpt_specs.json",
+      "bytes": 63812
+    },
+    {
+      "path": "data/evaluation/review_v2/review_audit.json",
+      "bytes": 5089
+    },
+    {
+      "path": "data/evaluation/review_v2/evidence_catalog.jsonl",
+      "bytes": 197633
+    },
+    {
+      "path": "data/evaluation/review_v2/reference_drafts.jsonl",
+      "bytes": 53980
+    },
+    {
+      "path": "data/evaluation/review_v2/calculations.json",
+      "bytes": 7788
+    },
+    {
+      "path": "data/evaluation/review_v2/manifest.json",
+      "bytes": 2334
+    }
+  ],
+  "retired_tests": [
+    "test_input_scope_policy",
+    "test_metric_excludes_boundary_and_requires_each_comparison_source",
+    "test_frozen_annotations_have_no_family_leakage",
+    "test_pageindex_tree_uses_real_source_block_mapping",
+    "test_bilingual_glossary_preserves_filing_scope_separation",
+    "test_scope_uses_question_dates_and_additive_amendment",
+    "test_rrf_missing_rank_and_duplicate_are_not_rewarded"
+  ],
+  "preserved_compact_runs": [
+    "reports/current/current_default_20/traces/U01.json",
+    "reports/current/current_default_20/traces/U02.json",
+    "reports/current/current_default_20/traces/U03.json",
+    "reports/current/current_default_20/traces/U04.json",
+    "reports/current/current_default_20/traces/U05.json",
+    "reports/current/current_default_20/traces/U06.json",
+    "reports/current/current_default_20/traces/U07.json",
+    "reports/current/current_default_20/traces/U08.json",
+    "reports/current/current_default_20/traces/U09.json",
+    "reports/current/current_default_20/traces/U10.json",
+    "reports/current/current_default_20/traces/U11.json",
+    "reports/current/current_default_20/traces/U12.json",
+    "reports/current/current_default_20/traces/U13.json",
+    "reports/current/current_default_20/traces/U14.json",
+    "reports/current/current_default_20/traces/U15.json",
+    "reports/current/current_default_20/traces/U16.json",
+    "reports/current/current_default_20/traces/U17.json",
+    "reports/current/current_default_20/traces/U18.json",
+    "reports/current/current_default_20/traces/U19.json",
+    "reports/current/current_default_20/traces/U20.json"
+  ],
+  "validation": {
+    "offline_passed": 106,
+    "offline_skipped": 7,
+    "compound_questions": 20,
+    "intent_draft_cases": 81,
+    "dataset_checks_passed": true,
+    "saved_packet_export_passed": true,
+    "sensitive_scan_passed": true,
+    "paid_model_calls": 0,
+    "github_pushed": false,
+    "active_db_modified": false
+  }
+}

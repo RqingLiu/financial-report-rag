@@ -6,56 +6,56 @@ const nodes = [
     "catalog_snapshot",
     "已入库年报",
     "Catalog / disclosure cutoff",
-    "serving/store.py",
+    "retrieval/store.py",
     "从 PostgreSQL 读取已发布到当前索引的年报元数据，按披露截止日限制可用资料。这里不是代码仓库的文件目录，也不是临时让模型搜索互联网。",
   ],
   [
     "query_plan",
     "问题规划",
     "DeepSeek / validated JSON",
-    "planning.py",
+    "agent/planner.py",
     "将原问拆成证据需求和检索任务，验证公司、财年、排除条件与调用预算；必要时返回澄清。",
   ],
   [
     "embed_queries",
     "查询向量化",
     "Voyage / query embedding",
-    "planned_retrieval.py",
+    "retrieval/search.py",
     "将子查询编码为向量；缓存命中时可复用向量，不在页面或 trace 中记录向量本身。",
   ],
   [
     "retrieve",
     "分组检索",
     "pgvector / scoped searches",
-    "planned_retrieval.py",
+    "retrieval/search.py",
     "按任务、公司和报告财年执行受限检索。下方展示每次 SQL 搜索的实际 query、范围与命中；当前实现按任务顺序发起搜索。",
   ],
   [
     "fusion",
     "候选融合",
     "RRF / task interleaving",
-    "planned_retrieval.py",
+    "retrieval/search.py",
     "合并检索结果、去重并在任务之间交错分配候选。融合分数与原始向量距离、精排分数不能直接比较。",
   ],
   [
     "rerank",
     "候选精排",
     "DeepSeek / LLM reranking",
-    "reranking.py",
+    "retrieval/rerank.py",
     "对配置限定的候选重排；当前默认由 DeepSeek Flash 做真实 LLM 评分，并标记 need 与相关行。缓存命中时复用评分，不发新请求；这不是专用 CrossEncoder 模型。",
   ],
   [
     "context_build",
     "上下文构建",
     "Evidence / token budget",
-    "rerank_context.py",
+    "retrieval/evidence.py",
     "在证据与完整提示预算内选择内容，处理来源重复、表格上下文与裁剪，记录每一项被选中或排除的原因。",
   ],
   [
     "generation",
     "引用答案",
     "DeepSeek / cited sections",
-    "answering.py",
+    "answering/generation.py",
     "根据实际上下文逐项回答，区分可支持、部分支持和缺证据。校验 need 和引用编号；事实与计算的正确性仍需评测。",
   ],
 ];
@@ -886,7 +886,7 @@ function planner() {
     p = plan();
   if (!p)
     return empty("Planner 尚未返回有效计划。可在执行日志查看失败或修复调用。");
-  const summary = panel("问题范围与时间口径", "planning.py");
+  const summary = panel("问题范围与时间口径", "agent/planner.py");
   summary.append(tag(`action: ${p.action}`, "green"));
   (p.companies || []).forEach((c) =>
     summary.append(
@@ -938,7 +938,7 @@ function searchView() {
     );
   const intro = panel(
     `${rows.length} 次受范围约束的检索`,
-    "planned_retrieval.py",
+    "retrieval/search.py",
   );
   intro.append(
     el(
@@ -982,7 +982,7 @@ function searchView() {
 function ranking() {
   const root = panel(
       "从融合候选到最终上下文",
-      "reranking.py → rerank_context.py",
+      "retrieval/rerank.py → retrieval/evidence.py",
     ),
     rows = ranks();
   root.append(
@@ -1098,7 +1098,7 @@ function contextView() {
   const root = el("div"),
     rows = evidence(),
     meta = context(),
-    info = panel("实际提供给生成模型的证据", "rerank_context.py");
+    info = panel("实际提供给生成模型的证据", "retrieval/evidence.py");
   info.append(
     el(
       "p",
@@ -1130,7 +1130,7 @@ function answerView() {
   const root = el("div"),
     gen = resultAnswer();
   if (!gen?.answer) {
-    const p = panel("引用答案", "answering.py");
+    const p = panel("引用答案", "answering/generation.py");
     p.append(
       empty(
         state.data?.status === "retrieved"
@@ -1184,7 +1184,7 @@ function appendCitations(parent, text) {
   });
 }
 function eventView() {
-  const root = panel("真实执行事件与嵌套调用", "tracing.py");
+  const root = panel("真实执行事件与嵌套调用", "core/tracing.py");
   root.append(
     el(
       "p",

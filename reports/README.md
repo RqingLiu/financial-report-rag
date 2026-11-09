@@ -1,7 +1,7 @@
-# Evaluation receipts
+# Results
 
-The public repository includes compact, sanitized evidence under [public/](public/README.md). Full local traces, paid responses, HTML views, machine-specific audits and compressed archives are ignored.
+- [public/](public/README.md): compact sanitized experiment conditions, results and validation receipts for GitHub.
+- `current/` (local, ignored): recent comparisons and compact saved answer/evidence records for human review.
+- `test_release.json`: small frozen v1 provenance marker still hash-checked by the compound dataset validator; it does not configure serving.
 
-Read [evaluation methodology](../docs/evaluation.md) for dataset/metric boundaries and [development history](../docs/history.md) for failed/selected experiments. Raw run directories used by legacy replay scripts must be rebuilt or restored locally; they are not runtime dependencies of the serving CLI.
-
-The small original `test_release.json` is retained for frozen dataset hash validation. It is historical v1 evidence, not an unseen quality test for the current service.
+The entire archive and retired research programs were removed by request. There is no restore command or hidden dependency on them. Historical scores remain records of the conditions under which they were measured; rerunning those retired experiments is not a current supported command. Current checks use `python scripts/verify_public_evidence.py`; current data/run/answer evaluation uses `python -m finrag.evaluation --help`.

@@ -16,10 +16,10 @@ from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
-from ..planning import Request
-from .code_view import code_view, component_map
-from .explorer import catalog_view, history, load_trace, stage_view, trace_view
-from .runtime import query, resources
+from finrag.agent.planner import Request
+from finrag.serving.code_view import code_view, component_map
+from finrag.serving.explorer import catalog_view, history, load_trace, stage_view, trace_view
+from finrag.serving.runtime import query, resources
 
 
 class Admission:

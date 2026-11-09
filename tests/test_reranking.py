@@ -5,13 +5,13 @@ import time
 import pytest
 from test_need_context import hit, inputs
 
-from finrag.answering import answer_messages
-from finrag.deadlines import DeadlineLLM
-from finrag.generation import Budget, BudgetExceeded, ProviderFailure
-from finrag.models import Block
-from finrag.planning import PipelineConfig, PlanRejected
-from finrag.rerank_context import compact_source, prompt_tokens, select_reranked
-from finrag.reranking import grade_candidates, source_lines, validate_grades
+from finrag.agent.planner import PipelineConfig, PlanRejected
+from finrag.answering.generation import answer_messages
+from finrag.core.deadlines import DeadlineLLM
+from finrag.core.models import Block
+from finrag.providers.llm import Budget, BudgetExceeded, ProviderFailure
+from finrag.retrieval.evidence import compact_source, prompt_tokens, select_reranked
+from finrag.retrieval.rerank import grade_candidates, source_lines, validate_grades
 
 
 def data():

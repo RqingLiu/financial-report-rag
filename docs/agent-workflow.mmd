@@ -1,0 +1,43 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	catalog(catalog)
+	plan(plan)
+	regroup(regroup)
+	retrieve(retrieve)
+	fusion(fusion)
+	context(context)
+	evidence_gate(evidence_gate)
+	calculate(calculate)
+	answer(answer)
+	validate(validate)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> catalog;
+	answer -.-> __end__;
+	answer -.-> validate;
+	calculate -.-> __end__;
+	calculate -.-> answer;
+	catalog -.-> __end__;
+	catalog -.-> plan;
+	context -.-> __end__;
+	context -.-> evidence_gate;
+	evidence_gate -.-> __end__;
+	evidence_gate -.-> answer;
+	evidence_gate -.-> calculate;
+	fusion -.-> __end__;
+	fusion -.-> context;
+	plan -.-> __end__;
+	plan -.-> regroup;
+	plan -.-> retrieve;
+	regroup -.-> __end__;
+	regroup -.-> retrieve;
+	retrieve -.-> __end__;
+	retrieve -.-> fusion;
+	validate --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

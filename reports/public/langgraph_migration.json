@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-08",
+  "engine": "langgraph",
+  "langgraph_version": "1.2.20",
+  "verified_environment": ".venv-migrate",
+  "original_environment_replaced": false,
+  "offline_passed": 136,
+  "offline_skipped": 8,
+  "database_passed": 7,
+  "graph_contracts": 11,
+  "runtime_pins": 57,
+  "evaluation_pins": 106,
+  "frozen_v2_verified": true,
+  "draft_v3_verified": true,
+  "public_doc_links_verified": true,
+  "working_tree_sensitive_scan_passed": true,
+  "paid_model_calls": 0,
+  "github_pushed": false,
+  "semantic_answer_quality_remeasured": false,
+  "evidence_followup_enabled": false,
+  "checkpoint_backend": null,
+  "langsmith_reporting_enabled": false
+}

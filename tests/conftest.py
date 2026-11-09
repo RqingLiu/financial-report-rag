@@ -2,7 +2,7 @@
 
 import pytest
 
-from finrag.config import ROOT
+from finrag.core.config import ROOT
 
 
 def pytest_collection_modifyitems(items):

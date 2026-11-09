@@ -1,0 +1,10 @@
+# Decisions and Evidence
+
+Checked 2026-11-07; no package installation or paid evaluation.
+
+- Dataset unit: independently assessable intent, retaining multi-year/issuer comparisons. The 81 children are development derivatives; original parents remain the stress suite. Parent-balanced metrics and linked family/intent splits avoid pretending each new row is independent.
+- Current system already orchestrates planning, retrieval, context and answer generation in `serving/runtime.py:execute`. Shared reservations/settlement exist in `generation.py`; absent pieces include unified run state/policy, checkpoint-safe recovery and bounded evidence-driven replanning.
+- Target LangGraph rather than Deep Agents: explicit control over state and edges fits the existing bounded retrieval workflow. The project does not currently need a general filesystem/subagent harness. This is a project-specific decision, not a claim that a library itself improves answer correctness. Sources: [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview), [Deep Agents overview](https://docs.langchain.com/oss/python/deepagents/overview).
+- Compatibility gate: local langchain/core are 0.3.30/0.3.86; LangGraph is absent. The official main pyproject inspected requires core >=1.4.7, incompatible with the existing old stack constraints. Isolate evaluation/legacy ingestion dependencies and resolve a pinned runtime environment before migration; no unverified version pin is selected. Source: [official pyproject](https://raw.githubusercontent.com/langchain-ai/langgraph/main/libs/langgraph/pyproject.toml).
+- Checkpoints do not imply exactly-once provider effects. Nodes can execute again on recovery; keep durable billing receipts, payload keys and unknown-billing reservations. Sources: [Persistence](https://docs.langchain.com/oss/python/langgraph/persistence), [Fault tolerance](https://docs.langchain.com/oss/python/langgraph/fault-tolerance).
+- Generic arithmetic remains experimental. Typed financial inputs/formulas, evidence sufficiency and accounting-scope validation are separate work from graph orchestration.

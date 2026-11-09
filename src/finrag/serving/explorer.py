@@ -7,7 +7,7 @@ from pathlib import Path
 
 from fastapi import HTTPException
 
-from ..config import ROOT
+from finrag.core.config import ROOT
 
 TRACE_DIR = ROOT / "logs/serving"
 MAX_TRACE_BYTES = 32 * 1024 * 1024
@@ -228,9 +228,38 @@ def stage_view(row):
     return out
 
 
+def agent_view(data):
+    agent = data.get("agent", {})
+    return (
+        {
+            **pick(agent, "engine state_version outcome evidence_status"),
+            "usage": pick(
+                agent.get("usage", {}), "nodes model_calls paid_known_usd paid_unresolved_usd"
+            ),
+            "transitions": [
+                {
+                    **pick(row, "node status duration_seconds operation_id"),
+                    "input": pick(
+                        row.get("input", {}),
+                        "status needs tasks searches candidates evidence outcome",
+                    ),
+                    "output": pick(
+                        row.get("output", {}),
+                        "status needs tasks searches candidates evidence outcome",
+                    ),
+                }
+                for row in agent.get("transitions", [])[:64]
+            ],
+        }
+        if agent
+        else None
+    )
+
+
 def trace_view(data):
     retrieval = data.get("retrieval", {})
     return {
+        "agent": agent_view(data),
         **pick(data, "query_id created_at status error plan original_plan"),
         "inputs": pick(
             data.get("inputs", {}), "original_question reading_context confirmed_context as_of"

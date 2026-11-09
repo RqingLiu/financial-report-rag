@@ -1,1 +1,1 @@
-"""Incremental database-backed serving; historical experiments remain in finrag.*."""
+"""Database-backed serving; offline tooling lives in finrag.evaluation."""

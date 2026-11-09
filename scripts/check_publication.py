@@ -34,11 +34,21 @@ def main():
     for name in files:
         parts = Path(name).parts
         if (
-            name == ".env"
+            name.startswith(("archive/", "specs/008-public-project-guide/"))
+            or name == "AGENTS.md"
+            or (
+                name.startswith("reports/")
+                and not name.startswith("reports/public/")
+                and name not in ("reports/README.md", "reports/test_release.json")
+            )
+            or name == ".env"
             or (Path(name).name.startswith(".env.") and name != ".env.example")
             or any(
                 p in parts
-                for p in (".venv", "__pycache__", "raw", "processed", "cache", "logs", "archive")
+                for p in (
+                    ".venv", ".venv-migrate", ".pytest_cache", ".ruff_cache",
+                    "__pycache__", "raw", "processed", "cache", "logs", "traces",
+                )
             )
         ):
             failures.append({"path": name, "reason": "private_or_generated_path"})

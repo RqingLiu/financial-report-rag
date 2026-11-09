@@ -1,0 +1,493 @@
+[
+  {
+    "parent_id": "U01",
+    "children": [
+      "U01.01",
+      "U01.02",
+      "U01.03",
+      "U01.04",
+      "U01.05"
+    ],
+    "covered": {
+      "facts": 4,
+      "groups": 12,
+      "checks": 18,
+      "limits": 1,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U02",
+    "children": [
+      "U02.01",
+      "U02.02",
+      "U02.03",
+      "U02.04",
+      "U02.05"
+    ],
+    "covered": {
+      "facts": 4,
+      "groups": 8,
+      "checks": 9,
+      "limits": 1,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U03",
+    "children": [
+      "U03.01",
+      "U03.02",
+      "U03.03"
+    ],
+    "covered": {
+      "facts": 3,
+      "groups": 11,
+      "checks": 6,
+      "limits": 2,
+      "errors": 2
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U04",
+    "children": [
+      "U04.01",
+      "U04.02",
+      "U04.03",
+      "U04.04"
+    ],
+    "covered": {
+      "facts": 4,
+      "groups": 7,
+      "checks": 9,
+      "limits": 1,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U05",
+    "children": [
+      "U05.01",
+      "U05.02",
+      "U05.03"
+    ],
+    "covered": {
+      "facts": 3,
+      "groups": 7,
+      "checks": 6,
+      "limits": 1,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U06",
+    "children": [
+      "U06.01",
+      "U06.02",
+      "U06.03",
+      "U06.04",
+      "U06.05",
+      "U06.06"
+    ],
+    "covered": {
+      "facts": 5,
+      "groups": 7,
+      "checks": 16,
+      "limits": 2,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U07",
+    "children": [
+      "U07.01",
+      "U07.02",
+      "U07.03"
+    ],
+    "covered": {
+      "facts": 4,
+      "groups": 9,
+      "checks": 0,
+      "limits": 2,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U08",
+    "children": [
+      "U08.01",
+      "U08.02",
+      "U08.03",
+      "U08.04"
+    ],
+    "covered": {
+      "facts": 4,
+      "groups": 12,
+      "checks": 0,
+      "limits": 2,
+      "errors": 2
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U09",
+    "children": [
+      "U09.01",
+      "U09.02",
+      "U09.03"
+    ],
+    "covered": {
+      "facts": 5,
+      "groups": 10,
+      "checks": 0,
+      "limits": 2,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U10",
+    "children": [
+      "U10.01",
+      "U10.02",
+      "U10.03"
+    ],
+    "covered": {
+      "facts": 5,
+      "groups": 11,
+      "checks": 0,
+      "limits": 2,
+      "errors": 4
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U11",
+    "children": [
+      "U11.01",
+      "U11.02",
+      "U11.03"
+    ],
+    "covered": {
+      "facts": 4,
+      "groups": 16,
+      "checks": 20,
+      "limits": 1,
+      "errors": 2
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U12",
+    "children": [
+      "U12.01",
+      "U12.02",
+      "U12.03",
+      "U12.04"
+    ],
+    "covered": {
+      "facts": 4,
+      "groups": 11,
+      "checks": 3,
+      "limits": 2,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U13",
+    "children": [
+      "U13.01",
+      "U13.02",
+      "U13.03"
+    ],
+    "covered": {
+      "facts": 4,
+      "groups": 7,
+      "checks": 3,
+      "limits": 2,
+      "errors": 3
+    },
+    "scoped_out": {
+      "numeric_check_ids": {
+        "N043": "原问未要求数据中心占公司收入比，子题不新增该要求；仍在U17.02检验。",
+        "N047": "同上。",
+        "N051": "同上。"
+      }
+    },
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [
+        "N043",
+        "N047",
+        "N051"
+      ],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U14",
+    "children": [
+      "U14.01",
+      "U14.02",
+      "U14.03"
+    ],
+    "covered": {
+      "facts": 5,
+      "groups": 9,
+      "checks": 0,
+      "limits": 2,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U15",
+    "children": [
+      "U15.01",
+      "U15.02",
+      "U15.03",
+      "U15.04",
+      "U15.05",
+      "U15.06",
+      "U15.07"
+    ],
+    "covered": {
+      "facts": 5,
+      "groups": 18,
+      "checks": 12,
+      "limits": 2,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U16",
+    "children": [
+      "U16.01",
+      "U16.02",
+      "U16.03"
+    ],
+    "covered": {
+      "facts": 4,
+      "groups": 8,
+      "checks": 0,
+      "limits": 2,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U17",
+    "children": [
+      "U17.01",
+      "U17.02",
+      "U17.03",
+      "U17.04"
+    ],
+    "covered": {
+      "facts": 5,
+      "groups": 10,
+      "checks": 16,
+      "limits": 1,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U18",
+    "children": [
+      "U18.01",
+      "U18.02",
+      "U18.03",
+      "U18.04"
+    ],
+    "covered": {
+      "facts": 5,
+      "groups": 13,
+      "checks": 0,
+      "limits": 2,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U19",
+    "children": [
+      "U19.01",
+      "U19.02",
+      "U19.03",
+      "U19.04",
+      "U19.05"
+    ],
+    "covered": {
+      "facts": 5,
+      "groups": 23,
+      "checks": 1,
+      "limits": 1,
+      "errors": 3
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  },
+  {
+    "parent_id": "U20",
+    "children": [
+      "U20.01",
+      "U20.02",
+      "U20.03",
+      "U20.04",
+      "U20.05",
+      "U20.06"
+    ],
+    "covered": {
+      "facts": 5,
+      "groups": 16,
+      "checks": 25,
+      "limits": 2,
+      "errors": 4
+    },
+    "scoped_out": {},
+    "omitted": {
+      "facts": [],
+      "groups": [],
+      "checks": [],
+      "limits": [],
+      "errors": []
+    }
+  }
+]

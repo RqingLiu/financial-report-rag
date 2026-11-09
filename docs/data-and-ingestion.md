@@ -26,23 +26,26 @@ The long-table fix reproduces all original2,759 selected chunk payloads exactly.
 After configuring PostgreSQL/pgvector and `.env` as described in the main README:
 
 ```bash
-fr-rag download
-fr-rag parse
-fr-rag index structure_512_table_context
+fr-rag-serve download
 fr-rag-serve init
-fr-rag-serve bootstrap
+# Publish pinned files directly, without a duplicate research database:
+python scripts/ingest_manifest.py --manifest data/sources.jsonl --companies configs/companies.json
+# After reviewing the source inventory:
+python scripts/ingest_manifest.py --manifest data/sources.jsonl --companies configs/companies.json --publish
 fr-rag-serve ann
 fr-rag-serve aliases --metadata configs/serving_company_aliases.json
 ```
 
-`download` reuses pinned metadata and cached bytes. `index` may bill uncached embedding inputs. `bootstrap` copies the selected frozen vectors, validating raw parsing against chunk payloads; it does not call a model. The `init` command initializes only the selected serving namespace, not the whole database.
+`download` reuses pinned metadata and cached bytes. The manifest publisher passes each filing and trusted company metadata through the same `ingest_html` preflight, parse, chunk, cached embedding and atomic publication path as single-file ingestion. New embedding inputs may cost money. Identical published filings are skipped before embedding. `init` initializes only the selected serving namespace. Run `ingest_manifest.py` without `--publish` first to inspect sources; add `--publish` to explicitly publish.
+
+The previous `index → bootstrap` setup depended on now-retired research schemas. It is historical, not a prerequisite for a fresh serving deployment.
 
 ## Expansion setup
 
 ```bash
-python -m finrag.generalization download
-python -m finrag.generalization prepare
-python -m finrag.generalization publish
+python -m finrag.ingestion.generalization download
+python -m finrag.ingestion.generalization prepare
+python -m finrag.ingestion.generalization publish
 ```
 
 `download` retrieves and hash-checks the six pinned filings. `prepare` parses, chunks, audits source coverage and estimates uncached cost without calling a model. `publish` is explicit: it reruns preflight and uses the existing shared billing ledger and stop threshold, then publishes each document atomically. Previously published identical documents skip embedding even if the local vector cache was removed. Changed identity/hash metadata is rejected before paid embedding, and publication rechecks inside the transaction.

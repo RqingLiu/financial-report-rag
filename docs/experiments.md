@@ -93,7 +93,7 @@ v1 dev宏Recall@10的部分结果，完整28组见[v1_dev.json](../reports/publi
 ## 复现、校验和费用
 
 1. 只核验公开汇总的逐题算术与文档链接：`python scripts/verify_public_evidence.py`。不需DB、密钥或私人Notion。
-2. 从已有本地原始实验重新导出：`python scripts/export_public_experiments.py --check`；缺被忽略原始run时不能执行。来源哈希用于识别原始输入，不假装哈希能替代原始文件。
+2. 复算保留的公开结果：`python scripts/verify_public_evidence.py`，不依赖原始run。旧driver和大trace已删除；来源hash只标识当时的输入，不能用于恢复已删除材料。
 3. 全量重做需要按[数据说明](data-and-ingestion.md)重建语料，保留gold不入运行时；使用对应实验模块的新run。`context_experiment`、`coarse_experiment`、`focus_experiment`、`rerank_experiment`及`experiments/serving_eval.py`等保留在源码；历史模块依赖saved plans/响应时需先重建或恢复输入，**不是一条命令从新clone复现所有数字**。
 4. 缓存缺失的embedding/LLM会计费；本次公开整理没有启动新的付费实验，也未重新生成答案。配置、模型版本、数据范围和随机条件变化后应创建新结果，不能覆盖冻结回执。
 

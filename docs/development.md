@@ -4,54 +4,54 @@
 
 | Area | Key files |
 | --- | --- |
-| Filing discovery/cache | `src/finrag/acquire.py` |
-| HTML/offsets, chunks | `parse.py`, `chunk.py`, `models.py` |
-| Serving publication/query SQL | `serving/ingestion.py`, `serving/store.py`, `serving/lexical.py` |
-| QueryPlan and scope guard | `planning.py`, `planning_scope.py`, `planned_retrieval.py` |
-| Rerank/context/answer | `reranking.py`, `rerank_context.py`, `context.py`, `answering.py` |
-| Providers/cost/trace | `embedding.py`, `generation.py`, `serving/providers.py`, `tracing.py` |
+| Filing discovery/cache | `src/finrag/ingestion/acquire.py` |
+| HTML/offsets, chunks | `ingestion/parse.py`, `ingestion/chunk.py`, `core/models.py` |
+| Serving publication/query SQL | `ingestion/publish.py`, `retrieval/store.py`, `retrieval/lexical.py` |
+| QueryPlan and scope guard | `agent/planner.py`, `agent/scope.py`, `retrieval/search.py` |
+| Rerank/context/answer | `retrieval/rerank.py`, `retrieval/evidence.py`, `retrieval/context.py`, `answering/generation.py` |
+| Providers/cost/trace | `providers/embedding.py`, `providers/llm.py`, `providers/voyage.py`, `core/tracing.py` |
 | Current entry/API | `serving/cli.py`, `serving/runtime.py`, `serving/api.py` |
 | Browser / safe trace and code projection | `serving/static/`, `serving/explorer.py`, `serving/code_view.py` ([usage](trace-explorer.md)) |
-| New issuer preparation | `generalization.py`, `configs/generalization_companies.json` |
-| Experiments/gold | `experiments/`, historical `*_experiment.py`, `evaluation.py`, `dataset.py` |
+| New issuer preparation | `ingestion/generalization.py`, `configs/generalization_companies.json` |
+| Experiments/gold | `evaluation/`: run, answers, rubric and source-span metrics |
 
-The older `fr-rag query` returns evidence/prompts through rule-based retrieval. `python -m finrag.pipeline` is an earlier QueryPlan experiment. Use **`fr-rag-serve`** for the current full query→rerank→generation path. Historical modules are preserved for frozen comparisons, not parallel daily services.
+Use **`fr-rag-serve`** (or `python -m finrag.serving.cli`) for the current query→rerank→generation path. `fr-rag` is now an alias for this same CLI (a small compatibility entry also supports existing installations). Old research drivers and the archive have been deleted. Current evaluation commands live under `finrag.evaluation`; use `python -m finrag.evaluation --help`. See [repository layout](repository-layout.md).
 
 ## Follow the current query in code
 
-Paths below are relative to this repository, `financial-report-rag/`. Use Cmd+P in the editor to find a path. A workflow step is not a separate file: shared adapters serve multiple stages, and `serving/runtime.py:execute` calls the implementations. The browser's **Code map** provides clickable functions and dynamically resolved current line numbers from `serving/code_view.py`.
+Paths below are relative to this repository, `financial-report-rag/`. Use Cmd+P in the editor to find a path. A workflow step is not a separate file: shared adapters serve multiple stages, and `agent/runner.py:execute` calls the implementations. The browser's **Code map** provides clickable functions and dynamically resolved current line numbers from `serving/code_view.py`.
 
 | Workflow | Repository implementation | Responsibility |
 | --- | --- | --- |
 | HTTP / orchestration | `src/finrag/serving/api.py:create_app` → `src/finrag/serving/runtime.py:query` → `execute` | Receive request, create resources, sequence stages, persist trace |
-| Published filings | `src/finrag/serving/store.py:LiveStore.catalog` → `src/finrag/planning.py:Catalog.metadata` | Join published DB documents; apply disclosure cutoff to planner metadata |
-| Planner | `src/finrag/planning.py:plan_request`, `validate_plan`; `src/finrag/planning_scope.py` | Needs/tasks/query generation; company/FY/constraint validation |
-| Query embeddings | `src/finrag/planned_retrieval.py:PlannedRetriever.search` → `src/finrag/serving/providers.py:DocumentEmbedder._request` | Query batching/cache and Voyage adapter |
-| Retrieval | `src/finrag/planned_retrieval.py:prepare_searches`, `PlannedRetriever.search` → `src/finrag/serving/store.py:LiveStore.search` | Scope-specific jobs and actual pgvector/lexical SQL |
-| Fusion | `src/finrag/planned_retrieval.py:rank_records` | RRF, source deduplication and task/group interleaving |
-| Rerank | `src/finrag/serving/runtime.py:select_context` → `src/finrag/rerank_context.py:candidates_for_rerank` → `src/finrag/reranking.py:grade_candidates` | Top80 selection, source-line payload, batched LLM grades/cache/validation |
-| Context | `src/finrag/rerank_context.py:select_reranked` | Source overlap, table expansion, evidence/prompt budgets |
-| Answer | `src/finrag/answering.py:answer_messages`, `generate_answer` | Need-aligned generation and citation/shape validation |
-| Shared model transport | `src/finrag/generation.py:DeepSeek.generate` | Real DeepSeek API calls, usage and shared budget; used by planner/rerank/answer |
+| Published filings | `src/finrag/retrieval/store.py:LiveStore.catalog` → `src/finrag/agent/planner.py:Catalog.metadata` | Join published DB documents; apply disclosure cutoff to planner metadata |
+| Planner | `src/finrag/agent/planner.py:plan_request`, `validate_plan`; `src/finrag/agent/scope.py` | Needs/tasks/query generation; company/FY/constraint validation |
+| Query embeddings | `src/finrag/retrieval/search.py:PlannedRetriever.search` → `src/finrag/providers/voyage.py:DocumentEmbedder._request` | Query batching/cache and Voyage adapter |
+| Retrieval | `src/finrag/retrieval/search.py:prepare_searches`, `PlannedRetriever.search` → `src/finrag/retrieval/store.py:LiveStore.search` | Scope-specific jobs and actual pgvector/lexical SQL |
+| Fusion | `src/finrag/retrieval/search.py:rank_records` | RRF, source deduplication and task/group interleaving |
+| Rerank | `src/finrag/retrieval/selection.py:select_context` → `src/finrag/retrieval/evidence.py:candidates_for_rerank` → `src/finrag/retrieval/rerank.py:grade_candidates` | Top80 selection, source-line payload, batched LLM grades/cache/validation |
+| Context | `src/finrag/retrieval/evidence.py:select_reranked` | Source overlap, table expansion, evidence/prompt budgets |
+| Answer | `src/finrag/answering/generation.py:answer_messages`, `generate_answer` | Need-aligned generation and citation/shape validation |
+| Shared model transport | `src/finrag/providers/llm.py:DeepSeek.generate` | Real DeepSeek API calls, usage and shared budget; used by planner/rerank/answer |
 
-The default reranker is **LLM reranking with DeepSeek Flash**, not mocked scores and not the embedding API. Each batch contains question/needs and candidate source lines; cached batches do not make new requests. `src/finrag/serving/providers.py:CrossEncoder.rank` supports the optional dedicated Voyage reranker but is not enabled by `configs/serving.json`.
+The default reranker is **LLM reranking with DeepSeek Flash**, not mocked scores and not the embedding API. Each batch contains question/needs and candidate source lines; cached batches do not make new requests. `src/finrag/providers/voyage.py:CrossEncoder.rank` supports the optional dedicated Voyage reranker but is not enabled by `configs/serving.json`.
 
-**Published filings** means the database catalog, not a source-code directory. Original HTML exists locally under ignored `data/raw/`; tracked manifests are `data/sources.jsonl` and `data/generalization/sources.jsonl`. `src/finrag/serving/ingestion.py:ingest_html` connects HTML → `parse.py` → `chunk.py` → embeddings → `LiveStore.publish`. Online queries read published DB metadata/chunks instead of reparsing local HTML for each request.
+**Published filings** means the database catalog, not a source-code directory. Original HTML exists locally under ignored `data/raw/`; tracked manifests are `data/sources.jsonl` and `data/generalization/sources.jsonl`. `src/finrag/ingestion/publish.py:ingest_html` connects HTML → `ingestion/parse.py` → `ingestion/chunk.py` → embeddings → `LiveStore.publish`. Online queries read published DB metadata/chunks instead of reparsing local HTML for each request.
 
 ## Validation
 
 ```bash
 pytest -q
-ruff check src tests --exclude src/finrag/vendor
+ruff check src tests
 python -m pip check
 # Local PostgreSQL and source corpus must already exist:
 FINRAG_INTEGRATION=1 pytest -q
 python scripts/build_golden_v2.py --check
 ```
 
-Tests marked `corpus` require the ignored downloaded/processed files. They are explicitly skipped in a clean checkout rather than replaced with fake evidence. Opt-in DB tests use disposable fixture namespaces or controlled temporary rows and do not call paid models. Do not point tests at an unrelated database.
+Tests marked `corpus` require the ignored downloaded/processed files. They are explicitly skipped in a clean checkout rather than replaced with fake evidence. Current opt-in DB tests use disposable fixture namespaces and do not call paid models. Do not point tests at an unrelated database.
 
-The frozen golden builder is left unchanged for hash reproducibility; it has legacy script-style lint issues. Current CI lints `src/` and `tests/` excluding unchanged upstream vendor code. Known RAGAS ID-metric deprecation warnings do not represent quality scores.
+The frozen golden builder is left unchanged for hash reproducibility; it has legacy script-style lint issues. Current CI lints `src/` and `tests/`. The retired vendor code is no longer bundled.
 
 ## Spec-driven changes
 
@@ -80,7 +80,7 @@ Visibility belongs to the **repository**, not an individual branch. Every pushed
 
 ## Publication and local artifacts
 
-`.env`, raw/processed/cache files, local logs, complete traces and archives are ignored. The public repository includes source metadata, reviewed evaluation data, compact sanitized receipts and reproducible code. Large local experiment paths may require restoring their archived run before using historical replay commands; they are not required for the serving CLI.
+`.env`, raw/processed/cache files, local logs, complete traces and archives are ignored. The public repository includes source metadata, reviewed evaluation data, compact sanitized receipts and reproducible code. The historical archive and experimental drivers were deleted. Published summaries retain their original conditions; they do not promise replay of removed raw runs.
 
 Before committing:
 
@@ -91,4 +91,6 @@ python scripts/check_publication.py
 
 The scanner reads the actual Git index, checks size, token/private-key patterns, password-bearing database URLs, private home paths and matches to local credential values without printing them. It is a practical guard, not proof of absence of every possible secret. Never commit credentials or paste them into issues/logs. Regenerate caches outside Git.
 
-Python3.12/macOS is the current local validation environment; CI targets Linux3.12 unit contracts. The budget ledger uses POSIX file locks; Windows support is not claimed. Runtime and evaluation currently share a pinned dependency environment; splitting heavy evaluation dependencies into an optional extra remains a maintainability improvement.
+Python3.12/macOS is the current local validation environment; CI targets Linux3.12 unit contracts. The budget ledger uses POSIX file locks; Windows support is not claimed. Runtime dependencies and the optional evaluation extra now have separate lock files. The verified local environment is `.venv-migrate`; the old `.venv` was retained.
+
+Use `.venv-migrate/bin/python -m pytest -q` for the current checkout, with `requirements-evaluation.lock` installed. The original environment is not the active LangGraph environment. Source moves are recorded in `docs/module-moves.json`; only CLI/models compatibility entries remain in the package root.

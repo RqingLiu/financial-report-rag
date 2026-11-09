@@ -2,12 +2,15 @@ from typing import Literal
 
 from pydantic import Field, model_validator
 
-from ..planning import Contract, PipelineConfig
+from finrag.agent.planner import Contract, PipelineConfig
+from finrag.agent.policy import RunPolicy
 
 
 class ServingConfig(Contract):
+    run_policy: RunPolicy = Field(default_factory=RunPolicy)
+    engine: Literal["langgraph", "sequential"] = "langgraph"
     pipeline: PipelineConfig = Field(default_factory=lambda: PipelineConfig(fts_weight=0))
-    namespace: str = Field(default="finrag_live", pattern=r"^finrag_live(?:_[a-z0-9]+)?$")
+    namespace: str = Field(default="finrag_live_ready", pattern=r"^finrag_live(?:_[a-z0-9]+)?$")
     vector_search: Literal["exact", "hnsw", "ivfflat"] = "hnsw"
     hnsw_ef_search: int = Field(default=100, ge=20, le=1000)
     ann_max_scan: int = Field(default=20000, ge=100, le=1000000)
@@ -18,6 +21,7 @@ class ServingConfig(Contract):
     sql_timeout_ms: int = Field(default=5000, ge=100, le=60000)
     regroup: bool = False
     reranker: Literal["none", "llm", "crossencoder"] = "llm"
+    calculation_tool: bool = False
     crossencoder_model: Literal["rerank-3-lite", "rerank-3"] = "rerank-3-lite"
     evidence_tokens: int = Field(default=8000, ge=1000, le=16000)
     full_prompt_tokens: int = Field(default=24000, ge=4000, le=64000)

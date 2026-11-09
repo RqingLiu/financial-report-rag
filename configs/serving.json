@@ -44,5 +44,12 @@
   "max_inflight": 2,
   "max_raw_bytes": 25000000,
   "max_document_chunks": 10000,
-  "stop_usd": 1.6
+  "stop_usd": 1.6,
+  "engine": "langgraph",
+  "run_policy": {
+    "max_nodes": 16,
+    "max_model_calls": 32,
+    "deadline_seconds": null,
+    "max_request_usd": null
+  }
 }

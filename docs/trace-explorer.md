@@ -32,15 +32,15 @@ If the connection drops, the paid worker may still finish and save a trace. Refr
 
 | Step/view | Observable data | Code |
 | --- | --- | --- |
-| Catalog | Published filing count/fingerprint | `serving/runtime.py`, `serving/store.py` |
-| Planner | Validated company/report FY, needs, tasks, queries, limitations/clarification | `planning.py`, `planning_scope.py` |
-| Embedding | Query strings, role/model and recorded usage; vectors omitted | `planned_retrieval.py`, `serving/providers.py` |
-| Search | One task/company-FY/query per search, actual document IDs, k, distance, hit text | `planned_retrieval.py`, `serving/store.py` |
-| Fusion | De-duplicated candidate order and RRF score | `planned_retrieval.py: rank_records` |
-| Rerank | Actual shortlist count, method, grades/need IDs and cache status | `reranking.py`, `serving/runtime.py` |
-| Context | Included evidence, selected/source-overlap/budget decisions, token counts/caps | `rerank_context.py` |
-| Answer | Need-aligned sections, partial/missing evidence, clickable citations | `answering.py` |
-| Events/transport | Actual nested span start/end/status/duration, usage/cost projection | `tracing.py`, `serving/explorer.py`, `serving/api.py` |
+| Catalog | Published filing count/fingerprint | `serving/runtime.py`, `retrieval/store.py` |
+| Planner | Validated company/report FY, needs, tasks, queries, limitations/clarification | `agent/planner.py`, `agent/scope.py` |
+| Embedding | Query strings, role/model and recorded usage; vectors omitted | `retrieval/search.py`, `providers/voyage.py` |
+| Search | One task/company-FY/query per search, actual document IDs, k, distance, hit text | `retrieval/search.py`, `retrieval/store.py` |
+| Fusion | De-duplicated candidate order and RRF score | `retrieval/search.py: rank_records` |
+| Rerank | Actual shortlist count, method, grades/need IDs and cache status | `retrieval/rerank.py`, `serving/runtime.py` |
+| Context | Included evidence, selected/source-overlap/budget decisions, token counts/caps | `retrieval/evidence.py` |
+| Answer | Need-aligned sections, partial/missing evidence, clickable citations | `answering/generation.py` |
+| Events/transport | Actual nested span start/end/status/duration, usage/cost projection | `core/tracing.py`, `serving/explorer.py`, `serving/api.py` |
 | Browser | Connected DOM/SVG canvas, stage inspector, tables, evidence viewer, SSE parser | `serving/static/{index.html,style.css,app.js}` |
 | Code inspector | Fixed component/symbol registry, AST line ranges, at most140 lines per excerpt | `serving/code_view.py` |
 

@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-07",
+  "purpose": "Repository cleanup; no new financial-answer experiment",
+  "database": {
+    "removed_schemas": [
+      "finrag",
+      "finrag_live"
+    ],
+    "active_namespace": "finrag_live_ready",
+    "active_rows": {
+      "blocks": 17005,
+      "chunks": 4961,
+      "documents": 16,
+      "indexes": 1,
+      "postings": 521530,
+      "publications": 16,
+      "term_stats": 11352
+    },
+    "table_contents_unchanged": true,
+    "index_definitions_unchanged": true,
+    "bytes_reclaimed": 621535232,
+    "unrelated_databases_untouched": true
+  },
+  "reports": {
+    "files_archived": 1917,
+    "original_bytes": 1243909698,
+    "compressed_bytes": 181980982,
+    "checksums_verified_before_original_deletion": true,
+    "restore_smoke_group": "ann_scale",
+    "restore_smoke_files": 55
+  },
+  "code": {
+    "historical_modules_relocated": 18,
+    "current_cli": "finrag.serving.cli",
+    "legacy_package": "finrag.experiments.legacy",
+    "retired_bootstrap_removed": true,
+    "current_schema_default_aligned": true,
+    "financial_pipeline_algorithms_changed": false
+  },
+  "validation": {
+    "offline_passed": 125,
+    "offline_skipped": 7,
+    "active_db_contracts_passed": 6,
+    "lint_passed": true,
+    "public_receipt_checks_passed": true,
+    "v2_frozen_check_passed": true,
+    "v3_draft_check_passed": true,
+    "hnsw_query_smoke_passed": true,
+    "working_tree_sensitive_scan_passed": true
+  },
+  "paid_model_calls": 0,
+  "github_pushed": false,
+  "agent_runtime_implemented": false,
+  "limits": [
+    "Canonical child questions do not establish natural-query rewriting quality.",
+    "Historical database controls require an intentional isolated rebuild.",
+    "Six current DB tests passed; the retired schema-dependent test was archived, not claimed as a current passing test.",
+    "Compressed private traces and database metadata receipts are local-only."
+  ]
+}

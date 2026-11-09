@@ -4,13 +4,12 @@ import argparse
 import json
 from pathlib import Path
 
-from ..config import ROOT, settings
-from ..files import atomic_json
-from ..models import Filing
-from ..planning import Request
-from ..repository import Repository
-from .ingestion import bootstrap_legacy, ingest_html
-from .runtime import load_config, query, resources, safe_failure
+from finrag.agent.planner import Request
+from finrag.core.config import ROOT, settings
+from finrag.core.files import atomic_json
+from finrag.core.models import Filing
+from finrag.ingestion.publish import ingest_html
+from finrag.serving.runtime import load_config, query, resources, safe_failure
 
 
 def main():
@@ -18,7 +17,8 @@ def main():
     p.add_argument("--config", type=Path, default=ROOT / "configs/serving.json")
     sub = p.add_subparsers(dest="command", required=True)
     sub.add_parser("init")
-    sub.add_parser("bootstrap")
+    a = sub.add_parser("download", help="fetch pinned SEC source manifests/HTML")
+    a.add_argument("--refresh-manifest", action="store_true")
     a = sub.add_parser("ann")
     a.add_argument("--kind", choices=["hnsw", "ivfflat"], default="hnsw")
     a.add_argument("--lists", type=int, default=32)
@@ -40,7 +40,7 @@ def main():
         if args.command == "serve":
             import uvicorn
 
-            from .api import create_app
+            from finrag.serving.api import create_app
 
             uvicorn.run(create_app(cfg), host="127.0.0.1", port=args.port, access_log=False)
             return
@@ -56,18 +56,14 @@ def main():
             if data["status"] == "error":
                 raise SystemExit(1)
             return
+        if args.command == "download":
+            from finrag.ingestion.acquire import acquire
+
+            acquire(ROOT, settings().sec_user_agent, refresh_manifest=args.refresh_manifest)
+            return
         with resources(cfg, models=args.command == "ingest") as (store, _llm, embedder, _ce):
-            if args.command in ("init", "bootstrap"):
+            if args.command == "init":
                 store.initialize()
-            if args.command == "bootstrap":
-                legacy = Repository(settings().database_url.get_secret_value())
-                try:
-                    legacy.connection.execute("SET default_transaction_read_only=on")
-                    bootstrap_legacy(
-                        store, legacy, json.loads((ROOT / "configs/companies.json").read_text())
-                    )
-                finally:
-                    legacy.close()
             elif args.command == "ann":
                 store.build_ann(args.kind, args.lists)
             elif args.command == "ingest":

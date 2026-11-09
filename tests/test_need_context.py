@@ -2,11 +2,11 @@ from copy import deepcopy
 
 import pytest
 
-from finrag.chunk import token_count
-from finrag.context import build_context
-from finrag.models import Block, Chunk, Filing, Hit
-from finrag.need_context import need_proxies
-from finrag.planning import PipelineConfig, Plan, PlanRejected
+from finrag.agent.planner import PipelineConfig, Plan, PlanRejected
+from finrag.core.models import Block, Chunk, Filing, Hit
+from finrag.ingestion.chunk import token_count
+from finrag.retrieval.context import build_context
+from finrag.retrieval.need_context import need_proxies
 
 
 def inputs():
