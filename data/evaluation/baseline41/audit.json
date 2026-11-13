@@ -1,0 +1,579 @@
+{
+  "date": "2026-11-10",
+  "selection": [
+    "U01.01",
+    "U01.02",
+    "U01.04",
+    "U02.01",
+    "U02.04",
+    "U03.01",
+    "U03.03",
+    "U04.02",
+    "U04.04",
+    "U05.01",
+    "U05.02",
+    "U06.02",
+    "U06.03",
+    "U06.06",
+    "U07.01",
+    "U07.02",
+    "U08.01",
+    "U08.03",
+    "U09.01",
+    "U09.03",
+    "U10.01",
+    "U10.03",
+    "U11.01",
+    "U11.03",
+    "U12.01",
+    "U12.03",
+    "U13.01",
+    "U13.03",
+    "U14.02",
+    "U15.03",
+    "U15.04",
+    "U15.07",
+    "U16.01",
+    "U16.03",
+    "U17.02",
+    "U18.01",
+    "U18.02",
+    "U19.02",
+    "U19.04",
+    "U20.01",
+    "U20.06"
+  ],
+  "counts": {
+    "lookup": 3,
+    "calculation": 13,
+    "boundary": 6,
+    "synthesis": 11,
+    "time_reasoning": 4,
+    "comparison": 4
+  },
+  "parents": 20,
+  "prior_accepted_overlays": {
+    "U01.01": "C01",
+    "U03.01": "C02",
+    "U04.02": "C03",
+    "U06.03": "C04",
+    "U07.01": "C05",
+    "U11.01": "C06",
+    "U12.01": "C07",
+    "U14.02": "C08",
+    "U16.01": "C09",
+    "U16.03": "C10",
+    "U03.03": "C11",
+    "U20.01": "C12"
+  },
+  "additional_agent_reviewed_cases": 29,
+  "groups_before": 191,
+  "groups_after": 166,
+  "positive_retrieval_cases": 37,
+  "mandatory_facts": 80,
+  "required_numeric_checks": 75,
+  "dependency_only_numeric_checks": 2,
+  "source_locations": 133,
+  "case_audits": [
+    {
+      "id": "U01.01",
+      "category": "lookup",
+      "prior_reviewed": true,
+      "source_groups_before": 4,
+      "source_groups_after": 4,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C01复核修订；保留原始U意图ID并记录措辞/标签来源。"
+      ]
+    },
+    {
+      "id": "U01.02",
+      "category": "calculation",
+      "prior_reviewed": false,
+      "source_groups_before": 6,
+      "source_groups_after": 6,
+      "required_numbers": 15,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U01.04",
+      "category": "boundary",
+      "prior_reviewed": false,
+      "source_groups_before": 0,
+      "source_groups_after": 0,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U02.01",
+      "category": "calculation",
+      "prior_reviewed": false,
+      "source_groups_before": 4,
+      "source_groups_after": 4,
+      "required_numbers": 3,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U02.04",
+      "category": "synthesis",
+      "prior_reviewed": false,
+      "source_groups_before": 8,
+      "source_groups_after": 8,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "参考改为直接回应同步/背离，不要求额外给出未被问到的FCF表。"
+      ]
+    },
+    {
+      "id": "U03.01",
+      "category": "calculation",
+      "prior_reviewed": true,
+      "source_groups_before": 3,
+      "source_groups_after": 4,
+      "required_numbers": 6,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C02复核修订；保留原始U意图ID并记录措辞/标签来源。"
+      ]
+    },
+    {
+      "id": "U03.03",
+      "category": "boundary",
+      "prior_reviewed": true,
+      "source_groups_before": 0,
+      "source_groups_after": 0,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C11复核修订；保留原始U意图ID并记录措辞/标签来源。"
+      ]
+    },
+    {
+      "id": "U04.02",
+      "category": "calculation",
+      "prior_reviewed": true,
+      "source_groups_before": 4,
+      "source_groups_after": 5,
+      "required_numbers": 6,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C03复核修订；保留原始U意图ID并记录措辞/标签来源。"
+      ]
+    },
+    {
+      "id": "U04.04",
+      "category": "synthesis",
+      "prior_reviewed": false,
+      "source_groups_before": 7,
+      "source_groups_after": 7,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "收入/AR的判断分别引用利润表和各年资产负债表；不再用现金流表单一引用承担全部事实。"
+      ]
+    },
+    {
+      "id": "U05.01",
+      "category": "synthesis",
+      "prior_reviewed": false,
+      "source_groups_before": 6,
+      "source_groups_after": 3,
+      "required_numbers": 3,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "删除从父题继承的另一产品证据要求；只评本题所问产品的三年度ASP/bit变化。"
+      ]
+    },
+    {
+      "id": "U05.02",
+      "category": "synthesis",
+      "prior_reviewed": false,
+      "source_groups_before": 6,
+      "source_groups_after": 3,
+      "required_numbers": 3,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "删除从父题继承的另一产品证据要求；只评本题所问产品的三年度ASP/bit变化。"
+      ]
+    },
+    {
+      "id": "U06.02",
+      "category": "calculation",
+      "prior_reviewed": false,
+      "source_groups_before": 3,
+      "source_groups_after": 3,
+      "required_numbers": 4,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U06.03",
+      "category": "calculation",
+      "prior_reviewed": true,
+      "source_groups_before": 6,
+      "source_groups_after": 4,
+      "required_numbers": 4,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C04复核修订；保留原始U意图ID并记录措辞/标签来源。"
+      ]
+    },
+    {
+      "id": "U06.06",
+      "category": "lookup",
+      "prior_reviewed": false,
+      "source_groups_before": 2,
+      "source_groups_after": 2,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "删除父题带入的批次耗尽数值任务；保留成本结转与资产重估的区别。"
+      ]
+    },
+    {
+      "id": "U07.01",
+      "category": "time_reasoning",
+      "prior_reviewed": true,
+      "source_groups_before": 3,
+      "source_groups_after": 3,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C05复核修订；保留原始U意图ID并记录措辞/标签来源。"
+      ]
+    },
+    {
+      "id": "U07.02",
+      "category": "boundary",
+      "prior_reviewed": false,
+      "source_groups_before": 4,
+      "source_groups_after": 4,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "以CMBU定义、分部表和毛利说明替代无关的产品认证阶段证据。"
+      ]
+    },
+    {
+      "id": "U08.01",
+      "category": "comparison",
+      "prior_reviewed": false,
+      "source_groups_before": 6,
+      "source_groups_after": 6,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "引用收敛到三年库存和义务；不把未问的预付款加总设为必答。"
+      ]
+    },
+    {
+      "id": "U08.03",
+      "category": "synthesis",
+      "prior_reviewed": false,
+      "source_groups_before": 4,
+      "source_groups_after": 4,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U09.01",
+      "category": "comparison",
+      "prior_reviewed": false,
+      "source_groups_before": 3,
+      "source_groups_after": 3,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U09.03",
+      "category": "synthesis",
+      "prior_reviewed": false,
+      "source_groups_before": 4,
+      "source_groups_after": 4,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U10.01",
+      "category": "time_reasoning",
+      "prior_reviewed": false,
+      "source_groups_before": 6,
+      "source_groups_after": 6,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U10.03",
+      "category": "boundary",
+      "prior_reviewed": false,
+      "source_groups_before": 1,
+      "source_groups_after": 2,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "补总部所在地不等于最终需求的直接脚注；不把地区收入当受限利润。"
+      ]
+    },
+    {
+      "id": "U11.01",
+      "category": "calculation",
+      "prior_reviewed": true,
+      "source_groups_before": 7,
+      "source_groups_after": 6,
+      "required_numbers": 10,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C06复核修订；保留原始U意图ID并记录措辞/标签来源。"
+      ]
+    },
+    {
+      "id": "U11.03",
+      "category": "lookup",
+      "prior_reviewed": false,
+      "source_groups_before": 3,
+      "source_groups_after": 3,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U12.01",
+      "category": "calculation",
+      "prior_reviewed": true,
+      "source_groups_before": 6,
+      "source_groups_after": 6,
+      "required_numbers": 2,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C07复核修订；保留原始U意图ID并记录措辞/标签来源。"
+      ]
+    },
+    {
+      "id": "U12.03",
+      "category": "synthesis",
+      "prior_reviewed": false,
+      "source_groups_before": 2,
+      "source_groups_after": 2,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "补齐直接费用披露引用；明确会计摊销与经济耗用不必一一对应，区分事实和分析。"
+      ]
+    },
+    {
+      "id": "U13.01",
+      "category": "synthesis",
+      "prior_reviewed": false,
+      "source_groups_before": 4,
+      "source_groups_after": 4,
+      "required_numbers": 3,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U13.03",
+      "category": "boundary",
+      "prior_reviewed": false,
+      "source_groups_before": 0,
+      "source_groups_after": 0,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U14.02",
+      "category": "time_reasoning",
+      "prior_reviewed": true,
+      "source_groups_before": 2,
+      "source_groups_after": 2,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C08复核修订；保留原始U意图ID并记录措辞/标签来源。"
+      ]
+    },
+    {
+      "id": "U15.03",
+      "category": "calculation",
+      "prior_reviewed": false,
+      "source_groups_before": 3,
+      "source_groups_after": 3,
+      "required_numbers": 3,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U15.04",
+      "category": "calculation",
+      "prior_reviewed": false,
+      "source_groups_before": 7,
+      "source_groups_after": 7,
+      "required_numbers": 6,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "去掉无关净利润表任务，保留持续/终止经营和合计FCF的勾稽。"
+      ]
+    },
+    {
+      "id": "U15.07",
+      "category": "synthesis",
+      "prior_reviewed": false,
+      "source_groups_before": 4,
+      "source_groups_after": 4,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U16.01",
+      "category": "comparison",
+      "prior_reviewed": true,
+      "source_groups_before": 8,
+      "source_groups_after": 4,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C09复核修订；保留原始U意图ID并记录措辞/标签来源。"
+      ]
+    },
+    {
+      "id": "U16.03",
+      "category": "boundary",
+      "prior_reviewed": true,
+      "source_groups_before": 0,
+      "source_groups_after": 0,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C10复核修订；保留原始U意图ID并记录措辞/标签来源。",
+        "TOP500仍是错误举例约束（若回答提及才判断），不强制答案额外讨论该未问指标。"
+      ]
+    },
+    {
+      "id": "U17.02",
+      "category": "calculation",
+      "prior_reviewed": false,
+      "source_groups_before": 3,
+      "source_groups_after": 3,
+      "required_numbers": 6,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U18.01",
+      "category": "synthesis",
+      "prior_reviewed": false,
+      "source_groups_before": 5,
+      "source_groups_after": 5,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    },
+    {
+      "id": "U18.02",
+      "category": "time_reasoning",
+      "prior_reviewed": false,
+      "source_groups_before": 8,
+      "source_groups_after": 6,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "补FY2025 ZT交易状态；删除未被问到的联网产品证据要求。"
+      ]
+    },
+    {
+      "id": "U19.02",
+      "category": "comparison",
+      "prior_reviewed": false,
+      "source_groups_before": 18,
+      "source_groups_after": 15,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "删除与本题无关的供给预付款、H20和MI308费用证据；补FY2023采购承诺定义。"
+      ]
+    },
+    {
+      "id": "U19.04",
+      "category": "calculation",
+      "prior_reviewed": false,
+      "source_groups_before": 12,
+      "source_groups_after": 2,
+      "required_numbers": 1,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "删除10组跨父题继承的采购承诺/预付款证据及云合同叙述；仅评已确认费用及其桥接。"
+      ]
+    },
+    {
+      "id": "U20.01",
+      "category": "calculation",
+      "prior_reviewed": true,
+      "source_groups_before": 4,
+      "source_groups_after": 4,
+      "required_numbers": 9,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "沿用已接受的C12复核修订；保留原始U意图ID并记录措辞/标签来源。"
+      ]
+    },
+    {
+      "id": "U20.06",
+      "category": "synthesis",
+      "prior_reviewed": false,
+      "source_groups_before": 5,
+      "source_groups_after": 5,
+      "required_numbers": 0,
+      "audit": "source_span_DOM_cutoff_numeric_dependency_checks_passed",
+      "notes": [
+        "原文、任务范围与rubric已逐项检查；保留原任务要求。"
+      ]
+    }
+  ],
+  "not_claimed": [
+    "independent_human_review_of_all_41",
+    "exhaustive_numeric_claim_audit",
+    "new_model_answers",
+    "new_quality_score",
+    "independent_holdout"
+  ]
+}

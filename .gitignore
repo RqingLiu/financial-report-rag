@@ -47,3 +47,7 @@ reports/ann_scale/*/queries.json
 
 # Isolated verified LangGraph environment; original .venv is retained.
 .venv-migrate/
+
+# Independent reviewer originals contain local absolute citations; publish sanitized conclusions only.
+/data/evaluation/pilot_review/independent_review.md
+/data/evaluation/pilot_review/independent_review_evidence.json

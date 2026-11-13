@@ -9,6 +9,15 @@ from fastapi import HTTPException
 SOURCE_ROOT = Path(__file__).resolve().parents[1]
 # One registry serves the node labels, code map and bounded source viewer.
 COMPONENTS = {
+    "resource_setup": [
+        ("serving/runtime.py", "query", "图外资源初始化、清理和失败终态"),
+        ("serving/resources.py", "resources", "创建并最终关闭数据库及模型客户端"),
+    ],
+    "execution_policy": [
+        ("agent/policy.py", "RunControl", "全请求预算、attempt、deadline与取消"),
+        ("providers/llm.py", "Budget.reserve", "唯一账本中的请求/批次/累计金额及答案预留"),
+        ("providers/llm.py", "PaidClient.post", "付费尝试、HTTP时限和保守结算"),
+    ],
     "catalog_snapshot": [
         (
             "retrieval/store.py",
@@ -37,7 +46,11 @@ COMPONENTS = {
         ),
     ],
     "retrieve": [
-        ("retrieval/store.py", "LiveStore.search", "执行带文档与披露日期过滤的 pgvector / 词法检索"),
+        (
+            "retrieval/store.py",
+            "LiveStore.search",
+            "执行带文档与披露日期过滤的 pgvector / 词法检索",
+        ),
         (
             "retrieval/search.py",
             "PlannedRetriever.search",
@@ -48,7 +61,11 @@ COMPONENTS = {
     "fusion": [("retrieval/search.py", "rank_records", "RRF 融合、去重与任务 / 分组交错排序")],
     "rerank": [
         ("retrieval/rerank.py", "grade_candidates", "LLM 精排：分批提示、缓存、评分校验"),
-        ("retrieval/evidence.py", "candidates_for_rerank", "把候选原文整理为带来源与行号的精排输入"),
+        (
+            "retrieval/evidence.py",
+            "candidates_for_rerank",
+            "把候选原文整理为带来源与行号的精排输入",
+        ),
         ("retrieval/selection.py", "select_context", "截取粗排 Top80，选择实际 reranker 分支"),
         ("providers/llm.py", "DeepSeek.generate", "共享 DeepSeek API 适配；缓存未命中时真实请求"),
     ],
@@ -68,7 +85,11 @@ COMPONENTS = {
     "crossencoder": [
         ("providers/voyage.py", "CrossEncoder.rank", "可选的专用 Voyage reranker，默认未启用")
     ],
-    "agent_state": [("agent/state.py", "RunState", "每次请求的业务状态"), ("agent/policy.py", "RunControl", "节点、调用、费用及取消检查"), ("agent/graph.py", "build_graph", "LangGraph 节点与条件边")],
+    "agent_state": [
+        ("agent/state.py", "RunState", "每次请求的业务状态"),
+        ("agent/policy.py", "RunControl", "节点、调用、费用及取消检查"),
+        ("agent/graph.py", "build_graph", "LangGraph 节点与条件边"),
+    ],
     "entry": [
         ("serving/api.py", "create_app", "浏览器 HTTP / SSE 入口"),
         ("serving/runtime.py", "query", "创建资源、执行查询并保存 trace"),
@@ -85,12 +106,44 @@ COMPONENTS = {
 }
 
 
+NODE_COMPONENTS = {
+    "catalog": ("catalog", "catalog_snapshot"),
+    "plan": ("plan", "query_plan"),
+    "regroup": ("regroup_plan", "evidence_regroup"),
+    "retrieve": ("retrieve", "retrieve"),
+    "fusion": ("fuse", "fusion"),
+    "context": ("context", "context_build"),
+    "evidence_gate": ("evidence_gate", None),
+    "calculate": ("calculate", None),
+    "answer": ("answer", "generation"),
+    "validate": ("validate", None),
+}
+for _node, (_function, _stage) in NODE_COMPONENTS.items():
+    COMPONENTS["node_" + _node] = [
+        ("agent/nodes.py", _function, "实际图节点适配器"),
+        ("agent/graph.py", "build_graph", "图结构与条件边"),
+        *COMPONENTS.get(_stage, []),
+    ]
+
+
 def code_view(component):
     if component not in COMPONENTS:
         raise HTTPException(404, "component_not_found")
     references = list(COMPONENTS[component])
     if component in {"catalog_snapshot", "query_plan", "evidence_regroup", "fusion", "generation"}:
-        references.append(("agent/runner.py", "execute", "总编排：调用该阶段"))
+        references.append(
+            (
+                "agent/nodes.py",
+                {
+                    "catalog_snapshot": "catalog",
+                    "query_plan": "plan",
+                    "evidence_regroup": "regroup_plan",
+                    "fusion": "fuse",
+                    "generation": "answer",
+                }[component],
+                "节点适配：调用该实现",
+            )
+        )
     snippets = []
     for relative, symbol, role in references:
         path = SOURCE_ROOT / relative

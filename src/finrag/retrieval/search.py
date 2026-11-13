@@ -4,6 +4,7 @@ from collections import defaultdict
 from time import perf_counter
 
 from finrag.agent.planner import PipelineConfig, PlanRejected
+from finrag.agent.policy import check_control
 from finrag.core.models import Hit
 from finrag.ingestion.chunk import config_id
 from finrag.retrieval.context import EvidenceStore, build_context
@@ -133,6 +134,7 @@ class PlannedRetriever:
             "retrieve", {"jobs": len(jobs), "index_id": self.index_id, "as_of": str(plan.as_of)}
         ) as parent:
             for job in jobs:
+                check_control()
                 with trace.stage("retrieve." + job["method"], job) as s:
                     started = perf_counter()
                     diagnostics_start = len(getattr(self.repository, "search_diagnostics", []))

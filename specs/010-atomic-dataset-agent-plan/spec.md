@@ -16,3 +16,8 @@ Date: 2026-11-07. Scope: reconstruct the 20 compound development questions and d
 ## Acceptance
 
 All 20 parents have mapped children, each child has a scoped answer/rubric and traceable evidence. Parent constraints/checks are accounted for. Rebuilding/checking the artifact is deterministic and offline; v2 hashes remain unchanged. Tests cover scoping, leakage, parent accounting and child-ID packet preparation. The runtime proposal separates implemented controls from planned controls and keeps accounting correctness distinct from orchestration.
+
+
+## Authorized data-review increment — 2026-11-09
+
+Select 12 existing canonical intents for source/period/unit/rubric review and author 12 explicitly synthetic colloquial, exclusion and ambiguity/boundary inputs. Provide a human-readable review packet, offline labels and separate query-only requests. Preserve the existing v2/v3 artifacts and frozen hashes; corrections remain proposed overlays pending human approval. Ambiguous inputs must not receive hidden entity/year confirmations from their latent mapping; clarify first and do not apply the latent canonical answer rubric until scope is confirmed. No model API, database changes, runtime changes, holdout authoring or publication in this increment.

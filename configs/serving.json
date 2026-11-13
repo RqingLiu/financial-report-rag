@@ -49,7 +49,14 @@
   "run_policy": {
     "max_nodes": 16,
     "max_model_calls": 32,
-    "deadline_seconds": null,
-    "max_request_usd": null
+    "max_provider_calls": 64,
+    "max_sql_attempts": 192,
+    "max_schema_repairs": 1,
+    "max_sql_retries": 1,
+    "max_connect_retries": 0,
+    "deadline_seconds": 180.0,
+    "max_request_usd": "0.15",
+    "answer_headroom_usd": "0.04",
+    "fallback": "evidence_only"
   }
 }

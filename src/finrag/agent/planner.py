@@ -428,6 +428,11 @@ def plan_request(request, catalog, config, llm, cache_dir):
         }
     repairs = 0
     for attempt in range(2):
+        from finrag.agent.policy import check_control, claim_repair
+
+        check_control()
+        if attempt:
+            claim_repair("planner")
         result = llm.generate(messages, max_tokens=4096, json_object=True, purpose="query_planning")
         if result["finish_reason"] != "stop":
             raise PlanRejected("planner_response_truncated")

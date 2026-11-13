@@ -26,13 +26,13 @@ class VoyageEmbedder:
         cache_dir.mkdir(parents=True, exist_ok=True)
         self.ledger_path = cache_dir / "usage.jsonl"
         self.budget_usd = budget_usd
+        if model not in self.PRICE_PER_MILLION:
+            raise ValueError("Configure an explicit price before enabling another embedding model")
         self.client = httpx.Client(
             base_url="https://api.voyageai.com/v1",
             timeout=90,
             headers={"Authorization": f"Bearer {api_key}"},
         )
-        if model not in self.PRICE_PER_MILLION:
-            raise ValueError("Configure an explicit price before enabling another embedding model")
 
     def close(self):
         self.client.close()
@@ -95,12 +95,16 @@ class VoyageEmbedder:
         return embeddings
 
     def embed(self, texts: list[str], input_type="document") -> list[list[float]]:
+        from finrag.agent.policy import check_control
+
+        check_control()
         keys = [self._key(t, input_type) for t in texts]
         missing = list(
             dict.fromkeys(k for k in keys if not (self.cache_dir / f"{k}.json").exists())
         )
         by_key = dict(zip(keys, texts))
         for offset in range(0, len(missing), 32):
+            check_control()
             batch = missing[offset : offset + 32]
             vectors = self._request([by_key[k] for k in batch], input_type)
             for key, vector in zip(batch, vectors):
@@ -111,4 +115,5 @@ class VoyageEmbedder:
                 flush=True,
             )
             time.sleep(0.15)
+        check_control()
         return [json.loads((self.cache_dir / f"{key}.json").read_text()) for key in keys]

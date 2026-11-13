@@ -1,4 +1,5 @@
 from copy import deepcopy
+from decimal import Decimal
 
 import pytest
 
@@ -7,6 +8,7 @@ from finrag.evaluation.answers import (
     evaluate,
     fingerprint,
     numeric_result,
+    report,
     score_packet,
 )
 
@@ -154,3 +156,64 @@ def test_explicit_decrease_amount_is_not_a_negative_level(replay):
     for quote in ["Revenue decreased to 78 units.", "收入下降至78单位。", "收入增加78单位。"]:
         with pytest.raises(ValueError, match="adjacent decrease"):
             numeric_result({**row, "quote": quote}, check, quote)
+
+
+def test_explicit_display_unit_conversion_keeps_literal_and_checks_scale(replay):
+    packet, verdict = replay
+    check = {
+        **packet["checks"][0],
+        "unit": "USD_million",
+        "expected": "440",
+        "exact_decimal": "440",
+        "decimal_places": 0,
+    }
+    row = {
+        **verdict["numbers"][0],
+        "quote": "MI308净费用约4.4亿美元。",
+        "literal": "4.4",
+        "unit": "USD_million",
+        "display_unit": "USD_100million",
+    }
+    result = numeric_result(row, check, row["quote"])
+    assert result["status"] == "correct"
+    assert Decimal(result["observed"]) == 440
+    assert result["unit_scale"] == "100"
+    # The same written number without conversion is a real magnitude error.
+    wrong = {k: v for k, v in row.items() if k != "display_unit"}
+    assert numeric_result(wrong, check, wrong["quote"])["status"] == "material_error"
+    for bad in [
+        {**row, "display_unit": "arbitrary_100x"},
+        {**row, "quote": "MI308净费用4.4百万美元。"},
+    ]:
+        with pytest.raises(ValueError):
+            numeric_result(bad, check, bad["quote"])
+
+
+def test_converted_rounding_uses_the_precision_of_the_written_unit(replay):
+    packet, verdict = replay
+    check = {
+        **packet["checks"][0],
+        "unit": "USD_million",
+        "expected": "443",
+        "exact_decimal": "443",
+        "decimal_places": 0,
+    }
+    row = {
+        **verdict["numbers"][0],
+        "quote": "净费用约4.4亿美元。",
+        "literal": "4.4",
+        "unit": "USD_million",
+        "display_unit": "USD_100million",
+    }
+    assert numeric_result(row, check, row["quote"])["status"] == "correct_rounded"
+
+
+def test_failed_answer_report_keeps_required_numeric_denominator(replay):
+    packet, verdict = replay
+    packet.update(answer="", status="error")
+    packet["query"]["question"] = "What was the share?"
+    packet["packet_hash"] = verdict["packet_hash"] = fingerprint(packet)
+    verdict.update(facts=[], numbers=[])
+    output = report(evaluate([packet], [verdict]), [packet])
+    assert "1 项应查数值均保留在分母，计 not_generated" in output
+    assert "无适用的冻结数值检查" not in output

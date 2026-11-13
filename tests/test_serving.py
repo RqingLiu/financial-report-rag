@@ -158,7 +158,7 @@ def test_api_input_admission_and_safe_errors(monkeypatch):
         pass
     monkeypatch.setattr(
         "finrag.serving.api.query",
-        lambda *args: {
+        lambda *args, **kwargs: {
             "query_id": "q",
             "status": "clarify",
             "plan": {"clarification_questions": ["Which company?"]},
@@ -171,7 +171,7 @@ def test_api_input_admission_and_safe_errors(monkeypatch):
     assert client.post("/query", content=b"x" * 100001).status_code == 413
     monkeypatch.setattr(
         "finrag.serving.api.query",
-        lambda *args: (_ for _ in ()).throw(ValueError("password secret")),
+        lambda *args, **kwargs: (_ for _ in ()).throw(ValueError("password secret")),
     )
     response = client.post("/query", json={"question": "hi", "as_of": "2025-01-01"})
     assert response.status_code == 503 and "secret" not in response.text
@@ -191,7 +191,7 @@ def test_api_rejects_excess_queries_before_worker_queue(monkeypatch):
 
     started, release = Event(), Event()
 
-    def slow(*args):
+    def slow(*args, **kwargs):
         started.set()
         assert release.wait(5)
         return {"query_id": "q", "status": "clarify", "plan": {}, "runtime_evidence": []}

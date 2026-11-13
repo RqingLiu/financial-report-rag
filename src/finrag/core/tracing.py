@@ -31,7 +31,7 @@ def callsite(frame):
 class Trace:
     def __init__(self, query_id, inputs, on_event=None):
         self.data = {
-            "schema_version": 1,
+            "schema_version": 2,
             "run_id": uuid4().hex,
             "query_id": query_id,
             "created_at": datetime.now(UTC).isoformat(),
@@ -42,13 +42,28 @@ class Trace:
         }
         self.stack = []
         self.on_event = on_event
+        self.sequence = 0
+        self.operation_id = None
+        self.data["event_index"] = []
 
     def emit(self, kind, row):
+        # Additive, bounded observation metadata. Observers never own execution.
+        self.sequence += 1
+        event = {
+            **row,
+            "event_version": 2,
+            "sequence": self.sequence,
+            "kind": kind,
+            "run_id": self.data["run_id"],
+            "query_id": self.data["query_id"],
+        }
+        self.data["event_index"].append(
+            {k: event[k] for k in ("sequence", "kind", "id", "operation_id", "node") if k in event}
+        )
         if self.on_event:
-            # Observability must never change pipeline behavior or cause a paid retry.
             try:
-                self.on_event(kind, row)
-            except Exception:  # noqa: BLE001, S110 — noncritical observers cannot trigger retries
+                self.on_event(kind, event)
+            except Exception:  # noqa: BLE001, S110 — observers cannot trigger retries
                 pass
 
     @contextmanager
@@ -57,6 +72,7 @@ class Trace:
             "id": uuid4().hex,
             "parent_id": self.stack[-1] if self.stack else None,
             "name": name,
+            "operation_id": self.operation_id,
             "inputs": inputs or {},
             "outputs": {},
             "status": "running",

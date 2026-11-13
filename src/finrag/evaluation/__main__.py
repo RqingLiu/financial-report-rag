@@ -12,6 +12,9 @@ def main():
     subs = parser.add_subparsers(dest="command", required=True)
     for name, help_text in {
         "run": "Run query-only cases through the live engine; uncached calls may cost money",
+        "validate-set": "Validate an accepted dataset without DB or providers",
+        "diagnose": "Analyze saved traces and imported judgments without providers",
+        "compare": "Compare paired offline diagnostic reports without providers",
         "prepare-judge": "Build offline judge packets from saved traces and references",
         "export-judge": "Export human/LLM judge prompts; no API calls",
         "score": "Validate imported verdicts and score saved answers; no API calls",
@@ -38,7 +41,12 @@ def main():
             sys.argv = [name, *(["--check"] if check else [])]
             runpy.run_path(str(ROOT / "scripts" / name), run_name="__main__")
         return
-    if args.command == "run":
+    if args.command in ("validate-set", "diagnose", "compare"):
+        from finrag.evaluation.benchmark import main as benchmark
+
+        sys.argv = ["evaluation", args.command, *rest]
+        benchmark()
+    elif args.command == "run":
         from finrag.evaluation.run import main as run
 
         sys.argv = ["evaluation run", *rest]

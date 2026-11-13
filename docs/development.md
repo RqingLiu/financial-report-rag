@@ -19,11 +19,13 @@ Use **`fr-rag-serve`** (or `python -m finrag.serving.cli`) for the current query
 
 ## Follow the current query in code
 
-Paths below are relative to this repository, `financial-report-rag/`. Use Cmd+P in the editor to find a path. A workflow step is not a separate file: shared adapters serve multiple stages, and `agent/runner.py:execute` calls the implementations. The browser's **Code map** provides clickable functions and dynamically resolved current line numbers from `serving/code_view.py`.
+Paths below are relative to this repository, `financial-report-rag/`. Use Cmd+P in the editor to find a path. `agent/runner.py:execute` starts a request; `agent/graph.py:build_graph` defines nodes and edges; `agent/nodes.py` calls the algorithms. A graph node can contain several operations, such as reranking and context assembly. [All ten nodes, edge conditions and state flow](repository-layout.md#langgraph节点边与模块怎么串起来). The browser's **Code map** provides clickable functions and dynamically resolved current line numbers from `serving/code_view.py`.
 
 | Workflow | Repository implementation | Responsibility |
 | --- | --- | --- |
-| HTTP / orchestration | `src/finrag/serving/api.py:create_app` → `src/finrag/serving/runtime.py:query` → `execute` | Receive request, create resources, sequence stages, persist trace |
+| HTTP / request lifecycle | `src/finrag/serving/api.py:create_app` → `src/finrag/serving/runtime.py:query` → `agent/runner.py:execute` | Receive request, bind resources/control, invoke graph and persist trace |
+| Graph wiring | `src/finrag/agent/graph.py:build_graph`, `after_plan`, `after_gate` | Register nodes and choose conditional edges |
+| Node adapters | `src/finrag/agent/nodes.py` | Read/write RunState and invoke planner/retrieval/answering modules |
 | Published filings | `src/finrag/retrieval/store.py:LiveStore.catalog` → `src/finrag/agent/planner.py:Catalog.metadata` | Join published DB documents; apply disclosure cutoff to planner metadata |
 | Planner | `src/finrag/agent/planner.py:plan_request`, `validate_plan`; `src/finrag/agent/scope.py` | Needs/tasks/query generation; company/FY/constraint validation |
 | Query embeddings | `src/finrag/retrieval/search.py:PlannedRetriever.search` → `src/finrag/providers/voyage.py:DocumentEmbedder._request` | Query batching/cache and Voyage adapter |

@@ -28,7 +28,7 @@ fr-rag-serve = "finrag.serving.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-"finrag.serving" = ["static/*.html", "static/*.css", "static/*.js"]
+"finrag.serving" = ["static/*.html", "static/css/*.css", "static/js/*.js"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -2,7 +2,9 @@
 
 import argparse
 import json
+import signal
 from pathlib import Path
+from threading import Event
 
 from finrag.agent.planner import Request
 from finrag.core.config import ROOT, settings
@@ -45,13 +47,21 @@ def main():
             uvicorn.run(create_app(cfg), host="127.0.0.1", port=args.port, access_log=False)
             return
         if args.command == "query":
-            data = query(
-                Request(
-                    question=args.question, as_of=args.as_of, reading_context=args.reading_context
-                ),
-                cfg,
-                do_generate=not args.retrieve_only,
-            )
+            cancel = Event()
+            previous = signal.signal(signal.SIGINT, lambda *_: cancel.set())
+            try:
+                data = query(
+                    Request(
+                        question=args.question,
+                        as_of=args.as_of,
+                        reading_context=args.reading_context,
+                    ),
+                    cfg,
+                    do_generate=not args.retrieve_only,
+                    cancelled=cancel.is_set,
+                )
+            finally:
+                signal.signal(signal.SIGINT, previous)
             print(json.dumps(data, ensure_ascii=False, indent=2))
             if data["status"] == "error":
                 raise SystemExit(1)

@@ -103,10 +103,10 @@ def test_static_history_is_read_only_and_packaged(monkeypatch, tmp_path):
     monkeypatch.setattr("finrag.serving.api.query", lambda *_: pytest.fail("read called model"))
     client = TestClient(create_app(ServingConfig()))
     page = client.get("/")
-    assert page.status_code == 200 and "Trace Explorer" in page.text
+    assert page.status_code == 200 and "Workflow Explorer" in page.text
     assert "script-src 'self'" in page.headers["content-security-policy"]
-    assert client.get("/static/app.js").status_code == 200
-    assert client.get("/static/style.css").status_code == 200
+    assert client.get("/static/js/main.js").status_code == 200
+    assert client.get("/static/css/style.css").status_code == 200
     assert client.get("/traces").json()["traces"][0]["query_id"] == qid
     assert client.get(f"/traces/{qid}").json()["query_id"] == qid
     assert client.get("/traces/not-an-id").status_code == 404
@@ -129,7 +129,7 @@ def test_browser_rejects_foreign_origins_and_rebinding_hosts():
 
 
 def test_stream_emits_real_stages_and_terminal_snapshot(monkeypatch):
-    def fake_query(request, config, *, query_id, on_event, do_generate):
+    def fake_query(request, config, *, query_id, on_event, do_generate, cancelled):
         assert do_generate is False
         trace = Trace(query_id, {"original_question": request.question}, on_event)
         with trace.stage("catalog_snapshot") as row:

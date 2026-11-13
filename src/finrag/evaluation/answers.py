@@ -119,6 +119,25 @@ def numeric_result(row, check, answer):
     require(row.get("unit") == check["unit"], "aligned numeric unit mismatch")
     normalized = literal.replace(",", "").replace("−", "-")
     observed = Decimal("-" + normalized[1:-1] if normalized.startswith("(") else normalized)
+    # A reviewer may map an explicitly displayed USD unit to the frozen check
+    # unit. Keep the literal unchanged; never accept an arbitrary multiplier.
+    display_unit = row.get("display_unit", check["unit"])
+    scale = Decimal(1)
+    if display_unit != check["unit"]:
+        conversions = {
+            ("USD_100million", "USD_million"): ("100", r"亿美元"),
+            ("USD_billion", "USD_million"): ("1000", r"(?:billion\s+(?:US\s+)?dollars|十亿美元)"),
+        }
+        conversion = conversions.get((display_unit, check["unit"]))
+        require(conversion is not None, "unsupported numeric unit conversion")
+        factor, marker = conversion
+        require(
+            re.search(rf"{re.escape(literal)}\s*{marker}", quote, re.IGNORECASE),
+            "display unit must be explicit next to the literal",
+        )
+        scale = Decimal(factor)
+    display_places = max(0, -observed.as_tuple().exponent)
+    observed *= scale
     direction = row.get("direction", 1)
     require(type(direction) is int and direction in (-1, 1), "invalid numeric direction")
     if direction == -1:
@@ -138,11 +157,11 @@ def numeric_result(row, check, answer):
     minor = Decimal(check["tolerance"]["minor_precision_abs"])
     rounded = row.get("accept_rounding", False)
     require(isinstance(rounded, bool), "accept_rounding must be boolean")
-    places = max(0, -observed.as_tuple().exponent)
     round_match = (
         rounded
-        and places < check["decimal_places"]
-        and observed == exact.quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP)
+        and Decimal(1).scaleb(-display_places) * scale > Decimal(1).scaleb(-check["decimal_places"])
+        and observed / scale
+        == (exact / scale).quantize(Decimal(1).scaleb(-display_places), rounding=ROUND_HALF_UP)
     )
     status = (
         "correct"
@@ -153,7 +172,10 @@ def numeric_result(row, check, answer):
         if delta <= minor
         else "material_error"
     )
-    return {"status": status, "observed": str(observed), "absolute_error": str(delta)}
+    result = {"status": status, "observed": str(observed), "absolute_error": str(delta)}
+    if scale != 1:
+        result.update(display_unit=display_unit, unit_scale=str(scale))
+    return result
 
 
 def score_packet(packet, verdict):
@@ -395,7 +417,11 @@ def report(scores, packets):
                 )
         out += ["", "### 数值", ""]
         if not r["numbers"]:
-            out.append("无适用的冻结数值检查。事实 rubric 中的数字仍按事实项检查。")
+            out.append(
+                f"未生成回答；{r['numeric_count']} 项应查数值均保留在分母，计 not_generated。"
+                if r["status"] != "generated" and r["numeric_count"]
+                else "无适用的冻结数值检查。事实 rubric 中的数字仍按事实项检查。"
+            )
         for n in r["numbers"]:
             out.append(
                 f"- **{n['id']} · {n['status']}**：{n['metric']}；"

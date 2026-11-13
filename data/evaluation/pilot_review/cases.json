@@ -1,0 +1,2256 @@
+{
+  "version": "pilot-review-draft",
+  "date": "2026-11-09",
+  "status": "pending_human_review",
+  "dataset_role": "development_review_only",
+  "independent_holdout": false,
+  "paid_execution_authorized": false,
+  "source_inputs_sha256": {
+    "data/evaluation/golden_v3/reference_answers.md": "60990cb7695072bb76be38bc29ab0128a71595a1b9c84e537a592c72c05f90d9",
+    "data/evaluation/golden_v3/lineage.jsonl": "6671ab60121b647b7561ec53885ffa3ba5b08265706cea3c24d746d56684188e",
+    "data/evaluation/golden_v3/parent_child_map.md": "c1d3fb493c1114e12db2157f1c39142a3d77992146e02e6ddc5c96efc887ba3d",
+    "data/evaluation/golden_v3/evidence_catalog.jsonl": "8f7cadac7b0ead2b6c337ef1b6635478aaecbdd0f825305bbfa16af52737c424",
+    "data/evaluation/golden_v3/numeric_checks.jsonl": "41663b12e4c5230e01f14c33df7e6502e90476f0b441cb204793752dd0fa42b3",
+    "data/evaluation/golden_v3/retrieval_queries.jsonl": "3a8c27b3a57d888ae4fab153829ae3ee0edb4538682a5172ac1a8c42497771e6",
+    "data/evaluation/golden_v3/README.md": "992228a48ae8ed2c7ac7beb6c1339d220458f6fcd157adf8f5424fff528ceae9",
+    "data/evaluation/golden_v3/retrieval_case_ids.json": "7ef0eb96c9be4b67c0bbf3aa2833b8d4576f846254339396fc5da983033ef995",
+    "data/evaluation/golden_v3/split_specs.json": "6c522360d13850feaaee1a38ae5c001f8debd572a862848cb3d2a3737ae63ca1",
+    "data/evaluation/golden_v3/manifest.json": "0c2d10f95c145a24ffe67879c0cd893c5477bc9a91c074e1ceb4685e85745189",
+    "data/evaluation/golden_v3/golden.jsonl": "d9b97bf1ef1c5fa80d44f8e021b385cde96be5f20e3af5024951ce0a55d4d1cc",
+    "data/evaluation/golden_v3/planner_expectations.jsonl": "1a11ba1655d3776af8fe728f183787b6d7c508553a34a261700df86d7e8515af",
+    "data/evaluation/golden_v3/evaluation_dataset.jsonl": "85d3323792e1f58228b664f020fffd501e249daa299d7feda3f1b94288ad4bff",
+    "data/evaluation/golden_v3/rubrics.jsonl": "dc0640d4a03484a7b386e77cc05c97faad12b8b785854188b5c4f0e26257e096",
+    "data/evaluation/golden_v3/parent_coverage.json": "bc5b22c8ffd917aafd4030ef3f24f9bd13bda43d00f4cddb665212e7b9ec3541",
+    "data/evaluation/golden_v2/reference_answers.md": "44c89dd95a2fdfc9b46ccdee260a4aa866bad9f7d93ec7157959573559d25961",
+    "data/evaluation/golden_v2/evidence_catalog.jsonl": "1be56865fffc89d92e403c0621732962805cb5ca1d834d57e5d0ca577b0edb8f",
+    "data/evaluation/golden_v2/answer_specs.json": "560f42384c1cbc8418ca3a0f48dc7e1b6c69610acd286d8b59df9696345ea040",
+    "data/evaluation/golden_v2/numeric_specs.json": "d2c20b08235ab1e86e7ddfb3b57ab2735dd20db54fab7c209bfe114af8ba55cd",
+    "data/evaluation/golden_v2/numeric_checks.jsonl": "64562c899aec9338cb1512ee656692d18824d9ad4ff70b0a3cb4bde3129ebf50",
+    "data/evaluation/golden_v2/label_specs.json": "6d6c95c3b82f56155c09cfd40e2e3d1b60d45a410691cc97a0be6789413b1100",
+    "data/evaluation/golden_v2/retrieval_queries.jsonl": "2d9d7a4b4c6e6b10f7b234687cb8fd6f8689bdde8960fa8e1187c000bb124f1c",
+    "data/evaluation/golden_v2/README.md": "b7c8ab7c6b99a241d53aa52d6105a8e80bd9b3d817154ff26f3aa40ab0845064",
+    "data/evaluation/golden_v2/manifest.json": "a7e50801ae9edc691a68fc47af43d8427f70adc8a523d61167c2f82199ad168a",
+    "data/evaluation/golden_v2/golden.jsonl": "04d39406720979da6c7ec092d073d6e24d9c9b8747d6c10e36162c3eb0220f3a",
+    "data/evaluation/golden_v2/user_feedback.json": "956d1dc687400279429a269a9b47855b4ee004dd1ab5504b7593201098709be5",
+    "data/evaluation/golden_v2/SPEC.md": "66f9f3848bf254c10d837b46ed15897040ca2db37d34e1bb68147da28b58058d",
+    "data/evaluation/golden_v2/evaluation_dataset.jsonl": "0c00efcec4ed395954fabfb3db1b208499f1e726ce61826c614ef6c6b006b68d",
+    "data/evaluation/golden_v2/rubrics.jsonl": "a95a64e5b22b90d31fd2f9c5347f9ec7b2db2752ba181d581c161cc1f6b99d2d"
+  },
+  "query_file_sha256": "d7edc78b203ae5d34a2a3fbd6ba23dcf38d947681b8d3b61193804f38a11f77b",
+  "rules": [
+    "Offline labels, references, mappings and expected actions must never be sent as user input.",
+    "Human review is required before label promotion or paid testing.",
+    "This is a purposive sample, not independent holdout data; variants stay with their parent/related family.",
+    "All corrections are proposed overlays; existing v2/v3 files are unchanged.",
+    "Ambiguous inputs have no answer reference until their material scope is confirmed.",
+    "corpus_scope is evaluation metadata and must not supply missing user intent; the runtime Request excludes it.",
+    "This folder is a review bundle, not a scorer-ready golden export; current prepare-judge cannot load it as a Golden directory."
+  ],
+  "canonical_reviews": [
+    {
+      "id": "C01",
+      "source_intent_id": "U01.01",
+      "title": "产品分类 / 技术层级",
+      "split": "development",
+      "split_group": "family_component_U01.01",
+      "parent_id": "U01",
+      "selected_reason": "产品分类 / 技术层级",
+      "original_question": "仅依据MU FY2024–FY2026年报，核心产品按技术如何分类，HBM和NOR分别属于哪一类？",
+      "proposed_question": "仅依据MU FY2024–FY2026年报，核心产品按技术如何分类，HBM和NOR分别属于哪一类？",
+      "as_of": "2026-10-11",
+      "expected_scope": {
+        "companies": [
+          "MU"
+        ],
+        "report_years": {
+          "MU": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        "confirmed_context": null
+      },
+      "original_reference": "核心技术类别为DRAM、NAND及其他（主要NOR）；HBM属于DRAM相关产品，不能与DRAM并列后重复加总。DRAM/NAND技术可跨客户市场分部销售。[MU26.986] [MU25.43] [MU25.44] [MU25.45] [MU25.46]",
+      "proposed_reference": "DRAM、NAND、Other（主要NOR）是产品技术收入分类；HBM是3D堆叠DRAM，不应另列后与DRAM重复加总。[MU26.986] [MU25.54]",
+      "proposed_acceptance_points": [
+        "识别DRAM、NAND及Other主要NOR。",
+        "明确HBM属于DRAM架构，而不是和DRAM并列的独立大类。"
+      ],
+      "review_findings": [
+        "原4组证据混有CMBU分部说明，却没有直接证明HBM属于DRAM。建议用MU25.54补直接定义；分部到客户市场的映射不作为本题必答。",
+        "无需为了回答产品类别而找齐三年所有产品收入数字。"
+      ],
+      "original_evidence_groups": 4,
+      "review_support_aliases": [
+        "MU26.986",
+        "MU25.54"
+      ],
+      "proposed_evidence_rule": "直接分类证据优于分部描述；只核对类别及包含关系，不强制收入行或所有分部材料。",
+      "retrieval_recall_applicable": true,
+      "original_numeric_check_ids": [],
+      "question_changed": false,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "C02",
+      "source_intent_id": "U03.01",
+      "title": "年度收入 / 占比 / 同比",
+      "split": "development",
+      "split_group": "family_component_U03.01",
+      "parent_id": "U03",
+      "selected_reason": "年度收入 / 占比 / 同比",
+      "original_question": "仅依据NVDA FY2024–FY2026年报，三年Data Center收入、占合并收入比例及同比增速是多少？请标明实际财年末和最早同比分母。",
+      "proposed_question": "仅依据NVDA FY2024–FY2026年报，三年Data Center收入、占合并收入比例及同比增速是多少？请标明实际财年末和最早同比分母。",
+      "as_of": "2026-10-11",
+      "expected_scope": {
+        "companies": [
+          "NVDA"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        "confirmed_context": null
+      },
+      "original_reference": "| NVDA财年 | 数据中心收入 | 合并收入 | 收入占比 | 同比增速 |\n| --- | --- | --- | --- | --- |\n| 2024 | 47,525 | 60,922 | 78.01% | 216.73% |\n| 2025 | 115,186 | 130,497 | 88.27% | 142.37% |\n| 2026 | 193,737 | 215,938 | 89.72% | 68.19% |\n\n占比=Data Center/Revenue；FY2024同比的前期分母15,005来自FY2024报告比较列。NVDA FY2024/25/26分别截至2024-01-28、2025-01-26、2026-01-25。[NVDA24.1081] [NVDA26.1076]",
+      "proposed_reference": "金额单位：百万美元；百分比与天数另列。\n\n| NVDA财年 | 数据中心收入 | 合并收入 | 收入占比 | 同比增速 |\n| --- | --- | --- | --- | --- |\n| 2024 | 47,525 | 60,922 | 78.01% | 216.73% |\n| 2025 | 115,186 | 130,497 | 88.27% | 142.37% |\n| 2026 | 193,737 | 215,938 | 89.72% | 68.19% |\n\n占比=Data Center/Revenue；FY2024同比的前期分母15,005来自FY2024报告比较列。NVDA FY2024/25/26分别截至2024-01-28、2025-01-26、2026-01-25。[NVDA24.1081] [NVDA26.1076]",
+      "proposed_acceptance_points": [
+        "分别列出FY2024/25/26 Data Center收入47,525 / 115,186 / 193,737，单位百万美元。",
+        "列出占比78.01% / 88.27% / 89.72%，同比216.73% / 142.37% / 68.19%。",
+        "注明FY2024最早同比分母15,005来自FY2023比较列；实际财年末为2024-01-28、2025-01-26、2026-01-25。"
+      ],
+      "review_findings": [
+        "原参考表没有显式金额单位，拟补“百万美元”。财年末和最早同比分母须成为独立审核点，不能只用一条总rubric掩盖遗漏。"
+      ],
+      "original_evidence_groups": 3,
+      "review_support_aliases": [
+        "NVDA26.1076",
+        "NVDA24.1081"
+      ],
+      "proposed_evidence_rule": "三年Data Center行、总收入行、FY2023同比基数及表头期间均需覆盖；允许同一表同时满足多项。",
+      "retrieval_recall_applicable": true,
+      "original_numeric_check_ids": [
+        "N025",
+        "N026",
+        "N031",
+        "N032",
+        "N037",
+        "N038"
+      ],
+      "question_changed": false,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "C03",
+      "source_intent_id": "U04.02",
+      "title": "平均应收DSO / 期间与分母",
+      "split": "development",
+      "split_group": "family_component_U04.01",
+      "parent_id": "U04",
+      "selected_reason": "平均应收DSO / 期间与分母",
+      "original_question": "仅依据NVDA FY2024–FY2026年报，应收相对收入是否增加？计算三年应收/收入和平均净应收DSO代理，说明分母与天数口径。",
+      "proposed_question": "仅依据NVDA FY2024–FY2026年报，应收相对收入是否增加？计算三年期末净应收/全年总收入，以及按期初期末净应收均值、全年总收入和实际财年天数计算的DSO代理，说明其局限。",
+      "as_of": "2026-10-11",
+      "expected_scope": {
+        "companies": [
+          "NVDA"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        "confirmed_context": null
+      },
+      "original_reference": "| 财年 | 收入 | 期末净应收 | 应收/收入 | 平均余额DSO代理 |\n| --- | --- | --- | --- | --- |\n| 2024 | 60,922 | 9,999 | 16.41% | 41.30天 |\n| 2025 | 130,497 | 23,065 | 17.67% | 46.11天 |\n| 2026 | 215,938 | 38,466 | 17.81% | 51.86天 |\n\n收入和OCF来自三年比较表，应收来自各年资产负债表。DSO代理=(期初+期末净应收)/2÷全年收入×364；FY2024期初为3,827。分母是全年总收入而非赊销收入，因此只作近似分析，快速增长与季节性会影响它。[NVDA26.706] [NVDA26.729] [NVDA26.718] [NVDA25.735] [NVDA24.711]",
+      "proposed_reference": "金额单位：百万美元；百分比与天数另列。\n\n| 财年 | 收入 | 期末净应收 | 应收/收入 | 平均余额DSO代理 |\n| --- | --- | --- | --- | --- |\n| 2024 | 60,922 | 9,999 | 16.41% | 41.30天 |\n| 2025 | 130,497 | 23,065 | 17.67% | 46.11天 |\n| 2026 | 215,938 | 38,466 | 17.81% | 51.86天 |\n\n收入来自三年比较表，应收来自各年资产负债表。DSO代理=(期初+期末净应收)/2÷全年收入×364；FY2024期初为3,827。分母是全年总收入而非赊销收入，因此只作近似分析，快速增长与季节性会影响它。[NVDA26.706] [NVDA26.729] [NVDA26.718] [NVDA25.735] [NVDA24.711] 三个财年均为52周，实际364天。[NVDA26.740]",
+      "proposed_acceptance_points": [
+        "净应收/收入16.41% / 17.67% / 17.81%；平均净应收DSO代理41.30 / 46.11 / 51.86天。",
+        "平均净应收=(期初+期末)/2；FY2024期初3,827；分母为全年总收入；本批拟明确用实际52周财年的364天。",
+        "只能作近似回款分析，不能冒充赊销真实回收周期；快速增长和季节性也影响该代理。"
+      ],
+      "review_findings": [
+        "原问仅要求说明天数口径，没有明确必须使用实际财年天数。365天是常见约定，不能不看披露口径就一概标成财务错误。建议本批规范题明确按实际财年天数；若保留原开放问法，需另评365天且清楚披露的合理替代口径。",
+        "原参考段中“收入和OCF”含相邻子题的OCF，拟删去；补NVDA26.740作为52周依据。"
+      ],
+      "original_evidence_groups": 4,
+      "review_support_aliases": [
+        "NVDA24.711",
+        "NVDA25.735",
+        "NVDA26.718",
+        "NVDA26.706",
+        "NVDA26.740"
+      ],
+      "proposed_evidence_rule": "保留三年期末/最早期初应收、年度收入和财年天数来源；财年与实际指标期间不得混淆。",
+      "retrieval_recall_applicable": true,
+      "original_numeric_check_ids": [
+        "N027",
+        "N029",
+        "N033",
+        "N035",
+        "N039",
+        "N041"
+      ],
+      "question_changed": true,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "C04",
+      "source_intent_id": "U06.03",
+      "title": "NRV跨期毛利额桥接",
+      "split": "development",
+      "split_group": "family_component_U01.01",
+      "parent_id": "U06",
+      "selected_reason": "NRV跨期毛利额桥接",
+      "original_question": "仅依据MU FY2024–FY2026年报及其中FY2023比较数据，FY2024毛利额比FY2023增加多少，其中NRV净效应变化是多少、占改善比例多少，剩余能否叫纯需求改善？",
+      "proposed_question": "仅依据MU FY2024–FY2026年报及其中FY2023比较数据，FY2024毛利额比FY2023增加多少，其中NRV净效应变化是多少、占改善比例多少，剩余能否叫纯需求改善？",
+      "as_of": "2026-10-11",
+      "expected_scope": {
+        "companies": [
+          "MU"
+        ],
+        "report_years": {
+          "MU": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        "confirmed_context": null
+      },
+      "original_reference": "FY2024相对FY2023报告毛利额增加7,029百万美元，NRV净效应由−987变+987，变化1,974，占改善约28.08%。其余变化5,055混合规模、价格、成本及组合，不能全叫需求改善。[MU24.586] [MU24.587] [MU24.699] [MU25.740]",
+      "proposed_reference": "FY2024相对FY2023报告毛利额增加7,029百万美元，NRV净效应由−987变+987，变化1,974，占改善约28.08%。其余变化5,055混合规模、价格、成本及组合，不能全叫需求改善。[MU24.586] [MU24.587] [MU24.699] [MU25.740]",
+      "proposed_acceptance_points": [
+        "FY2024毛利5,613、FY2023为−1,416，报告毛利额改善7,029百万美元。",
+        "指定NRV净效应从−987到+987，跨期变化1,974，占改善28.08%；FY2023净额不是简单拿−1,831替代。",
+        "剩余5,055百万美元不能全归为纯需求改善；这只是分析桥接，不是公司正式non-GAAP。"
+      ],
+      "review_findings": [
+        "原证据将MU FY2024、FY2025两份表的相同毛利/收入行都设为必须，毛利额问题还带入不需要的收入分母。建议同一事实的可用重述列作为替代来源，不同时强求两份收入行。",
+        "优先用MU24.587/MU25.613净效应表与MU24.699/MU25.740毛利行；额与百分点不能混算。"
+      ],
+      "original_evidence_groups": 6,
+      "review_support_aliases": [
+        "MU24.586",
+        "MU24.587",
+        "MU25.613",
+        "MU24.699",
+        "MU25.740"
+      ],
+      "proposed_evidence_rule": "毛利额桥接与NRV净效应必须有；相同事实的FY2024原报和FY2025比较列可互为替代，不重复扣分。",
+      "retrieval_recall_applicable": true,
+      "original_numeric_check_ids": [
+        "N103",
+        "N104",
+        "N105",
+        "N106"
+      ],
+      "question_changed": false,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "C05",
+      "source_intent_id": "U07.01",
+      "title": "HBM阶段 / 事实与预期",
+      "split": "development",
+      "split_group": "family_component_U07.01",
+      "parent_id": "U07",
+      "selected_reason": "HBM阶段 / 事实与预期",
+      "original_question": "仅依据MU FY2024–FY2026年报，HBM从HBM3E量产/认证用交付到HBM4/HBM4E的状态如何演进？哪些已实现、哪些仍是送样或预期？",
+      "proposed_question": "仅依据MU FY2024–FY2026年报，HBM从HBM3E量产/认证用交付到HBM4/HBM4E的状态如何演进？哪些已实现、哪些仍是送样或预期？",
+      "as_of": "2026-10-11",
+      "expected_scope": {
+        "companies": [
+          "MU"
+        ],
+        "report_years": {
+          "MU": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        "confirmed_context": null
+      },
+      "original_reference": "FY2024披露8-high 24GB HBM3E开始量产，并开始交付可用于认证的12-high 36GB产品。前者是已实现量产，后者是已交样/认证安排，不是所有客户已完成认证或已经形成同等规模收入。[MU24.71]\n\nFY2025披露第四季度12-high HBM3E占HBM出货大多数、已向多个关键客户交付HBM4样品；管理层把DRAM毛利改善部分归因于HBM等高毛利产品组合。CMBU收入13,524百万美元、经营利润6,129，但该分部同时包含HBM及其他云内存，不能当成HBM独立收入/利润。[MU25.73] [MU25.608] [MU25.70] [MU25.1069]\n\nFY2026披露HBM4 36GB 12-high开始量产、48GB 16-high向客户送样；HBM4E预计在日历2027年放量属于前瞻，不应写为已经实现。[MU26.67]\n\nFY2026仍以HBM3E 12-high占HBM出货的大多数；HBM4开始量产不等于已经成为出货主力。[MU26.67]",
+      "proposed_reference": "FY2024：8-high 24GB HBM3E已量产，12-high 36GB是用于认证的production-capable交付，不等于所有客户认证完成。FY2025：第四季度HBM3E 12-high占HBM出货多数，HBM4 36GB 12-high已向多个关键客户送样。FY2026：HBM3E 12-high仍占多数，HBM4 36GB 12-high已开始量产，48GB 16-high送样；HBM4E日历2027年放量仍是预期。[MU24.71] [MU25.73] [MU26.67]",
+      "proposed_acceptance_points": [
+        "按财年区分量产、认证用交付、送样、未来放量；送样不等于认证完成或收入兑现。",
+        "HBM4开始量产不等于出货已超过HBM3E；HBM4E的2027为日历年预期。"
+      ],
+      "review_findings": [
+        "原答案混入CMBU收入、经营利润和毛利率归因，属于相邻财务贡献意图，本题不要求；拟删去而非据此扣漏答分。"
+      ],
+      "original_evidence_groups": 3,
+      "review_support_aliases": [
+        "MU24.71",
+        "MU25.73",
+        "MU26.67"
+      ],
+      "proposed_evidence_rule": "保留三个产品进展段，不要求CMBU分部财务表。",
+      "retrieval_recall_applicable": true,
+      "original_numeric_check_ids": [],
+      "question_changed": false,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "C06",
+      "source_intent_id": "U11.01",
+      "title": "AMD收入增量 / 合并勾稽",
+      "split": "development",
+      "split_group": "family_component_U11.01",
+      "parent_id": "U11",
+      "selected_reason": "AMD收入增量 / 合并勾稽",
+      "original_question": "仅依据AMD FY2023–FY2025年报，四项业务三年收入及两次增量分别多少？请与合并收入变化勾稽，解释哪些业务抵消增长。",
+      "proposed_question": "仅依据AMD FY2023–FY2025年报，四项业务三年收入及两次增量分别多少？请与合并收入变化勾稽，解释哪些业务抵消增长。",
+      "as_of": "2026-10-11",
+      "expected_scope": {
+        "companies": [
+          "AMD"
+        ],
+        "report_years": {
+          "AMD": [
+            2023,
+            2024,
+            2025
+          ]
+        },
+        "confirmed_context": null
+      },
+      "original_reference": "| AMD业务收入（百万美元） | FY2023 | FY2024 | FY2025 |\n| --- | --- | --- | --- |\n| Data Center | 6,496 | 12,579 | 16,635 |\n| Client | 4,651 | 7,054 | 10,640 |\n| Gaming | 6,212 | 2,595 | 3,910 |\n| Embedded | 5,321 | 3,557 | 3,454 |\n\nFY2024相对FY2023，收入增量分别为数据中心+6,083、Client+2,403、Gaming−3,617、Embedded−1,764，合计+3,105。FY2025相对FY2024分别+4,056、+3,586、+1,315、−103，合计+8,854。这些是收入增量贡献，不是可比市场份额。[AMD25.721]\n\n管理层FY2024说明Instinct/EPYC与Ryzen推动增长，Gaming受半定制业务下降影响，Embedded受客户库存正常化影响；FY2025数据中心受EPYC及Instinct需求推动，Client/Gaming回升，Embedded仍下滑。[AMD24.478] [AMD25.480]",
+      "proposed_reference": "金额单位：百万美元；百分比与天数另列。\n\n| AMD业务收入（百万美元） | FY2023 | FY2024 | FY2025 |\n| --- | --- | --- | --- |\n| Data Center | 6,496 | 12,579 | 16,635 |\n| Client | 4,651 | 7,054 | 10,640 |\n| Gaming | 6,212 | 2,595 | 3,910 |\n| Embedded | 5,321 | 3,557 | 3,454 |\n\nFY2024相对FY2023，收入增量分别为数据中心+6,083、Client+2,403、Gaming−3,617、Embedded−1,764，合计+3,105。FY2025相对FY2024分别+4,056、+3,586、+1,315、−103，合计+8,854。这些是收入增量贡献，不是可比市场份额。[AMD25.721]\n\n管理层FY2024说明Instinct/EPYC与Ryzen推动增长，Gaming受半定制业务下降影响，Embedded受客户库存正常化影响；FY2025数据中心受EPYC及Instinct需求推动，Client/Gaming回升，Embedded仍下滑。[AMD24.478] [AMD25.480] FY2025为三个报告分部，Client与Gaming收入在同一分部下分别披露；四项收入类别不能当四个报告分部。[AMD25.56]",
+      "proposed_acceptance_points": [
+        "列出Data Center、Client、Gaming、Embedded三年收入矩阵，并说明是业务收入类别，不把FY2025误称为四个独立报告分部。",
+        "FY2024相对FY2023增量+6,083 / +2,403 / −3,617 / −1,764，合计+3,105百万美元。",
+        "FY2025相对FY2024增量+4,056 / +3,586 / +1,315 / −103，合计+8,854百万美元；说明抵消增长的业务。"
+      ],
+      "review_findings": [
+        "原mandatory_facts只列增量，未单独要求题目明确索要的收入矩阵和抵消说明，拟拆为独立审核点。",
+        "FY2025 Client与Gaming合成一个报告分部，但收入仍单独披露；四个收入类别不能当四个报告分部，也不能和Total Client and Gaming再次加总。"
+      ],
+      "original_evidence_groups": 7,
+      "review_support_aliases": [
+        "AMD25.721",
+        "AMD24.478",
+        "AMD25.480",
+        "AMD25.56"
+      ],
+      "proposed_evidence_rule": "四个收入类别及合并收入是核心；Client and Gaming合计行只作核对，不是第五项独立收入或另一份必需事实。",
+      "retrieval_recall_applicable": true,
+      "original_numeric_check_ids": [
+        "N073",
+        "N074",
+        "N075",
+        "N076",
+        "N077",
+        "N083",
+        "N084",
+        "N085",
+        "N086",
+        "N087"
+      ],
+      "question_changed": false,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "C07",
+      "source_intent_id": "U12.01",
+      "title": "AMD分部至合并利润桥接",
+      "split": "development",
+      "split_group": "family_component_U11.01",
+      "parent_id": "U12",
+      "selected_reason": "AMD分部至合并利润桥接",
+      "original_question": "仅依据AMD FY2023年报，FY2023四业务经营利润为何不等于合并经营利润？请给出加总及All Other勾稽。",
+      "proposed_question": "仅依据AMD FY2023年报，FY2023四业务经营利润为何不等于合并经营利润？请给出加总及All Other勾稽。",
+      "as_of": "2026-10-11",
+      "expected_scope": {
+        "companies": [
+          "AMD"
+        ],
+        "report_years": {
+          "AMD": [
+            2023
+          ]
+        },
+        "confirmed_context": null
+      },
+      "original_reference": "AMD FY2023四个业务分部经营利润合计=1,267−46+971+2,628=4,820。减去All Other经营亏损4,419，得到合并经营利润401。[AMD23.727]",
+      "proposed_reference": "金额单位：百万美元；百分比与天数另列。\n\nAMD FY2023四个业务分部经营利润合计=1,267−46+971+2,628=4,820。减去All Other经营亏损4,419，得到合并经营利润401。[AMD23.727]",
+      "proposed_acceptance_points": [
+        "FY2023业务经营利润1,267−46+971+2,628=4,820百万美元。",
+        "扣除All Other经营亏损4,419后为合并经营利润401；不能忽略未分配公司层费用。"
+      ],
+      "review_findings": [
+        "All Other详细费用拆分属于U12.02，本题只要求业务加总与合并勾稽，不另强求该费用表或全部明细。"
+      ],
+      "original_evidence_groups": 6,
+      "review_support_aliases": [
+        "AMD23.727"
+      ],
+      "proposed_evidence_rule": "六条经营利润行足以做桥接；不把分部利润直接当合并利润，也不要求All Other明细费用表。",
+      "retrieval_recall_applicable": true,
+      "original_numeric_check_ids": [
+        "N109",
+        "N111"
+      ],
+      "question_changed": false,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "C08",
+      "source_intent_id": "U14.02",
+      "title": "历史截止日 / 估计与预期",
+      "split": "development",
+      "split_group": "family_component_U14.01",
+      "parent_id": "U14",
+      "selected_reason": "历史截止日 / 估计与预期",
+      "original_question": "站在2024-02-21当天，只使用当时公开的NVDA FY2024年报，怎样区分已披露的40%推理估计、Hopper供给现状和下一代供给/汽车需求预期？",
+      "proposed_question": "站在2024-02-21当天，只使用当时公开的NVDA FY2024年报，怎样区分已披露的40%推理估计、Hopper供给现状和下一代供给/汽车需求预期？",
+      "as_of": "2024-02-21",
+      "expected_scope": {
+        "companies": [
+          "NVDA"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024
+          ]
+        },
+        "confirmed_context": {
+          "ticker": "NVDA",
+          "report_document_id": "NVDA_FY2024",
+          "as_of": "2024-02-21",
+          "date_precision": "day",
+          "exclude_later_filings": true
+        }
+      },
+      "original_reference": "40%推理收入是对FY2024的公司估计；Hopper供给改善、需求强是申报时现状/管理层判断；下一代产品供给受限和汽车处理需求增长属于未来预期。不能把这些都叫已实现，或把所有现状都叫未来。[NVDA24.473] [NVDA24.501]",
+      "proposed_reference": "40%推理收入是对FY2024的公司估计；Hopper供给改善、需求强是申报时现状/管理层判断；下一代产品供给受限和汽车处理需求增长属于未来预期。不能把这些都叫已实现，或把所有现状都叫未来。[NVDA24.473] [NVDA24.501]",
+      "proposed_acceptance_points": [
+        "约40%推理收入是对FY2024的管理层估计，不是审计后的单独收入分类。",
+        "Hopper供给改善、需求强属于当时现状/管理层判断；下一代供给受限与汽车处理需求增长属于预期。",
+        "严格只用2024-02-21当天已公开的NVDA FY2024材料，不能用后续年报倒填或验证预测。"
+      ],
+      "review_findings": [
+        "NVDA24.266与NVDA24.473是同一供给叙述的重复位置，允许作为替代来源。按日截止无法证明日内盘前已可得，不作日内时点回测。"
+      ],
+      "original_evidence_groups": 2,
+      "review_support_aliases": [
+        "NVDA24.473",
+        "NVDA24.266",
+        "NVDA24.501"
+      ],
+      "proposed_evidence_rule": "推理估计/汽车预期段和供给现状/预期段各有依据即可；严禁未来披露。",
+      "retrieval_recall_applicable": true,
+      "original_numeric_check_ids": [],
+      "question_changed": false,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "C09",
+      "source_intent_id": "U16.01",
+      "title": "跨公司图形产品竞争定位",
+      "split": "development",
+      "split_group": "family_component_U13.01",
+      "parent_id": "U16",
+      "selected_reason": "跨公司图形产品竞争定位",
+      "original_question": "截至2026-10-11，依据NVDA FY2024–FY2026及AMD FY2023–FY2025年报，游戏和专业图形产品中，GeForce/Radeon RX、RTX/Quadro/Radeon PRO有哪些用途交集？",
+      "proposed_question": "截至2026-10-11，依据NVDA FY2024–FY2026及AMD FY2023–FY2025年报，游戏和专业图形产品中，GeForce/Radeon RX、RTX/Quadro/Radeon PRO有哪些用途交集？",
+      "as_of": "2026-10-11",
+      "expected_scope": {
+        "companies": [
+          "AMD",
+          "NVDA"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024,
+            2025,
+            2026
+          ],
+          "AMD": [
+            2023,
+            2024,
+            2025
+          ]
+        },
+        "confirmed_context": null
+      },
+      "original_reference": "GeForce与Radeon RX在PC离散GPU用途竞争；RTX/Quadro与Radeon PRO在专业图形用途有交集。这里只比较定位，不据此裁定性能胜负或份额。[NVDA24.63] [NVDA24.90] [AMD25.86] [AMD25.87]",
+      "proposed_reference": "GeForce RTX/GTX与Radeon RX在PC游戏独显用途竞争；用于企业工作站的Quadro/NVIDIA RTX与Radeon PRO在专业图形用途有交集。“RTX”也出现在GeForce游戏品牌中，不能只看RTX字样就判为工作站产品。这里只比较用途定位，不推断性能胜负或市场份额。[NVDA24.74] [NVDA24.90] [AMD25.86] [AMD25.87]",
+      "proposed_acceptance_points": [
+        "游戏PC独显：GeForce与Radeon RX；专业工作站图形：Quadro/NVIDIA RTX与Radeon PRO。",
+        "区分游戏GeForce RTX和专业NVIDIA RTX；不用定位映射证明性能、份额或AI训练收入。"
+      ],
+      "review_findings": [
+        "原8组证据混入AMD EPYC/Instinct服务器材料、NVIDIA Data Center平台及通用公司历史。它们不应成为本题漏召回的必扣项；建议围绕游戏与专业图形两组用途取证。",
+        "原参考用NVDA24.63支持产品映射较泛；拟以NVDA24.74/90直接产品定义替代。"
+      ],
+      "original_evidence_groups": 8,
+      "review_support_aliases": [
+        "NVDA24.74",
+        "NVDA24.90",
+        "AMD25.86",
+        "AMD25.87"
+      ],
+      "proposed_evidence_rule": "围绕两家公司×游戏/专业图形用途取证，不要求CPU、AI加速器或数据中心平台背景段。",
+      "retrieval_recall_applicable": true,
+      "original_numeric_check_ids": [],
+      "question_changed": false,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "C10",
+      "source_intent_id": "U16.03",
+      "title": "市场份额资料边界",
+      "split": "development",
+      "split_group": "family_component_U13.01",
+      "parent_id": "U16",
+      "selected_reason": "市场份额资料边界",
+      "original_question": "截至2026-10-11，依据NVDA FY2024–FY2026及AMD FY2023–FY2025年报，这些年报是否足以给出独显、数据中心GPU、服务器CPU的当前可比份额？需要补哪些统计口径？",
+      "proposed_question": "截至2026-10-11，依据NVDA FY2024–FY2026及AMD FY2023–FY2025年报，这些年报是否足以给出独显、数据中心GPU、服务器CPU的当前可比份额？需要补哪些统计口径？",
+      "as_of": "2026-10-11",
+      "expected_scope": {
+        "companies": [
+          "AMD",
+          "NVDA"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024,
+            2025,
+            2026
+          ],
+          "AMD": [
+            2023,
+            2024,
+            2025
+          ]
+        },
+        "confirmed_context": null
+      },
+      "original_reference": "**结论：截至题设资料截止日2026-10-11，在库年报支持产品用途与竞争映射，但不足以提供同一期间、同一统计口径的完整市场份额数值。本题可部分回答。**\n\n本轮核验的两家年报未提供覆盖上述市场、同一日期和同一定义的完整份额表，因此不能给出有这些年报支持的完整“市场占有率”数值。Data Center收入包括不同产品/服务，A/(A+B)最多只是两家所选口径收入之间的占比，既缺其他竞争者又不一定同口径，不是整个市场份额。[NVDA26.1076] [AMD25.721]\n\n要补数，需有明确统计机构/原始调查、市场定义、地区、期间、收入或出货口径；不能把TOP500系统采用比例、某产品营收占公司比例或厂商领先表述当作同一市场份额。",
+      "proposed_reference": "**结论：截至题设资料截止日2026-10-11，在库年报支持产品用途与竞争映射，但不足以提供同一期间、同一统计口径的完整市场份额数值。本题可部分回答。**\n\n本轮核验的两家年报未提供覆盖上述市场、同一日期和同一定义的完整份额表，因此不能给出有这些年报支持的完整“市场占有率”数值。Data Center收入包括不同产品/服务，A/(A+B)最多只是两家所选口径收入之间的占比，既缺其他竞争者又不一定同口径，不是整个市场份额。[NVDA26.1076] [AMD25.721]\n\n要补数，需有明确统计机构/原始调查、市场定义、地区、期间、收入或出货口径；不能把TOP500系统采用比例、某产品营收占公司比例或厂商领先表述当作同一市场份额。",
+      "proposed_acceptance_points": [
+        "这些已核验年报不足以给出同一期间、同一定义的独显/数据中心GPU/服务器CPU完整可比份额。",
+        "两家公司收入A/(A+B)、产品收入占公司比例或TOP500采用比例不是全市场份额；缺其他竞争者和完整分母。",
+        "指出需明确市场/地区/统计期间/收入或出货口径及外部统计来源；本任务不自行上网补数。"
+      ],
+      "review_findings": [
+        "这是资料边界判断，没有可标正例的市场份额数值组，不应计正证据Recall。现有两张收入表仅证明披露口径，不能单凭两张表证明全语料绝无任何份额文字；措辞限于“未获得该完整可比序列”。"
+      ],
+      "original_evidence_groups": 0,
+      "review_support_aliases": [
+        "NVDA26.1076",
+        "AMD25.721"
+      ],
+      "proposed_evidence_rule": "只审核不编数字及缺口说明；收入表是口径反例支持，不是完整市场份额不存在的数学证明。",
+      "retrieval_recall_applicable": false,
+      "original_numeric_check_ids": [],
+      "question_changed": false,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "C11",
+      "source_intent_id": "U03.03",
+      "title": "年度数据不能替代季度环比",
+      "split": "development",
+      "split_group": "family_component_U03.01",
+      "parent_id": "U03",
+      "selected_reason": "年度数据不能替代季度环比",
+      "original_question": "仅依据NVDA FY2024–FY2026年报，这些年度Data Center资料是否足以计算连续季度环比？季度交付或客户占比描述能否替代季度收入？",
+      "proposed_question": "仅依据NVDA FY2024–FY2026年报，这些年度Data Center资料是否足以计算连续季度环比？季度交付或客户占比描述能否替代季度收入？",
+      "as_of": "2026-10-11",
+      "expected_scope": {
+        "companies": [
+          "NVDA"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        "confirmed_context": null
+      },
+      "original_reference": "本轮核验的年度收入分类表没有完整相邻季度数据；仅凭这些表不能计算三年季度环比。即使正文提到某季度开始交付或客户占比，也不等于披露该季度收入金额。",
+      "proposed_reference": "本轮核验的年度收入分类表没有完整相邻季度数据；仅凭这些表不能计算三年季度环比。即使正文提到某季度开始交付或客户占比，也不等于披露该季度收入金额。",
+      "proposed_acceptance_points": [
+        "年报年度Data Center表不足以构造覆盖三年的连续季度收入及环比序列。",
+        "季度交付、客户占比或增长叙述不等于每季收入金额；不平均摊分年度收入、不捏造季度拐点。",
+        "若补资料需相邻季度且同口径数据；说明缺口即可，不自行联网。"
+      ],
+      "review_findings": [
+        "原题无正证据组/引用，不适合拿空集Recall=1。补充年度分类表仅用于展示“年度而非季度”的证据类型，不把它改成能证明所有季度信息皆不存在。"
+      ],
+      "original_evidence_groups": 0,
+      "review_support_aliases": [
+        "NVDA26.1076",
+        "NVDA24.1081"
+      ],
+      "proposed_evidence_rule": "边界判断不计正证据Recall；允许说明已有年度信息，但不能输出无来源季度序列。",
+      "retrieval_recall_applicable": false,
+      "original_numeric_check_ids": [],
+      "question_changed": false,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "C12",
+      "source_intent_id": "U20.01",
+      "title": "跨公司GAAP毛利率 / 同口径",
+      "split": "development",
+      "split_group": "family_component_U20.01",
+      "parent_id": "U20",
+      "selected_reason": "跨公司GAAP毛利率 / 同口径",
+      "original_question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，两家公司三年的合并GAAP毛利率有何差异？请用原表计算，不以分部或非GAAP口径替代。",
+      "proposed_question": "依据NVDA FY2024–FY2026与AMD FY2023–FY2025年报，两家公司三年的合并GAAP毛利率有何差异？请用原表计算，不以分部或非GAAP口径替代。",
+      "as_of": "2026-10-11",
+      "expected_scope": {
+        "companies": [
+          "AMD",
+          "NVDA"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024,
+            2025,
+            2026
+          ],
+          "AMD": [
+            2023,
+            2024,
+            2025
+          ]
+        },
+        "confirmed_context": null
+      },
+      "original_reference": "| 公司/财年 | GAAP毛利率 |\n| --- | --- |\n| NVDA FY2024 | 72.72% |\n| NVDA FY2025 | 74.99% |\n| NVDA FY2026 | 71.07% |\n| AMD FY2023 | 46.12% |\n| AMD FY2024 | 49.35% |\n| AMD FY2025 | 49.52% |\n\n表格使用合并GAAP原数计算而非把四舍五入整数当精确值；不掺入公司非GAAP或分部利润。两家实际财年末不同，研发绝对额、费用率和研发产出是不同概念。[NVDA26.705] [NVDA26.706] [AMD25.602]",
+      "proposed_reference": "| 公司/财年 | GAAP毛利率 |\n| --- | --- |\n| NVDA FY2024 | 72.72% |\n| NVDA FY2025 | 74.99% |\n| NVDA FY2026 | 71.07% |\n| AMD FY2023 | 46.12% |\n| AMD FY2024 | 49.35% |\n| AMD FY2025 | 49.52% |\n\n表格使用合并GAAP原数计算而非把四舍五入整数当精确值；不掺入公司非GAAP或分部利润。NVDA FY2024/25/26实际截至2024-01-28、2025-01-26、2026-01-25；AMD FY2023/24/25实际截至2023-12-30、2024-12-28、2025-12-27，不能当作同一日历期间。[NVDA26.705] [NVDA26.706] [AMD25.602]",
+      "proposed_acceptance_points": [
+        "NVDA FY2024/25/26合并GAAP毛利率72.72% / 74.99% / 71.07%；AMD FY2023/24/25为46.12% / 49.35% / 49.52%。",
+        "用毛利额/合并收入计算，不用整数百分比当精确原值，不混分部或non-GAAP。",
+        "NVDA财年末1月，AMD为12月末；配列的报告财年不代表同一日历期间。"
+      ],
+      "review_findings": [
+        "原参考最后带入研发绝对额/费用率/产出，是相邻U20.03内容，本题不要求，拟去除。",
+        "建议在答案显式列实际财年末；两家公司最高/最低变化只依该同口径表判断，不扩展成竞争力结论。"
+      ],
+      "original_evidence_groups": 4,
+      "review_support_aliases": [
+        "NVDA26.705",
+        "NVDA26.706",
+        "AMD25.602"
+      ],
+      "proposed_evidence_rule": "各公司的合并收入/毛利及表头期间四类证据即可；单位百万美元的金额分子分母相除后为百分比。",
+      "retrieval_recall_applicable": true,
+      "original_numeric_check_ids": [
+        "N055",
+        "N058",
+        "N061",
+        "N064",
+        "N067",
+        "N070"
+      ],
+      "question_changed": false,
+      "reference_or_rubric_review": "proposed_overlay_only",
+      "agent_source_review": "completed_local_source_check",
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    }
+  ],
+  "mock_cases": [
+    {
+      "id": "R01",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "colloquial",
+      "split": "development",
+      "review_canonical_id": "C01",
+      "related_intent_id": "U01.01",
+      "parent_id": "U01",
+      "split_group": "family_component_U01.01",
+      "mapping_role": "same_intent_in_supplied_scope",
+      "known_from_input": {
+        "companies": [
+          "MU"
+        ],
+        "report_years": {
+          "MU": [
+            2024,
+            2025,
+            2026
+          ]
+        }
+      },
+      "missing_material_fields": [],
+      "expected_plan_actions": [
+        "retrieve"
+      ],
+      "expected_behavior": "answer_with_evidence",
+      "semantic_success": "把口语映射为产品类别与包含关系，检索直接定义；不用扩成产品收入、分部毛利或市场份额。",
+      "forbidden_behaviors": [
+        "把HBM当成与DRAM平级后重复加总",
+        "无依据增加产品收入矩阵或份额任务"
+      ],
+      "canonical_answer_rubric_applicable_now": true,
+      "evidence_recall_applicable_now": true,
+      "clarification_policy": null,
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "R02",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "colloquial",
+      "split": "development",
+      "review_canonical_id": "C02",
+      "related_intent_id": "U03.01",
+      "parent_id": "U03",
+      "split_group": "family_component_U03.01",
+      "mapping_role": "same_intent_in_supplied_scope",
+      "known_from_input": {
+        "companies": [
+          "NVDA"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024,
+            2025,
+            2026
+          ]
+        }
+      },
+      "missing_material_fields": [],
+      "expected_plan_actions": [
+        "retrieve"
+      ],
+      "expected_behavior": "answer_with_evidence",
+      "semantic_success": "保留三年金额/占比/同比三个输出，取FY2023比较列作为最早同比基数，保持Data Center口径。",
+      "forbidden_behaviors": [
+        "把Data Center替换成Compute & Networking",
+        "遗漏金额、占比或同比中的一项",
+        "用财年标签当日历年"
+      ],
+      "canonical_answer_rubric_applicable_now": true,
+      "evidence_recall_applicable_now": true,
+      "clarification_policy": null,
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "R03",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "colloquial",
+      "split": "development",
+      "review_canonical_id": "C03",
+      "related_intent_id": "U04.02",
+      "parent_id": "U04",
+      "split_group": "family_component_U04.01",
+      "mapping_role": "same_intent_in_supplied_scope",
+      "known_from_input": {
+        "companies": [
+          "NVDA"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024,
+            2025,
+            2026
+          ]
+        }
+      },
+      "missing_material_fields": [],
+      "expected_plan_actions": [
+        "retrieve"
+      ],
+      "expected_behavior": "answer_with_evidence",
+      "semantic_success": "识别平均净应收/总收入DSO代理与实际财年天数，保留比较及局限；不直接推断坏账或虚增收入。",
+      "forbidden_behaviors": [
+        "用期末应收代替均值",
+        "按365天算却宣称是实际财年天数",
+        "把DSO代理变化直接当坏账结论"
+      ],
+      "canonical_answer_rubric_applicable_now": true,
+      "evidence_recall_applicable_now": true,
+      "clarification_policy": null,
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "R04",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "colloquial",
+      "split": "development",
+      "review_canonical_id": "C07",
+      "related_intent_id": "U12.01",
+      "parent_id": "U12",
+      "split_group": "family_component_U11.01",
+      "mapping_role": "same_intent_in_supplied_scope",
+      "known_from_input": {
+        "companies": [
+          "AMD"
+        ],
+        "report_years": {
+          "AMD": [
+            2023
+          ]
+        }
+      },
+      "missing_material_fields": [],
+      "expected_plan_actions": [
+        "retrieve"
+      ],
+      "expected_behavior": "answer_with_evidence",
+      "semantic_success": "定位FY2023分部利润表，将All Other亏损纳入合并勾稽；不把它当可随意剔除项目。",
+      "forbidden_behaviors": [
+        "只报业务利润合计就当公司利润",
+        "忽略All Other或改变其符号"
+      ],
+      "canonical_answer_rubric_applicable_now": true,
+      "evidence_recall_applicable_now": true,
+      "clarification_policy": null,
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "R05",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "exclusion",
+      "split": "development",
+      "review_canonical_id": "C04",
+      "related_intent_id": "U06.03",
+      "parent_id": "U06",
+      "split_group": "family_component_U01.01",
+      "mapping_role": "same_intent_in_supplied_scope",
+      "known_from_input": {
+        "companies": [
+          "MU"
+        ],
+        "report_years": {
+          "MU": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        "fact_years": [
+          2023,
+          2024
+        ],
+        "exclusions": [
+          "gross_margin_percentage_point_bridge",
+          "residual_as_pure_demand"
+        ]
+      },
+      "missing_material_fields": [],
+      "expected_plan_actions": [
+        "retrieve"
+      ],
+      "expected_behavior": "answer_with_evidence",
+      "semantic_success": "区分报告毛利额变化与NRV净效应变化，允许FY2023事实出现在后续报告比较列，不无依据精确归因剩余项。",
+      "forbidden_behaviors": [
+        "把NRV减记原始费用当跨期净额",
+        "输出毛利率百分点替代金额",
+        "把剩余变化全部归需求"
+      ],
+      "canonical_answer_rubric_applicable_now": true,
+      "evidence_recall_applicable_now": true,
+      "clarification_policy": null,
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "R06",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "exclusion",
+      "split": "development",
+      "review_canonical_id": "C08",
+      "related_intent_id": "U14.02",
+      "parent_id": "U14",
+      "split_group": "family_component_U14.01",
+      "mapping_role": "same_intent_in_supplied_scope",
+      "known_from_input": {
+        "companies": [
+          "NVDA"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024
+          ]
+        },
+        "as_of": "2024-02-21",
+        "exclude_later_filings": true
+      },
+      "missing_material_fields": [],
+      "expected_plan_actions": [
+        "retrieve"
+      ],
+      "expected_behavior": "answer_with_evidence",
+      "semantic_success": "保留截止日和指定报告，区分历史估计、当时现状与未来预期，不以之后结果验证。",
+      "forbidden_behaviors": [
+        "用FY2025/26年报回填FY2024事实",
+        "把预期当已实现",
+        "自行引入后见产品事件"
+      ],
+      "canonical_answer_rubric_applicable_now": true,
+      "evidence_recall_applicable_now": true,
+      "clarification_policy": null,
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "R07",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "exclusion",
+      "split": "development",
+      "review_canonical_id": "C12",
+      "related_intent_id": "U20.01",
+      "parent_id": "U20",
+      "split_group": "family_component_U20.01",
+      "mapping_role": "same_intent_in_supplied_scope",
+      "known_from_input": {
+        "companies": [
+          "NVDA",
+          "AMD"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024,
+            2025,
+            2026
+          ],
+          "AMD": [
+            2023,
+            2024,
+            2025
+          ]
+        },
+        "scope": "consolidated_GAAP",
+        "exclusions": [
+          "non_GAAP",
+          "segment_profit_margin",
+          "identical_calendar_period_assumption"
+        ]
+      },
+      "missing_material_fields": [],
+      "expected_plan_actions": [
+        "retrieve"
+      ],
+      "expected_behavior": "answer_with_evidence",
+      "semantic_success": "保留各自公司财年范围、GAAP和合并毛利口径，标出实际期间；不改成经营利润率。",
+      "forbidden_behaviors": [
+        "AMD也查FY2024–26而无视给定范围",
+        "用分部或non-GAAP代替",
+        "把财年当相同日历区间"
+      ],
+      "canonical_answer_rubric_applicable_now": true,
+      "evidence_recall_applicable_now": true,
+      "clarification_policy": null,
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "R08",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "ambiguity",
+      "split": "development",
+      "review_canonical_id": "C05",
+      "related_intent_id": "U07.01",
+      "parent_id": "U07",
+      "split_group": "family_component_U07.01",
+      "mapping_role": "potential_intent_only_after_user_confirmation",
+      "known_from_input": {
+        "companies": [],
+        "report_years": {},
+        "topic": "HBM product stage"
+      },
+      "missing_material_fields": [
+        "company",
+        "reference_period_or_fiscal_years"
+      ],
+      "expected_plan_actions": [
+        "clarify"
+      ],
+      "expected_behavior": "clarification_required",
+      "semantic_success": "没有前文可以解析“它”，且“现在”未明确报告范围；先问哪家公司及看哪个时期，不默认美光或自动套三年。",
+      "forbidden_behaviors": [
+        "从潜在标签偷偷补MU",
+        "把机器当前日期当用户指定财报时期",
+        "直接断言HBM4已量产"
+      ],
+      "canonical_answer_rubric_applicable_now": false,
+      "evidence_recall_applicable_now": false,
+      "clarification_policy": "Ask only about missing material scope; do not assume the latent mapping. A different valid user confirmation changes the intended canonical mapping.",
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "R09",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "ambiguity",
+      "split": "development",
+      "review_canonical_id": "C06",
+      "related_intent_id": "U11.01",
+      "parent_id": "U11",
+      "split_group": "family_component_U11.01",
+      "mapping_role": "potential_intent_only_after_user_confirmation",
+      "known_from_input": {
+        "companies": [
+          "AMD"
+        ],
+        "report_years": {}
+      },
+      "missing_material_fields": [
+        "fiscal_year_range"
+      ],
+      "expected_plan_actions": [
+        "clarify"
+      ],
+      "expected_behavior": "clarification_required",
+      "semantic_success": "公司已知但“这几年”没有确定范围；只需澄清财年，不要求用户重复公司，也不默认使用三份最新年报。",
+      "forbidden_behaviors": [
+        "把as_of当已确认的三年范围",
+        "自行补FY2023–25并直接评分",
+        "把收入贡献改成利润贡献"
+      ],
+      "canonical_answer_rubric_applicable_now": false,
+      "evidence_recall_applicable_now": false,
+      "clarification_policy": "Ask only about missing material scope; do not assume the latent mapping. A different valid user confirmation changes the intended canonical mapping.",
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "R10",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "ambiguity",
+      "split": "development",
+      "review_canonical_id": "C09",
+      "related_intent_id": "U16.01",
+      "parent_id": "U16",
+      "split_group": "family_component_U13.01",
+      "mapping_role": "potential_intent_only_after_user_confirmation",
+      "known_from_input": {
+        "companies": [],
+        "report_years": {},
+        "product_domains": [
+          "gaming graphics",
+          "professional graphics"
+        ]
+      },
+      "missing_material_fields": [
+        "companies"
+      ],
+      "expected_plan_actions": [
+        "clarify"
+      ],
+      "expected_behavior": "clarification_required",
+      "semantic_success": "无前文指明“两家”，先澄清公司；如需按某年报时期比较再确认期间。不能仅因开发集常出现NVDA/AMD就认定对象。",
+      "forbidden_behaviors": [
+        "直接认定NVDA和AMD",
+        "凭产品用途映射补性能或市场份额结论"
+      ],
+      "canonical_answer_rubric_applicable_now": false,
+      "evidence_recall_applicable_now": false,
+      "clarification_policy": "Ask only about missing material scope; do not assume the latent mapping. A different valid user confirmation changes the intended canonical mapping.",
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "R11",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "unavailable_disclosure",
+      "split": "development",
+      "review_canonical_id": "C10",
+      "related_intent_id": "U16.03",
+      "parent_id": "U16",
+      "split_group": "family_component_U13.01",
+      "mapping_role": "same_intent_in_supplied_scope",
+      "known_from_input": {
+        "companies": [
+          "NVDA",
+          "AMD"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024,
+            2025,
+            2026
+          ],
+          "AMD": [
+            2023,
+            2024,
+            2025
+          ]
+        },
+        "exclusions": [
+          "external_web",
+          "two_vendor_revenue_as_market_share"
+        ]
+      },
+      "missing_material_fields": [],
+      "expected_plan_actions": [
+        "retrieve",
+        "insufficient"
+      ],
+      "expected_behavior": "explain_missing_disclosure",
+      "semantic_success": "允许库内核对，或已知该范围不足时直接说明；不能给没有完整分母的份额表。说明市场定义、地区、期间、收入/出货和来源缺口。",
+      "forbidden_behaviors": [
+        "调用Web搜索",
+        "捏造份额",
+        "A/(A+B)当全市场份额",
+        "用TOP500替代GPU份额"
+      ],
+      "canonical_answer_rubric_applicable_now": true,
+      "evidence_recall_applicable_now": false,
+      "clarification_policy": null,
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    },
+    {
+      "id": "R12",
+      "provenance": "synthetic_mock",
+      "author": "agent",
+      "category": "unavailable_disclosure",
+      "split": "development",
+      "review_canonical_id": "C11",
+      "related_intent_id": "U03.03",
+      "parent_id": "U03",
+      "split_group": "family_component_U03.01",
+      "mapping_role": "same_intent_in_supplied_scope",
+      "known_from_input": {
+        "companies": [
+          "NVDA"
+        ],
+        "report_years": {
+          "NVDA": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        "exclusions": [
+          "external_web",
+          "annual_income_quarterly_imputation"
+        ]
+      },
+      "missing_material_fields": [],
+      "expected_plan_actions": [
+        "retrieve",
+        "insufficient"
+      ],
+      "expected_behavior": "explain_missing_disclosure",
+      "semantic_success": "明确无法从已核验年度分类表构造完整连续季度收入/环比及拐点；若有零散季度描述，不把它当完整序列。说明需要相邻季度同口径资料。",
+      "forbidden_behaviors": [
+        "年收入除4生成季度数",
+        "从季度交付/客户占比推算收入",
+        "无数据判定具体季度拐点",
+        "调用Web搜索"
+      ],
+      "canonical_answer_rubric_applicable_now": true,
+      "evidence_recall_applicable_now": false,
+      "clarification_policy": null,
+      "scope_override": null,
+      "human_review": {
+        "status": "pending",
+        "decision": null,
+        "notes": ""
+      },
+      "ready_for_scoring": false
+    }
+  ],
+  "verified_source_catalog": [
+    {
+      "id": "AMD23.727",
+      "document_id": "AMD_FY2023",
+      "accession": "0000002488-24-000012",
+      "report_fiscal_year": 2023,
+      "period_end": "2023-12-30",
+      "filed_at": "2024-01-31",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248824000012/amd-20231230.htm",
+      "source_sha256": "3f857981468517010a6de7e4279c71f479ccad9a7e04a6c7de1a28b457cbe903",
+      "block_id": "AMD_FY2023:b0727:613dd306ab",
+      "locator": {
+        "xpath": "/html/body/ix:continuation[10]/ix:nonnumeric/div[1]/table",
+        "anchor": "f-460"
+      },
+      "start": 288964,
+      "end": 289724,
+      "quote": "| Year Ended\n | December 30, 2023 |  | December 31, 2022 |  | December 25, 2021\n | (In millions)\nNet revenue: |  |  |  |  | \nData Center | $ | 6,496 |  |  | $ | 6,043 |  |  | $ | 3,694 | \nClient | 4,651 |  |  | 6,201 |  |  | 6,887 | \nGaming | 6,212 |  |  | 6,805 |  |  | 5,607 | \nEmbedded | 5,321 |  |  | 4,552 |  |  | 246 | \nTotal net revenue | $ | 22,680 |  |  | $ | 23,601 |  |  | $ | 16,434 | \nOperating income (loss): |  |  |  |  | \nData Center | $ | 1,267 |  |  | $ | 1,848 |  |  | $ | 991 | \nClient | ( 46 ) |  |  | 1,190 |  |  | 2,088 | \nGaming | 971 |  |  | 953 |  |  | 934 | \nEmbedded | 2,628 |  |  | 2,252 |  |  | 44 | \nAll Other | ( 4,419 ) |  |  | ( 4,979 ) |  |  | ( 409 ) | \nTotal operating income | $ | 401 |  |  | $ | 1,264 |  |  | $ | 3,648 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "AMD23.729",
+      "document_id": "AMD_FY2023",
+      "accession": "0000002488-24-000012",
+      "report_fiscal_year": 2023,
+      "period_end": "2023-12-30",
+      "filed_at": "2024-01-31",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248824000012/amd-20231230.htm",
+      "source_sha256": "3f857981468517010a6de7e4279c71f479ccad9a7e04a6c7de1a28b457cbe903",
+      "block_id": "AMD_FY2023:b0729:a1d041e7e7",
+      "locator": {
+        "xpath": "/html/body/ix:continuation[10]/ix:nonnumeric/div[2]/table",
+        "anchor": "f-460"
+      },
+      "start": 289794,
+      "end": 290281,
+      "quote": "| Year Ended\n | December 30, 2023 |  | December 31, 2022 |  | December 25, 2021\n | (In millions)\nOperating loss: |  |  |  |  | \nStock-based compensation expense | $ | 1,384 |  |  | $ | 1,081 |  |  | $ | 379 | \nAcquisition-related and other costs | 258 |  |  | 452 |  |  | 42 | \nAmortization of acquisition-related intangibles | 2,811 |  |  | 3,548 |  |  | — | \nLicensing gain | ( 34 ) |  |  | ( 102 ) |  |  | ( 12 ) | \nTotal operating loss | $ | 4,419 |  |  | $ | 4,979 |  |  | $ | 409 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "AMD24.478",
+      "document_id": "AMD_FY2024",
+      "accession": "0000002488-25-000012",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-12-28",
+      "filed_at": "2025-02-05",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000012/amd-20241228.htm",
+      "source_sha256": "00fdd8c0a0aed30b7430ba524ce3c0e7bcb54f06f112a6753578b8247a805901",
+      "block_id": "AMD_FY2024:b0478:bf32694433",
+      "locator": {
+        "xpath": "/html/body/div[548]",
+        "anchor": null
+      },
+      "start": 200286,
+      "end": 201288,
+      "quote": "In 2024, we delivered strong annual revenue growth with net revenue increasing 14% to $25.8 billion, compared to $22.7 billion in 2023. This growth was driven by the performance of our Data Center and Client segments. Data Center net revenue of $12.6 billion increased by 94% compared to $6.5 billion in 2023, driven by higher sales of our AMD Instinct™ GPUs and AMD EPYC™ CPUs. Client segment net revenue of $7.1 billion in 2024 increased by 52% compared to $4.7 billion in 2023, primarily due to higher sales of our AMD Ryzen™ mobile and desktop processors. The increase in annual net revenue was partially offset by a decrease in net revenue in our Gaming and Embedded segments. Gaming net revenue of $2.6 billion decreased by 58% compared to $6.2 billion in 2023. The decrease in net revenue was primarily due to lower semi-custom product revenue. Embedded net revenue of $3.6 billion decreased by 33% compared to net revenue of $5.3 billion in 2023, as customers normalized their inventory levels.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "AMD25.480",
+      "document_id": "AMD_FY2025",
+      "accession": "0000002488-26-000018",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-12-27",
+      "filed_at": "2026-02-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+      "source_sha256": "b2a1cd60c4944e7f9b9ac542d9ea725b14c3b7e899f36221a0bc424236944be1",
+      "block_id": "AMD_FY2025:b0480:13fa4bebe2",
+      "locator": {
+        "xpath": "/html/body/div[541]",
+        "anchor": null
+      },
+      "start": 208534,
+      "end": 209462,
+      "quote": "In 2025, we delivered strong annual revenue growth with net revenue increasing 34% to $34.6 billion, compared to $25.8 billion in 2024. This growth was driven by the performance of our Data Center and Client and Gaming segments. Data Center net revenue of $16.6 billion increased by 32% compared to $12.6 billion in 2024, primarily driven by strong demand for our 5th generation AMD EPYC™ processors and AMD Instinct™ MI350 Series GPUs. Client and Gaming segment net revenue of $14.6 billion in 2025 increased by 51% compared to $9.6 billion in 2024, primarily driven by strong demand for our AMD Ryzen™ processors, semi-custom game consoles SoCs and Radeon™ gaming GPUs. The increase in annual net revenue was partially offset by a decrease in net revenue in our Embedded segment. Embedded net revenue of $3.5 billion decreased by 3% compared to net revenue of $3.6 billion in 2024, as certain end market demand remained mixed.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "AMD25.56",
+      "document_id": "AMD_FY2025",
+      "accession": "0000002488-26-000018",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-12-27",
+      "filed_at": "2026-02-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+      "source_sha256": "b2a1cd60c4944e7f9b9ac542d9ea725b14c3b7e899f36221a0bc424236944be1",
+      "block_id": "AMD_FY2025:b0056:e4dec1c1ba",
+      "locator": {
+        "xpath": "/html/body/div[73]",
+        "anchor": null
+      },
+      "start": 17293,
+      "end": 17327,
+      "quote": "Our three reportable segments are:",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "AMD25.602",
+      "document_id": "AMD_FY2025",
+      "accession": "0000002488-26-000018",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-12-27",
+      "filed_at": "2026-02-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+      "source_sha256": "b2a1cd60c4944e7f9b9ac542d9ea725b14c3b7e899f36221a0bc424236944be1",
+      "block_id": "AMD_FY2025:b0602:cd8d02a392",
+      "locator": {
+        "xpath": "/html/body/div[698]/table",
+        "anchor": null
+      },
+      "start": 250457,
+      "end": 252544,
+      "quote": "| Year Ended\n | December 27, 2025 |  | December 28, 2024 |  | December 30, 2023\n | (In millions, except per share amounts)\nNet revenue | $ | 34,639 |  |  | $ | 25,785 |  |  | $ | 22,680 | \nCost of sales | 16,456 |  |  | 12,114 |  |  | 11,278 | \nAmortization of acquisition-related intangibles | 1,031 |  |  | 946 |  |  | 942 | \nTotal cost of sales | 17,487 |  |  | 13,060 |  |  | 12,220 | \nGross profit | 17,152 |  |  | 12,725 |  |  | 10,460 | \nResearch and development | 8,091 |  |  | 6,456 |  |  | 5,872 | \nMarketing, general and administrative | 4,144 |  |  | 2,735 |  |  | 2,318 | \nAmortization of acquisition-related intangibles | 1,223 |  |  | 1,448 |  |  | 1,869 | \nRestructuring charges | — |  |  | 186 |  |  | — | \nTotal operating expenses | 13,458 |  |  | 10,825 |  |  | 10,059 | \nOperating income | 3,694 |  |  | 1,900 |  |  | 401 | \nInterest expense | ( 131 ) |  |  | ( 92 ) |  |  | ( 106 ) | \nOther income (expense), net | 577 |  |  | 181 |  |  | 197 | \nIncome from continuing operations before income taxes and equity income | 4,140 |  |  | 1,989 |  |  | 492 | \nIncome tax provision (benefit) | ( 103 ) |  |  | 381 |  |  | ( 346 ) | \nEquity income in investee | 26 |  |  | 33 |  |  | 16 | \nIncome from continuing operations, net of tax | 4,269 |  |  | 1,641 |  |  | 854 | \nIncome from discontinued operations, net of tax | 66 |  |  | — |  |  | — | \nNet income | $ | 4,335 |  |  | $ | 1,641 |  |  | $ | 854 | \nEarnings per share |  |  |  |  | \nEarnings from continuing operations - basic | $ | 2.63 |  |  | $ | 1.01 |  |  | $ | 0.53 | \nEarnings from discontinued operations - basic | 0.04 |  |  | — |  |  | — | \nBasic earnings per share | $ | 2.67 |  |  | $ | 1.01 |  |  | $ | 0.53 | \nEarnings from continuing operations - diluted | $ | 2.61 |  |  | $ | 1.00 |  |  | $ | 0.53 | \nEarnings from discontinued operations - diluted | 0.04 |  |  | — |  |  | — | \nDiluted earnings per share | $ | 2.65 |  |  | $ | 1.00 |  |  | $ | 0.53 | \nShares used in per share calculation |  |  |  |  | \nBasic | 1,624 |  |  | 1,620 |  |  | 1,614 | \nDiluted | 1,636 |  |  | 1,637 |  |  | 1,625 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "AMD25.66",
+      "document_id": "AMD_FY2025",
+      "accession": "0000002488-26-000018",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-12-27",
+      "filed_at": "2026-02-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+      "source_sha256": "b2a1cd60c4944e7f9b9ac542d9ea725b14c3b7e899f36221a0bc424236944be1",
+      "block_id": "AMD_FY2025:b0066:a8a5dcea16",
+      "locator": {
+        "xpath": "/html/body/div[85]",
+        "anchor": null
+      },
+      "start": 18688,
+      "end": 19101,
+      "quote": "Server CPUs. Our CPUs for server platforms currently include the AMD EPYC™ Series processors. EPYC CPUs, which are based on the x86 architecture, are server-specific processors designed for high-performance computing, enterprise IT, supercomputing, and large data centers. Our 5th generation AMD EPYC family of server processors delivers improved performance and efficiency for AI, cloud and enterprise workloads.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "AMD25.67",
+      "document_id": "AMD_FY2025",
+      "accession": "0000002488-26-000018",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-12-27",
+      "filed_at": "2026-02-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+      "source_sha256": "b2a1cd60c4944e7f9b9ac542d9ea725b14c3b7e899f36221a0bc424236944be1",
+      "block_id": "AMD_FY2025:b0067:2768acced7",
+      "locator": {
+        "xpath": "/html/body/div[86]",
+        "anchor": null
+      },
+      "start": 19103,
+      "end": 19709,
+      "quote": "Data Center GPUs. Our AMD Instinct™ family of GPU products, including AMD Instinct MI200, MI300, MI325 and MI350 series, are based on AMD CDNA™ architecture and designed for AI training, inference and exascale-class scientific computing. We also announced next-generation AMD Instinct MI355X GPUs for large-scale AI deployments. Our visual cloud GPU offerings include products in the AMD Radeon™ PRO V families. Our visual cloud data center GPUs include a range of solutions tailored towards workloads requiring remote visualization, such as Desktop-as-a-Service, Workstation-as-a-Service and Cloud Gaming.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "AMD25.721",
+      "document_id": "AMD_FY2025",
+      "accession": "0000002488-26-000018",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-12-27",
+      "filed_at": "2026-02-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+      "source_sha256": "b2a1cd60c4944e7f9b9ac542d9ea725b14c3b7e899f36221a0bc424236944be1",
+      "block_id": "AMD_FY2025:b0721:c15d2825cb",
+      "locator": {
+        "xpath": "/html/body/ix:continuation[11]/ix:nonnumeric/div[1]/table",
+        "anchor": "f-496"
+      },
+      "start": 291937,
+      "end": 293144,
+      "quote": "| Year Ended\n | December 27, 2025 |  | December 28, 2024 |  | December 30, 2023\n | (In millions)\nNet revenue: |  |  |  |  | \nData Center | $ | 16,635 |  |  | $ | 12,579 |  |  | $ | 6,496 | \nClient and Gaming |  |  |  |  | \nClient | 10,640 |  |  | 7,054 |  |  | 4,651 | \nGaming | 3,910 |  |  | 2,595 |  |  | 6,212 | \nTotal Client and Gaming | 14,550 |  |  | 9,649 |  |  | 10,863 | \nEmbedded | 3,454 |  |  | 3,557 |  |  | 5,321 | \nTotal net revenue | $ | 34,639 |  |  | $ | 25,785 |  |  | $ | 22,680 | \nCost of sales and operating expenses: |  |  |  |  | \nData Center | $ | 13,032 |  |  | $ | 9,097 |  |  | $ | 5,229 | \nClient and Gaming | 11,695 |  |  | 8,462 |  |  | 9,938 | \nEmbedded | 2,211 |  |  | 2,136 |  |  | 2,693 | \nAll Other | 4,007 |  |  | 4,190 |  |  | 4,419 | \nTotal cost of sales and operating expenses | $ | 30,945 |  |  | $ | 23,885 |  |  | $ | 22,279 | \nOperating income (loss): |  |  |  |  | \nData Center | $ | 3,603 |  |  | $ | 3,482 |  |  | $ | 1,267 | \nClient and Gaming | 2,855 |  |  | 1,187 |  |  | 925 | \nEmbedded | 1,243 |  |  | 1,421 |  |  | 2,628 | \nAll Other | ( 4,007 ) |  |  | ( 4,190 ) |  |  | ( 4,419 ) | \nTotal operating income | $ | 3,694 |  |  | $ | 1,900 |  |  | $ | 401 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "AMD25.86",
+      "document_id": "AMD_FY2025",
+      "accession": "0000002488-26-000018",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-12-27",
+      "filed_at": "2026-02-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+      "source_sha256": "b2a1cd60c4944e7f9b9ac542d9ea725b14c3b7e899f36221a0bc424236944be1",
+      "block_id": "AMD_FY2025:b0086:a7d90f59ee",
+      "locator": {
+        "xpath": "/html/body/div[108]",
+        "anchor": null
+      },
+      "start": 26571,
+      "end": 27327,
+      "quote": "Discrete Desktop and Notebook GPUs . Our AMD Radeon RX discrete GPU processors for PCs power the latest gaming and creation platforms. In 2025, we released our Radeon RX 9000 Series graphics cards, based on a new AMD RDNA™ 4 architecture, designed for increased AI performance, new levels of ray tracing capabilities and enhanced performance per watt to deliver new levels of performance for gamers and creators. All of our graphics products are supported by the AMD software: Adrenalin Edition™ application, which is regularly enhanced to provide the latest in performance, features, and stability. We also released FSR “Redstone” gaming technologies to integrate Machine Learning for improved performance and visuals on our Radeon RX 9000 graphics cards.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "AMD25.87",
+      "document_id": "AMD_FY2025",
+      "accession": "0000002488-26-000018",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-12-27",
+      "filed_at": "2026-02-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+      "source_sha256": "b2a1cd60c4944e7f9b9ac542d9ea725b14c3b7e899f36221a0bc424236944be1",
+      "block_id": "AMD_FY2025:b0087:1f2c9cde56",
+      "locator": {
+        "xpath": "/html/body/div[109]",
+        "anchor": null
+      },
+      "start": 27329,
+      "end": 27954,
+      "quote": "Professional GPUs. Our AMD Radeon PRO family of professional graphics products are designed for integration in desktop workstations, optimized through hardware and software for demanding use cases such as 3D rendering, design and manufacturing for Computer-Aided Design (CAD), and media and entertainment for broadcast and animation pipelines on high resolution displays. In 2025, we launched our Radeon AI PRO R9000 Series of graphics cards, intended for local AI inference and creative workloads enabling professionals to accelerate AI-driven content creation and advanced visualization tasks directly on their workstation.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU24.586",
+      "document_id": "MU_FY2024",
+      "accession": "0000723125-24-000027",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-08-29",
+      "filed_at": "2024-10-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000027/mu-20240829.htm",
+      "source_sha256": "709975ad6c638f2cdb33c4e69b1966d1fb611f4f440239d1d3638c60f238d00c",
+      "block_id": "MU_FY2024:b0586:4d755bc404",
+      "locator": {
+        "xpath": "/html/body/div[970]",
+        "anchor": null
+      },
+      "start": 185903,
+      "end": 186555,
+      "quote": "Inventory NRV write-downs: Our consolidated gross margin was impacted by charges in 2023 to write down inventories to their estimated NRV as a result of declines in average selling prices for both DRAM and NAND. As charges to write down inventories are recorded in advance of when inventories are sold, costs of goods sold in subsequent periods were lower than they otherwise would be. The impact of inventory NRV write-downs for each period reflects (1) inventory write-downs in that period, offset by (2) lower costs in that period on the sale of inventory written down in prior periods. The impacts of inventory NRV write-downs are summarized below:",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU24.587",
+      "document_id": "MU_FY2024",
+      "accession": "0000723125-24-000027",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-08-29",
+      "filed_at": "2024-10-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000027/mu-20240829.htm",
+      "source_sha256": "709975ad6c638f2cdb33c4e69b1966d1fb611f4f440239d1d3638c60f238d00c",
+      "block_id": "MU_FY2024:b0587:44a16975df",
+      "locator": {
+        "xpath": "/html/body/div[972]/table",
+        "anchor": null
+      },
+      "start": 186557,
+      "end": 186805,
+      "quote": "For the year ended | 2024 | 2023 | 2022\nProvision to write down inventory to NRV | $ | — |  | $ | (1,831) |  | $ | — | \nLower costs from sale of inventory written down in prior periods | 987 |  | 844 |  | — | \n | $ | 987 |  | $ | (987) |  | $ | — |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU24.699",
+      "document_id": "MU_FY2024",
+      "accession": "0000723125-24-000027",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-08-29",
+      "filed_at": "2024-10-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000027/mu-20240829.htm",
+      "source_sha256": "709975ad6c638f2cdb33c4e69b1966d1fb611f4f440239d1d3638c60f238d00c",
+      "block_id": "MU_FY2024:b0699:64aa2d0b0c",
+      "locator": {
+        "xpath": "/html/body/div[1165]/table",
+        "anchor": null
+      },
+      "start": 221490,
+      "end": 222733,
+      "quote": "For the year ended | August 29, 2024 | August 31, 2023 | September 1, 2022\nRevenue | $ | 25,111 |  | $ | 15,540 |  | $ | 30,758 | \nCost of goods sold | 19,498 |  | 16,956 |  | 16,860 | \nGross margin | 5,613 |  | ( 1,416 ) |  | 13,898 | \nResearch and development | 3,430 |  | 3,114 |  | 3,116 | \nSelling, general, and administrative | 1,129 |  | 920 |  | 1,066 | \nRestructure and asset impairments | 1 |  | 171 |  | 48 | \nOther operating (income) expense, net | ( 251 ) |  | 124 |  | ( 34 ) | \nOperating income (loss) | 1,304 |  | ( 5,745 ) |  | 9,702 | \nInterest income | 529 |  | 468 |  | 96 | \nInterest expense | ( 562 ) |  | ( 388 ) |  | ( 189 ) | \nOther non-operating income (expense), net | ( 31 ) |  | 7 |  | ( 38 ) | \n | 1,240 |  | ( 5,658 ) |  | 9,571 | \nIncome tax (provision) benefit | ( 451 ) |  | ( 177 ) |  | ( 888 ) | \nEquity in net income (loss) of equity method investees | ( 11 ) |  | 2 |  | 4 | \nNet income (loss) | $ | 778 |  | $ | ( 5,833 ) |  | $ | 8,687 | \nEarnings (loss) per share |  |  | \nBasic | $ | 0.70 |  | $ | ( 5.34 ) |  | $ | 7.81 | \nDiluted | 0.70 |  | ( 5.34 ) |  | 7.75 | \nNumber of shares used in per share calculations |  |  | \nBasic | 1,105 |  | 1,093 |  | 1,112 | \nDiluted | 1,118 |  | 1,093 |  | 1,122 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU24.71",
+      "document_id": "MU_FY2024",
+      "accession": "0000723125-24-000027",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-08-29",
+      "filed_at": "2024-10-04",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000027/mu-20240829.htm",
+      "source_sha256": "709975ad6c638f2cdb33c4e69b1966d1fb611f4f440239d1d3638c60f238d00c",
+      "block_id": "MU_FY2024:b0071:98938a4bb0",
+      "locator": {
+        "xpath": "/html/body/div[121]",
+        "anchor": null
+      },
+      "start": 20792,
+      "end": 21279,
+      "quote": "In 2024, we began volume production of our 8-high 24GB HBM3E with increased bandwidth and superior power efficiency enabled by our advanced 1β process node. This enhanced version of the third generation of HBM delivers faster data rates, improved thermal response, and a higher monolithic die density within the same package footprint as previous generations. We have also started shipments of production-capable HBM3E 12-high 36GB units to enable qualifications across the AI ecosystem.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU25.1069",
+      "document_id": "MU_FY2025",
+      "accession": "0000723125-25-000028",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-08-28",
+      "filed_at": "2025-10-03",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+      "source_sha256": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+      "block_id": "MU_FY2025:b1069:898966b3f8",
+      "locator": {
+        "xpath": "/html/body/ix:nonnumeric[10]/ix:continuation/div[1]/table",
+        "anchor": "f-1508-2"
+      },
+      "start": 331858,
+      "end": 332730,
+      "quote": "For the year ended 2025 | CMBU | CDBU | MCBU | AEBU | All Other | Unallocated | Total\nRevenue | $ | 13,524 |  | $ | 7,229 |  | $ | 11,859 |  | $ | 4,753 |  | $ | 13 |  | $ | — |  | $ | 37,378 | \nCost of goods sold | 5,867 |  | 3,995 |  | 8,650 |  | 3,566 |  | 14 |  | 413 |  | 22,505 | \nGross margin | 7,657 |  | 3,234 |  | 3,209 |  | 1,187 |  | ( 1 ) |  | ( 413 ) |  | 14,873 | \nResearch and development | 1,315 |  | 864 |  | 836 |  | 435 |  | — |  | 348 |  | 3,798 | \nSelling, general, and administrative | 213 |  | 188 |  | 390 |  | 195 |  | — |  | 219 |  | 1,205 | \nRestructure and asset impairment | — |  | — |  | — |  | — |  | — |  | 39 |  | 39 | \nOther operating (income) expense, net | — |  | 2 |  | 2 |  | — |  | — |  | 57 |  | 61 | \nOperating income (loss) | $ | 6,129 |  | $ | 2,180 |  | $ | 1,981 |  | $ | 557 |  | $ | ( 1 ) |  | $ | ( 1,076 ) |  | $ | 9,770 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU25.43",
+      "document_id": "MU_FY2025",
+      "accession": "0000723125-25-000028",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-08-28",
+      "filed_at": "2025-10-03",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+      "source_sha256": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+      "block_id": "MU_FY2025:b0043:d267ac742a",
+      "locator": {
+        "xpath": "/html/body/div[83]",
+        "anchor": null
+      },
+      "start": 14269,
+      "end": 14412,
+      "quote": "• Cloud Memory Business Unit (“CMBU”): Focused on memory solutions for large hyperscale cloud customers, and HBM for all data center customers.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU25.44",
+      "document_id": "MU_FY2025",
+      "accession": "0000723125-25-000028",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-08-28",
+      "filed_at": "2025-10-03",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+      "source_sha256": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+      "block_id": "MU_FY2025:b0044:d8fe679de1",
+      "locator": {
+        "xpath": "/html/body/div[84]",
+        "anchor": null
+      },
+      "start": 14414,
+      "end": 14599,
+      "quote": "• Core Data Center Business Unit (“CDBU”): Focused on memory solutions for mid-tier cloud, enterprise, and OEM data center customers and storage solutions for all data center customers.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU25.45",
+      "document_id": "MU_FY2025",
+      "accession": "0000723125-25-000028",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-08-28",
+      "filed_at": "2025-10-03",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+      "source_sha256": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+      "block_id": "MU_FY2025:b0045:e29eeb7b79",
+      "locator": {
+        "xpath": "/html/body/div[85]",
+        "anchor": null
+      },
+      "start": 14601,
+      "end": 14720,
+      "quote": "• Mobile and Client Business Unit (“MCBU”): Focused on memory and storage solutions for the mobile and client segments.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU25.46",
+      "document_id": "MU_FY2025",
+      "accession": "0000723125-25-000028",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-08-28",
+      "filed_at": "2025-10-03",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+      "source_sha256": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+      "block_id": "MU_FY2025:b0046:ce2a6a5618",
+      "locator": {
+        "xpath": "/html/body/div[86]",
+        "anchor": null
+      },
+      "start": 14722,
+      "end": 14866,
+      "quote": "• Automotive and Embedded Business Unit (“AEBU”): Focused on memory and storage solutions for the automotive, industrial, and consumer segments.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU25.54",
+      "document_id": "MU_FY2025",
+      "accession": "0000723125-25-000028",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-08-28",
+      "filed_at": "2025-10-03",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+      "source_sha256": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+      "block_id": "MU_FY2025:b0054:d31e0773be",
+      "locator": {
+        "xpath": "/html/body/div[101]",
+        "anchor": null
+      },
+      "start": 16139,
+      "end": 16549,
+      "quote": "High-Bandwidth Memory (“HBM”) : A 3D stacked DRAM architecture that utilizes through-silicon via (“TSV”) connections for more efficient communication giving it the ability to achieve a higher bandwidth while consuming less power compared to other memory types. This makes it ideal for applications that require high data throughput and energy efficiency, such as AI applications and high-performance computing.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU25.608",
+      "document_id": "MU_FY2025",
+      "accession": "0000723125-25-000028",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-08-28",
+      "filed_at": "2025-10-03",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+      "source_sha256": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+      "block_id": "MU_FY2025:b0608:5361cc0f14",
+      "locator": {
+        "xpath": "/html/body/div[984]",
+        "anchor": null
+      },
+      "start": 196434,
+      "end": 197373,
+      "quote": "Consolidated Gross Margin: Our consolidated gross margin has been impacted by the factors described in the section titled “Industry Conditions” above and the effects of 2023 inventory write-downs on our 2024 and 2023 gross margin, as detailed in the table below. Our consolidated gross margin percentage improved to 40% for 2025 from 22% for 2024 as a result of improvements in margins for both DRAM and NAND products. DRAM margins improved primarily due to increases in average selling prices, an increased mix of higher-margin products, including HBM, and manufacturing cost reductions driven by improvements in product and process technology. NAND margins improved primarily due to manufacturing cost reductions. Our consolidated gross margin for 2024 reflected $987 million of benefit due to lower costs from the sale of inventories written down to their net realizable value in 2023 (as detailed in “Inventory NRV Write-Downs” below).",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU25.613",
+      "document_id": "MU_FY2025",
+      "accession": "0000723125-25-000028",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-08-28",
+      "filed_at": "2025-10-03",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+      "source_sha256": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+      "block_id": "MU_FY2025:b0613:73d9b5388c",
+      "locator": {
+        "xpath": "/html/body/div[992]/table",
+        "anchor": null
+      },
+      "start": 198537,
+      "end": 198785,
+      "quote": "For the year ended | 2025 | 2024 | 2023\nProvision to write down inventory to NRV | $ | — |  | $ | — |  | $ | (1,831) | \nLower costs from sale of inventory written down in prior periods | — |  | 987 |  | 844 | \n | $ | — |  | $ | 987 |  | $ | (987) |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU25.70",
+      "document_id": "MU_FY2025",
+      "accession": "0000723125-25-000028",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-08-28",
+      "filed_at": "2025-10-03",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+      "source_sha256": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+      "block_id": "MU_FY2025:b0070:d6e510d66c",
+      "locator": {
+        "xpath": "/html/body/div[133]",
+        "anchor": null
+      },
+      "start": 20587,
+      "end": 20760,
+      "quote": "CMBU is focused on memory solutions for large hyperscale cloud customers, and HBM for all data center customers. In addition to HBM, CMBU sales include DDR, LPDDR, and GDDR.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU25.73",
+      "document_id": "MU_FY2025",
+      "accession": "0000723125-25-000028",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-08-28",
+      "filed_at": "2025-10-03",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+      "source_sha256": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+      "block_id": "MU_FY2025:b0073:c4fc6952ce",
+      "locator": {
+        "xpath": "/html/body/div[139]",
+        "anchor": null
+      },
+      "start": 21552,
+      "end": 22095,
+      "quote": "In 2024, we began volume production of our 8-high 24GB HBM3E with increased bandwidth and superior power efficiency enabled by our advanced 1β process node. In the fourth quarter of 2025, HBM3E 12-high represented the majority of our HBM shipments. This enhanced version of HBM delivers faster data rates, improved thermal response, and a higher monolithic die density within the same package footprint as previous generations. In 2025, we delivered samples of HBM4 36GB 12-high to multiple key customers to power next-generation AI platforms.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU25.740",
+      "document_id": "MU_FY2025",
+      "accession": "0000723125-25-000028",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-08-28",
+      "filed_at": "2025-10-03",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+      "source_sha256": "8de7e286435608f280d94ae09732dacf10c69249095e33f129862a570d43b43a",
+      "block_id": "MU_FY2025:b0740:1a80a15135",
+      "locator": {
+        "xpath": "/html/body/div[1203]/table",
+        "anchor": null
+      },
+      "start": 238542,
+      "end": 239783,
+      "quote": "For the year ended | August 28, 2025 | August 29, 2024 | August 31, 2023\nRevenue | $ | 37,378 |  | $ | 25,111 |  | $ | 15,540 | \nCost of goods sold | 22,505 |  | 19,498 |  | 16,956 | \nGross margin | 14,873 |  | 5,613 |  | ( 1,416 ) | \nResearch and development | 3,798 |  | 3,430 |  | 3,114 | \nSelling, general, and administrative | 1,205 |  | 1,129 |  | 920 | \nRestructure and asset impairments | 39 |  | 1 |  | 171 | \nOther operating (income) expense, net | 61 |  | ( 251 ) |  | 124 | \nOperating income (loss) | 9,770 |  | 1,304 |  | ( 5,745 ) | \nInterest income | 496 |  | 529 |  | 468 | \nInterest expense | ( 477 ) |  | ( 562 ) |  | ( 388 ) | \nOther non-operating income (expense), net | ( 135 ) |  | ( 31 ) |  | 7 | \n | 9,654 |  | 1,240 |  | ( 5,658 ) | \nIncome tax (provision) benefit | ( 1,124 ) |  | ( 451 ) |  | ( 177 ) | \nEquity in net income (loss) of equity method investees | 9 |  | ( 11 ) |  | 2 | \nNet income (loss) | $ | 8,539 |  | $ | 778 |  | $ | ( 5,833 ) | \nEarnings (loss) per share |  |  | \nBasic | $ | 7.65 |  | $ | 0.70 |  | $ | ( 5.34 ) | \nDiluted | 7.59 |  | 0.70 |  | ( 5.34 ) | \nNumber of shares used in per share calculations |  |  | \nBasic | 1,116 |  | 1,105 |  | 1,093 | \nDiluted | 1,125 |  | 1,118 |  | 1,093 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU26.67",
+      "document_id": "MU_FY2026",
+      "accession": "0000723125-26-000023",
+      "report_fiscal_year": 2026,
+      "period_end": "2026-09-03",
+      "filed_at": "2026-10-09",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm",
+      "source_sha256": "02614fff54223e2c5aad03618a0ac1a9e1c445151a166fd738875fd123f6b89d",
+      "block_id": "MU_FY2026:b0067:98ac5ab607",
+      "locator": {
+        "xpath": "/html/body/div[129]",
+        "anchor": null
+      },
+      "start": 20123,
+      "end": 20966,
+      "quote": "In 2026, HBM3E 12-high represented the majority of our HBM shipments. In 2026, we began volume production of our HBM4 36GB 12-high with increased bandwidth and superior power efficiency enabled by our 1β (1-beta) process node, and we delivered samples of HBM4 48GB 16-high to multiple key customers to power next-generation AI platforms. Our HBM4 uses advanced complementary metal-oxide-semiconductor (“CMOS”) and advanced metallization process technologies on the base logic die and DRAM core dies, which are designed and manufactured in-house. This, along with our unique HBM design, packaging, and test capability, enables our industry-leading performance and low-power leadership. Development of HBM4E, our next-generation HBM product leveraging our 1γ DRAM technology node, is well underway, and we expect to ramp volume in calendar 2027.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "MU26.986",
+      "document_id": "MU_FY2026",
+      "accession": "0000723125-26-000023",
+      "report_fiscal_year": 2026,
+      "period_end": "2026-09-03",
+      "filed_at": "2026-10-09",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm",
+      "source_sha256": "02614fff54223e2c5aad03618a0ac1a9e1c445151a166fd738875fd123f6b89d",
+      "block_id": "MU_FY2026:b0986:67c03cb76f",
+      "locator": {
+        "xpath": "/html/body/ix:continuation[29]/ix:nonnumeric/div/table",
+        "anchor": "f-943"
+      },
+      "start": 329299,
+      "end": 329529,
+      "quote": "For the year ended | 2026 | 2025 | 2024\nDRAM | $ | 100,679 |  | $ | 28,578 |  | $ | 17,603 | \nNAND | 31,785 |  | 8,503 |  | 7,227 | \nOther (primarily NOR) | 724 |  | 297 |  | 281 | \n | $ | 133,188 |  | $ | 37,378 |  | $ | 25,111 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA24.1081",
+      "document_id": "NVDA_FY2024",
+      "accession": "0001045810-24-000029",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-01-28",
+      "filed_at": "2024-02-21",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+      "source_sha256": "ef68081f90c4d2ae0920d3d359360b8893ffd422439cfa6bb2a9cf1b6f7ccb92",
+      "block_id": "NVDA_FY2024:b1081:a7d9a8b56c",
+      "locator": {
+        "xpath": "/html/body/ix:continuation[32]/ix:nonnumeric/div[2]/table",
+        "anchor": "f-1321"
+      },
+      "start": 341537,
+      "end": 341968,
+      "quote": "| Year Ended\n | Jan 28, 2024 |  | Jan 29, 2023 |  | Jan 30, 2022\nRevenue: | (In millions)\nData Center | $ | 47,525 |  |  | $ | 15,005 |  |  | $ | 10,613 | \nGaming | 10,447 |  |  | 9,067 |  |  | 12,462 | \nProfessional Visualization | 1,553 |  |  | 1,544 |  |  | 2,111 | \nAutomotive | 1,091 |  |  | 903 |  |  | 566 | \nOEM and Other | 306 |  |  | 455 |  |  | 1,162 | \nTotal revenue | $ | 60,922 |  |  | $ | 26,974 |  |  | $ | 26,914 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA24.266",
+      "document_id": "NVDA_FY2024",
+      "accession": "0001045810-24-000029",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-01-28",
+      "filed_at": "2024-02-21",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+      "source_sha256": "ef68081f90c4d2ae0920d3d359360b8893ffd422439cfa6bb2a9cf1b6f7ccb92",
+      "block_id": "NVDA_FY2024:b0266:a0bdc3252a",
+      "locator": {
+        "xpath": "/html/body/div[286]",
+        "anchor": null
+      },
+      "start": 75709,
+      "end": 76885,
+      "quote": "Demand for our data center systems and products surged in fiscal year 2024. Entering fiscal year 2025, we are gathering customer demand indications across several product transitions. We have demand visibility for our new data center products ramping later in fiscal year 2025. We have increased our supply and capacity purchases with existing suppliers, added new vendors and entered into prepaid manufacturing and capacity agreements. These increased purchase volumes, the number of suppliers, and the integration of new vendors into our supply chain may create more complexity and execution risk. We may continue to enter into new supplier and capacity arrangements. Our purchase commitments and obligations for inventory and manufacturing capacity at the end of fiscal year 2024 were impacted by shortening lead times for certain components. Supply of Hopper architecture products is improving, and demand remains very strong. We expect our next-generation products to be supply-constrained based upon demand indications. We may incur inventory provisions or impairments if our inventory or supply or capacity commitments exceed demand for our products or demand declines.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA24.473",
+      "document_id": "NVDA_FY2024",
+      "accession": "0001045810-24-000029",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-01-28",
+      "filed_at": "2024-02-21",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+      "source_sha256": "ef68081f90c4d2ae0920d3d359360b8893ffd422439cfa6bb2a9cf1b6f7ccb92",
+      "block_id": "NVDA_FY2024:b0473:f25a971cc3",
+      "locator": {
+        "xpath": "/html/body/div[520]",
+        "anchor": null
+      },
+      "start": 180172,
+      "end": 181348,
+      "quote": "Demand for our data center systems and products surged in fiscal year 2024. Entering fiscal year 2025, we are gathering customer demand indications across several product transitions. We have demand visibility for our new data center products ramping later in fiscal year 2025. We have increased our supply and capacity purchases with existing suppliers, added new vendors and entered into prepaid manufacturing and capacity agreements. These increased purchase volumes, the number of suppliers, and the integration of new vendors into our supply chain may create more complexity and execution risk. Our purchase commitments and obligations for inventory and manufacturing capacity at the end of fiscal year 2024 were impacted by shortening lead times for certain components. We may continue to enter into new supplier and capacity arrangements. Supply of Hopper architecture products is improving, and demand remains very strong. We expect our next-generation products to be supply-constrained based upon demand indications. We may incur inventory provisions or impairments if our inventory or supply or capacity commitments exceed demand for our products or demand declines.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA24.501",
+      "document_id": "NVDA_FY2024",
+      "accession": "0001045810-24-000029",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-01-28",
+      "filed_at": "2024-02-21",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+      "source_sha256": "ef68081f90c4d2ae0920d3d359360b8893ffd422439cfa6bb2a9cf1b6f7ccb92",
+      "block_id": "NVDA_FY2024:b0501:529f55ea1a",
+      "locator": {
+        "xpath": "/html/body/div[551]",
+        "anchor": null
+      },
+      "start": 191629,
+      "end": 192608,
+      "quote": "Data Center revenue for fiscal year 2024 was $47.5 billion, up 217% from fiscal year 2023. In Data Center, we launched AI inference platforms that combine our full-stack inference software with NVIDIA Ada, NVIDIA Hopper and NVIDIA Grace Hopper processors optimized for generative AI, LLMs and other AI workloads. We introduced NVIDIA DGX Cloud and AI Foundations to help businesses create and operate custom large language models and generative AI models. As AV algorithms move to video transformers, and more cars are equipped with cameras, we expect NVIDIA’s automotive data center processing demand to grow significantly. We estimate that in fiscal year 2024, approximately 40% of Data Center revenue was for AI inference. In the fourth quarter of fiscal year 2024, large cloud providers represented more than half of our Data Center revenue, supporting both internal workloads and external customers. We announced NVIDIA Spectrum-X, an accelerated networking platform for AI.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA24.63",
+      "document_id": "NVDA_FY2024",
+      "accession": "0001045810-24-000029",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-01-28",
+      "filed_at": "2024-02-21",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+      "source_sha256": "ef68081f90c4d2ae0920d3d359360b8893ffd422439cfa6bb2a9cf1b6f7ccb92",
+      "block_id": "NVDA_FY2024:b0063:7895963adb",
+      "locator": {
+        "xpath": "/html/body/div[69]",
+        "anchor": null
+      },
+      "start": 13535,
+      "end": 15268,
+      "quote": "Innovation is at our core. We have invested over $45.3 billion in research and development since our inception, yielding inventions that are essential to modern computing. Our invention of the GPU in 1999 sparked the growth of the PC gaming market and redefined computer graphics. With our introduction of the CUDA programming model in 2006, we opened the parallel processing capabilities of our GPU to a broad range of compute-intensive applications, paving the way for the emergence of modern AI. In 2012, the AlexNet neural network, trained on NVIDIA GPUs, won the ImageNet computer image recognition competition, marking the “Big Bang” moment of AI. We introduced our first Tensor Core GPU in 2017, built from the ground-up for the new era of AI, and our first autonomous driving system-on-chips, or SoC, in 2018. Our acquisition of Mellanox in 2020 expanded our innovation canvas to include networking and led to the introduction of a new processor class – the data processing unit, or DPU. Over the past 5 years, we have built full software stacks that run on top of our GPUs and CUDA to bring AI to the world’s largest industries, including NVIDIA DRIVE stack for autonomous driving, Clara for healthcare, and Omniverse for industrial digitalization; and introduced the NVIDIA AI Enterprise software – essentially an operating system for enterprise AI applications. In 2023, we introduced our first data center CPU, Grace, built for giant-scale AI and high-performance computing. With a strong engineering culture, we drive fast, yet harmonized, product and technology innovations in all dimensions of computing including silicon, systems, networking, software and algorithms. More than half of our engineers work on software.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA24.711",
+      "document_id": "NVDA_FY2024",
+      "accession": "0001045810-24-000029",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-01-28",
+      "filed_at": "2024-02-21",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+      "source_sha256": "ef68081f90c4d2ae0920d3d359360b8893ffd422439cfa6bb2a9cf1b6f7ccb92",
+      "block_id": "NVDA_FY2024:b0711:da3ef03096",
+      "locator": {
+        "xpath": "/html/body/div[800]/table",
+        "anchor": null
+      },
+      "start": 245119,
+      "end": 246964,
+      "quote": "| Jan 28, 2024 |  | Jan 29, 2023\nAssets |  |  | \nCurrent assets: |  |  | \nCash and cash equivalents | $ | 7,280 |  |  | $ | 3,389 | \nMarketable securities | 18,704 |  |  | 9,907 | \nAccounts receivable, net | 9,999 |  |  | 3,827 | \nInventories | 5,282 |  |  | 5,159 | \nPrepaid expenses and other current assets | 3,080 |  |  | 791 | \nTotal current assets | 44,345 |  |  | 23,073 | \nProperty and equipment, net | 3,914 |  |  | 3,807 | \nOperating lease assets | 1,346 |  |  | 1,038 | \nGoodwill | 4,430 |  |  | 4,372 | \nIntangible assets, net | 1,112 |  |  | 1,676 | \nDeferred income tax assets | 6,081 |  |  | 3,396 | \nOther assets | 4,500 |  |  | 3,820 | \nTotal assets | $ | 65,728 |  |  | $ | 41,182 | \nLiabilities and Shareholders' Equity |  |  | \nCurrent liabilities: |  |  | \nAccounts payable | $ | 2,699 |  |  | $ | 1,193 | \nAccrued and other current liabilities | 6,682 |  |  | 4,120 | \nShort-term debt | 1,250 |  |  | 1,250 | \nTotal current liabilities | 10,631 |  |  | 6,563 | \nLong-term debt | 8,459 |  |  | 9,703 | \nLong-term operating lease liabilities | 1,119 |  |  | 902 | \nOther long-term liabilities | 2,541 |  |  | 1,913 | \nTotal liabilities | 22,750 |  |  | 19,081 | \nCommitments and contingencies - see Note 13 |  |  | \nShareholders’ equity: |  |  | \nPreferred stock, $ 0.001 par value; 2 shares authorized; none issued | — |  |  | — | \nCommon stock, $ 0.001 par value; 8,000 shares authorized; 2,464 shares issued and outstanding as of January 28, 2024; 2,466 shares issued and outstanding as of January 29, 2023 | 2 |  |  | 2 | \nAdditional paid-in capital | 13,132 |  |  | 11,971 | \nAccumulated other comprehensive income (loss) | 27 |  |  | ( 43 ) | \nRetained earnings | 29,817 |  |  | 10,171 | \nTotal shareholders' equity | 42,978 |  |  | 22,101 | \nTotal liabilities and shareholders' equity | $ | 65,728 |  |  | $ | 41,182 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA24.74",
+      "document_id": "NVDA_FY2024",
+      "accession": "0001045810-24-000029",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-01-28",
+      "filed_at": "2024-02-21",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+      "source_sha256": "ef68081f90c4d2ae0920d3d359360b8893ffd422439cfa6bb2a9cf1b6f7ccb92",
+      "block_id": "NVDA_FY2024:b0074:2fd36f9530",
+      "locator": {
+        "xpath": "/html/body/div[81]",
+        "anchor": null
+      },
+      "start": 18241,
+      "end": 18655,
+      "quote": "The Graphics segment includes GeForce GPUs for gaming and PCs, the GeForce NOW game streaming service and related infrastructure; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics; virtual GPU, or vGPU, software for cloud-based visual and virtual computing; automotive platforms for infotainment systems; and Omniverse Enterprise software for building and operating metaverse and 3D internet applications.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA24.90",
+      "document_id": "NVDA_FY2024",
+      "accession": "0001045810-24-000029",
+      "report_fiscal_year": 2024,
+      "period_end": "2024-01-28",
+      "filed_at": "2024-02-21",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+      "source_sha256": "ef68081f90c4d2ae0920d3d359360b8893ffd422439cfa6bb2a9cf1b6f7ccb92",
+      "block_id": "NVDA_FY2024:b0090:d85d83edfa",
+      "locator": {
+        "xpath": "/html/body/div[98]",
+        "anchor": null
+      },
+      "start": 23922,
+      "end": 24163,
+      "quote": "Our products for the gaming market include GeForce RTX and GeForce GTX GPUs for gaming desktop and laptop PCs, GeForce NOW cloud gaming for playing PC games on underpowered devices, as well as SoCs and development services for game consoles.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA25.735",
+      "document_id": "NVDA_FY2025",
+      "accession": "0001045810-25-000023",
+      "report_fiscal_year": 2025,
+      "period_end": "2025-01-26",
+      "filed_at": "2025-02-26",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
+      "source_sha256": "4c8a513740a211865018e27462f570c4b858d1de644ff0ea3dcc14ea3066e970",
+      "block_id": "NVDA_FY2025:b0735:bbac8d55d1",
+      "locator": {
+        "xpath": "/html/body/div[816]/table",
+        "anchor": null
+      },
+      "start": 252499,
+      "end": 254353,
+      "quote": "| Jan 26, 2025 |  | Jan 28, 2024\nAssets |  |  | \nCurrent assets: |  |  | \nCash and cash equivalents | $ | 8,589 |  |  | $ | 7,280 | \nMarketable securities | 34,621 |  |  | 18,704 | \nAccounts receivable, net | 23,065 |  |  | 9,999 | \nInventories | 10,080 |  |  | 5,282 | \nPrepaid expenses and other current assets | 3,771 |  |  | 3,080 | \nTotal current assets | 80,126 |  |  | 44,345 | \nProperty and equipment, net | 6,283 |  |  | 3,914 | \nOperating lease assets | 1,793 |  |  | 1,346 | \nGoodwill | 5,188 |  |  | 4,430 | \nIntangible assets, net | 807 |  |  | 1,112 | \nDeferred income tax assets | 10,979 |  |  | 6,081 | \nOther assets | 6,425 |  |  | 4,500 | \nTotal assets | $ | 111,601 |  |  | $ | 65,728 | \nLiabilities and Shareholders' Equity |  |  | \nCurrent liabilities: |  |  | \nAccounts payable | $ | 6,310 |  |  | $ | 2,699 | \nAccrued and other current liabilities | 11,737 |  |  | 6,682 | \nShort-term debt | — |  |  | 1,250 | \nTotal current liabilities | 18,047 |  |  | 10,631 | \nLong-term debt | 8,463 |  |  | 8,459 | \nLong-term operating lease liabilities | 1,519 |  |  | 1,119 | \nOther long-term liabilities | 4,245 |  |  | 2,541 | \nTotal liabilities | 32,274 |  |  | 22,750 | \nCommitments and contingencies - see Note 12 | — |  |  | — | \nShareholders’ equity: |  |  | \nPreferred stock, $ 0.001 par value; 20 shares authorized; none issued | — |  |  | — | \nCommon stock, $ 0.001 par value; 80,000 shares authorized; 24,477 shares issued and outstanding as of January 26, 2025; 24,643 shares issued and outstanding as of January 28, 2024 | 24 |  |  | 25 | \nAdditional paid-in capital | 11,237 |  |  | 13,109 | \nAccumulated other comprehensive income | 28 |  |  | 27 | \nRetained earnings | 68,038 |  |  | 29,817 | \nTotal shareholders' equity | 79,327 |  |  | 42,978 | \nTotal liabilities and shareholders' equity | $ | 111,601 |  |  | $ | 65,728 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA26.1076",
+      "document_id": "NVDA_FY2026",
+      "accession": "0001045810-26-000021",
+      "report_fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "filed_at": "2026-02-25",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "source_sha256": "63458b8a89dcf7317d9adab6bb8a2edfe1d5b3d51c7de62a977389941584cebd",
+      "block_id": "NVDA_FY2026:b1076:28caf9a558",
+      "locator": {
+        "xpath": "/html/body/ix:nonnumeric[27]/ix:continuation/div[2]/table",
+        "anchor": "f-1116-8"
+      },
+      "start": 338133,
+      "end": 338689,
+      "quote": "| Year Ended\n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024\nRevenue by End Market: | (In millions)\nData Center | $ | 193,737 |  |  | $ | 115,186 |  |  | $ | 47,525 | \nCompute | 162,361 |  |  | 102,196 |  |  | 38,950 | \nNetworking | 31,376 |  |  | 12,990 |  |  | 8,575 | \nGaming | 16,042 |  |  | 11,350 |  |  | 10,447 | \nProfessional Visualization | 3,191 |  |  | 1,878 |  |  | 1,553 | \nAutomotive | 2,349 |  |  | 1,694 |  |  | 1,091 | \nOEM and Other | 619 |  |  | 389 |  |  | 306 | \nTotal revenue | $ | 215,938 |  |  | $ | 130,497 |  |  | $ | 60,922 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA26.705",
+      "document_id": "NVDA_FY2026",
+      "accession": "0001045810-26-000021",
+      "report_fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "filed_at": "2026-02-25",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "source_sha256": "63458b8a89dcf7317d9adab6bb8a2edfe1d5b3d51c7de62a977389941584cebd",
+      "block_id": "NVDA_FY2026:b0705:61b7c3fbc9",
+      "locator": {
+        "xpath": "/html/body/div[839]",
+        "anchor": null
+      },
+      "start": 244508,
+      "end": 244544,
+      "quote": "(In millions, except per share data)",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA26.706",
+      "document_id": "NVDA_FY2026",
+      "accession": "0001045810-26-000021",
+      "report_fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "filed_at": "2026-02-25",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "source_sha256": "63458b8a89dcf7317d9adab6bb8a2edfe1d5b3d51c7de62a977389941584cebd",
+      "block_id": "NVDA_FY2026:b0706:ad547472aa",
+      "locator": {
+        "xpath": "/html/body/div[840]/table",
+        "anchor": null
+      },
+      "start": 244546,
+      "end": 245828,
+      "quote": "| Year Ended\n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024\nRevenue | $ | 215,938 |  |  | $ | 130,497 |  |  | $ | 60,922 | \nCost of revenue | 62,475 |  |  | 32,639 |  |  | 16,621 | \nGross profit | 153,463 |  |  | 97,858 |  |  | 44,301 | \nOperating expenses |  |  |  |  | \nResearch and development | 18,497 |  |  | 12,914 |  |  | 8,675 | \nSales, general and administrative | 4,579 |  |  | 3,491 |  |  | 2,654 | \nTotal operating expenses | 23,076 |  |  | 16,405 |  |  | 11,329 | \nOperating income | 130,387 |  |  | 81,453 |  |  | 32,972 | \nInterest income | 2,300 |  |  | 1,786 |  |  | 866 | \nInterest expense | ( 259 ) |  |  | ( 247 ) |  |  | ( 257 ) | \nOther income, net | 9,022 |  |  | 1,034 |  |  | 237 | \nTotal other income, net | 11,063 |  |  | 2,573 |  |  | 846 | \nIncome before income tax | 141,450 |  |  | 84,026 |  |  | 33,818 | \nIncome tax expense | 21,383 |  |  | 11,146 |  |  | 4,058 | \nNet income | $ | 120,067 |  |  | $ | 72,880 |  |  | $ | 29,760 | \nNet income per share: |  |  |  |  | \nBasic | $ | 4.93 |  |  | $ | 2.97 |  |  | $ | 1.21 | \nDiluted | $ | 4.90 |  |  | $ | 2.94 |  |  | $ | 1.19 | \nWeighted average shares used in per share computation: |  |  |  |  | \nBasic | 24,359 |  |  | 24,555 |  |  | 24,690 | \nDiluted | 24,514 |  |  | 24,804 |  |  | 24,940 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA26.718",
+      "document_id": "NVDA_FY2026",
+      "accession": "0001045810-26-000021",
+      "report_fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "filed_at": "2026-02-25",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "source_sha256": "63458b8a89dcf7317d9adab6bb8a2edfe1d5b3d51c7de62a977389941584cebd",
+      "block_id": "NVDA_FY2026:b0718:ad0357b430",
+      "locator": {
+        "xpath": "/html/body/div[856]/table",
+        "anchor": null
+      },
+      "start": 246745,
+      "end": 248668,
+      "quote": "| Jan 25, 2026 |  | Jan 26, 2025\nAssets |  |  | \nCurrent assets: |  |  | \nCash and cash equivalents | $ | 10,605 |  |  | $ | 8,589 | \nMarketable securities | 51,951 |  |  | 34,621 | \nAccounts receivable, net | 38,466 |  |  | 23,065 | \nInventories | 21,403 |  |  | 10,080 | \nPrepaid expenses and other current assets | 3,180 |  |  | 3,771 | \nTotal current assets | 125,605 |  |  | 80,126 | \nProperty and equipment, net | 10,383 |  |  | 6,283 | \nOperating lease assets | 2,867 |  |  | 1,793 | \nGoodwill | 20,832 |  |  | 5,188 | \nIntangible assets, net | 3,306 |  |  | 807 | \nDeferred income tax assets | 13,258 |  |  | 10,979 | \nNon-marketable equity securities | 22,251 |  |  | 3,387 | \nOther assets | 8,301 |  |  | 3,038 | \nTotal assets | $ | 206,803 |  |  | $ | 111,601 | \nLiabilities and Shareholders' Equity |  |  | \nCurrent liabilities: |  |  | \nAccounts payable | $ | 9,812 |  |  | $ | 6,310 | \nAccrued and other current liabilities | 21,352 |  |  | 11,737 | \nShort-term debt | 999 |  |  | — | \nTotal current liabilities | 32,163 |  |  | 18,047 | \nLong-term debt | 7,469 |  |  | 8,463 | \nLong-term operating lease liabilities | 2,572 |  |  | 1,519 | \nOther long-term liabilities | 7,306 |  |  | 4,245 | \nTotal liabilities | 49,510 |  |  | 32,274 | \nCommitments and contingencies - see Note 12 | — |  |  | — | \nShareholders’ equity: |  |  | \nPreferred stock, $ 0.001 par value; 2 shares authorized; none issued | — |  |  | — | \nCommon stock, $ 0.001 par value; 80,000 shares authorized; 24,304 shares issued and outstanding as of January 25, 2026; 24,477 shares issued and outstanding as of January 26, 2025 | 24 |  |  | 24 | \nAdditional paid-in capital | 10,118 |  |  | 11,237 | \nAccumulated other comprehensive income | 178 |  |  | 28 | \nRetained earnings | 146,973 |  |  | 68,038 | \nTotal shareholders' equity | 157,293 |  |  | 79,327 | \nTotal liabilities and shareholders' equity | $ | 206,803 |  |  | $ | 111,601 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA26.729",
+      "document_id": "NVDA_FY2026",
+      "accession": "0001045810-26-000021",
+      "report_fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "filed_at": "2026-02-25",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "source_sha256": "63458b8a89dcf7317d9adab6bb8a2edfe1d5b3d51c7de62a977389941584cebd",
+      "block_id": "NVDA_FY2026:b0729:8b2970b13d",
+      "locator": {
+        "xpath": "/html/body/div[873]/table",
+        "anchor": null
+      },
+      "start": 252000,
+      "end": 255224,
+      "quote": "| Year Ended\n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024\nCash flows from operating activities: |  |  |  |  | \nNet income | $ | 120,067 |  |  | $ | 72,880 |  |  | $ | 29,760 | \nAdjustments to reconcile net income to net cash provided by operating activities: |  |  |  |  | \nStock-based compensation expense | 6,386 |  |  | 4,737 |  |  | 3,549 | \nDepreciation and amortization | 2,843 |  |  | 1,864 |  |  | 1,508 | \nGains on non-marketable equity securities and publicly-held equity securities, net | ( 8,918 ) |  |  | ( 1,030 ) |  |  | ( 238 ) | \nDeferred income taxes | ( 1,424 ) |  |  | ( 4,477 ) |  |  | ( 2,489 ) | \nOther | ( 287 ) |  |  | ( 502 ) |  |  | ( 278 ) | \nChanges in operating assets and liabilities, net of acquisitions: |  |  |  |  | \nAccounts receivable | ( 15,399 ) |  |  | ( 13,063 ) |  |  | ( 6,172 ) | \nInventories | ( 11,324 ) |  |  | ( 4,781 ) |  |  | ( 98 ) | \nPrepaid expenses and other assets | 577 |  |  | ( 395 ) |  |  | ( 1,522 ) | \nAccounts payable | 3,096 |  |  | 3,357 |  |  | 1,531 | \nAccrued and other current liabilities | 5,257 |  |  | 4,278 |  |  | 2,025 | \nOther long-term liabilities | 1,844 |  |  | 1,221 |  |  | 514 | \nNet cash provided by operating activities | 102,718 |  |  | 64,089 |  |  | 28,090 | \nCash flows from investing activities: |  |  |  |  | \nProceeds from sales of marketable securities | 15,157 |  |  | 495 |  |  | 50 | \nProceeds from maturities of marketable securities | 11,226 |  |  | 11,195 |  |  | 9,732 | \nProceeds from sales of non-marketable equity securities | 84 |  |  | 171 |  |  | 1 | \nPurchases of marketable securities | ( 40,616 ) |  |  | ( 26,575 ) |  |  | ( 18,211 ) | \nPurchases of non-marketable equity securities | ( 17,502 ) |  |  | ( 1,486 ) |  |  | ( 862 ) | \nGroq, Inc. | ( 13,000 ) |  |  | — |  |  | — | \nPurchases related to property and equipment and intangible assets | ( 6,042 ) |  |  | ( 3,236 ) |  |  | ( 1,069 ) | \nAcquisitions, net of cash acquired | ( 1,535 ) |  |  | ( 1,007 ) |  |  | ( 83 ) | \nOther | — |  |  | 22 |  |  | ( 124 ) | \nNet cash used in investing activities | ( 52,228 ) |  |  | ( 20,421 ) |  |  | ( 10,566 ) | \nCash flows from financing activities: |  |  |  |  | \nProceeds related to employee stock plans | 644 |  |  | 490 |  |  | 403 | \nPayments related to repurchases of common stock | ( 40,086 ) |  |  | ( 33,706 ) |  |  | ( 9,533 ) | \nPayments related to employee stock plan taxes | ( 7,948 ) |  |  | ( 6,930 ) |  |  | ( 2,783 ) | \nDividends paid | ( 974 ) |  |  | ( 834 ) |  |  | ( 395 ) | \nPrincipal payments on property and equipment and intangible assets | ( 101 ) |  |  | ( 129 ) |  |  | ( 74 ) | \nRepayment of debt | — |  |  | ( 1,250 ) |  |  | ( 1,250 ) | \nOther | ( 9 ) |  |  | — |  |  | ( 1 ) | \nNet cash used in financing activities | ( 48,474 ) |  |  | ( 42,359 ) |  |  | ( 13,633 ) | \nChange in cash and cash equivalents | 2,016 |  |  | 1,309 |  |  | 3,891 | \nCash and cash equivalents at beginning of period | 8,589 |  |  | 7,280 |  |  | 3,389 | \nCash and cash equivalents at end of period | $ | 10,605 |  |  | $ | 8,589 |  |  | $ | 7,280 | \nSupplemental disclosures of cash flow information: |  |  |  |  | \nCash paid for income taxes, net | $ | 20,288 |  |  | $ | 15,118 |  |  | $ | 6,549 |",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA26.740",
+      "document_id": "NVDA_FY2026",
+      "accession": "0001045810-26-000021",
+      "report_fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "filed_at": "2026-02-25",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "source_sha256": "63458b8a89dcf7317d9adab6bb8a2edfe1d5b3d51c7de62a977389941584cebd",
+      "block_id": "NVDA_FY2026:b0740:5b4e04d3aa",
+      "locator": {
+        "xpath": "/html/body/ix:continuation[1]/ix:nonnumeric[2]/div[2]",
+        "anchor": "f-406"
+      },
+      "start": 256085,
+      "end": 256304,
+      "quote": "We operate on a 52- or 53-week year, ending on the last Sunday in January. Fiscal years 2026, 2025 and 2024 were all 52-week years. Fiscal year 2027 will be a 53-week year with the fourth quarter consisting of 14 weeks.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    },
+    {
+      "id": "NVDA26.82",
+      "document_id": "NVDA_FY2026",
+      "accession": "0001045810-26-000021",
+      "report_fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "filed_at": "2026-02-25",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "source_sha256": "63458b8a89dcf7317d9adab6bb8a2edfe1d5b3d51c7de62a977389941584cebd",
+      "block_id": "NVDA_FY2026:b0082:50d039bd7f",
+      "locator": {
+        "xpath": "/html/body/div[93]",
+        "anchor": null
+      },
+      "start": 19807,
+      "end": 20330,
+      "quote": "The NVIDIA Data Center platform is focused on accelerating compute-intensive workloads, such as AI, data processing, graphics, robotics, and scientific computing, delivering superior total cost of ownership relative to conventional CPU-only approaches. It is deployed in cloud, hyperscale, on-premises and edge data centers. The platform consists of data center compute and networking infrastructure offerings typically delivered to customers as rack-scale systems, subsystems, or modules, along with software and services.",
+      "raw_dom_verified": true,
+      "canonical_span_verified": true
+    }
+  ],
+  "validation": {
+    "status": "local_source_audit_complete_pending_human_review",
+    "canonical_cases": 12,
+    "synthetic_mock_cases": 12,
+    "mock_categories": {
+      "colloquial": 4,
+      "exclusion": 3,
+      "ambiguity": 3,
+      "unavailable_disclosure": 2
+    },
+    "original_positive_retrieval_cases": 10,
+    "boundary_only_canonical_cases": 2,
+    "original_evidence_group_occurrences": 47,
+    "selected_numeric_checks": 34,
+    "full_existing_numeric_checks_revalidated": 123,
+    "local_raw_DOM_and_canonical_aliases_verified": 44,
+    "selected_numeric_check_ids": [
+      "N025",
+      "N026",
+      "N027",
+      "N029",
+      "N031",
+      "N032",
+      "N033",
+      "N035",
+      "N037",
+      "N038",
+      "N039",
+      "N041",
+      "N055",
+      "N058",
+      "N061",
+      "N064",
+      "N067",
+      "N070",
+      "N073",
+      "N074",
+      "N075",
+      "N076",
+      "N077",
+      "N083",
+      "N084",
+      "N085",
+      "N086",
+      "N087",
+      "N103",
+      "N104",
+      "N105",
+      "N106",
+      "N109",
+      "N111"
+    ],
+    "v2_v3_unchanged": true,
+    "api_calls": 0,
+    "database_calls": 0,
+    "query_schema_valid": true,
+    "ambiguous_cases_without_hidden_confirmations": 3,
+    "runtime_generation_run": false,
+    "human_approved_cases": 0
+  }
+}

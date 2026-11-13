@@ -28,7 +28,7 @@ def test_resume_and_stop_on_unknown_billing(tmp_path, monkeypatch):
     store = SimpleNamespace(catalog=lambda: SimpleNamespace(metadata=lambda _: []))
 
     @contextmanager
-    def resources(_):
+    def resources(_, **kwargs):
         yield store, object(), SimpleNamespace(events=[]), None
 
     monkeypatch.setattr(module, "resources", resources)
@@ -41,7 +41,7 @@ def test_resume_and_stop_on_unknown_billing(tmp_path, monkeypatch):
         assert "corpus_scope" not in request.model_dump()
         return {"status": "error", "inputs": {}, "error": {"type": "ProviderFailure"}}
 
-    monkeypatch.setattr(module, "execute", execute)
+    monkeypatch.setattr(module, "query", execute)
     module.run(tmp_path / "out", retrieve_only=True)
     module.run(tmp_path / "out", retrieve_only=True)
     assert calls == ["U01"]

@@ -11,6 +11,7 @@ from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
 from finrag.agent.planner import Catalog
+from finrag.agent.policy import current_control
 from finrag.core.files import digest
 from finrag.core.models import Chunk, Filing, Hit
 from finrag.ingestion.chunk import config_id
@@ -25,12 +26,26 @@ class LiveStore:
         # Namespace validated by ServingConfig; SQL identifiers still quoted.
         self.ns = sql.Identifier(config.namespace)
         self.connection = psycopg.connect(
-            dsn, autocommit=True, row_factory=dict_row, connect_timeout=5
+            dsn,
+            autocommit=True,
+            row_factory=dict_row,
+            connect_timeout=max(1, math.ceil(current_control().timeout(5)))
+            if current_control()
+            else 5,
         )
-        self.connection.execute(
-            "SELECT set_config('statement_timeout',%s,false)", (str(config.sql_timeout_ms),)
-        )
-        self.begin_query()
+        try:
+            timeout = (
+                current_control().sql_timeout_ms(config.sql_timeout_ms)
+                if current_control()
+                else config.sql_timeout_ms
+            )
+            self.connection.execute(
+                "SELECT set_config('statement_timeout',%s,false)", (str(timeout),)
+            )
+            self.begin_query()
+        except BaseException:
+            self.connection.close()
+            raise
 
     def begin_query(self):
         self.search_attempts = 0
@@ -355,6 +370,9 @@ class LiveStore:
     def search(self, *args, **kwargs):
         """One request-wide recovery slot; the failed transaction has already rolled back."""
         while True:
+            control = current_control()
+            if control:
+                control.before_sql()
             if self.search_attempts >= self.config.pipeline.max_search_calls:
                 raise ServingError("search_call_resource_limit")
             self.search_attempts += 1
@@ -363,6 +381,8 @@ class LiveStore:
             try:
                 result = self._search_once(*args, **kwargs)
                 event.update(status="ok", hits=len(result) if not kwargs.get("explain") else None)
+                if control:
+                    control.check()
                 return result
             except psycopg.errors.QueryCanceled as exc:
                 timeout = exc.diag.message_primary == "canceling statement due to statement timeout"
@@ -371,7 +391,10 @@ class LiveStore:
                     and self.timeout_retries_remaining > 0
                     and self.search_attempts < self.config.pipeline.max_search_calls
                 )
-                event.update(status="statement_timeout" if timeout else "canceled", retry=retry)
+                event.update(status="statement_timeout" if timeout else "canceled", retry=False)
+                if retry and control:
+                    retry = control.sql_recovery()
+                event["retry"] = retry
                 if not retry:
                     raise
                 self.timeout_retries_remaining -= 1
@@ -404,7 +427,14 @@ class LiveStore:
         where = sql.SQL(" AND ").join(clauses)
         with self.connection.transaction():
             self.connection.execute(
-                "SELECT set_config('statement_timeout',%s,true)", (str(self.config.sql_timeout_ms),)
+                "SELECT set_config('statement_timeout',%s,true)",
+                (
+                    str(
+                        current_control().sql_timeout_ms(self.config.sql_timeout_ms)
+                        if current_control()
+                        else self.config.sql_timeout_ms
+                    ),
+                ),
             )
             if vector is not None:
                 mode = self.config.vector_search

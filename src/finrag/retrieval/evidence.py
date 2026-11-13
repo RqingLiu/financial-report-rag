@@ -4,6 +4,7 @@ import json
 from collections import defaultdict
 
 from finrag.agent.planner import PlanRejected
+from finrag.agent.policy import check_control
 from finrag.answering.generation import answer_messages
 from finrag.core.files import digest
 from finrag.ingestion.chunk import token_count
@@ -15,7 +16,9 @@ def fetch_blocks(hits, store):
     ids = sorted({bid for hit in hits for bid in hit.chunk.block_ids})
     blocks = {}
     for start in range(0, len(ids), 200):
+        check_control()
         blocks.update(store.blocks(ids[start : start + 200]))
+    check_control()
     return blocks
 
 

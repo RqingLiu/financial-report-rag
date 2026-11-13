@@ -7,6 +7,7 @@ from typing import ClassVar
 
 import httpx
 
+from finrag.agent.policy import check_control
 from finrag.core.files import atomic_json, digest
 from finrag.providers.llm import BudgetedVoyage, PaidClient, ProviderFailure, integer_usage
 from finrag.serving.errors import ServingError
@@ -64,6 +65,8 @@ class CrossEncoder:
 
     def __init__(self, key, budget, cache, model="rerank-3-lite", transport=None):
         self.model, self.budget, self.cache = model, budget, cache
+        if model not in self.PRICES:
+            raise ServingError("unconfigured_reranker_price")
         self.http = httpx.Client(
             base_url="https://api.voyageai.com/v1",
             timeout=60,
@@ -71,13 +74,12 @@ class CrossEncoder:
             headers={"Authorization": f"Bearer {key}"},
         )
         self.paid = PaidClient(self.http, budget)
-        if model not in self.PRICES:
-            raise ServingError("unconfigured_reranker_price")
 
     def close(self):
         self.http.close()
 
     def rank(self, query, documents):
+        check_control()
         if not documents:
             return {}, {"cached": False, "documents": 0}
         if len(documents) > 80:
@@ -130,6 +132,7 @@ class CrossEncoder:
                 raise ProviderFailure("reranker_scores_invalid")
         except (KeyError, TypeError, ValueError):
             raise ProviderFailure("reranker_response_invalid") from None
+        check_control()
         return scores, {
             "cached": cached,
             "model": self.model,

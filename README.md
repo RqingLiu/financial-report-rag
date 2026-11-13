@@ -1,10 +1,23 @@
 # Financial Report RAG
 
+## Open the local workflow explorer
+
+```bash
+# From this repository root; no npm/build step
+.venv-migrate/bin/python -m finrag.serving.cli serve --port 8000
+```
+
+Open **http://127.0.0.1:8000/**. Select a saved run/case to inspect the actual graph, node timing, available state, child calls, code and answer without API charges. New live queries use paid APIs and existing budgets; startup/replay never spend credit. Old records without state snapshots are labeled rather than reconstructed. [UI guide and every frontend module](docs/trace-explorer.md).
+
+
 [English](README.md) · [简体中文](README.zh-CN.md)
 
 Retrieve evidence from SEC annual reports, compare companies/years, and inspect each answer's query plan, search results, context and code. The local corpus contains **5 companies, 16 filings and 4,961 chunks**.
 
 **Source boundary:** answers and any future follow-up search use only published database material. No autonomous Web search. Answer supported portions and identify missing information. Downloading new SEC filings is a separately invoked ingestion operation.
+
+
+Request controls now share node/model/provider/search limits, a 180s cooperative deadline, cancellation and one persistent budget ledger. Failed generation can expose selected evidence without presenting an answer. Defaults are $0.15/request plus $0.04 reserved answer headroom within that cap; the existing cumulative spending stop is unchanged. [Behavior, code locations and offline fault tests](docs/rag-agent-refactor.md#6-orchestrator与执行策略).
 
 ## Repository and source layout
 
@@ -31,7 +44,7 @@ financial-report-rag/
 
 `src/` is the source container; `finrag/` is the installable Python package. Keeping the package layer makes imports and installation explicit and keeps tests/data/scripts outside application code. `docs/` explains implementation; `specs/` records requirements and decisions by development increment. Their numbers do not represent parallel runtimes.
 
-The verified local environment is `.venv-migrate`; the original `.venv` was retained. Credentials, environments, raw sources, caches and logs are excluded from Git. [Complete file responsibilities](docs/repository-layout.md).
+The verified local environment is `.venv-migrate`; the original `.venv` was retained. Credentials, environments, raw sources, caches and logs are excluded from Git. [Complete file responsibilities](docs/repository-layout.md). [Nodes, edges and runtime call chain](docs/repository-layout.md#langgraph节点边与模块怎么串起来).
 
 ## How requests and documents flow
 
@@ -76,7 +89,7 @@ flowchart TB
 | `answering` | `generation.py`: cited answers and structure checks; `calculations.py`: disabled arithmetic experiment |
 | `providers` / `core` | Paid API adapters, caches and one ledger / shared data models, settings, files and trace |
 | `serving` | CLI/API, resource wiring, safe trace projection, code registry and static UI |
-| `evaluation` | `__main__.py`: CLI; `run.py`: real requests; `answers.py`: item scores; `rubric.py`: whole-answer scores; `evidence.py`: span recall |
+| `evaluation` | `__main__.py`: CLI; `run.py`: real requests; `answers.py`/`rubric.py`: answer scoring; `evidence.py`: span recall; `dataset.py`: accepted-data validation; `benchmark.py`: offline trace diagnosis/comparison |
 
 Default: HNSW dense Top20/search → RRF/interleave → ≤512 candidates → Top80 LLM reranking → 8K evidence / 24K input. BM25, CrossEncoder and arithmetic remain optional. The graph is bounded; evidence re-querying, persistent checkpoints and multi-agent operation are not enabled. Evidence availability is not semantic correctness.
 
@@ -117,6 +130,8 @@ The commands below use the activated environment. Query/run may spend API credit
 | `python -m finrag.evaluation --help` | List every evaluation command | None |
 | `python -m finrag.evaluation check-data` | Verify compound release and intent draft | Offline/read-only |
 | `python -m finrag.evaluation check-data --dataset compound` or `intents` | Verify one dataset | Offline/read-only |
+| `python -m finrag.evaluation validate-set --dataset data/evaluation/pilot` | Verify accepted 33-case data and hashes | No DB/API |
+| `python -m finrag.evaluation diagnose --help` / `compare --help` | Saved traces/imported reviews → stage/behavior/answer report and paired changes | Offline; absent traces/judgments do not pass |
 | `python -m finrag.evaluation build-intents` | Parent references + split specs → 81-intent draft | Offline; writes draft only |
 | `python -m finrag.evaluation run --ids U11 --out reports/current/new-run` | Query-only cases → current engine responses/traces | May spend APIs; existing ledger stop applies |
 | `python -m finrag.evaluation prepare-judge --help` | Saved traces + gold → judge packets | Offline |
@@ -174,6 +189,8 @@ Other tests showed why the average is insufficient: full-pool reranking reached 
 
 
 ## Validation and next steps
+
+The [accepted pilot](data/evaluation/pilot/README.md) contains 33 development cases: 12 canonical, 12 raw mocks, six boundary and three explicit clarification continuations. Corrections were accepted; the original review packet is preserved. Provider-free validation, trace diagnosis and paired comparison are implemented; no new model scores are claimed.
 
 ```bash
 python -m pip install -r requirements-evaluation.lock

@@ -13,4 +13,6 @@ class TracedModel:
         with self.trace.stage("llm_call", {"messages": messages, **kwargs}) as s:
             result = self.llm.generate(messages, **kwargs)
             s["outputs"] = result
+            if control:
+                control.check()
             return result

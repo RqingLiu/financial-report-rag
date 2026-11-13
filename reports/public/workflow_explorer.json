@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-12",
+  "scope": "local workflow observation and UI; no retrieval/generation strategy changes",
+  "provider_calls_during_validation": 0,
+  "paid_judge_calls": 0,
+  "protected_source_config_ledger_hashes_unchanged": true,
+  "offline_tests": {
+    "passed": 161,
+    "skipped": 7
+  },
+  "frontend_contracts": "offline JS reducer, duplicate-event and chunked CRLF SSE assertions passed",
+  "browser_checks": [
+    "real baseline success",
+    "real plan failure",
+    "clearly labeled mocked graph state capture",
+    "code symbols",
+    "citation evidence",
+    "recorded-node playback",
+    "390px no page overflow",
+    "1280px desktop",
+    "no console errors"
+  ],
+  "legacy_state": "not reconstructed; missing snapshots labeled",
+  "security_review": {
+    "staged_scan": "passed",
+    "historical_blobs": 437,
+    "credential_pattern_findings": 0,
+    "home_path_findings": 0
+  },
+  "artifacts_policy": "raw traces, original documents, cache, ledger, local reviews and screenshots remain local",
+  "limitations": [
+    "historical baseline lacks full state snapshots",
+    "live queries remain subject to unchanged cumulative spending stop",
+    "no new financial-answer quality claim"
+  ]
+}

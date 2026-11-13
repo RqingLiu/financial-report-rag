@@ -1,68 +1,67 @@
-# Query and trace explorer
+# Workflow explorer
 
-The browser is a local interface to the existing serving pipeline. It has no independent model client or agent runtime. Run from the project environment:
+The local UI uses the same LangGraph runtime as the CLI and evaluation runner. It has no separate model client, retrieval pipeline or npm server.
 
 ```bash
-fr-rag-serve serve --port 8000
-# Equivalent: python -m finrag.serving.cli serve --port 8000
+# From the project root, using the verified environment:
+.venv-migrate/bin/python -m finrag.serving.cli serve --port 8000
 ```
 
-Open **http://127.0.0.1:8000/**. The CLI binds only to loopback. Python/FastAPI serves the HTML, CSS and JavaScript; Node, npm and a separate frontend build/server are not required. PostgreSQL and local provider credentials are needed for new queries. Saved traces can be inspected even when PostgreSQL is unavailable.
+Open **http://127.0.0.1:8000/**. Startup, code inspection, history and replay do not call paid providers. Live queries need the local PostgreSQL corpus, provider credentials and available budget. The page displays a blocked budget without increasing it. Retrieval-only still uses planner/embedding/reranking and can cost money.
 
-## Use
+## What the page shows
 
-1. Enter a question, explicit disclosure cutoff and optional reading background. The interface executes independent requests, not a conversation with persistent memory.
-2. Choose full answer or retrieval-only. **Both can incur planner, query-embedding and reranker charges.** Existing shared reservations, cumulative stop and in-flight limits apply. No budget changes are exposed in the browser.
-3. Follow actual stage start/end events on the connected eight-step graph. Click a node, then choose **Overview / Input / Output / Code** in the step inspector. The call selector opens actual child model/SQL calls; JSON fields expand on demand. Zoom/fit controls and background dragging move the canvas. On narrow screens the graph uses four rows and the inspector appears below. There is no synthetic progress percentage. Cache hits can complete a stage without a new model-call span.
-4. In candidates, filter by company/text and final selection. Click a row to inspect its text, coarse rank, reranker grade and context decision. Grades/need mappings are model predictions. Coarse order also includes task interleaving, so it need not be monotonic in the displayed RRF score.
-5. Click an answer's `[E…]` button to open the actual supplied evidence, its report FY/filing date, SEC link and source block/character spans. Tables are displayed as source-preserving plain text; the browser does not reinterpret column semantics.
-6. The newest saved run opens automatically without provider calls. Use **History** beside the data tabs to select another run. Historical mode is explicitly labeled; the composer remains a separate new-query draft. The selector lists the newest 30 managed traces by timestamp/ID; a selected trace is capped at32MiB. Clipped candidate previews are marked. Evidence/answer inspection is distinct from manually reviewed ground truth.
+1. **Question:** disclosure cutoff, optional reading background and typed confirmed-context JSON. A new request begins only through Run. Cancellation is cooperative; in-flight calls may still settle.
+2. **Actual workflow:** graph-owned nodes/edges, observed path, status and inclusive node duration. Optional regroup/calculate are hidden until enabled or explicitly shown. Resource setup is shown separately. A node completing successfully does not establish financial correctness.
+3. **Step inspector:** responsibility, recorded timestamps, input/output summaries, business state before/after with changed fields, nested model/SQL spans and code locations. State is allowlisted and bounded: large candidate collections use IDs/counts instead of repeated text or vectors. Unrecorded and clipped data remain explicit.
+4. **Results:** source-preserving answer rendering, clickable citations, final evidence, filtered coarse candidates/grades/context decisions, actual QueryPlan and original question. Retrieved text is rendered as text, never executable HTML. Reranker grades are model predictions.
+5. **Saved runs:** select a local query or managed evaluation run/case. The existing41-case baseline is accessible without copying it into query logs. Playback/previous/next/scrubbing step through recorded nodes; playback advances nodes at a fixed one-second interval, not a simulation of original wall-clock speed. Measured durations stay unchanged.
 
-The page title is **财报检索与运行追踪**. Each node displays its primary file/function; its overview lists clickable full repository-relative paths, current lines and function responsibilities. **Code map** above the canvas or in the data tabs shows all stages plus API/orchestration, ingestion, shared model adapters and the optional dedicated reranker. These are current implementation associations, not a claim that every cache/optional branch executed in the displayed run. See [the repository walkthrough](development.md#follow-the-current-query-in-code).
+Old baseline traces contain node count summaries and detailed stage spans but no complete business-state snapshots. The page says so rather than reconstructing historical state from current data. New graph executions capture bounded state. If an explicitly labeled offline contract fixture is present locally, it demonstrates new state capture using mocked dependencies; it is not a real financial answer or a benchmark result.
 
-The first node is **已入库年报**, not the repository directory. Its report view reads recorded catalog metadata (or the same run's actual planner business input, clearly labeled as potentially narrowed). The button to read the **current** database is a separate read-only operation with the displayed cutoff, no model request. It shows document/FY/period/filing date, SEC URL and the conventional local HTML path when that file exists. Current rows are never presented as a historical snapshot. The list is capped at500 rows with total/truncation metadata; it does not serve arbitrary local files.
+## Timing, events and source identity
 
-New spans record the orchestration callsite (relative path, function, line and whole-file SHA256). The Code tab reads bounded function excerpts from the **current checkout**, including implementation and orchestration references. Matching file hashes are identified; a changed file is identified too. Old traces have no source identity and are explicitly labeled as current implementation references, **not historical execution snapshots**. A callsite records entering an instrumented stage; it is not a line-by-line profiler of every function called inside it.
+`agent/graph.py` owns registration and conditional routing. `core/tracing.py` assigns event sequences; node/stage events have separate safe projections in `serving/explorer.py`. Nested spans carry the node operation ID. The browser reconciles events by identity and uses the terminal snapshot as authoritative; refreshing or reconnecting does not resubmit a paid request.
 
-New stage inputs additionally record request/scope, shortlist IDs and evidence IDs; the search parent records completion/hit counts. Historical empty fields remain empty. For known model purposes, the inspector projects recorded **business JSON** (request/catalog, reranking candidates/source lines, or generation plan/evidence), with unexpected nested keys removed. Raw system messages, repair instructions and provider answer bodies remain hidden. Validated plans, grades and answers appear on parent-stage outputs. Omitted values and never-recorded values are not reconstructed from the current database.
+Request wall time includes resource setup/cleanup. Node time includes its nested operations, so do not add child times again. The live elapsed timer is provisional. Displayed costs are recorded conservative estimates, not invoices or the cost of replay. There are no online Recall/accuracy scores.
 
-If the connection drops, the paid worker may still finish and save a trace. Refresh history before submitting again. A disconnected browser does not cancel provider calls or free the service's concurrency slot prematurely. A service restart is different from a browser disconnect; this is not a durable job queue. The timestamp/ID can be used to find the private full trace under `logs/serving/`.
+Each node has adapter, graph and algorithm references. New traces record relative source path, function, line and SHA. The Code tab serves bounded snippets from the **current checkout** and flags hash differences; old records without identity are not historical code snapshots. Code references do not claim every optional function executed.
 
-## Component and data map
+## Files
 
-| Step/view | Observable data | Code |
-| --- | --- | --- |
-| Catalog | Published filing count/fingerprint | `serving/runtime.py`, `retrieval/store.py` |
-| Planner | Validated company/report FY, needs, tasks, queries, limitations/clarification | `agent/planner.py`, `agent/scope.py` |
-| Embedding | Query strings, role/model and recorded usage; vectors omitted | `retrieval/search.py`, `providers/voyage.py` |
-| Search | One task/company-FY/query per search, actual document IDs, k, distance, hit text | `retrieval/search.py`, `retrieval/store.py` |
-| Fusion | De-duplicated candidate order and RRF score | `retrieval/search.py: rank_records` |
-| Rerank | Actual shortlist count, method, grades/need IDs and cache status | `retrieval/rerank.py`, `serving/runtime.py` |
-| Context | Included evidence, selected/source-overlap/budget decisions, token counts/caps | `retrieval/evidence.py` |
-| Answer | Need-aligned sections, partial/missing evidence, clickable citations | `answering/generation.py` |
-| Events/transport | Actual nested span start/end/status/duration, usage/cost projection | `core/tracing.py`, `serving/explorer.py`, `serving/api.py` |
-| Browser | Connected DOM/SVG canvas, stage inspector, tables, evidence viewer, SSE parser | `serving/static/{index.html,style.css,app.js}` |
-| Code inspector | Fixed component/symbol registry, AST line ranges, at most140 lines per excerpt | `serving/code_view.py` |
+| Area | Responsibility |
+|---|---|
+| `agent/graph.py` | Real graph, node observations and workflow metadata |
+| `core/tracing.py`, `core/observations.py` | Sequence/operation identity and safe bounded state capture |
+| `serving/api.py` | Same-origin localhost API, SSE, cancellation, readiness and admission |
+| `serving/explorer.py` | Allowlisted node/stage/state/result projections |
+| `serving/history.py` | Managed local run discovery and bounded case reads |
+| `serving/code_view.py` | Fixed source-symbol registry; current line/hash/snippets |
+| `static/js/main.js` | UI lifecycle, selectors, playback and explicit query submission |
+| `static/js/transport.js` | POST/SSE parsing and read-only API requests |
+| `static/js/state.js` | Live-event reducer and playback visibility |
+| `static/js/workflow.js` | Node/path/status/timing overview |
+| `static/js/inspector.js` | State changes, child calls and implementation viewer |
+| `static/js/results.js` | Answers, evidence, candidate decisions and plan |
+| `static/js/dom.js`, `static/css/style.css` | Safe DOM helpers, responsive layout and visual styles |
 
-The duration summary sums top-level spans only; nested model calls are already inside their parents. It excludes setup/serialization/network time and is not end-to-end p95. The cost summary totals this trace's recorded model-call/query-embedding estimates, not historical costs embedded in cached responses or provider invoices. No online recall/accuracy is displayed because it needs labels and offline evaluation.
-
-## HTTP contracts
+## HTTP contracts and access boundaries
 
 | Route | Behavior |
-| --- | --- |
-| `GET /` | Local static application |
-| `GET /health` | Existing DB readiness and ANN method; no paid model |
-| `POST /query` | Existing non-streaming request/response, unchanged |
-| `POST /query/stream?generate=true` | Same request schema; `generate=false` skips answer generation only |
-| `GET /traces` | Bounded timestamp/ID/file-size list, no model calls |
-| `GET /traces/{query_id}` | Read-only safe projection;32 lowercase hex ID, no arbitrary file path |
-| `GET /code/{component}` | Allowlisted component functions from current checkout only; no arbitrary path input |
-| `GET /components` | Current allowlisted file/function/line/role map; no DB or model |
-| `GET /catalog?as_of=YYYY-MM-DD` | Current published DB metadata filtered by cutoff; at most500 rows, no model |
-| `GET /docs` | OpenAPI documentation |
+|---|---|
+| `GET /` / `/static/...` | Packaged module-based application |
+| `GET /workflow` | Graph-owned node metadata and compiled edges, no DB/model setup |
+| `GET /readiness` | Read-only budget status; no credential or reservation IDs |
+| `GET /health` | Database/index readiness; no paid model call |
+| `GET /runs` | Up to50 eligible managed evaluation runs plus recent live query IDs; small manifests only |
+| `GET /runs/{run}/cases/{case}` | Registered run membership and bounded, symlink-safe trace projection |
+| `GET /traces` / `/traces/{uuid}` | Backward-compatible live history, strict UUID validation |
+| `GET /code/{component}` / `/components` | Fixed registry, bounded source excerpts; no arbitrary file reader |
+| `POST /query` / `/query/stream` | Same actual runtime; potentially paid, existing controls apply |
+| `POST /queries/{id}/cancel` | Signal active request cancellation; no instant-preemption promise |
 
-SSE event order: `accepted` → zero or more `stage_started` / `stage_finished` → `result` or `failure`. A `result` may have an error/clarify/insufficient-evidence status. The terminal snapshot is authoritative; bounded queues can discard earlier intermediate events for a stalled consumer. `: keepalive` comments keep idle connections open. The stream reports program steps, not chain-of-thought, and sends the answer after existing structural validation, not unvalidated token-by-token output.
+No ingestion, shell, arbitrary SQL, raw prompts or general file access is exposed over HTTP. Raw traces, credentials, caches, local evaluation reviews and fixture artifacts remain ignored by Git. This is a loopback research UI, not a public multi-tenant deployment.
 
-Each trace has its own optional event sink. Worker callbacks create an allowlisted snapshot and transfer it to the async loop. A bounded queue and admission gate avoid an unbounded work backlog; a retained worker task outlives a disconnected consumer. The private original diagnostic file remains unchanged in purpose. The HTTP projection removes raw model/system messages, provider bodies/response IDs, cache keys and runtime configuration. Input/doc/answer text is rendered with `textContent`, not executable HTML. Host/origin checks and a self-only content policy protect the local interface; this is still **not an authenticated public web service**.
+## Verification
 
-Tests use provider-free fake workers to exercise ordering, nested errors, observer failure, projection privacy, replay bounds, failure cleanup, disconnect admission lifetime, source provenance, source-map consistency and read-only catalog cutoff/error handling. Studio007 validation including S06–07: **94 passed / 7 DB tests skipped**, syntax/lint passed; desktop and mobile319px replay checks use real saved runs. Current published catalog16-report/path/source-link checks are read-only; no new paid calls. The earlier006 live smoke is historical evidence, not a new007 live test. A successful smoke query and citation-ID validation do not establish semantic answer accuracy.
+Provider-free regressions check graph parity, streamed node/state events, source identity, clipping/privacy, managed run membership/symlinks, original UUID routes, cancellation and assets. Wheel verification confirms nested JS/CSS packaging. Browser checks use recorded baseline results plus an explicitly labeled offline fixture; they do not establish new financial-answer quality.

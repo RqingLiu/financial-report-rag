@@ -1,10 +1,26 @@
 # Financial Report RAG
 
+## 直接打开前端
+
+```bash
+# 在项目根目录运行，不需要 npm 或单独构建前端
+.venv-migrate/bin/python -m finrag.serving.cli serve --port 8000
+```
+
+打开 **http://127.0.0.1:8000/**。选择历史run/case，可免费查看真实工作流、各节点耗时、已记录的State、内部调用、代码位置与最终回答；本地41题评测也可直接打开。新查询会使用付费API并受原有预算限制，启动/回放不收费。旧trace缺少完整State时会明确标注，不会补造。详见[页面用法和前端各文件职责](docs/trace-explorer.md)。
+
+
 [English](README.md) · [简体中文](README.zh-CN.md)
 
 从 SEC 年报检索财务证据、比较公司和财年，并查看答案怎样生成。当前本地语料是 **5 家公司、16 份财报、4,961 个 chunk**。
 
 **资料边界：只依据已发布的财报库作答。** 补查也只查这个库，不让 Agent 自行上网。可支持部分先答，缺失部分明确无法确定及缺什么；访问 SEC 下载新资料是操作人员显式触发的入库流程。
+
+
+已统一节点/模型/provider/搜索次数、180秒协作式deadline、取消和唯一计费账本。请求上限$0.15，其中先预留$0.04给答案；累计停止线不变。生成失败可展示已选证据，但不冒充成功答案。[控制规则、代码入口与离线故障测试](docs/rag-agent-refactor.md#6-orchestrator与执行策略)。
+
+
+[LangGraph全部节点、边与代码调用关系](docs/repository-layout.md#langgraph节点边与模块怎么串起来)。
 
 ## 先从哪里开始
 
@@ -83,7 +99,7 @@ flowchart TB
 | `answering` | `generation.py` 生成/引用校验；`calculations.py` 算术实验默认关闭 |
 | `providers` / `core` | DeepSeek/Voyage、缓存、唯一计费账本 / 共用模型、设置、文件和 trace |
 | `serving` | `cli.py` / `api.py` 接入；`resources.py` 资源创建；`explorer.py` / `code_view.py` 和 `static/` 展示 trace 与当前代码 |
-| `evaluation` | `__main__.py` 唯一命令分发；`run.py` 实跑；`answers.py` 逐项判分；`rubric.py` 五维评分；`evidence.py` span recall |
+| `evaluation` | `__main__.py` 命令分发；`run.py` 实跑；`answers.py` / `rubric.py` 答案判分；`evidence.py` span recall；`dataset.py` 小集校验；`benchmark.py` 离线诊断和比较 |
 
 默认 HNSW dense Top20/search → RRF/交错 → ≤512 候选 → Top80 LLM 精排 → 8K evidence / 24K 输入。BM25、CrossEncoder 和算术是可选项，未因整理改默认。LangGraph 有界执行；自动证据补查、持久 checkpoint 和多 Agent 尚未启用。证据 gate 只检查有无证据，不是语义正确性认证。
 
@@ -124,6 +140,8 @@ python -m finrag.serving.cli query "比较 NVDA 和 AMD 的 FY2025 数据中心�
 | `python -m finrag.evaluation --help` | 全部评测子命令 | 无 |
 | `python -m finrag.evaluation check-data` | 校验 20 题 release＋81 题 draft | 离线、不改标签 |
 | 同一入口 `check-data --dataset compound` / `--dataset intents` | 只校验指定数据集 | 离线 |
+| 同一入口 `validate-set --dataset data/evaluation/pilot` | 校验采纳后的33条小集及哈希 | 无DB/API |
+| 同一入口 `diagnose --help` / `compare --help` | 保存Trace与导入判定 → 阶段/行为/答案汇总及成对差异 | 离线；没有Trace/判定不算通过 |
 | 同一入口 `build-intents` | 父题答案＋split specs → 重建 81 题草案 | 离线；会写草案，不覆盖 20 题 release |
 | `python -m finrag.evaluation run --ids U11 --out reports/current/new-run` | query-only 数据 → 实际 pipeline 回答/trace/usage | 未缓存调用收费，遵守原账本停止线 |
 | `python -m finrag.evaluation prepare-judge --help` | 保存的 trace＋gold → 审核/判分 packet | 离线 |
@@ -205,6 +223,8 @@ Trace 显示，主要损失发生在召回之后：候选池证据覆盖 **94.47
 
 
 ## 当前边界与下一步
+
+[采纳修订后的开发小集](data/evaluation/pilot/README.md)含33个案例：12条规范意图、12条Mock、6条边界及3条澄清后续。原审核稿保持不变；已实现离线校验、Trace诊断和成对比较，没有新模型成绩。
 
 当前证据 recall 是定位中间损失的指标，不能当回答正确率。20 题和 81 个派生意图都属于开发材料；真实 raw-query 配对、独立新公司问题、数值/引用支持及拒答评测仍需要继续。没有新的付费评测结果，也不声称框架迁移提升了答案分数。
 

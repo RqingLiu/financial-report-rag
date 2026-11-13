@@ -5,6 +5,7 @@ import json
 import math
 import os
 from contextlib import contextmanager
+from contextvars import ContextVar
 from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
@@ -15,6 +16,22 @@ import httpx
 from finrag.providers.embedding import VoyageEmbedder
 
 D = Decimal
+_SCOPE = ContextVar("finrag_budget_scope", default=None)
+
+
+@contextmanager
+def budget_scope(scope_id, limit_usd):
+    """Additional experiment cap in the same ledger, including prior resumed holds."""
+    limit = D(str(limit_usd))
+    if not limit.is_finite() or limit <= 0:
+        raise ValueError("invalid_batch_budget")
+    token = _SCOPE.set((scope_id, limit))
+    try:
+        yield
+    finally:
+        _SCOPE.reset(token)
+
+
 PRICE_SOURCES = {
     "checked_at": "2026-10-26",
     "deepseek": "https://api-docs.deepseek.com/quick_start/pricing/",
@@ -80,14 +97,75 @@ class Budget:
         from finrag.agent.policy import current_control
 
         control = current_control()
+        headroom = D(0)
+        release = None
         if control:
-            control.check_reservation(amount)
+            control.check()
+            if control.phase == "answer":
+                release = control.headroom_id
+            elif control.answer_expected and not control.answer_started and not control.headroom_id:
+                headroom = control.policy.answer_headroom_usd
         with self._locked() as (rows, stream):
             held, spent = self._state(rows)
+            replaced = held.get(release, D(0))
+            projected = amount + headroom - replaced
+            if control:
+                control.check_reservation(amount + headroom, replace=replaced)
             if any(r["event"] == "halt" for r in rows):
                 raise ProviderFailure("ledger_halted_reconcile_before_new_calls")
-            if spent + sum(held.values(), D(0)) + amount >= self.stop:
+            if spent + sum(held.values(), D(0)) + projected >= self.stop:
                 raise BudgetExceeded("Shared baseline budget reached; no request submitted")
+            scope = _SCOPE.get()
+            if scope:
+                scope_id, limit = scope
+                if any(
+                    r.get("scope_id") == scope_id
+                    and D(r.get("scope_limit_usd", str(limit))) != limit
+                    for r in rows
+                    if r["event"] == "reserve"
+                ):
+                    raise ValueError("batch_budget_changed_use_new_scope")
+                ids = {
+                    r["id"]
+                    for r in rows
+                    if r["event"] == "reserve" and r.get("scope_id") == scope_id
+                }
+                scoped_held, scoped_spent = self._state([r for r in rows if r.get("id") in ids])
+                if scoped_spent + sum(scoped_held.values(), D(0)) + projected >= limit:
+                    raise BudgetExceeded("batch_budget_exhausted")
+            metadata = {"scope_id": scope[0], "scope_limit_usd": str(scope[1])} if scope else {}
+            if control:
+                metadata.update(run_id=control.run_id, operation_id=control.operation_id)
+            if release:
+                self._append(
+                    stream,
+                    {
+                        "event": "settle",
+                        "id": release,
+                        "amount_usd": "0",
+                        "usage": {"policy_hold": "answer_started"},
+                    },
+                )
+                control.settled(release, D(0))
+                control.headroom_id = None
+                control.headroom_ledger = None
+            if control and control.phase == "answer":
+                control.answer_started = True
+            if headroom:
+                rid = uuid4().hex
+                self._append(
+                    stream,
+                    {
+                        "event": "reserve",
+                        "id": rid,
+                        "amount_usd": str(headroom),
+                        "provider": "policy",
+                        "purpose": "answer_headroom",
+                        **metadata,
+                    },
+                )
+                control.reserved(rid, headroom)
+                control.headroom_id, control.headroom_ledger = rid, self
             request_id = uuid4().hex
             self._append(
                 stream,
@@ -97,16 +175,35 @@ class Budget:
                     "amount_usd": str(amount),
                     "provider": provider,
                     "purpose": purpose,
-                    **(
-                        {"run_id": control.run_id, "operation_id": control.operation_id}
-                        if control
-                        else {}
-                    ),
+                    **metadata,
                 },
             )
-        if control:
-            control.reserved(request_id, amount)
+            if control:
+                control.reserved(request_id, amount)
         return request_id
+
+    def release_policy_hold(self, request_id):
+        with self._locked() as (rows, stream):
+            held, _ = self._state(rows)
+            record = next(
+                (r for r in rows if r["event"] == "reserve" and r["id"] == request_id), None
+            )
+            if not record or record.get("provider") != "policy":
+                raise ValueError("not_a_policy_hold")
+            if request_id in held:
+                self._append(
+                    stream,
+                    {
+                        "event": "settle",
+                        "id": request_id,
+                        "amount_usd": "0",
+                        "usage": {"policy_hold": "unused_released"},
+                    },
+                )
+        from finrag.agent.policy import current_control
+
+        if control := current_control():
+            control.settled(request_id, D(0))
 
     def settle(self, request_id, amount, usage):
         amount = D(str(amount))
@@ -141,7 +238,22 @@ class Budget:
     def snapshot(self):
         with self._locked() as (rows, _):
             held, spent = self._state(rows)
+        scoped = {}
+        if scope := _SCOPE.get():
+            ids = {
+                r["id"] for r in rows if r["event"] == "reserve" and r.get("scope_id") == scope[0]
+            }
+            scope_held, scope_spent = self._state([r for r in rows if r.get("id") in ids])
+            scoped = {
+                "batch": {
+                    "scope_id": scope[0],
+                    "limit_usd": str(scope[1]),
+                    "known_usd": str(scope_spent),
+                    "unresolved_usd": str(sum(scope_held.values(), D(0))),
+                }
+            }
         return {
+            **scoped,
             "known_peak_list_cost_usd": str(spent),
             "unresolved_reserved_usd": str(sum(held.values(), D(0))),
             "unresolved_requests": list(held),
@@ -163,17 +275,40 @@ class PaidClient:
         self.client, self.budget = client, budget
 
     def post(self, endpoint, payload, ceiling, provider, purpose):
-        self.budget.check_halt()
-        reservation = self.budget.reserve(ceiling, provider, purpose)
-        try:
-            response = self.client.post(endpoint, json=payload)
-        except (httpx.ConnectError, httpx.ConnectTimeout) as exc:
-            # Connection was never established; no provider completion was submitted.
-            self.budget.settle(reservation, "0", {"not_submitted": type(exc).__name__})
-            raise ProviderFailure("connection_not_established") from None
-        except httpx.TransportError:
-            # Unknown billing: leave reservation held, no automatic retries.
-            raise ProviderFailure("transport_failure_billing_unknown") from None
+        from finrag.agent.policy import current_control
+
+        control = current_control()
+        while True:
+            if control:
+                control.check_provider()
+            self.budget.check_halt()
+            reservation = self.budget.reserve(ceiling, provider, purpose)
+            from finrag.agent.policy import PolicyStop
+
+            try:
+                kwargs = {}
+                if control:
+                    # Phase timeouts bound blocking; they do not preempt synchronous I/O.
+                    kwargs["timeout"] = httpx.Timeout(
+                        **{
+                            phase: control.timeout(seconds)
+                            for phase, seconds in self.client.timeout.as_dict().items()
+                        }
+                    )
+                    control.provider_started(provider, purpose)
+            except PolicyStop:
+                self.budget.settle(reservation, "0", {"not_submitted": "policy_stop"})
+                raise
+            try:
+                response = self.client.post(endpoint, json=payload, **kwargs)
+            except (httpx.ConnectError, httpx.ConnectTimeout) as exc:
+                self.budget.settle(reservation, "0", {"not_submitted": type(exc).__name__})
+                if control and control.connect_recovery():
+                    continue
+                raise ProviderFailure("connection_not_established") from None
+            except httpx.TransportError:
+                raise ProviderFailure("transport_failure_billing_unknown") from None
+            break
         if response.status_code != 200:
             # Conservative: leave reservation held pending reconciliation.
             raise ProviderFailure("provider_http_error", response.status_code)

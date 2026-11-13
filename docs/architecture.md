@@ -2,6 +2,8 @@
 
 The default query engine is a bounded LangGraph StateGraph (`agent/graph.py`) with request-local typed business state and dependency context. `serving/runtime.py` adapts the existing CLI/API contract. A planner is still one bounded model operation, not an autonomous subagent. PostgreSQL stores sources and retrieval indexes. Deep Agents, subagents and persistent checkpoints are not used.
 
+For the exact node/edge definitions and how `runner.py`, `graph.py` and `nodes.py` connect to retrieval, see the [workflow code guide](repository-layout.md#langgraph节点边与模块怎么串起来).
+
 The [next-runtime proposal](rag-agent-refactor.md) describes a typed-state, bounded LangGraph migration and its dependency/replay gates. The equivalent migration is implemented; evidence-driven follow-up remains planned.
 
 ```mermaid
@@ -76,7 +78,7 @@ Company aliases can be updated through the trusted metadata CLI without editing 
 - The FY guard recognizes explicit `FY2024`/ranges and bounded company associations. It is not a universal temporal parser. Unknown aliases should be clarified or registered rather than guessed.
 - Long tables with four or fewer rows are retained even after preceding prose. Rows/headers can exceed the target chunk size; source coverage does not prove correct financial column interpretation.
 - Citation existence, source offsets and answer shape are checked. Numeric accuracy, causal support and claim-level entailment are not automatically verified.
-- Per-call SQL/provider timeouts exist; a shared end-to-end deadline and representative load acceptance remain open work.
+- A monotonic request deadline, native phase/SQL timeouts and cooperative cancellation are implemented. Already submitted synchronous calls drain; hard real-time interruption and representative load acceptance are not claimed.
 
 The ANN filtering and iterative-scan approach follows [pgvector's documented behavior](https://github.com/pgvector/pgvector#filtering). Small filtered sets may favor exact search; no automatic router is currently enabled.
 
@@ -86,3 +88,16 @@ The ANN filtering and iterative-scan approach follows [pgvector's documented beh
 `agent/runner.py` binds RunPolicy, then invokes the compiled graph. `agent/nodes.py` calls the existing algorithms; `reference.py` retains the sequential rollback control. Plans, ranking, evidence and answer inputs are compared with deterministic receipts; this is an orchestration check, not a new answer-quality score. Node transitions/tool receipts and additive typed outcomes are recorded alongside the original spans. No graph retry policy or checkpoint backend is enabled. Availability gating does not assert semantic sufficiency.
 
 `configs/serving.json` keeps the same retrieval/context/model settings and adds `engine` and `run_policy`. Request-local counts and optional deadline/cost caps share the existing persistent ledger; unknown charges remain held. Deadline checks are cooperative, with existing HTTP/SQL timeouts for in-flight operations. [Detailed source and state map](repository-layout.md).
+
+
+## Shared execution control — 2026-11-09
+
+`serving/runtime.py` starts the request trace/control **before resource setup**, then `agent/runner.py` binds it throughout the graph. `agent/policy.py` owns request-wide node/model/provider/search/repair/recovery counts and monotonic time. `providers/llm.py` owns the sole persistent monetary ledger, including atomic answer headroom and optional resumed batch caps; there is no second balance.
+
+Active policy: 180s/request, $0.15/request, $0.04 answer headroom, ≤16 nodes / 32 logical LLM calls / 64 actual provider requests / 192 search attempts. Planner/answer and each rerank batch get at most one schema repair; the whole request has one confirmed SQL-timeout recovery. Connect-only retry defaults to zero. The cumulative stop remains $1.60; engineering limits do not grant spending authorization or change retrieval/context/model parameters.
+
+HTTP phase and search SQL timeouts are clamped to remaining time. Stream disconnect, explicit local cancellation and CLI Ctrl-C prevent subsequent actions; in-flight operations are not promised to stop instantly. Known late usage settles before delivery is suppressed; unknown charges remain held. Technical failures preserve typed outcomes and may expose **evidence-only** fallback without a generated answer. Scope insufficiency and dependency failures remain distinct. See [policy behavior and offline verification](rag-agent-refactor.md#6-orchestrator与执行策略).
+
+## Live workflow observations — 2026-11-12
+
+The browser reads graph-owned topology and separate node/stage events. New executions capture bounded allowlisted business state and operation-linked spans; old state omissions stay explicit. Managed local evaluation history enables baseline replay with no provider calls. This is additive observation/UI work: query planning, retrieval, reranking, generation and budgets are unchanged. [UI and module guide](trace-explorer.md).

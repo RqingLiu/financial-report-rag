@@ -8,6 +8,7 @@ from pathlib import Path
 from fastapi import HTTPException
 
 from finrag.core.config import ROOT
+from finrag.core.observations import bounded
 
 TRACE_DIR = ROOT / "logs/serving"
 MAX_TRACE_BYTES = 32 * 1024 * 1024
@@ -170,7 +171,9 @@ def stage_view(row):
     """Never recursively expose generic provider events/messages/configuration."""
     name = row["name"]
     inputs, outputs = row.get("inputs", {}), row.get("outputs", {})
-    out = pick(row, "id parent_id name status started_at ended_at duration_seconds error_type")
+    out = pick(
+        row, "id parent_id operation_id name status started_at ended_at duration_seconds error_type"
+    )
     source = row.get("source")
     if isinstance(source, dict):
         path = source.get("path", "")
@@ -187,7 +190,9 @@ def stage_view(row):
     if name == "catalog_snapshot":
         visible = pick(outputs, "documents fingerprint catalog")
     elif name in ("query_plan", "evidence_regroup"):
-        visible = pick(outputs, "cached attempts validated_plan")
+        visible = pick(outputs, "cached attempts")
+        if "validated_plan" in outputs:
+            visible["validated_plan"] = business_fields(outputs["validated_plan"])
     elif name == "llm_call":
         business = model_input(inputs)
         if business is not None:
@@ -228,28 +233,42 @@ def stage_view(row):
     return out
 
 
+def node_view(row):
+    out = pick(
+        row,
+        "node status duration_seconds operation_id started_at ended_at "
+        "state_capture_version changed_fields",
+    )
+    for key in ("input", "output", "state_before", "state_after", "error"):
+        if key in row:
+            out[key] = bounded(row[key])
+    source = row.get("source")
+    if (
+        isinstance(source, dict)
+        and source.get("path", "").startswith("src/finrag/")
+        and ".." not in source["path"].split("/")
+    ):
+        out["source"] = pick(source, "path function line sha256")
+    return out
+
+
+def event_view(kind, row):
+    out = node_view(row) if kind.startswith("node_") else stage_view(row)
+    out.update(pick(row, "event_version sequence kind run_id query_id"))
+    return out
+
+
 def agent_view(data):
     agent = data.get("agent", {})
     return (
         {
             **pick(agent, "engine state_version outcome evidence_status"),
             "usage": pick(
-                agent.get("usage", {}), "nodes model_calls paid_known_usd paid_unresolved_usd"
+                agent.get("usage", {}),
+                "nodes model_calls provider_calls provider_attempts_by_purpose sql_attempts sql_retries "
+                "connect_retries schema_repairs paid_known_usd paid_unresolved_usd policy",
             ),
-            "transitions": [
-                {
-                    **pick(row, "node status duration_seconds operation_id"),
-                    "input": pick(
-                        row.get("input", {}),
-                        "status needs tasks searches candidates evidence outcome",
-                    ),
-                    "output": pick(
-                        row.get("output", {}),
-                        "status needs tasks searches candidates evidence outcome",
-                    ),
-                }
-                for row in agent.get("transitions", [])[:64]
-            ],
+            "transitions": [node_view(row) for row in agent.get("transitions", [])[:64]],
         }
         if agent
         else None
@@ -260,7 +279,15 @@ def trace_view(data):
     retrieval = data.get("retrieval", {})
     return {
         "agent": agent_view(data),
-        **pick(data, "query_id created_at status error plan original_plan"),
+        "observation_mode": "offline_contract_fixture"
+        if data.get("observation_mode") == "offline_contract_fixture"
+        else "recorded_execution",
+        "fallback": pick(data.get("fallback", {}), "type answer_generated reason evidence_ids"),
+        "duration_seconds": data.get("duration_seconds"),
+        **pick(data, "query_id created_at status"),
+        "error": pick(data.get("error", {}), "type code"),
+        "plan": business_fields(data.get("plan")),
+        "original_plan": business_fields(data.get("original_plan")),
         "inputs": pick(
             data.get("inputs", {}), "original_question reading_context confirmed_context as_of"
         ),

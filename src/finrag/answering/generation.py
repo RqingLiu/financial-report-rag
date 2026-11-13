@@ -7,6 +7,7 @@ from typing import Literal
 from pydantic import Field, ValidationError
 
 from finrag.agent.planner import Contract, PlanRejected
+from finrag.agent.policy import check_control, claim_repair
 from finrag.ingestion.chunk import token_count
 
 ANSWER_VERSION = "need-aligned-answer-v1"
@@ -129,6 +130,9 @@ def generate_answer(
     messages = answer_messages(data, system_prompt=system_prompt)
     attempts = []
     for attempt in range(2):
+        check_control()
+        if attempt:
+            claim_repair('answer')
         if token_count(json.dumps(messages, ensure_ascii=False)) > full_prompt_tokens:
             raise PlanRejected("answer_prompt_limit")
         result = llm.generate(

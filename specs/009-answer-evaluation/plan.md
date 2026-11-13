@@ -61,3 +61,53 @@ Use `experiments/current_baseline.py` to execute query-only inputs through the r
 4. Run only the six authorized cases with unchanged planning/index/retrieval/reranking bounds and explicit arithmetic activation. Exact cache hits may be reused. Use the unchanged five-dimensional rubric and numeric tolerances; keep failures in denominators and label comparisons against historical answers as descriptive. No new external data, public push, or all-20 run.
 
 Pilot refinement: preserve the first six-case run even though all deliveries succeeded. It exposed a truncated worksheet, quoted-table formatting mismatches, signed cash-outflow operands being treated as unsigned, and an inverted turnover-days derivation. The second six-case run bounds the worksheet to 32 values/calculations, requests minimal literal quotes, normalizes only table separators/whitespace, preserves source signs and explicitly checks stock/flow versus flow/stock and cross-period net accounting effects. No company, question ID or frozen expected value is used in those rules. Both rounds consume the same authorized $2.20 stop; the calculator stays opt-in.
+
+
+## Pilot-stage evaluation design — 2026-11-09, not implemented
+
+Use the existing evaluation CLI, local traces, pytest, five-dimension rubric and deterministic numeric/citation diagnostics. Incorporate independently reviewed pilot corrections as a pending-human-approval overlay, not a modification to frozen v2/v3 releases. Export scorer-compatible canonical and raw labels only after scope/requirements and alternative evidence relationships are confirmed. The reviewer report is label-review evidence, not a pipeline score.
+
+Add behavior evaluation for clarification and unavailable disclosures, planner intent/constraint checks, source-group recall at candidate/Top80/context stages, answer quality and execution/resource outcomes in one per-case record with explicit denominators. Whole-answer generated-only judging must not silently omit clarification, missing-evidence or failed attempts. Do not calculate Precision/nDCG by treating unlabelled chunks as negatives. Preserve parent/variant families and paired A/B identities. Separate raw-versus-canonical input comparisons from raw-direct-versus-planned strategy controls.
+
+First validate the framework with saved answers and deterministic receipts. No new provider calls, dataset freezing, model/default changes or GitHub publication are part of this design-only increment. Current 24-case pipeline performance remains unmeasured. See docs/rag-agent-refactor.md section 6 for scope and sequence.
+
+
+## Final plan alignment
+
+The finalized design is in docs/rag-agent-refactor.md and the metric contract in docs/evaluation.md. Adopt behavior-specific success/denominators, conditional relevance metrics, local bad-case/span analysis and an optional disabled LangSmith adapter. Extend pilot boundary coverage and clarification continuations before freezing labels. Current implementation remains unchanged and the new dataset has no measured pipeline score.
+
+## Authorized offline implementation — 2026-11-09
+
+The user accepted the independent-review corrections and boundary-case behavior policy. Implement the accepted pilot export and provider-free dataset validation, saved-trace diagnosis and paired comparison now. Keep the original review packet and v2/v3 immutable, distinguish approved policies from newly agent-authored wording, and include explicit clarification continuations. Reuse the existing answer/Judge scorers; unreviewed semantics remain null, never automatic passes. Add meaningful provenance, missing-stage, wrong-scope, behavior and failure-denominator regressions. Do not change runtime Planner/retrieval defaults, orchestrator routes, paid ledgers or cloud tracing in this first deliverable; execution-policy consolidation remains the next increment.
+
+## 41-case preparation and cost gate — 2026-11-10
+
+1. Lock 41 IDs spanning all parents/categories and include all 12 previously reviewed canonical intents; do not select on new runtime outcomes or cost alone.
+2. Reuse accepted pilot corrections, audit remaining references directly against immutable local SEC sources, and remove inherited requirements outside each selected task. Keep agent-reviewed versus user-reviewed provenance explicit.
+3. Export a loader-compatible baseline bundle with query-only inputs, case-local evidence/rubrics, numeric dependency closure and a per-case review receipt; verify spans, source hashes, DOM locations, fiscal cutoffs and formulas offline.
+4. Read the published catalog without model clients, probe exact planner cache identities with a no-network sentinel, and estimate cold dependent stages using saved usage distributions and conservative current prices. Preserve an inspectable cost report and assumptions.
+5. Start a full real round only if its estimate is below USD 0.20 and the original ledger enforces that additional batch cap. Otherwise request an explicit larger round limit with the finished dataset/cost report. No paid Judge or full automatic tuning loop is authorized.
+
+## Offline baseline scoring — 2026-11-12
+
+1. Verify all 41 saved packets, traces and unchanged reference/rubric identities; read complete generated answers and the relevant attached source passages.
+2. Author first-pass, excerpt-anchored verdicts for each mandatory fact, numeric application, limit and material-error rule; add observed errors beyond the reference. Judge missing facts separately from unsupported claims.
+3. Apply the existing five-dimensional anchors independently; cap truthfulness for verified material errors. Keep no-answer attempts unscored on the original rubric while retaining their zero delivery contribution in whole-batch summaries.
+4. Validate hashes, literal answer/source anchors, fiscal/unit mappings, rounding and score consistency using offline code. Correct review mistakes, never edit baseline outputs or gold to improve scores.
+5. Deliver all-41 per-question decisions/reasons, generated-only and delivery-adjusted dimension summaries, numeric/citation denominators and disputed cases for user review. No paid calls, cloud upload or tuning.
+
+Completion, 2026-11-12: saved local judgments now cover the entire selected batch. Replaying judgments through the existing item, whole-answer and behavior scorers validates source/answer literals, packet hashes, units and original scope; the integrated report retains three execution failures. Added display-unit normalization and a missing-answer report regression; 30 related offline tests passed. Reviewer-facing artifacts include a summary, 41 case pages with original answers/source excerpts, machine-readable verdicts and a verification receipt. No paid execution or runtime tuning occurred. Human review is the next gate before optimization.
+
+## Trace-informed next optimization proposal — 2026-11-12
+
+Completed offline analysis: replayed all six saved planner responses for the three failures; each preserved the intended report years and failed the same deterministic guard which conflated comparative FY2023 with requested report scope. Recomputed fusion order from saved search records and matched the retained ranking exactly. For the five material-error cases, mapped candidate/Top80/context evidence loss, context-budget decisions, actual alternative disclosures and generation assertions. The baseline runtime, ledger, outputs and scoring remain unchanged.
+
+Priority proposal:
+1. P0: source-anchored report/fact-period constraints and strict negative scope controls; use saved plans without a model call, then generic multilingual/new-issuer fixtures.
+2. P1: minimal evidence-bound amount/unit/period records and deterministic rendering/validation; distinguish legitimate missing data from unverified calculation or false non-comparability. Freeze original context for a later generation-only comparison. Reuse bounded calculation primitives without assuming their current opt-in LLM extraction is free.
+3. P2: compare Top80 allocation on the same saved pool; compare context selection with fixed grades at the unchanged 8K/24K caps. Scope changes must not enter a ranking-only comparison. Caption/units/actual periods must remain literal and source-bound; default full assembly is not the optional compact path.
+4. P3: only then consider same-SQL BM25 replacement or a dedicated reranker. No re-embedding/index rebuild without demonstrated parsing/recall defects.
+
+Future live validation proposal: eight diagnosed cases plus five successful development controls, with separate same-context generation and end-to-end interventions; later all-41 and natural/ambiguous/new-issuer checks. These are not holdout or independent Judge results. Every full round requires a new estimate and the user's execution instruction; above USD 0.20 requires additional approval. No paid calls were made during this analysis.
+
+Detailed case evidence and the reviewer-facing plan remain local under `reports/current/baseline41_20261111_default/review/optimization-plan.md`, with a provider-free audit script and hash-bound receipt. No production implementation is claimed.

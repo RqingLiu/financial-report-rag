@@ -6,6 +6,7 @@ from collections import defaultdict
 from pydantic import Field, StrictInt, ValidationError, field_validator
 
 from finrag.agent.planner import Contract, PlanRejected
+from finrag.agent.policy import check_control, claim_repair
 from finrag.core.files import atomic_json, digest
 from finrag.ingestion.chunk import token_count
 from finrag.retrieval.context import merged
@@ -127,6 +128,7 @@ def grade_candidates(inputs, plan, candidates, llm, cache, logs):
     need_ids = {n["id"] for n in plan["needs"]}
     all_grades, events = {}, []
     for batch in make_batches(candidates):
+        check_control()
         payload = {
             "question": inputs["original_question"],
             "reading_context": inputs["reading_context"],
@@ -179,6 +181,9 @@ def grade_candidates(inputs, plan, candidates, llm, cache, logs):
                 "attempts": [],
             }
             for attempt in range(2):
+                check_control()
+                if attempt:
+                    claim_repair("rerank:" + key)
                 response = llm.generate(
                     messages, max_tokens=4096, json_object=True, purpose="candidate_rerank"
                 )
