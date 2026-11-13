@@ -58,6 +58,8 @@ Coverage is macro recall of required evidence groups, matched against actual sou
 
 **What failed.** U06.02/.03/.06 stopped on planner scope validation. Material errors involved false missing-input claims (U02.04), business/segment comparability (U11.01/.03), quarterly versus annual operands (U15.07), and billion-to-亿 unit conversion (U19.02). U04.02 also lacked revenue inputs in the actual context. Lower stage recall is diagnostic; it does not by itself identify the cause of an answer error.
 
+[Stage-by-stage analysis: what each change contributed, why it helped, regressions and missing ablations](docs/experiments.md#stage-contributions).
+
 ### Earlier retrieval experiments
 
 The early five-chunk/28-combination study reached **86% frozen-test Recall@10**, but recovered all required evidence for only **1/5** cross-document questions. Later 20-question development comparisons used 225 evidence groups and identical per-question context budgets:
