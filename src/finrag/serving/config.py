@@ -29,7 +29,7 @@ class ServingConfig(Contract):
     max_inflight: int = Field(default=2, ge=1, le=16)
     max_raw_bytes: int = Field(default=25000000, ge=10000, le=100000000)
     max_document_chunks: int = Field(default=10000, ge=1, le=100000)
-    stop_usd: float = Field(default=1.60, gt=0, le=4.50)
+    stop_usd: float = Field(default=5.00, gt=0, le=5.00)
 
     @model_validator(mode="after")
     def hybrid_contract(self):

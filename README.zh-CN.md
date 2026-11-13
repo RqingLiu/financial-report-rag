@@ -1,60 +1,75 @@
 # Financial Report RAG
 
-## 直接打开前端
-
-```bash
-# 在项目根目录运行，不需要 npm 或单独构建前端
-.venv-migrate/bin/python -m finrag.serving.cli serve --port 8000
-```
-
-打开 **http://127.0.0.1:8000/**。选择历史run/case，可免费查看真实工作流、各节点耗时、已记录的State、内部调用、代码位置与最终回答；本地41题评测也可直接打开。新查询会使用付费API并受原有预算限制，启动/回放不收费。旧trace缺少完整State时会明确标注，不会补造。详见[页面用法和前端各文件职责](docs/trace-explorer.md)。
-
-
 [English](README.md) · [简体中文](README.zh-CN.md)
 
-从 SEC 年报检索财务证据、比较公司和财年，并查看答案怎样生成。当前本地语料是 **5 家公司、16 份财报、4,961 个 chunk**。
+## 项目简介
 
-**资料边界：只依据已发布的财报库作答。** 补查也只查这个库，不让 Agent 自行上网。可支持部分先答，缺失部分明确无法确定及缺什么；访问 SEC 下载新资料是操作人员显式触发的入库流程。
+基于 Python、LangGraph、PostgreSQL/pgvector、Voyage embedding 和 DeepSeek 的 SEC 年报研究应用。支持公司与财务期间问答，答案附原文引用，并可查看每一步如何得到结果。当前已发布语料含 **5 家公司、16 份财报、4,961 个 chunk**；仓库保存来源清单，数据库和原始文件需单独准备。
 
+- 解析 SEC HTML 和表格，保留 block/chunk 与原文位置，按文档原子入库。
+- 将问题转为经过范围校验的计划，检索、精排证据，再生成引用答案；缺少期间时合理说明，关键歧义先澄清。
+- 在本地工作台查看节点 State 变化、耗时、内部调用、证据和代码位置。
+- 统一请求/累计预算、attempts、协作式 deadline 与取消控制。
 
-已统一节点/模型/provider/搜索次数、180秒协作式deadline、取消和唯一计费账本。请求上限$0.15，其中先预留$0.04给答案；累计停止线不变。生成失败可展示已选证据，但不冒充成功答案。[控制规则、代码入口与离线故障测试](docs/rag-agent-refactor.md#6-orchestrator与执行策略)。
+答案只使用已发布的资料库，Agent 不会自主上网。预测、估值、自动补查循环和持久多轮记忆尚未实现。
 
+## 评测与实验结果
 
-[LangGraph全部节点、边与代码调用关系](docs/repository-layout.md#langgraph节点边与模块怎么串起来)。
+### 最新端到端基线：41 题
 
-## 先从哪里开始
+**运行：2026-11-11；离线评分：2026-11-12。开发集初评，等待人工校准。** 41 题全部尝试，38 题生成答案，3 题在 Planner 范围校验阶段失败。这些规范意图来自 **20 个父问题族**，不是 41 个独立用户问题或独立测试集。包含 12 条此前已采纳的 pilot 参考，其余 29 条由 Agent 对照财报原文审计。
 
-- 只想提问：看“启动和查询”。
-- 想找代码：看下面的目录图与 [逐文件地图](docs/repository-layout.md)。
-- 想校验数据或判分：看“评测与运行命令”。
-- 想理解 v2/v3、prompts 和历史材料：看“评测数据与 Prompt”。
+本集有 37 道正证据题、4 道纯披露边界题、166 个必需证据组、80 个必答事实，75 项不同数值检查共应用 84 次。本节对应保存的 baseline 快照。之后的 Demo、预算和时间范围 Planner 修改**尚未重跑全量评测**。下方历史检索实验的问题与标签不同，不能据此宣称分数提升。
 
-## 整个仓库放什么
+| 端到端指标 | 结果 | 定义 / 分母 |
+| --- | ---: | --- |
+| 答案交付 | **38/41（92.68%）** | 3 道 Planner 失败仍保留在总尝试数中 |
+| 严格整题通过 | **26/41（63.41%）** | 必答事实、数字、边界、行为均满足且无实质错误；其余为 12 道审核未通过、3 道运行失败 |
+| 必答事实完整性 | **66/80（82.50%）** | 正确 1 分、部分 0.5 分、漏答/未交付 0 分 |
+| 必需数值正确交付 | **70/84（83.33%）** | 25 次精确正确、45 次合理舍入；6 次漏答、8 次未交付 |
+| 已陈述必答事实的完整引用支持 | **61/65（93.85%）** | 另 4 项部分支持；仅在实际答出的适用事实中统计 |
+| 必需引用交付覆盖 | **61/73（83.56%）** | 包括漏答/失败；7 项分析边界 N/A；按全部事实计算为 61/80（76.25%） |
+| 存在实质错误的题数 | **5/41** | 包含预设数值检查未覆盖的额外错误 |
+| 技术失败率 | **3/41（7.32%）** | Planner 范围校验失败，不是财报未披露 |
 
-```text
-financial-report-rag/
-├── src/finrag/       # 可安装的 Python 包 / import finrag
-│   ├── agent/       # LangGraph 状态、节点、路由、planner、限额
-│   ├── ingestion/   # 下载、解析、切块、原子入库
-│   ├── retrieval/   # SQL/ANN、融合、精排、上下文
-│   ├── answering/   # 回答和引用校验；可选算术
-│   ├── providers/   # DeepSeek/Voyage、缓存、共享计费
-│   ├── core/        # 模型、配置、文件、trace
-│   ├── serving/     # CLI、API/SSE、Trace Studio 页面
-│   └── evaluation/  # 数据校验、批量运行、离线判分
-├── configs/         # 当前服务、公司、切块配置
-├── data/            # 原文、解析结果、缓存、评测数据
-├── scripts/         # 6 个实际保留的运维/数据制作脚本
-├── tests/           # 当前功能的回归测试
-├── docs/            # 架构、流程、选型和实验结论
-├── specs/           # 版本化需求/计划；不是运行组件
-├── reports/         # 当前复核材料 + 可公开结果摘要
-└── logs/            # 本地运行 trace，不提交 Git
-```
+实际答出且映射到预设检查的数值为 70/70 正确，**不代表全文所有数字正确率为 100%**。额外审查发现了一处不在预设数值清单中的十倍单位错误。
 
-`src` 是源码容器，`finrag` 才是可安装包和 `import finrag` 的名字。即使只有一个包，这层也有作用：安装配置能明确只收应用代码，不把 tests/data/scripts 当应用导入。保留这个标准布局，包内按业务分层。
+| 整体回答 rubric（1–5 分） | 已生成答案均分（n=38） | 含失败的交付调整均分（n=41） |
+| --- | ---: | ---: |
+| 完整性 Completeness | 4.45 | 4.12 |
+| 真实性 Truthfulness | 4.32 | 4.00 |
+| 证据忠实度 Faithfulness | 4.32 | 4.00 |
+| 相关性 Relevance | 3.45 | 3.20 |
+| 清晰度 Clarity | 3.34 | 3.10 |
 
-`docs` 是实现说明；`specs` 是随迭代保留的需求/计划，编号表示开发顺序，不代表多套系统。`.env`、虚拟环境、`.git`、缓存和 trace 都不属于业务代码，也不上传。当前环境是 `.venv-migrate`，原 `.venv` 未替换。
+未交付答案在原 rubric 中为 N/A；交付调整列以各维分数之和除以 41，未交付贡献 0。它是交付惩罚，不是原 rubric 的 0 分锚点，也不把五维平均包装成“准确率”。
+
+| 阶段证据覆盖诊断 | 有实际检索记录的正证据题（n=34） | 全部正证据题的已确认覆盖下界（n=37） |
+| --- | ---: | ---: |
+| 候选池 | 93.15% | 85.60% |
+| 粗排 Top80 | 87.97% | 80.84% |
+| 实际送入生成器的 context | 78.55% | 72.18% |
+
+先按每题必需证据组计算覆盖，再做宏平均，匹配实际来源 span。全量下界将 3 道检索前失败记为未覆盖；4 道纯披露边界题的正证据 Recall 为 N/A。Precision@k、MRR、nDCG、RAGAS Context Precision/Recall **尚未实测**。
+
+**条件与成本。** 通过与 CLI/API 共用的 LangGraph 链路串行实跑；DeepSeek Flash 负责规划、LLM 精排与生成，Voyage 4-lite（1024 维），HNSW dense 每 job Top20、RRF/交错、Top80 LLM 精排，证据 8K / 输入 24K proxy-token 上限。未启用 hybrid、专用 CrossEncoder、regroup 或确定性计算工具。整轮保守标价费用 **$0.91794642**（约 $0.0224/次），低于批准的 $1.10；232 次 provider attempt、194 次逻辑 LLM 调用、512 次 SQL attempt。Planner/精排缓存均零命中，文档向量复用。请求耗时中位数 **25.13 秒**、经验 p95 **32.88 秒**；这是串行样本，不是并发性能承诺。费用为估算，不等于最终账单。
+
+**怎么评分。** 读取保存的答案及生成器实际收到的证据，在本对话中按固定五维 rubric 填写逐项判定，再由代码检查 hash、原文摘录、引用附着、日期和 Decimal 数值，离线汇总。没有付费 Judge 或 RAGAS 评分调用；这不是独立盲评，语义判定仍待人工校准。[五维 rubric](specs/009-answer-evaluation/contracts/whole_answer_rubric.json) · [评测方法](docs/evaluation.md) · [41 题参考与数据说明](data/evaluation/baseline41/README.md) · [公开汇总、逐题分数及来源 hash](reports/public/baseline41.json)。
+
+**主要错误。** U06.02/.03/.06 在 Planner 范围校验中止；实质错误涉及假缺项（U02.04）、业务/报告分部可比性（U11.01/.03）、季度与年度操作数错配（U15.07）、billion→亿换算（U19.02）。U04.02 的实际 context 还缺收入输入。阶段 Recall 用于定位，不能单凭低 Recall 判断答案错误的原因。
+
+### 早期检索实验
+
+早期五种切块、28 组检索组合的冻结测试 Recall@10 为 **86%**，但跨文档题只有 **1/5** 找齐全部证据。后续 20 道复合开发题采用 225 个必需证据组，并固定各题上下文预算：
+
+| 20 题检索对照 | 候选池召回 | Top80 召回 | 最终 context 召回 | 证据齐全 |
+| --- | ---: | ---: | ---: | ---: |
+| Dense + LLM 精排 | 94.47% | 80.95% | 67.66% | 4/20 |
+| Dense + BM25 替换一路查询 + LLM | 94.77% | 83.87% | 71.53% | 5/20 |
+| 按取证目标重组任务 + LLM | 95.62% | 79.19% | 67.62% | 5/20 |
+| Dense + 专用 CrossEncoder | 94.47% | 80.95% | 59.20% | 4/20 |
+
+这些是**证据召回对照，不是答案质量或同期 A/B 实验**。各组使用 342 次 SQL、精确向量检索、每 job Top20、Top80 精排窗口、保存的计划和部分复用评分。默认仍为 Dense + LLM，没有仅凭 BM25 的局部分数就认定泛化收益。全候选精排达到 71.45%，但成本更高；另一次聚焦查询实验达到 69.81%。其他答案/算术跟进、退步及 ANN 条件见[实验说明](docs/experiments.md)和[公开实验依据](reports/public/experiments/README.md)。
 
 ## 代码如何串起来
 
@@ -103,26 +118,59 @@ flowchart TB
 
 默认 HNSW dense Top20/search → RRF/交错 → ≤512 候选 → Top80 LLM 精排 → 8K evidence / 24K 输入。BM25、CrossEncoder 和算术是可选项，未因整理改默认。LangGraph 有界执行；自动证据补查、持久 checkpoint 和多 Agent 尚未启用。证据 gate 只检查有无证据，不是语义正确性认证。
 
-## 启动和查询
+## 整个仓库放什么
+
+```text
+financial-report-rag/
+├── src/finrag/       # 可安装的 Python 包 / import finrag
+│   ├── agent/       # LangGraph 状态、节点、路由、planner、限额
+│   ├── ingestion/   # 下载、解析、切块、原子入库
+│   ├── retrieval/   # SQL/ANN、融合、精排、上下文
+│   ├── answering/   # 回答和引用校验；可选算术
+│   ├── providers/   # DeepSeek/Voyage、缓存、共享计费
+│   ├── core/        # 模型、配置、文件、trace
+│   ├── serving/     # CLI、API/SSE、Trace Studio 页面
+│   └── evaluation/  # 数据校验、批量运行、离线判分
+├── configs/         # 当前服务、公司、切块配置
+├── data/            # 原文、解析结果、缓存、评测数据
+├── scripts/         # 6 个实际保留的运维/数据制作脚本
+├── tests/           # 当前功能的回归测试
+├── docs/            # 架构、流程、选型和实验结论
+├── specs/           # 版本化需求/计划；不是运行组件
+├── reports/         # 当前复核材料 + 可公开结果摘要
+└── logs/            # 本地运行 trace，不提交 Git
+```
+
+`src` 是源码容器，`finrag` 才是可安装包和 `import finrag` 的名字。即使只有一个包，这层也有作用：安装配置能明确只收应用代码，不把 tests/data/scripts 当应用导入。保留这个标准布局，包内按业务分层。
+
+`docs` 是实现说明；`specs` 是随迭代保留的需求/计划，编号表示开发顺序，不代表多套系统。`.env`、虚拟环境、`.git`、缓存和 trace 都不属于业务代码，也不上传。虚拟环境名称不影响运行；以下安装示例使用 `.venv`。
+
+## 安装与本地 Demo
+
+真实查询需要 Python 3.12、安装 pgvector 的 PostgreSQL，以及 DeepSeek/Voyage 凭证。新克隆的仓库不包含已入库数据库、原始财报、密钥或私有运行历史；先按[入库说明](docs/data-and-ingestion.md)准备语料。以下命令都在项目根目录执行。
 
 ```bash
-# 在项目根目录执行。本机已安装环境：
-source .venv-migrate/bin/activate
-
-# 第一次安装：Python 3.12；运行依赖与完整评测依赖二选一
-# python3 -m venv .venv-migrate
-# python -m pip install -r requirements.lock
-# python -m pip install -r requirements-evaluation.lock
-# cp .env.example .env   # 填数据库、Voyage、DeepSeek、SEC User-Agent
-
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.lock
+cp .env.example .env
+# 在被忽略的 .env 中配置 PostgreSQL、Voyage、DeepSeek、SEC User-Agent。
+# 按 docs/data-and-ingestion.md 准备并发布语料后启动：
 python -m finrag.serving.cli serve --port 8000
-# 浏览器打开 http://127.0.0.1:8000/
+```
+
+打开 **http://127.0.0.1:8000/**，不需要 npm 或单独构建前端。输入问题后可查看节点 State、耗时、内部调用、代码位置和引用。分析年份直接写在问题里；**高级选项 → 信息截至日期**默认今天，只限制资料公开日。未给期间时合理采用库内范围并说明，关键歧义先澄清；State 展示范围和依据。
+
+新查询的费用包括规划、embedding、LLM 精排、生成及有限修复。单次上限 $0.15，包含 $0.04 答案预留；另有配置的累计停止线、attempts/deadline 和取消控制。打开页面、看代码、回放已有记录不调用付费 API。旧 trace 缺少完整 State 时明确标注，不会补造。[页面与模块说明](docs/trace-explorer.md) · [执行控制](docs/rag-agent-refactor.md#6-orchestrator与执行策略)。
+
+```bash
+# 在已激活的环境中：
 python -m finrag.serving.cli query "比较 NVDA 和 AMD 的 FY2025 数据中心业务" --as-of 2026-11-08
 ```
 
 ## 评测与运行命令
 
-命令中的 `python` 指已经激活的 `.venv-migrate`。查询和批量实跑可能调用模型；校验、导出 Judge prompt、导入判定和判分都在离线完成。
+命令中的 `python` 指已激活环境中的解释器。查询和批量实跑可能调用模型；校验、导出 Judge prompt、导入判定和判分都在离线完成。
 
 | 命令（均在项目根目录） | 输入 → 输出 / 用途 | 费用或写入 |
 | --- | --- | --- |
@@ -200,37 +248,22 @@ python -m finrag.evaluation score --packets reports/current/review/packets.json 
 
 导出不替你生成 Judge 判定。判定必须符合 packet/rubric hash 与来源摘录校验，人工校准仍是必要步骤；引用 ID 存在不代表支持主张。
 
-## 实验发现了什么
+## 验证与下一步
 
-早期 v1 比较了五种切块配置和 28 组检索组合。冻结测试集 Recall@10 为 **86%**，但跨文档子集中，只有 **1/5** 的问题找齐了全部必需证据。
+```bash
+python -m pip install -r requirements-evaluation.lock
+python -m pytest -q
+python scripts/verify_public_evidence.py
+ruff check src tests
+# 需要先准备本地原文与解析数据：
+python -m finrag.evaluation check-data
+# 显式启用临时 DB 测试，不调用付费模型：
+FINRAG_INTEGRATION=1 python -m pytest tests/test_serving_database.py -q
+```
 
-后续开发集包含 **20 道已复核问题、225 个必需证据组、123 项参考答案数值检查**。每组对应一项必需事实或原文，可以允许多个替代来源。“宏平均召回”是先算每题找到了多少必需证据，再对所有题取平均。参考答案和标签只用于离线评分。
+[33 条 pilot](data/evaluation/pilot/README.md)包含规范/口语 Mock 配对、边界与澄清后续，可作开发回归，尚无自然用户输入或独立 holdout 成绩。下一步优先处理报告/事实期间误拦、数字单位与实际期间、假缺项判断，以及固定预算下的 Top80/context 损失；保留成功对照，另行授权实跑后用同一 rubric 比较最终答案。时间范围/UI 修改已做离线验证，没有新的 41 题质量分数。
 
-[v3拆分草案](data/evaluation/golden_v3/README.md)将其整理为 **81个规范意图用例**，分别分配答案与评分要求；这不是81个新增独立测试样本，原20题仍保留作复合查询压力测试。子题措辞已经规整，不能证明真实输入的改写效果；需另做 [raw-query 配对评测](docs/evaluation.md#raw-query-and-rewrite-evaluation)。[父子题对应表](data/evaluation/golden_v3/parent_child_map.md) · [RAG Agent重构提案](docs/rag-agent-refactor.md)（已完成等价迁移，补查仍待实现）。
-
-Trace 显示，主要损失发生在召回之后：候选池证据覆盖 **94.47%**，进入前 80 名后是 **80.95%**，未经精排、最终送给模型的上下文只有 **47.34%**。因此后续重点测试排序和上下文选择，并固定每题的上下文预算。
-
-| 20 题开发集对照 | 候选池召回 | 前 80 名召回 | 最终上下文召回 | 证据齐全的题数 |
-| --- | ---: | ---: | ---: | ---: |
-| 向量检索 + LLM 精排 | 94.47% | 80.95% | 67.66% | 4/20 |
-| 向量 + BM25 替换一路查询 + LLM | 94.77% | 83.87% | 71.53% | 5/20 |
-| 按取证目标重组任务 + LLM | 95.62% | 79.19% | 67.62% | 5/20 |
-| 向量检索 + 专用 CrossEncoder | 94.47% | 80.95% | 59.20% | 4/20 |
-
-这些分数是**证据召回率，不是答案正确率**。每组执行 342 次 SQL 检索，每次取 Top20，精排前 80 个候选，每题上下文预算相同。对照使用精确检索、已保存的计划和部分复用的 LLM 评分，不是端到端冷启动性能测试。BM25 在这里提升了 3.87 个百分点；默认仍保留向量检索 + LLM，等待独立测试。
-
-其他实验也说明不能只看均分：全候选精排达到 71.45%，但精排成本更高；模型选取表格行的均分更高，却漏掉 U12 的重要会计行。聚焦子查询在另一组实验中达到 69.81%。完整条件、费用、逐题退步和 ANN 结果见[实验文档](docs/experiments.md)与[逐题 JSON](reports/public/experiments/README.md)。
-
-
-## 当前边界与下一步
-
-[采纳修订后的开发小集](data/evaluation/pilot/README.md)含33个案例：12条规范意图、12条Mock、6条边界及3条澄清后续。原审核稿保持不变；已实现离线校验、Trace诊断和成对比较，没有新模型成绩。
-
-当前证据 recall 是定位中间损失的指标，不能当回答正确率。20 题和 81 个派生意图都属于开发材料；真实 raw-query 配对、独立新公司问题、数值/引用支持及拒答评测仍需要继续。没有新的付费评测结果，也不声称框架迁移提升了答案分数。
-
-旧研究 driver、synthetic benchmark 源码、过期标注 prompt、重复维护脚本和整个 `archive` 已删除；保留的历史分数注明条件，不再承诺从已删除的原始大 trace 重放。当前运行、数据校验与判分不依赖 archive。
-
-[当前架构](docs/architecture.md) · [入库](docs/data-and-ingestion.md) · [评测方法](docs/evaluation.md) · [Trace Studio](docs/trace-explorer.md) · [实验摘要](reports/public/experiments/README.md)
+[当前架构](docs/architecture.md) · [入库](docs/data-and-ingestion.md) · [评测方法](docs/evaluation.md) · [工作流页面](docs/trace-explorer.md)
 
 ## 开发辅助目录与自动生成文件
 
@@ -238,8 +271,8 @@ Trace 显示，主要损失发生在召回之后：候选池证据覆盖 **94.47
 | --- | --- |
 | `.github/` | GitHub CI：安装完整评测依赖、检查代码/公开材料、跑测试 |
 | `.specify/`、`.agents/skills/` | Spec Kit 的模板、当前 feature 指针和开发指令；不会成为在线 Agent 的工具 |
-| `specs/` | 需求、计划和验收记录；当前 013 是本轮整理，009/010/012 分别对应评测、数据和 Agent |
-| `.venv-migrate/` / `.venv/` | 已验证的新运行环境 / 保留的旧环境；本轮没有重装或删除环境 |
+| `specs/` | 需求、计划和验收记录；009/010/012 分别对应评测、数据和 Agent；014 为工作流页面，015 为时间范围规则 |
+| `.venv/` 等虚拟环境目录 | 本地安装的依赖与解释器；目录名不影响包导入，不提交 Git |
 | `.pytest_cache/`、`.ruff_cache/`、`__pycache__/` | 测试、lint、Python 自动缓存，不是手写业务代码，不提交 Git，可再生成 |
 | `src/*.egg-info/` | editable install 自动生成的包元数据，不作为源码编辑 |
 | `.git/`、`.gitignore` | 版本历史 / 提交排除规则 |

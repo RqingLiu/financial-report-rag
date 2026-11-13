@@ -6,7 +6,7 @@
 
 本节保留2026-11-09评测契约，后面的历史结果保留原数据集、分母和条件。**截至2026-11-12：另选的41条规范意图已真实跑完并完成离线初评；33条pilot中的口语、澄清和边界行为不因此视为已批量实测。** 本节完整设计不是全部已实现的功能清单；命令与范围见[pilot说明](../data/evaluation/pilot/README.md)和[41题数据说明](../data/evaluation/baseline41/README.md)。**最终回答/行为决定是否改进，中间Recall用于定位损失。**
 
-本轮流程与环境报告在本地`reports/current/baseline41_20261111_default/review/evaluation-report.md`，逐题判定在同目录`review.md`；完整回答/trace/评分不公开上传。本轮为本对话辅助的离线初评，不是付费或独立Judge；运行时`validate`仅做结构结果/终态处理，离线评测由`evaluation/answers.py`和`rubric.py`导入判定并验证/计算，不能混为同一步。
+本轮流程与环境报告在本地`reports/current/baseline41_20261111_default/review/evaluation-report.md`，逐题判定在同目录`review.md`；完整回答/trace/语义判定理由不公开上传；脱敏的汇总和逐题分数见 [README统一结果模块](../README.zh-CN.md#评测与实验结果)与[公开机器可读回执](../reports/public/baseline41.json)。本轮为本对话辅助的离线初评，不是付费或独立Judge；运行时`validate`仅做结构结果/终态处理，离线评测由`evaluation/answers.py`和`rubric.py`导入判定并验证/计算，不能混为同一步。
 
 ### 1. 样本、分母与成功规则
 

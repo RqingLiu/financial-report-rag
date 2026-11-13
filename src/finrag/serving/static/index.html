@@ -15,7 +15,17 @@
   <form id="query-form">
     <label class="sr-only" for="question">研究问题</label>
     <textarea id="question" required maxlength="16000" rows="2" placeholder="比较 NVDA 和 AMD 的数据中心业务收入，并说明财年与披露口径差异。"></textarea>
-    <div class="form-row"><label>公开截止日 <input id="as-of" type="date" required></label><label>执行范围 <select id="mode"><option value="answer">检索并生成答案</option><option value="retrieve">仅检索与上下文</option></select></label><details><summary>阅读背景与确认范围</summary><textarea id="background" rows="2" placeholder="补充公司、报告财年或章节"></textarea><textarea id="confirmed" rows="2" placeholder='已确认范围 JSON（可选），例如 {"ticker":"AMD","report_years":[2025]}'></textarea></details><button id="submit" class="primary">运行查询 ↗</button><button id="cancel" type="button" hidden>取消</button></div>
+    <p class="hint">可直接说明想分析的年份；未指定时按库内可用范围回答并说明，关键时间歧义会先澄清。</p>
+    <div class="form-row">
+      <label>执行范围 <select id="mode"><option value="answer">检索并生成答案</option><option value="retrieve">仅检索与上下文</option></select></label>
+      <details id="advanced-options"><summary>高级选项</summary>
+        <label>信息截至日期 <input id="as-of" type="date" required aria-describedby="cutoff-help"></label>
+        <p id="cutoff-help" class="hint">默认今天，仅允许使用当天及之前公开的资料，不是分析年份。分析 2024 年仍可保留今天；仅在还原历史时点时修改。</p>
+        <label for="background">阅读背景（可选）</label><textarea id="background" rows="2" placeholder="补充公司、分析期间、报告财年或章节"></textarea>
+        <label for="confirmed">已确认范围 JSON（可选）</label><textarea id="confirmed" rows="2" placeholder='例如 {"ticker":"AMD","report_years":[2025]}'></textarea>
+      </details>
+      <button id="submit" class="primary">运行查询 ↗</button><button id="cancel" type="button" hidden>取消</button>
+    </div>
     <div id="budget" class="hint">新运行可能调用付费 API；历史记录与回放不收费。</div>
   </form>
 </section>

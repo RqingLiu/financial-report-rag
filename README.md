@@ -1,50 +1,75 @@
 # Financial Report RAG
 
-## Open the local workflow explorer
-
-```bash
-# From this repository root; no npm/build step
-.venv-migrate/bin/python -m finrag.serving.cli serve --port 8000
-```
-
-Open **http://127.0.0.1:8000/**. Select a saved run/case to inspect the actual graph, node timing, available state, child calls, code and answer without API charges. New live queries use paid APIs and existing budgets; startup/replay never spend credit. Old records without state snapshots are labeled rather than reconstructed. [UI guide and every frontend module](docs/trace-explorer.md).
-
-
 [English](README.md) · [简体中文](README.zh-CN.md)
 
-Retrieve evidence from SEC annual reports, compare companies/years, and inspect each answer's query plan, search results, context and code. The local corpus contains **5 companies, 16 filings and 4,961 chunks**.
+## Overview
 
-**Source boundary:** answers and any future follow-up search use only published database material. No autonomous Web search. Answer supported portions and identify missing information. Downloading new SEC filings is a separately invoked ingestion operation.
+A SEC annual-report research application built with Python, LangGraph, PostgreSQL/pgvector, Voyage embeddings and DeepSeek. It answers company and financial-period questions with source citations and lets users inspect how each answer was produced. The current published corpus contains **5 companies, 16 filings and 4,961 chunks**; source manifests are versioned, while the database and original filings are prepared separately.
 
+- Parse SEC HTML and tables into source-linked blocks and chunks; publish documents atomically.
+- Turn a question into a validated company/period plan, retrieve and rerank evidence, then generate a cited answer. Missing periods are disclosed or clarified when material.
+- Inspect node state changes, timings, nested calls, evidence and source-code locations in the local workflow explorer.
+- Apply shared request/cumulative budgets, bounded attempts, a cooperative deadline and cancellation.
 
-Request controls now share node/model/provider/search limits, a 180s cooperative deadline, cancellation and one persistent budget ledger. Failed generation can expose selected evidence without presenting an answer. Defaults are $0.15/request plus $0.04 reserved answer headroom within that cap; the existing cumulative spending stop is unchanged. [Behavior, code locations and offline fault tests](docs/rag-agent-refactor.md#6-orchestrator与执行策略).
+Answers use the published corpus; the agent does not browse the Web autonomously. Forecasting, valuation, autonomous evidence-retry loops and persistent conversation memory are not implemented.
 
-## Repository and source layout
+## Evaluation results
 
-```text
-financial-report-rag/
-├── src/finrag/       # Installable Python package / import finrag
-│   ├── agent/       # LangGraph state, nodes, routing, planner and limits
-│   ├── ingestion/   # Download, parse, chunk and publish atomically
-│   ├── retrieval/   # SQL/ANN, fusion, reranking and context
-│   ├── answering/   # Answers, citation checks and optional arithmetic
-│   ├── providers/   # DeepSeek/Voyage, caches and shared billing
-│   ├── core/        # Models, configuration, files and traces
-│   ├── serving/     # CLI, API/SSE and Trace Studio UI
-│   └── evaluation/  # Data checks, batch runs and offline scoring
-├── configs/         # Active service, issuer and chunk settings
-├── data/            # Sources, parsed data, caches and evaluation data
-├── scripts/         # Six operational and dataset scripts
-├── tests/           # Regression tests for current behavior
-├── docs/            # Architecture, workflows, choices and findings
-├── specs/           # Versioned requirements and plans
-├── reports/         # Local reviews and public result summaries
-└── logs/            # Local request traces; excluded from Git
-```
+### Latest end-to-end baseline: 41 cases
 
-`src/` is the source container; `finrag/` is the installable Python package. Keeping the package layer makes imports and installation explicit and keeps tests/data/scripts outside application code. `docs/` explains implementation; `specs/` records requirements and decisions by development increment. Their numbers do not represent parallel runtimes.
+**Run: 2026-11-11; offline review: 2026-11-12. Provisional development results, pending human calibration.** All 41 cases were attempted; 38 produced answers and three failed at planner validation. These are canonical intents derived from **20 parent question families**, not 41 independent user queries or a held-out test. The 12 previously accepted pilot references were retained; the other 29 were agent-audited against source filings.
 
-The verified local environment is `.venv-migrate`; the original `.venv` was retained. Credentials, environments, raw sources, caches and logs are excluded from Git. [Complete file responsibilities](docs/repository-layout.md). [Nodes, edges and runtime call chain](docs/repository-layout.md#langgraph节点边与模块怎么串起来).
+The set has 37 positive-evidence and four disclosure-only cases, 166 required evidence groups, 80 required facts and 75 distinct numeric checks applied 84 times. This evaluates the saved baseline snapshot. Later demo, budget and temporal-planner changes have **not** been rerun on the full set. Historical retrieval experiments below use different questions/labels and do not establish a score improvement.
+
+| End-to-end measure | Result | Definition / denominator |
+| --- | ---: | --- |
+| Answer delivery | **38/41 (92.68%)** | Three planner failures remain in the attempted denominator |
+| Strict task pass | **26/41 (63.41%)** | Required facts, numbers, boundaries and behavior pass with no material error; 12 reviewed failures + 3 execution failures |
+| Required-fact completeness | **66/80 (82.50%)** | Correct = 1, partial = 0.5, missing/undelivered = 0 |
+| Required numeric delivery and correctness | **70/84 (83.33%)** | 25 exact + 45 acceptable rounding; 6 omitted + 8 undelivered |
+| Full citation support, asserted required facts | **61/65 (93.85%)** | Four partially supported; conditional on facts actually stated |
+| Required citation delivery coverage | **61/73 (83.56%)** | Includes omissions/failures; seven analytical boundary facts are N/A; literal all-fact coverage is 61/80 (76.25%) |
+| Material-error cases | **5/41** | Includes errors outside the predefined numeric checklist |
+| Technical failure rate | **3/41 (7.32%)** | Planner scope-validation failures, not missing disclosures |
+
+The 70/70 correct **mapped** required numeric checks are a conditional result, not 100% correctness of every number in the answers. The review separately caught an unchecked tenfold unit error.
+
+| Whole-answer rubric (1–5) | Generated answers (n=38) | Delivery-adjusted (n=41) |
+| --- | ---: | ---: |
+| Completeness | 4.45 | 4.12 |
+| Truthfulness | 4.32 | 4.00 |
+| Faithfulness to supplied evidence | 4.32 | 4.00 |
+| Relevance | 3.45 | 3.20 |
+| Clarity | 3.34 | 3.10 |
+
+Undelivered answers have N/A on the original rubric; the adjusted columns divide score sums by all 41 attempts, assigning zero delivery credit. The five dimensions are not averaged into an “accuracy” percentage.
+
+| Evidence coverage diagnostic | Recorded positive-evidence cases (n=34) | Confirmed-coverage lower bound, all positive cases (n=37) |
+| --- | ---: | ---: |
+| Candidate pool | 93.15% | 85.60% |
+| Coarse Top80 | 87.97% | 80.84% |
+| Actual generation context | 78.55% | 72.18% |
+
+Coverage is macro recall of required evidence groups, matched against actual source spans. The all-positive column gives zero confirmed coverage to the three pre-retrieval failures; four disclosure-only cases have N/A positive-evidence recall. Precision@k, MRR, nDCG and RAGAS Context Precision/Recall were **not measured**.
+
+**Conditions and cost.** Real serial runs through the shared LangGraph runtime; DeepSeek Flash for planning/reranking/generation, Voyage 4-lite (1024D), HNSW dense Top20/job, RRF/interleaving, Top80 LLM reranking, 8K evidence / 24K input proxy-token caps. Hybrid, dedicated CrossEncoder, regrouping and deterministic calculations were disabled. Cost was **$0.91794642 total** (about $0.0224/attempt), under the approved $1.10 cap; 232 provider attempts, 194 logical LLM calls and 512 SQL attempts. Planner/rerank caches had zero hits; document vectors were reused. Request median was **25.13s**, empirical p95 **32.88s** in this serial sample, not a concurrency/load SLO. Costs are conservative list-price estimates, not invoices.
+
+**Review method.** Read saved answers and the evidence actually delivered to the generator; fill the fixed five-dimension rubric and item verdicts in conversation; validate hashes, source quotations, attached citations, dates and Decimal numeric checks; aggregate offline. No paid Judge or RAGAS scoring ran. This is assisted review, not independent blind judging; semantic verdicts still require human calibration. [Rubric](specs/009-answer-evaluation/contracts/whole_answer_rubric.json) · [Evaluation methods](docs/evaluation.md) · [41-case references and data](data/evaluation/baseline41/README.md) · [Public summary, case scores and provenance hashes](reports/public/baseline41.json).
+
+**What failed.** U06.02/.03/.06 stopped on planner scope validation. Material errors involved false missing-input claims (U02.04), business/segment comparability (U11.01/.03), quarterly versus annual operands (U15.07), and billion-to-亿 unit conversion (U19.02). U04.02 also lacked revenue inputs in the actual context. Lower stage recall is diagnostic; it does not by itself identify the cause of an answer error.
+
+### Earlier retrieval experiments
+
+The early five-chunk/28-combination study reached **86% frozen-test Recall@10**, but recovered all required evidence for only **1/5** cross-document questions. Later 20-question development comparisons used 225 evidence groups and identical per-question context budgets:
+
+| 20-question retrieval comparison | Candidate recall | Top80 recall | Final-context recall | All evidence recovered |
+| --- | ---: | ---: | ---: | ---: |
+| Dense + LLM rerank | 94.47% | 80.95% | 67.66% | 4/20 |
+| Dense + BM25 query replacement + LLM | 94.77% | 83.87% | 71.53% | 5/20 |
+| Evidence-objective regrouping + LLM | 95.62% | 79.19% | 67.62% | 5/20 |
+| Dense + dedicated CrossEncoder | 94.47% | 80.95% | 59.20% | 4/20 |
+
+These are evidence-recall comparisons, **not answer-quality scores or concurrent A/B tests**. Each used 342 SQL searches, exact vector search, Top20/job, a Top80 reranking window, saved plans and some reused grades. Dense + LLM remains the default; the BM25 gain alone was not treated as generalization evidence. Full-pool reranking reached 71.45% with higher cost; a separate focused-query experiment reached 69.81%. Other arithmetic/answer follow-ups, regressions and ANN conditions are in [the experiment guide](docs/experiments.md) and [public experiment evidence](reports/public/experiments/README.md).
 
 ## How requests and documents flow
 
@@ -93,20 +118,53 @@ flowchart TB
 
 Default: HNSW dense Top20/search → RRF/interleave → ≤512 candidates → Top80 LLM reranking → 8K evidence / 24K input. BM25, CrossEncoder and arithmetic remain optional. The graph is bounded; evidence re-querying, persistent checkpoints and multi-agent operation are not enabled. Evidence availability is not semantic correctness.
 
-## Start and query
+## Repository and source layout
+
+```text
+financial-report-rag/
+├── src/finrag/       # Installable Python package / import finrag
+│   ├── agent/       # LangGraph state, nodes, routing, planner and limits
+│   ├── ingestion/   # Download, parse, chunk and publish atomically
+│   ├── retrieval/   # SQL/ANN, fusion, reranking and context
+│   ├── answering/   # Answers, citation checks and optional arithmetic
+│   ├── providers/   # DeepSeek/Voyage, caches and shared billing
+│   ├── core/        # Models, configuration, files and traces
+│   ├── serving/     # CLI, API/SSE and Trace Studio UI
+│   └── evaluation/  # Data checks, batch runs and offline scoring
+├── configs/         # Active service, issuer and chunk settings
+├── data/            # Sources, parsed data, caches and evaluation data
+├── scripts/         # Six operational and dataset scripts
+├── tests/           # Regression tests for current behavior
+├── docs/            # Architecture, workflows, choices and findings
+├── specs/           # Versioned requirements and plans
+├── reports/         # Local reviews and public result summaries
+└── logs/            # Local request traces; excluded from Git
+```
+
+`src/` is the source container; `finrag/` is the installable Python package. Keeping the package layer makes imports and installation explicit and keeps tests/data/scripts outside application code. `docs/` explains implementation; `specs/` records requirements and decisions by development increment. Their numbers do not represent parallel runtimes.
+
+Use an activated Python 3.12 environment; its directory name does not affect runtime behavior. Credentials, environments, raw sources, caches and logs are excluded from Git. [Complete file responsibilities](docs/repository-layout.md). [Nodes, edges and runtime call chain](docs/repository-layout.md#langgraph节点边与模块怎么串起来).
+
+## Setup and local demo
+
+Python 3.12, PostgreSQL with pgvector, and DeepSeek/Voyage credentials are required for live queries. A fresh checkout does not include a populated database, raw filings, credentials or private run history. Follow [data and ingestion](docs/data-and-ingestion.md) to prepare the corpus; examples below run from the repository root.
 
 ```bash
-# Run at the repository root. Verified local environment:
-source .venv-migrate/bin/activate
-
-# Fresh install: Python 3.12; choose runtime or full evaluation dependencies
-# python3 -m venv .venv-migrate
-# python -m pip install -r requirements.lock
-# python -m pip install -r requirements-evaluation.lock
-# cp .env.example .env   # Configure DB, Voyage, DeepSeek and SEC User-Agent
-
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.lock
+cp .env.example .env
+# Configure PostgreSQL, Voyage, DeepSeek and SEC User-Agent in the ignored .env.
+# Prepare/publish the corpus using docs/data-and-ingestion.md.
 python -m finrag.serving.cli serve --port 8000
-# Open http://127.0.0.1:8000/
+```
+
+Open **http://127.0.0.1:8000/**. No npm server/build is needed. Enter a question to see node state changes, timings, internal calls, code and citations. Analysis years belong in the question; **Advanced options → Information cutoff** defaults to today and only limits public disclosures. If no period is supplied, the plan states in-corpus coverage when reasonable or asks a material clarification. State exposes the scope and its basis.
+
+Live requests may incur planning, embedding, LLM reranking, generation and bounded repair costs. The request cap is $0.15, including $0.04 answer headroom, with an additional configured cumulative stop, attempts/deadline and cancellation controls. Opening the UI, reading code or replaying available saved records makes no paid call. Historical traces missing state snapshots remain explicitly incomplete. [UI/module guide](docs/trace-explorer.md) · [Execution controls](docs/rag-agent-refactor.md#6-orchestrator与执行策略).
+
+```bash
+# In the activated environment:
 python -m finrag.serving.cli query "比较 NVDA 和 AMD 的 FY2025 数据中心业务" --as-of 2026-11-08
 ```
 
@@ -142,7 +200,6 @@ The commands below use the activated environment. Query/run may spend API credit
 
 `fr-rag-serve` and `fr-rag` alias the runtime module. [Ingestion metadata shape](docs/data-and-ingestion.md).
 
-
 ## Every retained script
 
 | Script | Why it remains | Invocation / inputs and outputs |
@@ -166,49 +223,26 @@ The top-level historical `prompts/` folder was deleted. Active prompts live next
 
 For exact packet/export/score examples, see the [bilingual workflow](README.zh-CN.md#用已保存回答生成审核材料); each subcommand also supports `--help`.
 
-## What the tests showed
-
-The early v1 study compared five chunk configurations and 28 retrieval combinations. Frozen-test Recall@10 was **86%**, but only **1 of 5** cross-document questions recovered every required evidence group.
-
-The later development set has **20 reviewed questions, 225 required evidence groups and 123 reference-answer numeric checks**. Each group identifies a required fact or passage and may allow alternative sources. Macro recall averages the coverage of each question. Reference answers and labels are used only for offline scoring.
-
-An [atomic v3 draft](data/evaluation/golden_v3/README.md) splits these into **81 canonical intent cases**, with separate answers and scoring requirements. They are derivatives of the same development material, not 81 new independent test cases. The original 20 remain the compound-query suite. Already-normalized child questions do not establish rewrite quality on natural user inputs; [paired raw-query evaluation](docs/evaluation.md#raw-query-and-rewrite-evaluation) is planned. [Parent-to-child map](data/evaluation/golden_v3/parent_child_map.md) · [Agent runtime migration proposal](docs/rag-agent-refactor.md) (equivalent LangGraph migration implemented; feedback remains planned).
-
-Tracing found most evidence loss after retrieval: candidate coverage was **94.47%**, Top80 coverage **80.95%**, and the context sent to generation **47.34%** before reranking. This led to tests of ranking and context selection under fixed per-question context budgets.
-
-| 20-question development comparison | Candidate recall | Top80 recall | Final-context recall | Complete questions |
-| --- | ---: | ---: | ---: | ---: |
-| Dense + LLM rerank | 94.47% | 80.95% | 67.66% | 4/20 |
-| Dense + BM25 replacement + LLM | 94.77% | 83.87% | 71.53% | 5/20 |
-| Regroup tasks by evidence objective + LLM | 95.62% | 79.19% | 67.62% | 5/20 |
-| Dense + dedicated CrossEncoder | 94.47% | 80.95% | 59.20% | 4/20 |
-
-These are **evidence-recall scores, not answer accuracy**. Each arm used 342 SQL searches, Top20/search, a Top80 reranking window and matching context budgets. Retrieval used exact search for the comparison, with saved plans and some reused LLM grades; this was not a cold end-to-end service benchmark. BM25 gained 3.87 percentage points, but the default remains dense + LLM pending independent testing.
-
-Other tests showed why the average is insufficient: full-pool reranking reached 71.45% at higher reranking cost; model-selected table rows scored higher but omitted important U12 accounting rows. Focused queries reached 69.81% in a separate experiment. Detailed conditions, costs, regressions and ANN results are in the [experiment guide](docs/experiments.md) and [per-question JSON results](reports/public/experiments/README.md).
-
-
 ## Validation and next steps
-
-The [accepted pilot](data/evaluation/pilot/README.md) contains 33 development cases: 12 canonical, 12 raw mocks, six boundary and three explicit clarification continuations. Corrections were accepted; the original review packet is preserved. Provider-free validation, trace diagnosis and paired comparison are implemented; no new model scores are claimed.
 
 ```bash
 python -m pip install -r requirements-evaluation.lock
-python -m finrag.evaluation check-data
 python -m pytest -q
 python scripts/verify_public_evidence.py
 ruff check src tests
-# Explicit local DB fixtures; no paid model calls:
+# Requires prepared local source data:
+python -m finrag.evaluation check-data
+# Explicit disposable DB fixtures; no paid model calls:
 FINRAG_INTEGRATION=1 python -m pytest tests/test_serving_database.py -q
 ```
 
-Evidence recall locates intermediate losses; answer completeness, numerical correctness and citation support need end-to-end assessment. Natural raw-query pairs, independent new-company intents, judge calibration and no-answer cases remain open. No new paid answer-quality experiment or claimed quality improvement was produced by repository cleanup.
+The [33-case pilot](data/evaluation/pilot/README.md) includes canonical/raw-mock pairs, boundaries and clarification continuations. These provide development regressions, not a measured natural-query or independent holdout score. Next priorities are planner report-versus-fact-period handling, numeric units/actual periods, unsupported missing-data claims, and Top80/context losses under fixed budgets. Preserve passing controls and compare final-answer rubric scores after any separately authorized real run. The temporal-scope/UI changes have offline coverage; they have no new 41-case quality score.
 
-[Architecture](docs/architecture.md) · [Ingestion](docs/data-and-ingestion.md) · [Evaluation](docs/evaluation.md) · [Trace Studio](docs/trace-explorer.md) · [Published experiment summaries](reports/public/experiments/README.md)
+[Architecture](docs/architecture.md) · [Ingestion](docs/data-and-ingestion.md) · [Evaluation methods](docs/evaluation.md) · [Workflow explorer](docs/trace-explorer.md)
 
 ## Development/generated directories
 
-`.github/` contains CI; `.specify/` and `.agents/skills/` support Spec Kit development and are not runtime tools. `specs/` records requirements/acceptance (009: evaluation, 010: dataset, 012: agent, 013: cleanup). `.venv-migrate/` is the verified environment; `.venv/` was retained. Neither environment was changed in this cleanup. `.pytest_cache/`, `.ruff_cache/`, `__pycache__/` and `src/*.egg-info/` are generated test/lint/bytecode/package metadata, not handwritten components. `.git/` is history; `.gitignore` excludes private/generated files. `.env` stores local secrets and `.env.example` is the public template. `pyproject.toml` defines packaging/entrypoints; the two lock files separate runtime and full evaluation dependencies. Development conventions and data licensing are described below. AGENTS.md is ignored local developer guidance.
+`.github/` contains CI; `.specify/` and `.agents/skills/` support Spec Kit development and are not runtime tools. `specs/` records requirements/acceptance (009: evaluation, 010: dataset, 012: agent, 014: explorer, 015: temporal scope). Virtual environment directories (for example `.venv/`) are local and ignored; their names do not affect package imports. `.pytest_cache/`, `.ruff_cache/`, `__pycache__/` and `src/*.egg-info/` are generated test/lint/bytecode/package metadata, not handwritten components. `.git/` is history; `.gitignore` excludes private/generated files. `.env` stores local secrets and `.env.example` is the public template. `pyproject.toml` defines packaging/entrypoints; the two lock files separate runtime and full evaluation dependencies. Development conventions and data licensing are described below. AGENTS.md is ignored local developer guidance.
 
 `__init__.py` marks a package; `evaluation/__main__.py` implements the module command. Other application files are called by graph nodes/services rather than executed individually.
 

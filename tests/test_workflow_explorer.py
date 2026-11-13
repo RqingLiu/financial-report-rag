@@ -188,3 +188,24 @@ def test_modular_assets_are_served_with_no_models(monkeypatch):
         assert 'type="module"' in client.get("/").text
         for asset in [*root.glob("js/*.js"), *root.glob("css/*.css")]:
             assert client.get("/static/" + asset.relative_to(root).as_posix()).status_code == 200
+
+
+def test_readiness_uses_corrected_stop_without_spending(monkeypatch, tmp_path):
+    from finrag.providers.llm import Budget
+
+    monkeypatch.setattr("finrag.core.config.ROOT", tmp_path)
+    monkeypatch.setattr("finrag.serving.resources.ROOT", tmp_path)
+    monkeypatch.setattr("finrag.serving.api.query", lambda *a: pytest.fail("paid query"))
+    ledger = Budget(tmp_path / "data/cache/baseline/budget.jsonl", "5")
+    rid = ledger.reserve("3.01", "deepseek", "historical")
+    ledger.settle(rid, "3.00418038", {})
+    ledger.reserve("0.0093642", "deepseek", "unknown_usage")
+    before = ledger.path.read_bytes()
+    for stop, expected in [(1.6, "blocked"), (4.9, "available")]:
+        with TestClient(create_app(ServingConfig(stop_usd=stop))) as client:
+            value = client.get("/readiness").json()
+            assert value["status"] == expected
+            assert value["request_cap_usd"] == "0.15"
+            assert value["known_usd"] == "3.00418038"
+            assert value["held_usd"] == "0.0093642"
+    assert ledger.path.read_bytes() == before

@@ -2,6 +2,7 @@
 
 import json
 import re
+from collections import Counter
 from pathlib import Path
 from statistics import mean
 from urllib.parse import unquote, urlsplit
@@ -16,6 +17,51 @@ def load(name):
 
 def close(actual, expected):
     assert abs(actual - expected) < 1e-12, (actual, expected)
+
+
+def verify_baseline41():
+    data = json.loads((ROOT / "reports/public/baseline41.json").read_text())
+    cases, summary = data["cases"], data["answer_review"]
+    assert len(cases) == len({c["id"] for c in cases}) == summary["attempted"] == 41
+    assert Counter(c["task_result"] for c in cases) == summary["integrated_task_results"]
+    assert sum(c["execution"] == "completed" for c in cases) == summary["generated"] == 38
+    facts = sum((Counter(c["fact_statuses"]) for c in cases), Counter())
+    numbers = sum((Counter(c["numeric_statuses"]) for c in cases), Counter())
+    assert facts == summary["fact_completeness"]["statuses"]
+    assert numbers == summary["numeric_required_coverage"]["statuses"]
+    fact_points = facts["correct"] + 0.5 * facts["partial"]
+    close(fact_points, summary["fact_completeness"]["points"])
+    close(fact_points / sum(facts.values()), summary["fact_completeness"]["value"])
+    numeric_correct = numbers["correct"] + numbers["correct_rounded"]
+    assert numeric_correct == summary["numeric_required_coverage"]["correct"]
+    close(numeric_correct / sum(numbers.values()), summary["numeric_required_coverage"]["value"])
+    assert sum(c["required_facts"] for c in cases) == sum(facts.values()) == 80
+    assert sum(c["required_numbers"] for c in cases) == sum(numbers.values()) == 84
+    citation_counts = sum((Counter(c["citation_statuses"]) for c in cases), Counter())
+    citations = summary["citation_support_precision"]
+    assert citation_counts["supported"] == citations["fully_supported"] == 61
+    assert citation_counts["partial"] == citations["partial"] == 4
+    close(61 / 65, citations["value"])
+    close(61 / 73, summary["citation_required_delivery_coverage"]["value"])
+    close(61 / 80, summary["citation_literal_all_fact_coverage"]["value"])
+    assert sorted(c["id"] for c in cases if c["material_error"]) == summary["material_error_cases"]
+    for dimension, metric in summary["whole_answer_dimensions"].items():
+        scores = [c["whole_answer_scores"][dimension] for c in cases if c["whole_answer_scores"]]
+        assert len(scores) == 38 and sum(scores) == metric["sum"]
+        close(mean(scores), metric["generated_mean"])
+        close(sum(scores) / 41, metric["delivery_adjusted_mean"])
+    for stage, key in (
+        ("candidate", "candidate"),
+        ("shortlist", "coarse_top80"),
+        ("context", "context"),
+    ):
+        values = [c["stage_coverage"].get(stage, {}).get("value") for c in cases]
+        values = [v for v in values if isinstance(v, (int, float))]
+        metric = data["execution"]["stage_metrics"][key]
+        assert len(values) == metric["recorded_cases"] == 34
+        close(mean(values), metric["macro_over_recorded"])
+        close(sum(values) / 37, metric["confirmed_coverage_lower_bound_all_positive"])
+    return len(cases)
 
 
 def main():
@@ -91,6 +137,7 @@ def main():
                 "experiment_arms_recomputed": checked,
                 "local_doc_links": links,
                 "demo_citations_resolve": True,
+                "baseline_cases_recomputed": verify_baseline41(),
             }
         )
     )

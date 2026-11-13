@@ -34,6 +34,19 @@ export async function renderInspector(render) {
   });
   const body = $('step-content');
   body.replaceChildren();
+  const observedPlan = t?.state_after?.plan || t?.state_before?.plan;
+  const scope = observedPlan?.temporal_scope;
+  if (scope && ['overview', 'state'].includes(state.stepTab)) {
+    const sources = {user_question:'用户问题', reading_context:'阅读背景', confirmed_context:'已确认范围', catalog_default:'库内可用范围', clarification:'需要澄清'};
+    body.append(table(['范围', '本步记录'], [
+      ['分析期间', scope.analysis_period],
+      ['范围来源', sources[scope.source] || scope.source],
+      ['确定依据', scope.rationale],
+      ['用户原文依据', scope.source_quote || '未指定 / 待澄清'],
+      ['检索报告', (observedPlan.companies || []).map(c => `${c.ticker}: ${(c.report_years || []).map(y => `FY${y}`).join(', ')}`).join('；')],
+      ['信息截至日期', observedPlan.as_of]
+    ]));
+  }
   if (!t && state.stepTab !== 'code') {
     body.append(el('p', 'empty', '该节点尚未执行、未启用或未被这条历史记录捕获。'));
     return;

@@ -77,6 +77,15 @@ class Task(Contract):
     route: Literal["retrieve"] = "retrieve"
 
 
+class TemporalScope(Contract):
+    analysis_period: str = Field(min_length=1, max_length=700)
+    source: Literal[
+        "user_question", "reading_context", "confirmed_context", "catalog_default", "clarification"
+    ]
+    source_quote: str = Field(default="", max_length=700)
+    rationale: str = Field(min_length=1, max_length=700)
+
+
 class Plan(Contract):
     action: Literal["retrieve", "clarify", "insufficient_evidence"]
     as_of: date
@@ -89,6 +98,8 @@ class Plan(Contract):
     unavailable_entities: list[str] = Field(default_factory=list)
     limitations: list[str] = Field(default_factory=list)
     period_interpretation: str
+    # Older saved plans remain readable; new planner responses must supply this annotation.
+    temporal_scope: TemporalScope | None = None
 
 
 class PipelineConfig(Contract):
@@ -217,7 +228,7 @@ class Catalog:
         return sorted(f.id for f in base)
 
 
-PLANNER_VERSION = "catalog-queryplan-v3-scope-schema"
+PLANNER_VERSION = "catalog-queryplan-v4-temporal-scope"
 PLANNER_PROMPT = """你是SEC财报检索规划器，输出json；不回答财务问题，不编造数字或SQL。
 根据原问、用户阅读背景、已确认约束和语料catalog规划。catalog仅说明可用报告，不代表用户要查全部公司。
 公司通过名称/别名/上下文映射至catalog ticker；中文与英文公司标识连写也有效，不要求空格。
@@ -226,8 +237,14 @@ PLANNER_PROMPT = """你是SEC财报检索规划器，输出json；不回答财�
 已确认的公司/报告/as_of必须保留。report_years决定查哪些报告，不等于事实财年；较新报告可以含更早的比较数据。
 source_mention必须是catalog中该公司的名称/别名且逐字来自输入，或是用户已确认的report_document_id；不得借用别家名称或普通词充当实体依据。未登记/无法唯一映射的名称先澄清，不依据常识扩展公司范围。显式跨公司不同FY分别保留；confirmed_context.companies逐公司固定report_years。
 阅读背景中明确'三个财年'且catalog恰有三份可用年度报告，可按该覆盖范围列明各公司报告财年；不能把库内最新当外部最新。
+分析期间与信息截止日as_of独立：as_of只限制可用报告的公开日，不是所问业绩年份。今天为截止日时仍可问历史事实；较新且已公开的报告可以提供早期比较列。只有用户限定特定报告时才固定那些报告。
+必须输出temporal_scope={analysis_period,source,source_quote,rationale}。analysis_period明确事实期间/期间歧义，不能只写截止日；rationale用一句简短可核对的选择依据，不输出思维过程。
+source只能是user_question、reading_context、confirmed_context、catalog_default、clarification。前三者的source_quote必须逐字来自对应输入；catalog_default/clarification的source_quote留空。
+用户明确给出财年、自然年、相对时间或已确认期间时保留原约束，不能改成默认全库范围。自然年与财年不能混用；仅说2024年且不同解释明显影响数字时，action=clarify、source=clarification，具体询问自然年还是公司财年。已明确FY/财年时不要多问。
+未指定分析期间不是自动澄清理由。产品/业务介绍、可按库内覆盖解释的历年趋势等，合理使用所请求公司在截止日前已入库的全部报告年份，source=catalog_default，analysis_period说明按各公司现有报告覆盖期间回答，limitations明确这些实际年份及覆盖不代表完整历史或库外最新资料。
+比较时不同公司的同名FY不等于相同实际起止日，应保留实际期间并说明可比性；若比较必须对齐的时间/基准缺失且会改变答案，具体澄清，不能静默取最新年或共同交集。澄清时tasks为空，不执行检索/生成。部分市场份额等需额外澄清不必阻止其余可回答部分。
 '目前市场份额'等缺时间/市场口径时先回答可支持的产品关系，limitations列出其余需澄清/外部材料的部分，不整题拒绝。
-无公司/期间/指标且无法从已确认上下文恢复时action=clarify，列具体问题。不因英文ticker连写中文而澄清。
+无公司或无明确取证目标且无法从已确认上下文恢复时action=clarify，列具体问题。不因英文ticker连写中文而澄清。
 截止日、公司范围等执行约束放入对应字段，不创建无取证任务的need；每个need必须被tasks.need_ids覆盖。所有可回答/需要披露缺项的信息需求分配need ID，确保原问所有子问都有need，不能只保留第一个指标。
 最多4个retrieve任务，每任务最多2条英文dense_queries（独立完整描述取证目标）；中文概念翻译而不是固定同义词替换。
 每任务keywords是3–8个具体英文检索词组，如指标/产品/风险术语，不要公司名/财年/Item编号/目录等元数据词来匹配正文。
@@ -239,11 +256,12 @@ JSON结构示例（值仅作格式示意，不能当本题实体）：
 "excluded_tickers":[],"period_basis":"mixed","needs":[{"id":"n1","description":"Revenue trend and disclosed growth drivers","source_quote":"收入变化"}],
 "tasks":[{"id":"t1","need_ids":["n1"],"tickers":["EXAMPLE"],"dense_queries":["Revenue and year-over-year growth, management explanation"],
 "keywords":["revenue","growth drivers"],"depends_on":[],"route":"retrieve"}],
-"clarification_questions":[],"unavailable_entities":[],"limitations":[],"period_interpretation":"User-provided report FY; actual value periods must be checked in tables"}
+"clarification_questions":[],"unavailable_entities":[],"limitations":[],"period_interpretation":"User-provided report FY; actual value periods must be checked in tables",
+"temporal_scope":{"analysis_period":"Requested fiscal year","source":"user_question","source_quote":"exact period words from the question","rationale":"The question explicitly specifies a fiscal period; check actual dates in evidence"}}
 """
 
 
-def validate_plan(plan, request, catalog, config):
+def validate_plan(plan, request, catalog, config, *, require_temporal_scope=False):
     text = (
         request.question
         + "\n"
@@ -374,7 +392,51 @@ def validate_plan(plan, request, catalog, config):
         raise PlanRejected("nonretrieval_tasks")
     if plan.action == "clarify" and not plan.clarification_questions:
         raise PlanRejected("missing_clarification_question")
+    validate_temporal_scope(plan, request, catalog, required=require_temporal_scope)
     return plan
+
+
+def validate_temporal_scope(plan, request, catalog, *, required=False):
+    scope = plan.temporal_scope
+    if scope is None:
+        if required:
+            raise PlanRejected("missing_temporal_scope")
+        return
+    if not scope.analysis_period.strip() or not scope.rationale.strip():
+        raise PlanRejected("empty_temporal_scope")
+    sources = {
+        "user_question": request.question,
+        "reading_context": request.reading_context,
+        "confirmed_context": json.dumps(request.confirmed_context or {}, ensure_ascii=False),
+    }
+    if scope.source in sources:
+        if not scope.source_quote.strip() or scope.source_quote not in sources[scope.source]:
+            raise PlanRejected("temporal_scope_quote_not_in_source")
+    elif scope.source_quote:
+        raise PlanRejected("inferred_temporal_scope_has_user_quote")
+    if scope.source == "clarification" and plan.action != "clarify":
+        raise PlanRejected("unresolved_temporal_scope_cannot_retrieve")
+    if scope.source != "catalog_default":
+        return
+    if plan.action != "retrieve":
+        raise PlanRejected("catalog_default_requires_retrieval")
+    confirmed = request.confirmed_context or {}
+    if any(confirmed.get(k) for k in ("report_years", "report_document_id", "companies")):
+        raise PlanRejected("confirmed_period_cannot_use_catalog_default")
+    # Guard explicit year syntax; semantic/relative-period interpretation remains the planner's job.
+    if re.search(
+        r"(?<![A-Za-z0-9])(?:FY\s*)?(?:19|20)\d{2}(?![0-9])",
+        request.question + request.reading_context,
+    ):
+        raise PlanRejected("explicit_period_cannot_use_catalog_default")
+    for company in plan.companies:
+        eligible = {
+            f.fiscal_year
+            for f in catalog.filings
+            if f.ticker == company.ticker and f.filed_at <= str(plan.as_of)
+        }
+        if set(company.report_years) != eligible:
+            raise PlanRejected("catalog_default_report_coverage_omitted")
 
 
 def plan_request(request, catalog, config, llm, cache_dir):
@@ -397,6 +459,9 @@ def plan_request(request, catalog, config, llm, cache_dir):
             or token_count(json.dumps(metadata, ensure_ascii=False)) > config.max_catalog_tokens
         ):
             raise PlanRejected("catalog_capacity_exceeded_narrow_company_scope")
+    response_contract = Plan.model_json_schema()
+    response_contract["required"].append("temporal_scope")
+    response_contract["properties"]["temporal_scope"] = {"$ref": "#/$defs/TemporalScope"}
     messages = [
         {"role": "system", "content": PLANNER_PROMPT},
         {
@@ -405,7 +470,7 @@ def plan_request(request, catalog, config, llm, cache_dir):
                 {
                     "request": request.model_dump(mode="json"),
                     "catalog": metadata,
-                    "response_contract": Plan.model_json_schema(),
+                    "response_contract": response_contract,
                 },
                 ensure_ascii=False,
             ),
@@ -417,7 +482,7 @@ def plan_request(request, catalog, config, llm, cache_dir):
     if cached:
         result = json.loads(path.read_text())
         plan = Plan.model_validate_json(result["answer"])
-        validate_plan(plan, request, catalog, config)
+        validate_plan(plan, request, catalog, config, require_temporal_scope=True)
         return plan, {
             "cached": True,
             "cache_key": key,
@@ -446,7 +511,7 @@ def plan_request(request, catalog, config, llm, cache_dir):
                     for e in exc.errors(include_input=False, include_url=False)[:12]
                 ]
                 raise PlanRejected("planner_schema_invalid: " + json.dumps(fields)) from None
-            validate_plan(plan, request, catalog, config)
+            validate_plan(plan, request, catalog, config, require_temporal_scope=True)
         except PlanRejected as exc:
             if attempt == 1:
                 raise

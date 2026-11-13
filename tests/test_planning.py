@@ -127,7 +127,17 @@ def test_planner_cache_schema_and_no_label_input(tmp_path):
             self.calls += 1
             assert "golden" not in json.dumps(messages)
             assert kwargs["json_object"] is True
-            return {"answer": plan().model_dump_json(), "finish_reason": "stop"}
+            return {
+                "answer": plan(
+                    temporal_scope={
+                        "analysis_period": "Available report coverage",
+                        "source": "catalog_default",
+                        "source_quote": "",
+                        "rationale": "No period supplied; use all eligible reports",
+                    }
+                ).model_dump_json(),
+                "finish_reason": "stop",
+            }
 
     llm = LLM()
     assert plan_request(request, catalog, PipelineConfig(), llm, tmp_path)[1]["cached"] is False

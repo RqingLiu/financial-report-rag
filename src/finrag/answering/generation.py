@@ -132,7 +132,7 @@ def generate_answer(
     for attempt in range(2):
         check_control()
         if attempt:
-            claim_repair('answer')
+            claim_repair("answer")
         if token_count(json.dumps(messages, ensure_ascii=False)) > full_prompt_tokens:
             raise PlanRejected("answer_prompt_limit")
         result = llm.generate(
@@ -162,12 +162,26 @@ def generate_answer(
             ]
     names = {n["id"]: n["description"] for n in plan["needs"]}
     rendered = []
+    inferred_scope = (plan.get("temporal_scope") or {}).get("source") == "catalog_default"
+    if inferred_scope:
+        reports = "; ".join(
+            f"{c['ticker']}: " + ", ".join(f"FY{y}" for y in sorted(c["report_years"]))
+            for c in plan["companies"]
+        )
+        notice = (
+            f"资料范围：{reports}；信息截至 {plan['as_of']}。"
+            "你未指定分析期间，本次按库中这些报告的覆盖范围回答，"
+            "不代表完整历史或库外最新资料。报告财年不等于其中所有数据的事实期间。"
+        )
+        answer.limitations.insert(0, notice)
+        rendered.append(notice)
     for section in answer.sections:
         rendered.append(f"### {section.need_id} — {names[section.need_id]}\n\n{section.answer}")
         if section.missing_evidence:
             rendered.append("本次证据缺项：" + "；".join(section.missing_evidence))
-    if answer.limitations:
-        rendered.append("范围与口径：" + "；".join(answer.limitations))
+    remaining_limits = answer.limitations[1:] if inferred_scope else answer.limitations
+    if remaining_limits:
+        rendered.append("范围与口径：" + "；".join(remaining_limits))
     return {
         **result,
         "answer": "\n\n".join(rendered),

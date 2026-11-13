@@ -53,11 +53,11 @@ class ProviderFailure(RuntimeError):
 
 
 class Budget:
-    def __init__(self, path: Path, stop_usd="4.50"):
+    def __init__(self, path: Path, stop_usd="5.00"):
         self.path = path
         self.stop = D(str(stop_usd))
-        if not self.stop.is_finite() or not D("0") < self.stop <= D("4.50"):
-            raise ValueError("Stop threshold must be positive and <=4.50 of the authorized $5")
+        if not self.stop.is_finite() or not D("0") < self.stop <= D("5.00"):
+            raise ValueError("Stop threshold must be positive and <=5.00 of the authorized $5")
         path.parent.mkdir(parents=True, exist_ok=True)
 
     @contextmanager

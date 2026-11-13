@@ -224,6 +224,15 @@ summary {
   width: 100%
 }
 
+#advanced-options > label {
+  display: flex;
+  margin-top: 12px
+}
+
+#advanced-options .hint {
+  max-width: 720px
+}
+
 .form-row details textarea {
   margin-top: 10px
 }

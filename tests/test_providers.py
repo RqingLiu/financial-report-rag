@@ -23,6 +23,29 @@ def test_budget_persists_unknown_and_rejects_overspend(tmp_path):
         Budget(b.path, "5.01")
 
 
+def test_authorized_total_keeps_prior_costs_and_unknown_holds(tmp_path):
+    from finrag.serving.config import ServingConfig
+
+    budget = Budget(tmp_path / "cost.jsonl", stop_usd="5.00")
+    charged = budget.reserve("3.01", "deepseek", "historical")
+    budget.settle(charged, "3.00418038", {})
+    budget.reserve("0.0093642", "deepseek", "unknown_usage")
+    before = budget.path.read_bytes()
+    with pytest.raises(BudgetExceeded):
+        Budget(budget.path, "1.60").reserve("0.01", "deepseek", "query")
+    assert budget.path.read_bytes() == before
+    current = Budget(budget.path, "4.90")
+    snapshot = current.snapshot()
+    assert snapshot["known_peak_list_cost_usd"] == "3.00418038"
+    assert snapshot["unresolved_reserved_usd"] == "0.0093642"
+    with pytest.raises(BudgetExceeded):
+        current.reserve("1.88645542", "deepseek", "would_reach_stop")
+    current.reserve("0.01", "deepseek", "query")
+    assert ServingConfig(stop_usd=5).run_policy.max_request_usd == Decimal("0.15")
+    with pytest.raises(ValueError):
+        ServingConfig(stop_usd=5.01)
+
+
 def test_provider_uses_bounded_parameters_and_settles_usage(tmp_path):
     seen = []
 

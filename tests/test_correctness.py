@@ -98,13 +98,21 @@ def test_planner_missing_field_repair_receives_schema_and_field_path(tmp_path):
 
         def generate(self, messages, **kwargs):
             self.calls += 1
+            row = plan(
+                temporal_scope={
+                    "analysis_period": "Available report coverage",
+                    "source": "catalog_default",
+                    "source_quote": "",
+                    "rationale": "No period supplied; use eligible reports",
+                }
+            ).model_dump(mode="json")
+            row["companies"][0]["report_years"] = [2024, 2025]
             if self.calls == 1:
                 assert "response_contract" in messages[1]["content"]
-                bad = plan().model_dump(mode="json")
-                del bad["period_interpretation"]
-                return {"answer": json.dumps(bad), "finish_reason": "stop"}
-            assert self.calls == 2 and "period_interpretation" in messages[-1]["content"]
-            return {"answer": plan().model_dump_json(), "finish_reason": "stop"}
+                del row["period_interpretation"]
+            else:
+                assert self.calls == 2 and "period_interpretation" in messages[-1]["content"]
+            return {"answer": json.dumps(row), "finish_reason": "stop"}
 
     model = Model()
     fixed, event = plan_request(

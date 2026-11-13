@@ -1,5 +1,7 @@
 # Public validation receipts
 
+- [41-case end-to-end baseline](baseline41.json): 2026-11-11 run and 2026-11-12 provisional offline review; all failures included, per-case status/score counts and source hashes. [Results and conditions](../../README.md#evaluation-results). No raw answers/traces published.
+
 - [Project guide release](project_guide_validation.json): current local101-test validation, frozen dataset check, source/artifact checks and publication boundaries.
 - [Experiment evidence](experiments/README.md): source-hashed historical aggregates and per-question results;27 v2 arms recomputed without credentials.
 
