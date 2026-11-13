@@ -32,5 +32,6 @@
     "historical baseline lacks full state snapshots",
     "live queries remain subject to unchanged cumulative spending stop",
     "no new financial-answer quality claim"
-  ]
+  ],
+  "published_implementation_commit": "76f9e97"
 }

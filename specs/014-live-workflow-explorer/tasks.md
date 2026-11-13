@@ -6,4 +6,4 @@
 - [x] Complete privacy, behavior, packaging and offline regressions.
 - [x] Verify browser views with saved real traces; start localhost frontend.
 - [x] Update bilingual README and current documentation; remove proven redundant artifacts only.
-- [ ] Publish reviewed changes to origin/main and verify remote identity (staged/history audit passed).
+- [x] Publish reviewed changes to origin/main and verify remote identity (implementation commit76f9e97; staged/history audit passed).
